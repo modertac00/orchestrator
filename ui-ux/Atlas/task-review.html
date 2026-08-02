@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moderta Orchestrate — Task Review · ECO-110</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+
+  <!-- ================= Sidebar ================= -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">M</div>
+      <div>
+        <div class="brand-name">Moderta Orchestrate</div>
+        <div class="brand-sub">AI delivery workflow · v0.1</div>
+      </div>
+    </div>
+
+    <nav class="nav-group" aria-label="Overview">
+      <div class="nav-label">Overview</div>
+      <a class="nav-item" href="../index.html">
+        <span class="nav-icon">◧</span> Dashboard
+      </a>
+      <a class="nav-item" href="review.html">
+        <span class="nav-icon">✓</span> Approvals
+        <span class="nav-count">7</span>
+      </a>
+      <a class="nav-item" href="audit-log.html">
+        <span class="nav-icon">≡</span> Audit log
+      </a>
+      <a class="nav-item" href="metrics.html">
+        <span class="nav-icon">◔</span> Metrics
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="Agents">
+      <div class="nav-label">Agents</div>
+      <a class="nav-item" href="../Gaia/gaia.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Gaia
+        <span class="nav-count">2</span>
+      </a>
+      <a class="nav-item active" href="atlas.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Atlas
+        <span class="nav-count">4</span>
+      </a>
+      <a class="nav-item" href="#ada">
+        <span class="agent-dot" style="background: var(--status-warning)"></span> Ada
+        <span class="nav-count">1</span>
+      </a>
+      <a class="nav-item" href="../Mira/mira.html">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Mira
+      </a>
+      <a class="nav-item" href="../UncleBob/unclebob.html">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Uncle Bob
+      </a>
+      <a class="nav-item" href="#leonidas">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Leonidas
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="Delivery">
+      <div class="nav-label">Delivery</div>
+      <a class="nav-item" href="jira-breakdown.html">
+        <span class="nav-icon">⧉</span> Jira breakdown
+      </a>
+      <a class="nav-item" href="#figma">
+        <span class="nav-icon">◨</span> Figma handoff
+      </a>
+      <a class="nav-item" href="#git">
+        <span class="nav-icon">⑂</span> Git activity
+      </a>
+      <a class="nav-item" href="#docs">
+        <span class="nav-icon">▤</span> Knowledge base
+      </a>
+    </nav>
+
+    <div class="sidebar-foot">
+      Human-in-the-loop by default.<br>
+      AI proposes — people approve.
+    </div>
+  </aside>
+
+  <!-- ================= Main ================= -->
+  <div class="main">
+
+    <header class="topbar">
+      <span class="crumb">Agents / Atlas / REQ-031 / <strong>ECO-110</strong></span>
+      <div class="spacer"></div>
+      <div class="user-chip">
+        <div class="avatar">TJ</div>
+        <span>Tharindu · Business Analyst</span>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- Task header · TASK-01 -->
+      <div class="page-head" id="TASK-01">
+        <div>
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <span class="jira-type story">STORY</span>
+            <h1>ECO-110 · Guided intake form for suppliers</h1>
+            <span class="pill warning"><span class="dot"></span>⚠ Needs review</span>
+            <span class="sec-tag">TASK-01</span>
+          </div>
+          <p class="sub">
+            Epic <a href="atlas.html">ECO-100 · Supplier emissions data intake</a> · from
+            <a href="atlas.html">REQ-031 (ATLAS-06)</a> · drafted by Atlas run #112 · estimate owned by dev team
+          </p>
+        </div>
+        <div class="actions">
+          <a class="btn" href="atlas.html">← Back to REQ-031</a>
+          <button class="btn">⤓ Export PDF</button>
+        </div>
+      </div>
+
+      <div class="workspace">
+        <div class="stack">
+
+          <!-- Description · TASK-02 -->
+          <section class="card" id="TASK-02">
+            <div class="note-section" style="padding-bottom: 16px;">
+              <h3>Description <span class="sec-tag">TASK-02</span>
+                <span class="sec-actions">
+                  <button class="sec-btn" title="Edit this section as text">✎ Edit</button>
+                  <button class="sec-btn ai" title="Opens Atlas Assistant chat targeting this task">✦ Edit with AI</button>
+                </span>
+              </h3>
+              <p>
+                Suppliers need a guided, validated form to submit energy and fuel usage per reporting period.
+                The form walks the supplier through period selection, usage entry per energy type, and evidence
+                upload. Validation happens at entry so bad data never reaches the customer's Scope 3 report.
+              </p>
+            </div>
+          </section>
+
+          <!-- Acceptance criteria · TASK-03 -->
+          <section class="card" id="TASK-03">
+            <div class="sources" style="margin: 0; border: none;">
+              <div class="sources-head">
+                Acceptance criteria — confirm each before approving
+                <span class="pill warning"><span class="dot"></span>⚠ 3/4 confirmed</span>
+                <span class="sec-tag">TASK-03</span>
+              </div>
+              <div class="source-row verified">
+                <span class="src-num">1</span>
+                <div class="src-main">
+                  <div class="src-title">Given an invited supplier, when they open the intake link, then the form shows their pending reporting periods only.</div>
+                </div>
+                <input type="checkbox" checked aria-label="Criterion 1 confirmed"> <span class="verify-label">Confirmed ✓</span>
+              </div>
+              <div class="source-row verified">
+                <span class="src-num">2</span>
+                <div class="src-main">
+                  <div class="src-title">Given usage entry, when a value is outside plausible range, then the field shows a validation warning before submit.</div>
+                </div>
+                <input type="checkbox" checked aria-label="Criterion 2 confirmed"> <span class="verify-label">Confirmed ✓</span>
+              </div>
+              <div class="source-row">
+                <span class="src-num">3</span>
+                <div class="src-main">
+                  <div class="src-title">Given a submission with renewable energy certificates, when evidence is required, then the supplier can attach certificate files.</div>
+                  <div class="src-meta">💬 dev comment open — clarify certificate types</div>
+                </div>
+                <input type="checkbox" aria-label="Criterion 3 not confirmed"> <span class="verify-label">Not confirmed</span>
+              </div>
+              <div class="source-row verified">
+                <span class="src-num">4</span>
+                <div class="src-main">
+                  <div class="src-title">Given a completed submission, when the supplier submits, then a confirmation with reference id is shown and the manager is notified.</div>
+                </div>
+                <input type="checkbox" checked aria-label="Criterion 4 confirmed"> <span class="verify-label">Confirmed ✓</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Attachments · TASK-04 -->
+          <section class="card" id="TASK-04">
+            <div class="card-head">
+              <h2>Attachments</h2>
+              <span class="hint">travel to Jira with the task on publish</span>
+              <span class="sec-tag push">TASK-04</span>
+            </div>
+            <div class="list">
+              <div class="kb-item">
+                <span class="kb-icon">▦</span>
+                <div class="kb-main">
+                  <div class="kb-title"><a href="atlas.html#ATLAS-07">Wireframe — supplier intake form v1</a></div>
+                  <div class="kb-meta">From sample UI (ATLAS-07) · attached by Atlas</div>
+                </div>
+                <span class="pill neutral"><span class="dot"></span>wireframe</span>
+              </div>
+              <div class="kb-item">
+                <span class="kb-icon">◨</span>
+                <div class="kb-main">
+                  <div class="kb-title"><a href="#">UI design — intake form (Figma, frame 12)</a></div>
+                  <div class="kb-meta">Attached by Nadeesha (UI/UX) · yesterday · v2</div>
+                </div>
+                <span class="pill accent"><span class="dot"></span>design doc</span>
+              </div>
+              <div class="kb-item">
+                <span class="kb-icon">▤</span>
+                <div class="kb-main">
+                  <div class="kb-title"><a href="#">REQ-031 business document (PDF export)</a></div>
+                  <div class="kb-meta">Auto-attached · exported from ATLAS-06</div>
+                </div>
+                <span class="pill neutral"><span class="dot"></span>requirement</span>
+              </div>
+            </div>
+            <div class="kb-foot" style="display: flex; align-items: center; gap: 10px;">
+              <button class="btn small">＋ Attach design document…</button>
+              <span>Accepted: Figma links, PDF, PNG, wireframe exports</span>
+            </div>
+          </section>
+
+          <!-- Subtasks · TASK-05 -->
+          <section class="card" id="TASK-05">
+            <div class="card-head">
+              <h2>Subtasks</h2>
+              <span class="sec-tag push">TASK-05</span>
+            </div>
+            <div class="list">
+              <div class="jira-row">
+                <span class="jira-type sub">SUB</span>
+                <span class="jira-key">ECO-110a</span>
+                <span class="jira-title">Form UI — period, usage fields, validation states</span>
+                <span class="jira-est">est: — (dev)</span>
+              </div>
+              <div class="jira-row">
+                <span class="jira-type sub">SUB</span>
+                <span class="jira-key">ECO-110b</span>
+                <span class="jira-title">Submission API with entry validation rules</span>
+                <span class="jira-est">est: — (dev)</span>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- ===== Review rail ===== -->
+        <div class="stack">
+
+          <!-- Review & comments · TASK-06 -->
+          <section class="card" id="TASK-06">
+            <div class="card-head">
+              <h2>Review</h2>
+              <span class="hint">BA + dev + UI/UX</span>
+              <span class="sec-tag push">TASK-06</span>
+            </div>
+            <div class="chat-body">
+              <div class="msg ai">
+                <div class="msg-who">Kasun · Dev</div>
+                AC 3: which certificate types must we accept? REC / GO only, or supplier-specific docs too?
+              </div>
+              <div class="msg user">
+                <div class="msg-who">Tharindu · BA</div>
+                Checking with the RA against the D-06 interviews — will confirm AC 3 today.
+              </div>
+              <div class="msg ai">
+                <div class="msg-who">Nadeesha · UI/UX</div>
+                Design doc v2 attached — evidence upload moved into step 3 per the wireframe.
+              </div>
+            </div>
+            <div class="chat-composer">
+              <input type="text" placeholder="Add a review comment…" aria-label="Add a review comment">
+              <button class="btn primary small">Post</button>
+            </div>
+          </section>
+
+          <!-- Publish · TASK-07 -->
+          <section class="card" id="TASK-07">
+            <div class="card-head">
+              <h2>Publish</h2>
+              <span class="sec-tag push">TASK-07</span>
+            </div>
+            <div class="list">
+              <div class="kb-item">
+                <span class="kb-icon" style="color: var(--success-text)">✓</span>
+                <div class="kb-main"><div class="kb-title" style="font-weight: 500">Attachments complete (3)</div></div>
+              </div>
+              <div class="kb-item">
+                <span class="kb-icon">⚠</span>
+                <div class="kb-main"><div class="kb-title" style="font-weight: 500">Acceptance criteria 3/4 confirmed</div></div>
+              </div>
+              <div class="kb-item">
+                <span class="kb-icon">⚠</span>
+                <div class="kb-main"><div class="kb-title" style="font-weight: 500">Dev estimate pending</div></div>
+              </div>
+            </div>
+            <div class="action-bar" style="margin-top: 0; flex-wrap: wrap;">
+              <button class="btn primary" disabled title="Confirm all acceptance criteria first">✓ Approve task</button>
+              <button class="btn" disabled title="Enabled after task approval">⤴ Publish to Jira</button>
+            </div>
+            <div class="kb-foot">
+              Publish creates ECO-110 in Jira with description, acceptance criteria, attachments, and links —
+              via n8n, audit logged. Estimate stays editable by the dev team in Jira.
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+      <p class="mock-note">Static HTML/CSS mockup · Moderta Orchestrate v0.1 · no live data · spec: UIX-02 · use section codes TASK-01…TASK-07 to request changes</p>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

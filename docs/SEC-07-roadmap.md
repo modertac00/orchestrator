@@ -1,0 +1,11 @@
+# SEC-07 — Phased Roadmap
+
+**System requirement:** Build the AI ecosystem in controlled phases, but do not wait for a perfect final design before implementation starts. Phase 0 must focus on feasibility and business research for the connected systems, especially Jira, Git, Figma, documentation, n8n, Slack/email, and approved AI APIs. From week 3, Atlas implementation should begin first because Atlas will help create requirements, mockups, Jira breakdowns, and acceptance criteria. After Atlas starts, Gaia should be developed next, while Atlas continues in parallel. The BA workflow should then use Atlas to convert Gaia research into refined requirements and delivery-ready work.
+
+| Phase | Focus | Deliverables | Duration (guide) |
+|---|---|---|---|
+| **0 — Foundation** | Feasibility, API research, and business research | Research what can be done with Jira, Git, Figma, documentation, n8n, Slack/email, and AI APIs; confirm access, limits, security, costs, integration options, and business value; define first Atlas requirements | Weeks 1–2 |
+| **1 — Atlas first build** | Start implementation while research continues | Build Atlas from week 3: manual research input → BA requirements → HTML/CSS mockup → acceptance criteria → Jira task breakdown; include human edit, approval, audit log, and source-of-truth rules | Weeks 3–6 |
+| **2 — Gaia parallel build** | Research workflow while Atlas continues | Build Gaia for sustainability research, competitor/regulation summaries, customer problem analysis, and source-backed research notes; Atlas continues improving in parallel and prepares to consume Gaia output | Weeks 7–12 |
+| **3 — BA workflow using Gaia + Atlas** | Research-to-requirements pipeline | Connect Gaia research into Atlas so BA can refine research into requirements, mockups, acceptance criteria, Jira tasks, and test case inputs with human approval and source-of-truth control | 3–6 months |
+| **4 — Delivery agents and optimization** | Design, testing, development, security, governance | Add Mira, Ada, Uncle Bob, and Leonidas workflows; connect Jira, Figma, Git, and n8n; improve prompts, evaluation, audit reports, security controls, cost tracking, and CEO/CTO visibility | Ongoing |

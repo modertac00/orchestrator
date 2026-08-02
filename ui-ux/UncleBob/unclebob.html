@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moderta Orchestrate — Uncle Bob Coding Studio</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+
+  <!-- ================= Sidebar · BOB-01 ================= -->
+  <aside class="sidebar" id="BOB-01">
+    <div class="brand">
+      <div class="brand-mark">M</div>
+      <div>
+        <div class="brand-name">Moderta Orchestrate</div>
+        <div class="brand-sub">AI delivery workflow · v0.1</div>
+      </div>
+    </div>
+
+    <nav class="nav-group" aria-label="Overview">
+      <div class="nav-label">Overview</div>
+      <a class="nav-item" href="../index.html">
+        <span class="nav-icon">◧</span> Dashboard
+      </a>
+      <a class="nav-item" href="review.html">
+        <span class="nav-icon">✓</span> Approvals
+        <span class="nav-count">7</span>
+      </a>
+      <a class="nav-item" href="audit-log.html">
+        <span class="nav-icon">≡</span> Audit log
+      </a>
+      <a class="nav-item" href="metrics.html">
+        <span class="nav-icon">◔</span> Metrics
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="Agents">
+      <div class="nav-label">Agents</div>
+      <a class="nav-item" href="../Gaia/gaia.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Gaia
+        <span class="nav-count">2</span>
+      </a>
+      <a class="nav-item" href="../Atlas/atlas.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Atlas
+        <span class="nav-count">4</span>
+      </a>
+      <a class="nav-item" href="#ada">
+        <span class="agent-dot" style="background: var(--status-warning)"></span> Ada
+        <span class="nav-count">1</span>
+      </a>
+      <a class="nav-item" href="../Mira/mira.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Mira
+        <span class="nav-count">2</span>
+      </a>
+      <a class="nav-item active" href="unclebob.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Uncle Bob
+        <span class="nav-count">3</span>
+      </a>
+      <a class="nav-item" href="#leonidas">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Leonidas
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="Delivery">
+      <div class="nav-label">Delivery</div>
+      <a class="nav-item" href="jira-breakdown.html">
+        <span class="nav-icon">⧉</span> Jira breakdown
+      </a>
+      <a class="nav-item" href="#figma">
+        <span class="nav-icon">◨</span> Figma handoff
+      </a>
+      <a class="nav-item" href="#git">
+        <span class="nav-icon">⑂</span> Git activity
+      </a>
+      <a class="nav-item" href="#docs">
+        <span class="nav-icon">▤</span> Knowledge base
+      </a>
+    </nav>
+
+    <div class="sidebar-foot">
+      Human-in-the-loop by default.<br>
+      AI proposes — people approve.<br>
+      <span class="sec-tag">BOB-01</span>
+    </div>
+  </aside>
+
+  <!-- ================= Main ================= -->
+  <div class="main">
+
+    <header class="topbar" id="BOB-02">
+      <span class="crumb">Agents / Uncle Bob — Coding Studio</span>
+      <span class="sec-tag">BOB-02</span>
+      <div class="spacer"></div>
+      <div class="user-chip">
+        <div class="avatar">RW</div>
+        <span>Ruwan · Software Architect</span>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <div class="page-head" id="BOB-03">
+        <div>
+          <h1>Uncle Bob — Coding Studio <span class="sec-tag">BOB-03</span></h1>
+          <p class="sub">Architecture is a living knowledge map built from repo evidence, edited through chat · technical designs are plain HTML documents Uncle Bob drafts — the architect approves both</p>
+        </div>
+        <div class="actions">
+          <button class="btn">⟲ Audit architecture</button>
+          <button class="btn primary">✦ Draft technical design</button>
+        </div>
+      </div>
+
+      <!-- Tabs · BOB-04 -->
+      <div class="steps" id="BOB-04" aria-label="Studio sections">
+        <button type="button" class="step active" data-targets="BOB-05">
+          <span class="step-num">⬒</span> Architecture design
+          <span class="step-state">knowledge map · levels L1–L3 · chat-edited</span>
+        </button>
+        <button type="button" class="step" data-targets="BOB-06">
+          <span class="step-num">▤</span> Technical designs
+          <span class="step-state">HTML documents · AI drafts → human approves</span>
+        </button>
+        <span class="sec-tag" style="align-self: center">BOB-04</span>
+      </div>
+
+      <div class="workspace">
+        <div class="stack">
+
+          <!-- ============ ARCHITECTURE · Knowledge map · BOB-05 ============ -->
+          <section class="card" id="BOB-05">
+            <div class="card-head">
+              <h2>Architecture designer — ESM knowledge map</h2>
+              <span class="pill good"><span class="dot"></span>✓ Built from repo evidence · 1h ago</span>
+              <span class="hint">16 components · 20 connections</span>
+              <span class="sec-tag push">BOB-05</span>
+            </div>
+            <div class="card-body" style="display: flex; flex-direction: column; gap: 14px;">
+
+              <div class="arch-toolbar">
+                <div class="seg" role="group" aria-label="Architecture level">
+                  <button type="button">L1 · Context</button>
+                  <button type="button" class="active">L2 · Services &amp; infra</button>
+                  <button type="button">L3 · Components</button>
+                </div>
+                <span class="arch-note">select a component to highlight its connections</span>
+                <span class="push">
+                  <button class="btn small">≣ Re-scan repos + AWS</button>
+                  <button class="btn small">⇪ Export diagram</button>
+                </span>
+              </div>
+
+              <div class="map-wrap">
+                <svg id="knowledge-svg" viewBox="0 0 1160 660" role="img" aria-labelledby="map-title map-desc">
+    <title id="map-title">Interactive ESM architecture knowledge map</title><desc id="map-desc">Select a component to highlight its direct incoming and outgoing connections and open implementation details.</desc>
+    <defs>
+      <marker id="arrow-verified" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#207a52"></path></marker>
+      <marker id="arrow-inferred" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#4c6ef5"></path></marker>
+      <marker id="arrow-planned" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#b7791f"></path></marker>
+      <marker id="arrow-unknown" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9299a1"></path></marker>
+    </defs>
+    <g class="edge-layer"><path class="map-edge edge-verified" data-source="browser" data-dest="main-frontend" data-status="verified" data-comm="browser" d="M188 292 C205 250 205 150 225 133" marker-end="url(#arrow-verified)"><title>End-user Browser → Main ESM Frontend: Opens SPA [verified]</title></path><path class="map-edge edge-verified" data-source="browser" data-dest="reporting-frontend" data-status="verified" data-comm="browser" d="M188 312 C210 340 205 420 225 428" marker-end="url(#arrow-verified)"><title>End-user Browser → Reporting Frontend: Opens standalone report SPA [verified]</title></path><path class="map-edge edge-verified" data-source="main-frontend" data-dest="main-api" data-status="verified" data-comm="rest" d="M410 133 L475 130" marker-end="url(#arrow-verified)"><title>Main ESM Frontend → Main ESM API: RTK Query REST + bearer token [verified]</title></path><path class="map-edge edge-verified" data-source="main-api" data-dest="primary-db" data-status="verified" data-comm="database" d="M655 118 C705 105 720 104 760 104" marker-end="url(#arrow-verified)"><title>Main ESM API → Primary PostgreSQL: Sequelize/PostgreSQL [verified]</title></path><path class="map-edge edge-verified" data-source="main-api" data-dest="supabase" data-status="verified" data-comm="sdk" d="M655 135 C705 145 720 176 760 184" marker-end="url(#arrow-verified)"><title>Main ESM API → Supabase Auth: Supabase auth SDK [verified]</title></path><path class="map-edge edge-verified" data-source="main-api" data-dest="uploads-s3" data-status="verified" data-comm="sdk" d="M655 148 C705 175 720 238 760 258" marker-end="url(#arrow-verified)"><title>Main ESM API → Main Upload S3: AWS SDK / presigned PUT [verified]</title></path><path class="map-edge edge-verified" data-source="main-frontend" data-dest="assistant" data-status="verified" data-comm="rest" d="M410 150 C560 220 650 320 760 332" marker-end="url(#arrow-verified)"><title>Main ESM Frontend → Mint AI Service: Assistant package endpoint [verified]</title></path><path class="map-edge edge-verified" data-source="main-frontend" data-dest="api-contracts" data-status="verified" data-comm="package" d="M410 114 C650 20 875 160 970 276" marker-end="url(#arrow-verified)"><title>Main ESM Frontend → API Contracts Package: NPM types [verified]</title></path><path class="map-edge edge-verified" data-source="main-api" data-dest="api-contracts" data-status="verified" data-comm="package" d="M655 130 C800 135 875 225 970 274" marker-end="url(#arrow-verified)"><title>Main ESM API → API Contracts Package: NPM contracts [verified]</title></path><path class="map-edge edge-verified" data-source="reporting-frontend" data-dest="reporting-api" data-status="verified" data-comm="rest" d="M410 428 L475 426" marker-end="url(#arrow-verified)"><title>Reporting Frontend → Reporting API: Stationary GET only [verified]</title></path><path class="map-edge edge-verified" data-source="reporting-frontend" data-dest="mint-ds" data-status="verified" data-comm="package" d="M225 449 C205 475 190 500 188 505" marker-end="url(#arrow-verified)"><title>Reporting Frontend → Mint Design System: React components + CSS [verified]</title></path><path class="map-edge edge-verified" data-source="reporting-api" data-dest="reporting-core" data-status="verified" data-comm="package" d="M655 425 L760 424" marker-end="url(#arrow-verified)"><title>Reporting API → Reporting Core: In-process calculation [verified]</title></path><path class="map-edge edge-verified" data-source="reporting-api" data-dest="api-contracts" data-status="verified" data-comm="package" d="M655 407 C800 350 875 298 970 282" marker-end="url(#arrow-verified)"><title>Reporting API → API Contracts Package: NPM contracts [verified]</title></path><path class="map-edge edge-verified" data-source="reporting-api" data-dest="primary-db" data-status="verified" data-comm="database" d="M565 385 C590 280 690 130 760 108" marker-end="url(#arrow-verified)"><title>Reporting API → Primary PostgreSQL: Direct Sequelize read [verified]</title></path><path class="map-edge edge-planned" data-source="reporting-api" data-dest="metadata-db" data-status="planned" data-comm="database" d="M655 448 C705 475 720 510 760 521" marker-end="url(#arrow-planned)"><title>Reporting API → Reporting Metadata DB: Provider exists; module not imported [planned]</title></path><path class="map-edge edge-planned" data-source="reporting-api" data-dest="artifact-s3" data-status="planned" data-comm="sdk" d="M655 453 C700 520 720 590 760 601" marker-end="url(#arrow-planned)"><title>Reporting API → Report Artifact S3: Uploader exists; not invoked [planned]</title></path><path class="map-edge edge-planned" data-source="reporting-api" data-dest="pdf" data-status="planned" data-comm="service" d="M565 467 L565 560" marker-end="url(#arrow-planned)"><title>Reporting API → Puppeteer PDF Renderer: Services exist; not exposed [planned]</title></path><path class="map-edge edge-unknown" data-source="primary-db" data-dest="read-replica" data-status="unknown" data-comm="replication" d="M940 103 L970 126" marker-end="url(#arrow-unknown)"><title>Primary PostgreSQL → Read Replica: No implementation evidence [unknown]</title></path><path class="map-edge edge-planned" data-source="main-frontend" data-dest="reporting-frontend" data-status="planned" data-comm="navigation" d="M318 171 L318 390" marker-end="url(#arrow-planned)"><title>Main ESM Frontend → Reporting Frontend: No route/link found [planned]</title></path><path class="map-edge edge-unknown" data-source="main-api" data-dest="reporting-api" data-status="unknown" data-comm="rest" d="M565 170 L565 385" marker-end="url(#arrow-unknown)"><title>Main ESM API → Reporting API: No client or route found [unknown]</title></path></g>
+    <g class="node-layer"><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for End-user Browser" data-id="browser" data-repo="external" data-layer="experience" data-status="verified" data-code="ARC-01" data-desc="End-user browser running the main ESM SPA or the standalone reporting SPA. Browser print is currently the only complete report export path." data-details="BrowserRouter routes in both SPAs | window.print + blob URL download helper | passes context via URL/query parameters" data-search="end-user browser runs the main esm spa or the standalone reporting spa. browser print is the only complete report export path. browserrouter window.print blob url download helper main frontend routes reporting frontend routes url/query parameters"><rect x="38" y="270" width="150" height="64" rx="12"></rect><text class="node-code" x="48" y="286">ARC-01</text><text x="113.0" y="302.0" text-anchor="middle"><tspan x="113.0" dy="0">End-user Browser</tspan></text><circle class="status-dot" cx="177" cy="281" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Main ESM Frontend" data-id="main-frontend" data-repo="esm-frontend" data-layer="experience" data-status="verified" data-code="ARC-02" data-desc="React/Vite SPA for projects, carbon scopes, analytics, energy, product carbon and water footprint." data-details="routes/sections.tsx · auth/context · utils/api | MUI theme · organization-carbon-analytics | Mint AI assistant embedded via package | env: VITE_API_END_POINT, VITE_ASSISTANT_API_END_POINT" data-search="main esm frontend react/vite spa for projects, carbon scopes, analytics, energy, product carbon and water footprint. routes/sections.tsx auth/context utils/api organization-carbon-analytics mui theme /dashboard/* vite_api_end_point mint ai assistant endpoint vite_api_end_point vite_assistant_api_end_point"><rect x="225" y="95" width="185" height="76" rx="12"></rect><text class="node-code" x="235" y="111">ARC-02</text><text x="317.5" y="133.0" text-anchor="middle"><tspan x="317.5" dy="0">Main ESM Frontend</tspan></text><circle class="status-dot" cx="399" cy="106" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Main ESM API" data-id="main-api" data-repo="esm-api" data-layer="service" data-status="verified" data-code="ARC-03" data-desc="NestJS system-of-record API with project-scoped carbon, energy, water, users and company functionality." data-details="routes: /auth/*, /projects/:projectId/*, /upload/* | Swagger at /api | env: DB_*, SUPABASE_*, AWS_*, CORS_ORIGIN, PORT" data-search="main esm api nestjs system-of-record api with project-scoped carbon, energy, water, users and company functionality. auth users companies projects scope 1/2/3 emissions summary product carbon organization energy water footprint upload swagger /api /auth/* /projects/:projectid/* /upload/* db_* supabase_* aws_* cors_origin port"><rect x="475" y="90" width="180" height="80" rx="12"></rect><text class="node-code" x="485" y="106">ARC-03</text><text x="565.0" y="130.0" text-anchor="middle"><tspan x="565.0" dy="0">Main ESM API</tspan></text><circle class="status-dot" cx="644" cy="101" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Primary PostgreSQL" data-id="primary-db" data-repo="esm-api" data-layer="data" data-status="verified" data-code="ARC-04" data-desc="Sequelize-backed operational PostgreSQL database for the main ESM API." data-details="Sequelize models · PostgreSQL protocol | env: DB_HOST, DB_PORT, DB_USERNAME/DB_USER, DB_PASSWORD, DB_NAME" data-search="primary postgresql sequelize-backed operational database for the main esm api. sequelize models postgresql protocol db_host db_port db_username/db_user db_password db_name"><rect x="760" y="72" width="180" height="64" rx="12"></rect><text class="node-code" x="770" y="88">ARC-04</text><text x="850.0" y="104.0" text-anchor="middle"><tspan x="850.0" dy="0">Primary PostgreSQL</tspan></text><circle class="status-dot" cx="929" cy="83" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Supabase Auth" data-id="supabase" data-repo="external" data-layer="external" data-status="verified" data-code="ARC-05" data-desc="External identity provider used by the main ESM API." data-details="SupabaseService · SupabaseAuthGuard · Supabase JS SDK | env: SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY" data-search="supabase auth external identity provider used by the main esm api. supabaseservice supabaseauthguard supabase js sdk supabase_url supabase_anon_key supabase_service_role_key"><rect x="760" y="155" width="180" height="58" rx="12"></rect><text class="node-code" x="770" y="171">ARC-05</text><text x="850.0" y="184.0" text-anchor="middle"><tspan x="850.0" dy="0">Supabase Auth</tspan></text><circle class="status-dot" cx="929" cy="166" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Main Upload S3" data-id="uploads-s3" data-repo="external" data-layer="external" data-status="verified" data-code="ARC-06" data-desc="S3 bucket used by the main API file upload and presigned URL flows." data-details="UploadService · AWS SDK PutObject · presigned PUT URL | env: AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_BUCKET/AWS_S3_BUCKET" data-search="main upload s3 s3 bucket used by main api file upload and presigned url flows. uploadservice aws sdk putobject presigned put url aws_region aws_access_key_id aws_secret_access_key aws_bucket/aws_s3_bucket"><rect x="760" y="229" width="180" height="58" rx="12"></rect><text class="node-code" x="770" y="245">ARC-06</text><text x="850.0" y="258.0" text-anchor="middle"><tspan x="850.0" dy="0">Main Upload S3</tspan></text><circle class="status-dot" cx="929" cy="240" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Mint AI Service" data-id="assistant" data-repo="external" data-layer="external" data-status="verified" data-code="ARC-07" data-desc="External assistant API consumed by the main frontend through @moderta/mint-ai-assistant." data-details="MintAiAssistant component | HTTP endpoint supplied to the package | env: VITE_ASSISTANT_API_END_POINT" data-search="mint ai service external assistant api consumed by the main frontend through @moderta/mint-ai-assistant. mintaiassistant http endpoint supplied to package vite_assistant_api_end_point"><rect x="760" y="303" width="180" height="58" rx="12"></rect><text class="node-code" x="770" y="319">ARC-07</text><text x="850.0" y="332.0" text-anchor="middle"><tspan x="850.0" dy="0">Mint AI Service</tspan></text><circle class="status-dot" cx="929" cy="314" r="5"></circle></g><g class="map-node node-partial" tabindex="0" role="button" aria-label="Open details for Reporting Frontend" data-id="reporting-frontend" data-repo="esm-reporting-frontend" data-layer="experience" data-status="partial" data-code="ARC-08" data-desc="Standalone React report setup/document SPA. The full report defaults to mock data; only the stationary breakdown calls the reporting API." data-details="ReportSetupPage · ReportDocumentPage · RTK Query endpoints | report pages + print CSS | routes: /reports/organization-carbon(/document) | env: VITE_REPORT_API_BASE_URL, VITE_REPORT_DATA_SOURCE, VITE_*_REPORT_PATH" data-search="reporting frontend standalone react report setup/document spa. full report defaults to mock; stationary breakdown can call the reporting api. reportsetuppage reportdocumentpage rtk query endpoints report pages print css /reports/organization-carbon /reports/organization-carbon/document vite_report_api_base_url vite_report_data_source vite_*_report_path vite_scope1_stationary_breakdown_path"><rect x="225" y="390" width="185" height="78" rx="12"></rect><text class="node-code" x="235" y="406">ARC-08</text><text x="317.5" y="429.0" text-anchor="middle"><tspan x="317.5" dy="0">Reporting Frontend</tspan></text><circle class="status-dot" cx="399" cy="401" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Mint Design System" data-id="mint-ds" data-repo="mint-design-system" data-layer="shared" data-status="verified" data-code="ARC-09" data-desc="React/Tailwind component package with explicit atomic design layers and report templates." data-details="tokens · atoms · molecules · organisms · templates | BrandProvider · Storybook | @moderta/mint-design-system · styles.css · theme.css" data-search="mint design system react/tailwind component package with explicit atomic design layers and report templates. tokens atoms molecules organisms templates brandprovider storybook @moderta/mint-design-system styles.css theme.css css custom properties"><rect x="38" y="470" width="150" height="68" rx="12"></rect><text class="node-code" x="48" y="486">ARC-09</text><text x="113.0" y="504.0" text-anchor="middle"><tspan x="113.0" dy="0">Mint Design System</tspan></text><circle class="status-dot" cx="177" cy="481" r="5"></circle></g><g class="map-node node-partial" tabindex="0" role="button" aria-label="Open details for Reporting API" data-id="reporting-api" data-repo="esm-reporting-api" data-layer="service" data-status="partial" data-code="ARC-10" data-desc="NestJS reporting service with one stationary breakdown route, a direct PostgreSQL read and in-process core calculation; metadata, S3 and PDF components are dormant." data-details="GET /reports/scope-1/stationary-breakdown | imported: ReportingModule, DatabaseModule | not imported: ReportingMetadataModule, PdfModule | env: DB_*, REPORTING_DB_*, REPORT_ARTIFACTS_S3_BUCKET, CORS_ORIGINS, PUPPETEER_EXECUTABLE_PATH" data-search="reporting api nestjs reporting service with one stationary breakdown route, direct postgresql read, core calculation, dormant metadata/s3/pdf components. reportingmodule databasemodule reportingmetadatamodule (not imported) pdfmodule (not imported) get /reports/scope-1/stationary-breakdown db_* reporting_db_* report_artifacts_s3_bucket cors_origins puppeteer_executable_path"><rect x="475" y="385" width="180" height="82" rx="12"></rect><text class="node-code" x="485" y="401">ARC-10</text><text x="565.0" y="426.0" text-anchor="middle"><tspan x="565.0" dy="0">Reporting API</tspan></text><circle class="status-dot" cx="644" cy="396" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Reporting Core" data-id="reporting-core" data-repo="esm-reporting-core" data-layer="shared" data-status="verified" data-code="ARC-11" data-desc="Framework-free domain and calculation package. It performs no HTTP, DB, rendering, auth or export." data-details="application/calculations · definitions · builders | domain · shared/result | @moderta/reporting-core package exports" data-search="reporting core framework-free domain and calculation package. it performs no http, db, rendering, auth or export. application/calculations application/definitions application/builders domain shared/result @moderta/reporting-core package exports "><rect x="760" y="390" width="180" height="68" rx="12"></rect><text class="node-code" x="770" y="406">ARC-11</text><text x="850.0" y="424.0" text-anchor="middle"><tspan x="850.0" dy="0">Reporting Core</tspan></text><circle class="status-dot" cx="929" cy="401" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for API Contracts Package" data-id="api-contracts" data-repo="external" data-layer="shared" data-status="verified" data-code="ARC-12" data-desc="External @moderta/api-contracts package referenced by four supplied repositories; source is not included." data-details="npm package · consumed by both frontends and both APIs | source not supplied" data-search="api contracts package external @moderta/api-contracts package referenced by four supplied repositories; source is not included. unknown—package source not supplied npm package "><rect x="970" y="250" width="160" height="68" rx="12"></rect><text class="node-code" x="980" y="266">ARC-12</text><text x="1050.0" y="275.0" text-anchor="middle"><tspan x="1050.0" dy="0">API Contracts</tspan><tspan x="1050.0" dy="18">Package</tspan></text><circle class="status-dot" cx="1119" cy="261" r="5"></circle></g><g class="map-node node-planned" tabindex="0" role="button" aria-label="Open details for Reporting Metadata DB" data-id="metadata-db" data-repo="esm-reporting-api" data-layer="data" data-status="planned" data-code="ARC-13" data-desc="Separate Sequelize connection with report_generations/report_artifacts models exists, but its module is not imported." data-details="ReportingMetadataModule · PostgresReportGenerationRepository | env: REPORTING_DB_* with DB_* fallback" data-search="reporting metadata db separate sequelize connection and report_generations/report_artifacts models exist, but its module is not imported. reportingmetadatamodule postgresreportgenerationrepository postgresql protocol reporting_db_* with db_* fallback"><rect x="760" y="490" width="180" height="62" rx="12"></rect><text class="node-code" x="770" y="506">ARC-13</text><text x="850.0" y="512.0" text-anchor="middle"><tspan x="850.0" dy="0">Reporting Metadata</tspan><tspan x="850.0" dy="18">DB</tspan></text><circle class="status-dot" cx="929" cy="501" r="5"></circle></g><g class="map-node node-planned" tabindex="0" role="button" aria-label="Open details for Report Artifact S3" data-id="artifact-s3" data-repo="esm-reporting-api" data-layer="external" data-status="planned" data-code="ARC-14" data-desc="Service can upload report JSON with checksum and metadata, but it is not invoked in the supplied code." data-details="ReportingObjectStorageService · AWS S3 PutObject | env: REPORT_ARTIFACTS_S3_BUCKET, AWS_REGION/AWS_DEFAULT_REGION" data-search="report artifact s3 service can upload report json with checksum and metadata, but it is not invoked in the supplied code. reportingobjectstorageservice aws s3 putobject report_artifacts_s3_bucket aws_region/aws_default_region"><rect x="760" y="570" width="180" height="62" rx="12"></rect><text class="node-code" x="770" y="586">ARC-14</text><text x="850.0" y="601.0" text-anchor="middle"><tspan x="850.0" dy="0">Report Artifact S3</tspan></text><circle class="status-dot" cx="929" cy="581" r="5"></circle></g><g class="map-node node-planned" tabindex="0" role="button" aria-label="Open details for Puppeteer PDF Renderer" data-id="pdf" data-repo="esm-reporting-api" data-layer="service" data-status="planned" data-code="ARC-15" data-desc="Self-contained HTML template and Puppeteer renderer exist, but the controller and module graph do not expose them." data-details="PdfBrowserService · PdfRendererService · Scope1StationaryBreakdownPdfService | Handlebars template · in-process service | env: PUPPETEER_EXECUTABLE_PATH" data-search="puppeteer pdf renderer self-contained html template and puppeteer renderer exist, but controller and module graph do not expose them. pdfbrowserservice pdfrendererservice scope1stationarybreakdownpdfservice handlebars template in-process service; intended http response puppeteer_executable_path"><rect x="475" y="560" width="180" height="68" rx="12"></rect><text class="node-code" x="485" y="576">ARC-15</text><text x="565.0" y="585.0" text-anchor="middle"><tspan x="565.0" dy="0">Puppeteer PDF</tspan><tspan x="565.0" dy="18">Renderer</tspan></text><circle class="status-dot" cx="644" cy="571" r="5"></circle></g><g class="map-node node-unknown" tabindex="0" role="button" aria-label="Open details for Read Replica" data-id="read-replica" data-repo="external" data-layer="data" data-status="unknown" data-code="ARC-16" data-desc="Shown as an expected concept in the textual brief, but no replica-specific implementation evidence exists." data-details="no implementation evidence — status unknown" data-search="read replica shown as an expected concept in the textual brief, but no replica-specific implementation evidence exists.  unknown "><rect x="970" y="100" width="160" height="58" rx="12"></rect><text class="node-code" x="980" y="116">ARC-16</text><text x="1050.0" y="129.0" text-anchor="middle"><tspan x="1050.0" dy="0">Read Replica</tspan></text><circle class="status-dot" cx="1119" cy="111" r="5"></circle></g></g>
+    </svg>
+              </div>
+
+              <div class="map-detail" id="map-detail" aria-live="polite">
+                <span class="map-detail-empty">Select a component (ARC-01…ARC-16) to see its description, implementation details and direct connections — ask Uncle Bob in chat (BOB-07) to change the map.</span>
+              </div>
+
+              <div class="arch-legend">
+                <span class="key"><span class="key-dot" style="background: #207a52"></span> Verified in code</span>
+                <span class="key"><span class="key-dot" style="background: #b7791f"></span> Partial</span>
+                <span class="key"><span class="key-line planned"></span> Planned — code exists, not wired</span>
+                <span class="key"><span class="key-line unknown"></span> Unknown — no evidence</span>
+                <span class="key"><span class="key-line inferred"></span> Inferred connection</span>
+              </div>
+            </div>
+            <div class="kb-foot">
+              Living knowledge map — not a full diagramming tool. Every node and edge carries an evidence status from scanning the repos and AWS state; ask Uncle Bob in chat (BOB-07) to add, connect, or re-verify components. Changes land as drafts until the architect approves.
+            </div>
+          </section>
+
+          <!-- ============ TECHNICAL DESIGNS · HTML documents · BOB-06 ============ -->
+          <section class="card" id="BOB-06">
+            <div class="card-head">
+              <h2>Technical designs</h2>
+              <span class="hint">plain HTML documents · Uncle Bob edits drafts via chat · approval locks them</span>
+              <a class="more" href="#git">Open designs repo →</a>
+              <span class="sec-tag">BOB-06</span>
+            </div>
+            <div class="list">
+              <div class="list-row">
+                <span class="tdoc-id">TD-012</span>
+                <span class="tdoc-fmt">HTML</span>
+                <div class="row-main">
+                  <div class="row-title">esm-api — queue-based report generation</div>
+                  <div class="row-meta">Linked to BOB-05: Main ESM API, Reporting API · AI edited 10m ago</div>
+                </div>
+                <span class="pill warning"><span class="dot"></span>⚠ Draft — AI edited</span>
+                <button class="btn small">Preview</button>
+                <button class="btn small">✦ Edit with AI</button>
+              </div>
+              <div class="list-row">
+                <span class="tdoc-id">TD-011</span>
+                <span class="tdoc-fmt">HTML</span>
+                <div class="row-main">
+                  <div class="row-title">esm-reporting-api — expose PDF renderer &amp; metadata DB</div>
+                  <div class="row-meta">Wires the three planned edges on BOB-05 · with sample code + branch <span class="tdoc-id">feat/reporting-pdf</span></div>
+                </div>
+                <span class="pill accent"><span class="dot"></span>In review · BA + Architect</span>
+                <button class="btn small">Preview</button>
+                <button class="btn small">✦ Edit with AI</button>
+              </div>
+              <div class="list-row">
+                <span class="tdoc-id">TD-009</span>
+                <span class="tdoc-fmt">HTML</span>
+                <div class="row-main">
+                  <div class="row-title">esm-frontend — dashboard data-loading design</div>
+                  <div class="row-meta">Approved by Ruwan · 2026-07-28 · AI may only add separate suggestions</div>
+                </div>
+                <span class="pill good"><span class="dot"></span>✓ Approved · locked</span>
+                <button class="btn small">Preview</button>
+                <button class="btn small" disabled title="Locked after human approval">✦ Edit with AI</button>
+              </div>
+              <div class="list-row">
+                <span class="tdoc-id">TD-008</span>
+                <span class="tdoc-fmt">HTML</span>
+                <div class="row-main">
+                  <div class="row-title">infra — VPC &amp; environments baseline</div>
+                  <div class="row-meta">Approved by Ruwan · 2026-07-14 · source of truth for AWS components</div>
+                </div>
+                <span class="pill good"><span class="dot"></span>✓ Approved · locked</span>
+                <button class="btn small">Preview</button>
+                <button class="btn small" disabled title="Locked after human approval">✦ Edit with AI</button>
+              </div>
+            </div>
+            <div class="kb-foot">
+              Technical designs are HTML files in the designs repo — no special tooling to read them. Uncle Bob drafts and edits them through chat; once a human approves, the document is locked and AI can only propose separate suggestions (SEC-05 §11).
+            </div>
+          </section>
+
+        </div>
+
+        <!-- ===== Uncle Bob Assistant · BOB-07 ===== -->
+        <section class="card" id="BOB-07">
+          <div class="card-head">
+            <h2>Uncle Bob Assistant</h2>
+            <span class="sec-tag push">BOB-07</span>
+          </div>
+          <div class="chat-body">
+            <div class="msg ai">
+              <div class="msg-who">Uncle Bob</div>
+              Hi Ruwan — I maintain the architecture knowledge map (BOB-05) from repo evidence and draft
+              technical designs (BOB-06), plus sample code, branches, and review checklists. Map and design
+              changes stay drafts until you approve.
+            </div>
+            <div class="msg user">
+              <div class="msg-who">Ruwan · Architect</div>
+              The PDF renderer and metadata DB are still dormant. Draft the design to wire them into the Reporting API.
+            </div>
+            <div class="msg ai">
+              <div class="msg-who">Uncle Bob</div>
+              Drafted TD-011 — it wires the three planned edges on the map:
+              <div class="suggest">
+                <div class="suggest-target">→ BOB-06 · TD-011 · BOB-05 · Reporting API → PDF / Metadata DB / Artifact S3</div>
+                <div class="suggest-text">Imports PdfModule and ReportingMetadataModule, exposes the PDF route, invokes the S3 uploader. Sample code on branch feat/reporting-pdf. Approving flips the planned edges to verified after the next repo scan.</div>
+                <div class="suggest-actions">
+                  <button class="btn small primary">✓ Approve draft</button>
+                  <button class="btn small">✕ Discard</button>
+                  <span class="suggest-note">audit logged</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tool-chips" aria-label="Uncle Bob tools">
+            <button class="tool-chip">⬒ Edit knowledge map</button>
+            <button class="tool-chip">✦ Draft technical design</button>
+            <button class="tool-chip">⑂ Prepare branch + sample code</button>
+            <button class="tool-chip">⟲ Re-scan repo evidence</button>
+          </div>
+          <div class="chat-composer">
+            <input type="text" placeholder="Ask Uncle Bob to change the map, or a design (e.g. TD-012)…" aria-label="Message Uncle Bob">
+            <button class="btn primary small">Send</button>
+          </div>
+        </section>
+
+      </div>
+
+      <p class="mock-note">Static HTML/CSS mockup · Moderta Orchestrate v0.1 · no live data · spec: UIX-10 · use section codes BOB-01…BOB-07 to request changes — map components carry their own codes ARC-01…ARC-16</p>
+
+    </main>
+  </div>
+</div>
+<script>
+// BOB-04 tabs: "Architecture design" shows BOB-05, "Technical designs" shows BOB-06.
+// The Uncle Bob Assistant (BOB-07) stays visible in both.
+(function () {
+  var tabs = document.querySelectorAll('.step[data-targets]');
+  var all = [];
+  tabs.forEach(function (t) { all = all.concat(t.dataset.targets.split(',')); });
+
+  function select(tab) {
+    tabs.forEach(function (t) { t.classList.toggle('active', t === tab); });
+    var show = tab.dataset.targets.split(',');
+    all.forEach(function (id) {
+      var sec = document.getElementById(id);
+      if (sec) sec.style.display = show.indexOf(id) >= 0 ? '' : 'none';
+    });
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () { select(tab); });
+  });
+
+  var initial = document.querySelector('.step.active[data-targets]');
+  if (initial) select(initial);
+})();
+
+// BOB-05 knowledge map: select a node to highlight its direct edges and
+// show its connections in the detail panel. Click the background to clear.
+(function () {
+  var svg = document.getElementById('knowledge-svg');
+  var detail = document.getElementById('map-detail');
+  if (!svg || !detail) return;
+  var nodes = svg.querySelectorAll('.map-node');
+  var edges = svg.querySelectorAll('.map-edge');
+  var emptyHTML = detail.innerHTML;
+  var current = null;
+
+  var statusPill = {
+    verified: '<span class="pill good"><span class="dot"></span>✓ Verified</span>',
+    partial:  '<span class="pill warning"><span class="dot"></span>⚠ Partial</span>',
+    planned:  '<span class="pill warning"><span class="dot"></span>◌ Planned</span>',
+    unknown:  '<span class="pill neutral"><span class="dot"></span>? Unknown</span>'
+  };
+
+  function esc(s) {
+    var d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  function clear() {
+    current = null;
+    svg.classList.remove('has-selection');
+    nodes.forEach(function (n) { n.classList.remove('selected', 'neighbor'); });
+    edges.forEach(function (e) { e.classList.remove('active'); });
+    detail.innerHTML = emptyHTML;
+  }
+
+  function select(node) {
+    if (current === node) { clear(); return; }
+    clear();
+    current = node;
+    var id = node.dataset.id;
+    svg.classList.add('has-selection');
+    node.classList.add('selected');
+
+    var outs = [], ins = [];
+    edges.forEach(function (e) {
+      if (e.dataset.source !== id && e.dataset.dest !== id) return;
+      e.classList.add('active');
+      var otherId = e.dataset.source === id ? e.dataset.dest : e.dataset.source;
+      var other = svg.querySelector('.map-node[data-id="' + otherId + '"]');
+      if (other) other.classList.add('neighbor');
+      var t = e.querySelector('title');
+      (e.dataset.source === id ? outs : ins).push(t ? t.textContent : otherId);
+    });
+
+    var name = (node.getAttribute('aria-label') || '').replace('Open details for ', '');
+    var repo = node.dataset.repo === 'external' ? 'EXTERNAL' : node.dataset.repo;
+    var html = '<div class="detail-head">' +
+      (node.dataset.code ? '<span class="sec-tag">' + esc(node.dataset.code) + '</span> ' : '') +
+      '<strong>' + esc(name) + '</strong>' +
+      ' <span class="tdoc-fmt">' + esc(repo) + '</span> ' +
+      (statusPill[node.dataset.status] || '') + '</div>';
+    if (node.dataset.desc) {
+      html += '<p class="detail-desc">' + esc(node.dataset.desc) + '</p>';
+    }
+    if (node.dataset.details) {
+      html += '<div class="detail-group"><span class="detail-label">Implementation details</span>' +
+        node.dataset.details.split('|').map(function (d) {
+          return '<div class="detail-conn">' + esc(d.trim()) + '</div>';
+        }).join('') + '</div>';
+    }
+    if (outs.length) {
+      html += '<div class="detail-group"><span class="detail-label">Outgoing</span>' +
+        outs.map(function (l) { return '<div class="detail-conn">' + esc(l) + '</div>'; }).join('') + '</div>';
+    }
+    if (ins.length) {
+      html += '<div class="detail-group"><span class="detail-label">Incoming</span>' +
+        ins.map(function (l) { return '<div class="detail-conn">' + esc(l) + '</div>'; }).join('') + '</div>';
+    }
+    if (!outs.length && !ins.length) html += '<div class="detail-conn">No connections recorded.</div>';
+    detail.innerHTML = html;
+  }
+
+  nodes.forEach(function (node) {
+    node.addEventListener('click', function (ev) { ev.stopPropagation(); select(node); });
+    node.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); select(node); }
+    });
+  });
+  svg.addEventListener('click', clear);
+})();
+</script>
+</body>
+</html>

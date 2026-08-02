@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moderta Orchestrate — Atlas Requirement Workspace</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+
+  <!-- ================= Sidebar · ATLAS-01 ================= -->
+  <aside class="sidebar" id="ATLAS-01">
+    <div class="brand">
+      <div class="brand-mark">M</div>
+      <div>
+        <div class="brand-name">Moderta Orchestrate</div>
+        <div class="brand-sub">AI delivery workflow · v0.1</div>
+      </div>
+    </div>
+
+    <nav class="nav-group" aria-label="Overview">
+      <div class="nav-label">Overview</div>
+      <a class="nav-item" href="../index.html">
+        <span class="nav-icon">◧</span> Dashboard
+      </a>
+      <a class="nav-item" href="review.html">
+        <span class="nav-icon">✓</span> Approvals
+        <span class="nav-count">7</span>
+      </a>
+      <a class="nav-item" href="audit-log.html">
+        <span class="nav-icon">≡</span> Audit log
+      </a>
+      <a class="nav-item" href="metrics.html">
+        <span class="nav-icon">◔</span> Metrics
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="Agents">
+      <div class="nav-label">Agents</div>
+      <a class="nav-item" href="../Gaia/gaia.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Gaia
+        <span class="nav-count">2</span>
+      </a>
+      <a class="nav-item active" href="atlas.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Atlas
+        <span class="nav-count">4</span>
+      </a>
+      <a class="nav-item" href="#ada">
+        <span class="agent-dot" style="background: var(--status-warning)"></span> Ada
+        <span class="nav-count">1</span>
+      </a>
+      <a class="nav-item" href="../Mira/mira.html">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Mira
+      </a>
+      <a class="nav-item" href="../UncleBob/unclebob.html">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Uncle Bob
+      </a>
+      <a class="nav-item" href="#leonidas">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Leonidas
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="Delivery">
+      <div class="nav-label">Delivery</div>
+      <a class="nav-item" href="jira-breakdown.html">
+        <span class="nav-icon">⧉</span> Jira breakdown
+      </a>
+      <a class="nav-item" href="#figma">
+        <span class="nav-icon">◨</span> Figma handoff
+      </a>
+      <a class="nav-item" href="#git">
+        <span class="nav-icon">⑂</span> Git activity
+      </a>
+      <a class="nav-item" href="#docs">
+        <span class="nav-icon">▤</span> Knowledge base
+      </a>
+    </nav>
+
+    <div class="sidebar-foot">
+      Human-in-the-loop by default.<br>
+      AI proposes — people approve.<br>
+      <span class="sec-tag">ATLAS-01</span>
+    </div>
+  </aside>
+
+  <!-- ================= Main ================= -->
+  <div class="main">
+
+    <header class="topbar" id="ATLAS-02">
+      <span class="crumb">Agents / Atlas — Requirements</span>
+      <span class="sec-tag">ATLAS-02</span>
+      <div class="spacer"></div>
+      <div class="user-chip">
+        <div class="avatar">TJ</div>
+        <span>Tharindu · Business Analyst</span>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <div class="page-head" id="ATLAS-03">
+        <div>
+          <h1>REQ-031 · Supplier emissions data intake <span class="sec-tag">ATLAS-03</span></h1>
+          <p class="sub">Atlas requirement workspace · EcoTrace · built from approved Gaia research</p>
+        </div>
+        <div class="actions">
+          <button class="btn">⤓ Export PDF</button>
+          <button class="btn primary">＋ New requirement</button>
+        </div>
+      </div>
+
+      <!-- Steps · ATLAS-04 (tabs: selecting a step shows its content below) -->
+      <div class="steps" id="ATLAS-04" aria-label="Workflow steps">
+        <button type="button" class="step done" data-target="ATLAS-05">
+          <span class="step-num">✓</span> Research input
+          <span class="step-state">2 docs linked</span>
+        </button>
+        <button type="button" class="step active" data-target="ATLAS-06">
+          <span class="step-num">2</span> Business document
+          <span class="step-state">draft</span>
+        </button>
+        <button type="button" class="step" data-target="ATLAS-07">
+          <span class="step-num">3</span> Sample UI
+          <span class="step-state">draft</span>
+        </button>
+        <button type="button" class="step" data-target="ATLAS-08">
+          <span class="step-num">4</span> Jira breakdown
+          <span class="step-state">waiting</span>
+        </button>
+        <span class="sec-tag" style="align-self: center">ATLAS-04</span>
+      </div>
+
+      <div class="workspace">
+        <div class="stack">
+
+          <!-- ===== Research input · ATLAS-05 ===== -->
+          <section class="card" id="ATLAS-05">
+            <div class="card-head">
+              <h2>Research input</h2>
+              <span class="hint">approved Gaia documents only</span>
+              <span class="sec-tag push">ATLAS-05</span>
+            </div>
+            <div class="list">
+              <div class="list-row">
+                <span class="agent-badge"><span class="glyph">Ga</span></span>
+                <div class="row-main">
+                  <div class="row-title"><a href="../Gaia/gaia.html">RS-03 / D-05 · Supplier data collection pain points</a></div>
+                  <div class="row-meta">Customer problem · approved 3d ago · source of truth</div>
+                </div>
+                <span class="pill good"><span class="dot"></span>✓ Approved</span>
+              </div>
+              <div class="list-row">
+                <span class="agent-badge"><span class="glyph">Ga</span></span>
+                <div class="row-main">
+                  <div class="row-title"><a href="../Gaia/gaia.html">RS-04 / D-06 · Compliance officer interviews — 5 companies</a></div>
+                  <div class="row-meta">Interview notes · approved 2d ago · source of truth</div>
+                </div>
+                <span class="pill good"><span class="dot"></span>✓ Approved</span>
+              </div>
+              <div class="list-row">
+                <div class="row-main">
+                  <button class="btn small">＋ Link research…</button>
+                </div>
+                <span class="hint" style="font-size: 12px; color: var(--ink-muted)">unapproved Gaia drafts cannot be linked</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- ===== Business document · ATLAS-06 ===== -->
+          <section class="card" id="ATLAS-06">
+            <div class="draft-banner">
+              <span>⚠ Draft — Atlas · not approved</span>
+              <span class="spacer"></span>
+              <span class="hint">BA approval locks this document as source of truth</span>
+              <span class="sec-tag">ATLAS-06</span>
+            </div>
+
+            <div class="note-head">
+              <div class="note-title-row">
+                <h2>Business document · REQ-031</h2>
+                <span class="pill warning"><span class="dot"></span>⚠ Needs BA review</span>
+              </div>
+              <div class="note-meta">
+                Drafted by Atlas from D-05 and D-06 · prompt template <a href="#">ATLAS-REQ-v2</a> · run #112
+              </div>
+            </div>
+
+            <div class="note-section">
+              <h3>Problem statement
+                <span class="sec-actions">
+                  <button class="sec-btn" title="Edit this section as text">✎ Edit</button>
+                  <button class="sec-btn ai" title="Opens Atlas Assistant chat targeting this section">✦ Edit with AI</button>
+                </span>
+              </h3>
+              <p>
+                EcoTrace customers must report Scope 3 supplier emissions under CSRD, but 68% of their suppliers
+                have no structured way to submit emissions data. Today it arrives by email and spreadsheet, is
+                error-prone, and cannot be audited.
+              </p>
+            </div>
+
+            <div class="note-section">
+              <h3>Goals &amp; success metrics
+                <span class="sec-actions">
+                  <button class="sec-btn" title="Edit this section as text">✎ Edit</button>
+                  <button class="sec-btn ai" title="Opens Atlas Assistant chat targeting this section">✦ Edit with AI</button>
+                </span>
+              </h3>
+              <ul>
+                <li>Suppliers submit emissions data through a guided intake form — target: 80% of invited suppliers submit without support tickets.</li>
+                <li>Data is validated at entry — target: &lt;5% of submissions rejected downstream.</li>
+                <li>Every value carries audit lineage (who, when, source document).</li>
+              </ul>
+            </div>
+
+            <div class="note-section">
+              <h3>User stories
+                <span class="sec-actions">
+                  <button class="sec-btn" title="Edit this section as text">✎ Edit</button>
+                  <button class="sec-btn ai" title="Opens Atlas Assistant chat targeting this section">✦ Edit with AI</button>
+                </span>
+              </h3>
+              <ul>
+                <li>As a <strong>supplier</strong>, I can submit energy and fuel usage per reporting period so my customer's Scope 3 report includes my data.</li>
+                <li>As a <strong>sustainability manager</strong>, I can see which suppliers have submitted, been reminded, or are overdue.</li>
+                <li>As an <strong>auditor</strong>, I can trace every reported value back to its submission and submitter.</li>
+              </ul>
+            </div>
+
+            <div class="note-section">
+              <h3>Out of scope
+                <span class="sec-actions">
+                  <button class="sec-btn" title="Edit this section as text">✎ Edit</button>
+                  <button class="sec-btn ai" title="Opens Atlas Assistant chat targeting this section">✦ Edit with AI</button>
+                </span>
+              </h3>
+              <ul>
+                <li>Automatic emissions estimation from spend data (Phase 2 candidate).</li>
+                <li>Supplier onboarding/contracting — handled by existing CRM flow.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- ===== Sample UI · ATLAS-07 ===== -->
+          <section class="card" id="ATLAS-07">
+            <div class="card-head">
+              <h2>Sample UI</h2>
+              <span class="hint">minimal wireframe · structure only, no visual design</span>
+              <span class="sec-tag push">ATLAS-07</span>
+            </div>
+            <div class="card-body" style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; gap: 8px; align-items: center;">
+                <button class="btn small">🖥 Desktop</button>
+                <button class="btn small" style="opacity: 0.55">📱 Mobile</button>
+                <span style="flex: 1"></span>
+                <button class="btn small">✦ Regenerate with AI</button>
+              </div>
+
+              <!-- Wireframe: supplier emissions intake form -->
+              <div class="wf-frame" role="img" aria-label="Wireframe of the supplier emissions intake form">
+                <div class="wf-titlebar">
+                  <span class="wf-dot"></span><span class="wf-dot"></span><span class="wf-dot"></span>
+                  <span class="wf-url"></span>
+                </div>
+                <div class="wf-body">
+                  <div class="wf line heading w40"></div>
+                  <div class="wf line w80"></div>
+                  <div class="wf-grid2">
+                    <div class="wf-field">
+                      <div class="wf line w25"></div>
+                      <div class="wf input"></div>
+                    </div>
+                    <div class="wf-field">
+                      <div class="wf line w25"></div>
+                      <div class="wf input"></div>
+                    </div>
+                    <div class="wf-field">
+                      <div class="wf line w40"></div>
+                      <div class="wf input"></div>
+                    </div>
+                    <div class="wf-field">
+                      <div class="wf line w40"></div>
+                      <div class="wf input"></div>
+                    </div>
+                  </div>
+                  <div class="wf line w25"></div>
+                  <div class="wf box"></div>
+                  <div class="wf-row">
+                    <div class="wf line w60" style="align-self: center"></div>
+                    <div class="wf btn-shape narrow"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="wf-caption">Supplier intake form — period selector, usage fields, evidence upload, submit · generated from ATLAS-06 user stories</p>
+            </div>
+          </section>
+
+          <!-- ===== Jira breakdown · ATLAS-08 ===== -->
+          <section class="card" id="ATLAS-08">
+            <div class="card-head">
+              <h2>Jira breakdown</h2>
+              <span class="hint">estimates stay with developers — Atlas never fills them</span>
+              <a class="more" href="task-review.html">Open task review →</a>
+              <span class="sec-tag">ATLAS-08</span>
+            </div>
+            <div class="list">
+              <div class="jira-row">
+                <span class="jira-type epic">EPIC</span>
+                <span class="jira-key">ECO-100</span>
+                <span class="jira-title">Supplier emissions data intake</span>
+                <span class="jira-est">4 stories · 6 subtasks</span>
+              </div>
+              <div class="jira-row lvl-1">
+                <span class="jira-type story">STORY</span>
+                <span class="jira-key">ECO-110</span>
+                <span class="jira-title">Guided intake form for suppliers</span>
+                <span class="pill neutral"><span class="dot"></span>📎 3</span>
+                <span class="jira-est">est: — pts · AC: 4</span>
+                <span class="pill warning"><span class="dot"></span>⚠ Needs review</span>
+                <a class="btn small" href="task-review.html">Review</a>
+              </div>
+              <div class="jira-row lvl-2">
+                <span class="jira-type sub">SUB</span>
+                <span class="jira-key">ECO-110a</span>
+                <span class="jira-title">Form UI — period, usage fields, validation states</span>
+                <span class="jira-est">est: —</span>
+              </div>
+              <div class="jira-row lvl-2">
+                <span class="jira-type sub">SUB</span>
+                <span class="jira-key">ECO-110b</span>
+                <span class="jira-title">Submission API with entry validation rules</span>
+                <span class="jira-est">est: —</span>
+              </div>
+              <div class="jira-row lvl-1">
+                <span class="jira-type story">STORY</span>
+                <span class="jira-key">ECO-111</span>
+                <span class="jira-title">Submission status dashboard for sustainability managers</span>
+                <span class="pill neutral"><span class="dot"></span>📎 1</span>
+                <span class="jira-est">est: — pts · AC: 3</span>
+                <span class="pill good"><span class="dot"></span>✓ Reviewed</span>
+                <a class="btn small" href="task-review.html">Open</a>
+              </div>
+              <div class="jira-row lvl-1">
+                <span class="jira-type story">STORY</span>
+                <span class="jira-key">ECO-112</span>
+                <span class="jira-title">Audit lineage per reported value</span>
+                <span class="jira-est">est: — pts · AC: 5</span>
+                <span class="pill warning"><span class="dot"></span>⚠ Needs review</span>
+                <a class="btn small" href="task-review.html">Review</a>
+              </div>
+              <div class="jira-row lvl-2">
+                <span class="jira-type qa">QA</span>
+                <span class="jira-key">ECO-112q</span>
+                <span class="jira-title">Test design: lineage &amp; tamper cases — draft by Ada after approval</span>
+                <span class="jira-est">waiting</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- ===== Actions · ATLAS-09 ===== -->
+          <section class="card">
+            <div class="action-bar" id="ATLAS-09" style="border-top: none; margin-top: 0;">
+              <button class="btn primary">✓ Approve document as source of truth</button>
+              <button class="btn" disabled title="Enabled after BA approves the document and tasks pass review">⤴ Publish reviewed tasks to Jira</button>
+              <button class="btn danger">✕ Reject…</button>
+              <span class="gate-note">1/3 stories reviewed · publish unlocks after document approval · n8n creates items with attachments</span>
+              <span class="sec-tag">ATLAS-09</span>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- ===== Atlas Assistant · ATLAS-10 ===== -->
+        <section class="card" id="ATLAS-10">
+          <div class="card-head">
+            <h2>Atlas Assistant</h2>
+            <span class="sec-tag push">ATLAS-10</span>
+          </div>
+          <div class="chat-body">
+            <div class="msg ai">
+              <div class="msg-who">Atlas</div>
+              Hi Tharindu — I can update draft sections of the business document (ATLAS-06), regenerate the
+              sample UI (ATLAS-07), or rebuild the Jira breakdown (ATLAS-08). Approved documents are locked —
+              I only suggest there.
+            </div>
+            <div class="msg user">
+              <div class="msg-who">Tharindu · BA</div>
+              Update ATLAS-06 — add CSV bulk upload to goals; many suppliers asked for it in the interviews.
+            </div>
+            <div class="msg ai">
+              <div class="msg-who">Atlas</div>
+              Confirmed — D-06 interviews mention bulk upload 4 times. Proposed addition:
+              <div class="suggest">
+                <div class="suggest-target">→ ATLAS-06 · Goals &amp; success metrics</div>
+                <div class="suggest-text">
+                  Suppliers with many facilities can bulk-upload usage data via CSV template — target: CSV path
+                  used by ≥30% of enterprise suppliers.
+                </div>
+                <div class="suggest-actions">
+                  <button class="btn small primary">✓ Apply to draft</button>
+                  <button class="btn small">✕ Discard</button>
+                  <span class="suggest-note">cites D-06 · audit logged</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tool-chips" aria-label="Atlas tools">
+            <button class="tool-chip">📄 Draft business document</button>
+            <button class="tool-chip">▦ Regenerate sample UI</button>
+            <button class="tool-chip">⧉ Rebuild Jira breakdown</button>
+            <button class="tool-chip">✓ Draft acceptance criteria</button>
+            <button class="tool-chip">🔍 Pull linked research</button>
+          </div>
+          <div class="chat-composer">
+            <input type="text" placeholder="Ask Atlas to draft, or update a section (e.g. ATLAS-06)…" aria-label="Message Atlas">
+            <button class="btn primary small">Send</button>
+          </div>
+        </section>
+
+      </div>
+
+      <p class="mock-note">Static HTML/CSS mockup · Moderta Orchestrate v0.1 · no live data · spec: UIX-02 · use section codes ATLAS-01…ATLAS-10 to request changes</p>
+
+    </main>
+  </div>
+</div>
+<script>
+// ATLAS-04 steps act as tabs: selecting a step shows only that step's section.
+// The action bar (ATLAS-09) and Atlas Assistant (ATLAS-10) stay visible.
+(function () {
+  var steps = document.querySelectorAll('.step[data-target]');
+  var sectionIds = ['ATLAS-05', 'ATLAS-06', 'ATLAS-07', 'ATLAS-08'];
+
+  function select(step) {
+    steps.forEach(function (s) { s.classList.toggle('active', s === step); });
+    sectionIds.forEach(function (id) {
+      var sec = document.getElementById(id);
+      if (sec) sec.style.display = (id === step.dataset.target) ? '' : 'none';
+    });
+  }
+
+  steps.forEach(function (step) {
+    step.addEventListener('click', function () { select(step); });
+  });
+
+  var initial = document.querySelector('.step.active[data-target]');
+  if (initial) select(initial);
+})();
+</script>
+</body>
+</html>

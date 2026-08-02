@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moderta Orchestrate — Dashboard</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+
+  <!-- ================= Sidebar ================= -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">M</div>
+      <div>
+        <div class="brand-name">Moderta Orchestrate</div>
+        <div class="brand-sub">AI delivery workflow · v0.1</div>
+      </div>
+    </div>
+
+    <nav class="nav-group" aria-label="Overview">
+      <div class="nav-label">Overview</div>
+      <a class="nav-item active" href="index.html">
+        <span class="nav-icon">◧</span> Dashboard
+      </a>
+      <a class="nav-item" href="review.html">
+        <span class="nav-icon">✓</span> Approvals
+        <span class="nav-count">7</span>
+      </a>
+      <a class="nav-item" href="audit-log.html">
+        <span class="nav-icon">≡</span> Audit log
+      </a>
+      <a class="nav-item" href="metrics.html">
+        <span class="nav-icon">◔</span> Metrics
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="Agents">
+      <div class="nav-label">Agents</div>
+      <a class="nav-item" href="Gaia/gaia.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Gaia
+        <span class="nav-count">2</span>
+      </a>
+      <a class="nav-item" href="Atlas/atlas.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Atlas
+        <span class="nav-count">4</span>
+      </a>
+      <a class="nav-item" href="#ada">
+        <span class="agent-dot" style="background: var(--status-warning)"></span> Ada
+        <span class="nav-count">1</span>
+      </a>
+      <a class="nav-item" href="Mira/mira.html">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Mira
+      </a>
+      <a class="nav-item" href="UncleBob/unclebob.html">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Uncle Bob
+      </a>
+      <a class="nav-item" href="#leonidas">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Leonidas
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="Delivery">
+      <div class="nav-label">Delivery</div>
+      <a class="nav-item" href="jira-breakdown.html">
+        <span class="nav-icon">⧉</span> Jira breakdown
+      </a>
+      <a class="nav-item" href="#figma">
+        <span class="nav-icon">◨</span> Figma handoff
+      </a>
+      <a class="nav-item" href="#git">
+        <span class="nav-icon">⑂</span> Git activity
+      </a>
+      <a class="nav-item" href="#docs">
+        <span class="nav-icon">▤</span> Knowledge base
+      </a>
+    </nav>
+
+    <div class="sidebar-foot">
+      Human-in-the-loop by default.<br>
+      AI proposes — people approve.
+    </div>
+  </aside>
+
+  <!-- ================= Main ================= -->
+  <div class="main">
+
+    <header class="topbar">
+      <span class="crumb">Overview / Dashboard</span>
+      <div class="spacer"></div>
+      <button class="btn small">＋ New workflow item</button>
+      <div class="user-chip">
+        <div class="avatar">TJ</div>
+        <span>Tharindu · BA</span>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <div class="page-head">
+        <div>
+          <h1>Delivery Dashboard</h1>
+          <p class="sub">Product initiative: <strong>EcoTrace — carbon reporting MVP</strong> · Week 4 · Phase 1 (Atlas first build)</p>
+        </div>
+        <div class="actions">
+          <button class="btn">Weekly report</button>
+          <button class="btn primary">Start Atlas draft</button>
+        </div>
+      </div>
+
+      <!-- Stat tiles -->
+      <section class="stat-row" aria-label="Key numbers">
+        <div class="stat-tile">
+          <span class="stat-label">Pending human approvals</span>
+          <span class="stat-value">7</span>
+          <span class="stat-note">3 waiting more than 24h</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Active workflow items</span>
+          <span class="stat-value">12</span>
+          <span class="stat-note">across 5 pipeline stages</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">AI drafts this week</span>
+          <span class="stat-value">23</span>
+          <span class="stat-note"><span class="up">▲ 18 accepted</span> · 3 edited · 2 rejected</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Avg. human review time</span>
+          <span class="stat-value">14m</span>
+          <span class="stat-note"><span class="up">▼ 6m</span> vs last week</span>
+        </div>
+      </section>
+
+      <!-- Pipeline -->
+      <section class="card">
+        <div class="card-head">
+          <h2>Product delivery pipeline</h2>
+          <span class="hint">research → requirements → design → build → QA → release</span>
+          <a class="more" href="jira-breakdown.html">View all items →</a>
+        </div>
+        <div class="card-body">
+          <div class="pipeline">
+            <div class="stage">
+              <div class="stage-name">Research</div>
+              <div class="stage-agent">Gaia + RA</div>
+              <div class="stage-count">2</div>
+            </div>
+            <div class="stage attention">
+              <div class="stage-name">Requirements</div>
+              <div class="stage-agent">Atlas + BA</div>
+              <div class="stage-count">4</div>
+            </div>
+            <div class="stage">
+              <div class="stage-name">UI/UX design</div>
+              <div class="stage-agent">Mira + Design</div>
+              <div class="stage-count">2</div>
+            </div>
+            <div class="stage">
+              <div class="stage-name">Development</div>
+              <div class="stage-agent">Uncle Bob + Devs</div>
+              <div class="stage-count">3</div>
+            </div>
+            <div class="stage">
+              <div class="stage-name">QA &amp; tests</div>
+              <div class="stage-agent">Ada + QA</div>
+              <div class="stage-count">1</div>
+            </div>
+            <div class="stage">
+              <div class="stage-name">Security</div>
+              <div class="stage-agent">Leonidas + Arch</div>
+              <div class="stage-count">0</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="cols-2">
+
+        <!-- Awaiting review -->
+        <section class="card">
+          <div class="card-head">
+            <h2>Awaiting your review</h2>
+            <span class="hint">AI output stays in draft until a human approves</span>
+            <a class="more" href="review.html">All approvals →</a>
+          </div>
+          <div class="list">
+            <div class="list-row">
+              <span class="agent-badge"><span class="glyph">At</span></span>
+              <div class="row-main">
+                <div class="row-title">Requirement draft — EcoTrace supplier emissions form</div>
+                <div class="row-meta">Atlas · from Gaia research note R-014 · 2h ago</div>
+              </div>
+              <span class="pill warning"><span class="dot"></span>⚠ Needs review</span>
+              <a class="btn small primary" href="review.html">Review</a>
+            </div>
+            <div class="list-row">
+              <span class="agent-badge"><span class="glyph">At</span></span>
+              <div class="row-main">
+                <div class="row-title">HTML/CSS mockup — emissions dashboard v2</div>
+                <div class="row-meta">Atlas · requirement REQ-031 · 4h ago</div>
+              </div>
+              <span class="pill warning"><span class="dot"></span>⚠ Needs review</span>
+              <a class="btn small primary" href="review.html">Review</a>
+            </div>
+            <div class="list-row">
+              <span class="agent-badge"><span class="glyph">Ad</span></span>
+              <div class="row-main">
+                <div class="row-title">Test case set — CSV import edge cases (14 cases)</div>
+                <div class="row-meta">Ada · story ECO-112 · yesterday</div>
+              </div>
+              <span class="pill critical"><span class="dot"></span>✕ Overdue 24h+</span>
+              <a class="btn small primary" href="review.html">Review</a>
+            </div>
+            <div class="list-row">
+              <span class="agent-badge"><span class="glyph">Ga</span></span>
+              <div class="row-main">
+                <div class="row-title">Research summary — EU CSRD reporting rules update</div>
+                <div class="row-meta">Gaia · 6 sources cited · yesterday</div>
+              </div>
+              <span class="pill warning"><span class="dot"></span>⚠ Needs review</span>
+              <a class="btn small primary" href="review.html">Review</a>
+            </div>
+            <div class="list-row">
+              <span class="agent-badge"><span class="glyph">At</span></span>
+              <div class="row-main">
+                <div class="row-title">Jira breakdown — 1 epic, 6 stories, 18 subtasks</div>
+                <div class="row-meta">Atlas · requirement REQ-029 (approved) · 2 days ago</div>
+              </div>
+              <span class="pill warning"><span class="dot"></span>⚠ Needs review</span>
+              <a class="btn small primary" href="review.html">Review</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Agent status -->
+        <section class="card">
+          <div class="card-head">
+            <h2>Agents</h2>
+            <span class="hint">Phase 1: Atlas live, Gaia next</span>
+          </div>
+          <div class="card-body">
+            <div class="agent-grid">
+              <div class="agent-card">
+                <div class="agent-top">
+                  <span class="agent-badge"><span class="glyph">At</span> Atlas</span>
+                  <span class="pill good"><span class="dot"></span>✓ Active</span>
+                </div>
+                <div class="agent-role">Requirements, mockups, Jira tasks, acceptance criteria</div>
+                <div class="agent-meta"><span>Queue <b>4</b></span><span>Runs today <b>9</b></span></div>
+              </div>
+              <div class="agent-card">
+                <div class="agent-top">
+                  <span class="agent-badge"><span class="glyph">Ga</span> Gaia</span>
+                  <span class="pill good"><span class="dot"></span>✓ Active</span>
+                </div>
+                <div class="agent-role">Sustainability research summaries and insights</div>
+                <div class="agent-meta"><span>Queue <b>2</b></span><span>Runs today <b>3</b></span></div>
+              </div>
+              <div class="agent-card">
+                <div class="agent-top">
+                  <span class="agent-badge"><span class="glyph">Ad</span> Ada</span>
+                  <span class="pill warning"><span class="dot"></span>⚠ Pilot</span>
+                </div>
+                <div class="agent-role">Test cases, regression ideas, edge cases</div>
+                <div class="agent-meta"><span>Queue <b>1</b></span><span>Runs today <b>2</b></span></div>
+              </div>
+              <div class="agent-card">
+                <div class="agent-top">
+                  <span class="agent-badge"><span class="glyph">Mi</span> Mira</span>
+                  <span class="pill neutral"><span class="dot"></span>— Planned</span>
+                </div>
+                <div class="agent-role">Design audit, guidelines, accessibility</div>
+                <div class="agent-meta"><span>Phase <b>4</b></span></div>
+              </div>
+              <div class="agent-card">
+                <div class="agent-top">
+                  <span class="agent-badge"><span class="glyph">UB</span> Uncle Bob</span>
+                  <span class="pill neutral"><span class="dot"></span>— Planned</span>
+                </div>
+                <div class="agent-role">Sample code, code quality, code review</div>
+                <div class="agent-meta"><span>Phase <b>4</b></span></div>
+              </div>
+              <div class="agent-card">
+                <div class="agent-top">
+                  <span class="agent-badge"><span class="glyph">Le</span> Leonidas</span>
+                  <span class="pill neutral"><span class="dot"></span>— Planned</span>
+                </div>
+                <div class="agent-role">Security review, risky patterns, dependencies</div>
+                <div class="agent-meta"><span>Phase <b>4</b></span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <p class="mock-note">Static HTML/CSS mockup · Moderta Orchestrate v0.1 · no live data</p>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

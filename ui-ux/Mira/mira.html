@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moderta Orchestrate — Mira Design Studio</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+
+  <!-- ================= Sidebar · MIRA-01 ================= -->
+  <aside class="sidebar" id="MIRA-01">
+    <div class="brand">
+      <div class="brand-mark">M</div>
+      <div>
+        <div class="brand-name">Moderta Orchestrate</div>
+        <div class="brand-sub">AI delivery workflow · v0.1</div>
+      </div>
+    </div>
+
+    <nav class="nav-group" aria-label="Overview">
+      <div class="nav-label">Overview</div>
+      <a class="nav-item" href="../index.html">
+        <span class="nav-icon">◧</span> Dashboard
+      </a>
+      <a class="nav-item" href="review.html">
+        <span class="nav-icon">✓</span> Approvals
+        <span class="nav-count">7</span>
+      </a>
+      <a class="nav-item" href="audit-log.html">
+        <span class="nav-icon">≡</span> Audit log
+      </a>
+      <a class="nav-item" href="metrics.html">
+        <span class="nav-icon">◔</span> Metrics
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="Agents">
+      <div class="nav-label">Agents</div>
+      <a class="nav-item" href="../Gaia/gaia.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Gaia
+        <span class="nav-count">2</span>
+      </a>
+      <a class="nav-item" href="../Atlas/atlas.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Atlas
+        <span class="nav-count">4</span>
+      </a>
+      <a class="nav-item" href="#ada">
+        <span class="agent-dot" style="background: var(--status-warning)"></span> Ada
+        <span class="nav-count">1</span>
+      </a>
+      <a class="nav-item active" href="mira.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Mira
+        <span class="nav-count">2</span>
+      </a>
+      <a class="nav-item" href="../UncleBob/unclebob.html">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Uncle Bob
+      </a>
+      <a class="nav-item" href="#leonidas">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Leonidas
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="Delivery">
+      <div class="nav-label">Delivery</div>
+      <a class="nav-item" href="jira-breakdown.html">
+        <span class="nav-icon">⧉</span> Jira breakdown
+      </a>
+      <a class="nav-item" href="#figma">
+        <span class="nav-icon">◨</span> Figma handoff
+      </a>
+      <a class="nav-item" href="#git">
+        <span class="nav-icon">⑂</span> Git activity
+      </a>
+      <a class="nav-item" href="#docs">
+        <span class="nav-icon">▤</span> Knowledge base
+      </a>
+    </nav>
+
+    <div class="sidebar-foot">
+      Human-in-the-loop by default.<br>
+      AI proposes — people approve.<br>
+      <span class="sec-tag">MIRA-01</span>
+    </div>
+  </aside>
+
+  <!-- ================= Main ================= -->
+  <div class="main">
+
+    <header class="topbar" id="MIRA-02">
+      <span class="crumb">Agents / Mira — Design Studio</span>
+      <span class="sec-tag">MIRA-02</span>
+      <div class="spacer"></div>
+      <div class="user-chip">
+        <div class="avatar">NW</div>
+        <span>Nadeesha · UI/UX Lead</span>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <div class="page-head" id="MIRA-03">
+        <div>
+          <h1>Mira — Design Studio <span class="sec-tag">MIRA-03</span></h1>
+          <p class="sub">Design settings + the @moderta/ui React library feed the builder · pre-made designs are drafts until the designer refines them in Figma and signs off</p>
+        </div>
+        <div class="actions">
+          <button class="btn">⟲ Run design audit</button>
+          <button class="btn primary">✦ Generate pre-made design</button>
+        </div>
+      </div>
+
+      <!-- Tabs · MIRA-04 -->
+      <div class="steps" id="MIRA-04" aria-label="Studio sections">
+        <button type="button" class="step active" data-targets="MIRA-05,MIRA-06">
+          <span class="step-num">⚙</span> Design settings
+          <span class="step-state">philosophy · color tokens</span>
+        </button>
+        <button type="button" class="step" data-targets="MIRA-07">
+          <span class="step-num">⬡</span> Design system
+          <span class="step-state">@moderta/ui React library</span>
+        </button>
+        <button type="button" class="step" data-targets="MIRA-08,MIRA-09">
+          <span class="step-num">▦</span> UI/UX Builder
+          <span class="step-state">pre-made designs → edit in Figma</span>
+        </button>
+        <span class="sec-tag" style="align-self: center">MIRA-04</span>
+      </div>
+
+      <div class="workspace">
+        <div class="stack">
+
+          <!-- ============ SETTINGS · Design philosophy · MIRA-05 ============ -->
+          <section class="card" id="MIRA-05">
+            <div class="card-head">
+              <h2>UI/UX philosophy</h2>
+              <span class="hint">Mira audits every design against these principles</span>
+              <span class="sec-tag push">MIRA-05</span>
+            </div>
+            <div class="note-section" style="padding-bottom: 16px;">
+              <h3>Principles
+                <span class="sec-actions">
+                  <button class="sec-btn" title="Edit as text">✎ Edit</button>
+                  <button class="sec-btn ai" title="Opens Mira Assistant chat targeting MIRA-05">✦ Edit with AI</button>
+                </span>
+              </h3>
+              <ul>
+                <li><strong>Calm and credible</strong> — sustainability data earns trust through clarity, not decoration.</li>
+                <li><strong>Guided, never clever</strong> — suppliers and managers are busy; every flow explains itself.</li>
+                <li><strong>Accessibility is non-negotiable</strong> — WCAG 2.2 AA, color-blind-safe palettes, keyboard-first.</li>
+                <li><strong>Reuse before redesign</strong> — compose from the design system; new patterns need a reason.</li>
+                <li><strong>Honest states</strong> — drafts look like drafts; approved work is visibly locked.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- ============ SETTINGS · Color palette · MIRA-06 ============ -->
+          <section class="card" id="MIRA-06">
+            <div class="card-head">
+              <h2>Color palette — tokens &amp; scales</h2>
+              <span class="pill good"><span class="dot"></span>✓ 24 tokens · light &amp; dark validated</span>
+              <span class="sec-tag push">MIRA-06</span>
+            </div>
+            <div class="card-body" style="display: flex; flex-direction: column; gap: 18px;">
+
+              <div class="palette-toolbar">
+                <div class="seg" role="group" aria-label="Color mode">
+                  <button type="button" class="active">☀ Light</button>
+                  <button type="button">☾ Dark</button>
+                </div>
+                <span class="palette-note">Semantic tokens resolve per mode · both modes audited</span>
+                <span class="push">
+                  <button class="btn small">⇪ Export tokens · CSS / JSON</button>
+                  <button class="btn small">≣ Sync to Figma variables</button>
+                </span>
+              </div>
+
+              <!-- Color scales -->
+              <div class="ramp">
+                <div class="ramp-head">
+                  <span class="ramp-name">Brand green</span>
+                  <span class="ramp-var">--green-50 … --green-900</span>
+                  <span class="ramp-note">base at 600 · steps 50–400 fail as text — backgrounds only</span>
+                </div>
+                <div class="ramp-steps">
+                  <div class="ramp-step" style="background: #eef7f3">50</div>
+                  <div class="ramp-step" style="background: #d7ede3">100</div>
+                  <div class="ramp-step" style="background: #b0dcc8">200</div>
+                  <div class="ramp-step" style="background: #7fc4a7">300</div>
+                  <div class="ramp-step" style="background: #47a682">400</div>
+                  <div class="ramp-step on-dark" style="background: #1d8a63">500</div>
+                  <div class="ramp-step on-dark base" style="background: #0e6f4f" title="Base · --accent">600</div>
+                  <div class="ramp-step on-dark" style="background: #0a5a40">700</div>
+                  <div class="ramp-step on-dark" style="background: #084733">800</div>
+                  <div class="ramp-step on-dark" style="background: #063326">900</div>
+                </div>
+              </div>
+
+              <div class="ramp">
+                <div class="ramp-head">
+                  <span class="ramp-name">Neutral / ink</span>
+                  <span class="ramp-var">--neutral-50 … --neutral-900</span>
+                  <span class="ramp-note">surfaces 50–200 · text 700–900</span>
+                </div>
+                <div class="ramp-steps">
+                  <div class="ramp-step" style="background: #f9f9f7">50</div>
+                  <div class="ramp-step" style="background: #f0efec">100</div>
+                  <div class="ramp-step" style="background: #e1e0d9">200</div>
+                  <div class="ramp-step" style="background: #c3c2b7">300</div>
+                  <div class="ramp-step" style="background: #a3a199">400</div>
+                  <div class="ramp-step" style="background: #898781">500</div>
+                  <div class="ramp-step on-dark" style="background: #6b6963">600</div>
+                  <div class="ramp-step on-dark" style="background: #52514e">700</div>
+                  <div class="ramp-step on-dark" style="background: #33322f">800</div>
+                  <div class="ramp-step on-dark" style="background: #0b0b0b">900</div>
+                </div>
+              </div>
+
+              <!-- Semantic tokens -->
+              <div>
+                <div class="ramp-head" style="margin-bottom: 6px;">
+                  <span class="ramp-name">Semantic tokens</span>
+                  <span class="ramp-note">contrast measured against the surface each token sits on</span>
+                </div>
+                <table class="data tokens">
+                  <thead>
+                    <tr>
+                      <th>Token</th><th>Role</th><th>Light</th><th>Dark</th><th>Contrast</th><th>Grade</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><span class="token-cell"><span class="token-chip" style="background: #0e6f4f"></span><span class="token-name">--accent</span></span></td>
+                      <td class="role">Primary actions, links</td>
+                      <td><span class="token-hex">green-600</span></td>
+                      <td><span class="token-hex">green-500</span></td>
+                      <td><span class="contrast-num">5.9:1</span></td>
+                      <td><span class="pill good"><span class="dot"></span>AA text</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="token-cell"><span class="token-chip" style="background: #0a5a40"></span><span class="token-name">--accent-strong</span></span></td>
+                      <td class="role">Hover / pressed</td>
+                      <td><span class="token-hex">green-700</span></td>
+                      <td><span class="token-hex">green-400</span></td>
+                      <td><span class="contrast-num">7.4:1</span></td>
+                      <td><span class="pill good"><span class="dot"></span>AAA</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="token-cell"><span class="token-chip" style="background: #e6f2ed"></span><span class="token-name">--accent-tint</span></span></td>
+                      <td class="role">Selected / hover backgrounds</td>
+                      <td><span class="token-hex">green-50</span></td>
+                      <td><span class="token-hex">green-900</span></td>
+                      <td><span class="contrast-num">5.4:1</span> <span class="palette-note">w/ accent text</span></td>
+                      <td><span class="pill good"><span class="dot"></span>AA text</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="token-cell"><span class="token-chip" style="background: #0b0b0b"></span><span class="token-name">--ink</span></span></td>
+                      <td class="role">Body text</td>
+                      <td><span class="token-hex">neutral-900</span></td>
+                      <td><span class="token-hex">#ffffff</span></td>
+                      <td><span class="contrast-num">19.2:1</span></td>
+                      <td><span class="pill good"><span class="dot"></span>AAA</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="token-cell"><span class="token-chip" style="background: #52514e"></span><span class="token-name">--ink-secondary</span></span></td>
+                      <td class="role">Secondary text, labels</td>
+                      <td><span class="token-hex">neutral-700</span></td>
+                      <td><span class="token-hex">neutral-300</span></td>
+                      <td><span class="contrast-num">7.6:1</span></td>
+                      <td><span class="pill good"><span class="dot"></span>AAA</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="token-cell"><span class="token-chip" style="background: #0ca30c"></span><span class="token-name">--status-good</span></span></td>
+                      <td class="role">Success · always icon + label</td>
+                      <td><span class="token-hex">#0ca30c</span></td>
+                      <td><span class="token-hex">#0ca30c</span></td>
+                      <td><span class="contrast-num">3.3:1</span></td>
+                      <td><span class="pill good"><span class="dot"></span>AA non-text</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="token-cell"><span class="token-chip" style="background: #fab219"></span><span class="token-name">--status-warning</span></span></td>
+                      <td class="role">Warning · icon/dot only, text uses ink</td>
+                      <td><span class="token-hex">#fab219</span></td>
+                      <td><span class="token-hex">#fab219</span></td>
+                      <td><span class="contrast-num">15.8:1</span> <span class="palette-note">ink on tint</span></td>
+                      <td><span class="pill good"><span class="dot"></span>AAA</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="token-cell"><span class="token-chip" style="background: #d03b3b"></span><span class="token-name">--status-critical</span></span></td>
+                      <td class="role">Critical · always icon + label</td>
+                      <td><span class="token-hex">#d03b3b</span></td>
+                      <td><span class="token-hex">#d03b3b</span></td>
+                      <td><span class="contrast-num">4.6:1</span></td>
+                      <td><span class="pill good"><span class="dot"></span>AA text</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Validation + add -->
+              <div class="cvd-row">
+                <span class="cvd-label">Color-vision checks:</span>
+                <span class="pill good"><span class="dot"></span>✓ Deuteranopia</span>
+                <span class="pill good"><span class="dot"></span>✓ Protanopia</span>
+                <span class="pill good"><span class="dot"></span>✓ Tritanopia</span>
+                <span class="pill good"><span class="dot"></span>✓ Grayscale</span>
+                <span class="push" style="margin-left: auto;"><button class="btn small">＋ Add color…</button></span>
+              </div>
+              <span class="palette-note">New colors generate a full 50–900 scale and are validated (contrast, CVD separation, dark-mode pairing) before joining the palette · status colors are reserved · tokens feed <strong>@moderta/ui</strong> (MIRA-07) on publish</span>
+            </div>
+          </section>
+
+          <!-- ============ DESIGN SYSTEM · @moderta/ui React library · MIRA-07 ============ -->
+          <section class="card" id="MIRA-07">
+            <div class="card-head">
+              <h2>Design system — <code>@moderta/ui</code> React library</h2>
+              <span class="pill accent"><span class="dot"></span>v3.2.0 · published</span>
+              <a class="more" href="#storybook">Open Storybook →</a>
+              <span class="sec-tag">MIRA-07</span>
+            </div>
+            <div class="lib-meta-bar">
+              <span class="code-snip">npm i @moderta/ui</span>
+              <span>Common module shared across Moderta products · 28 components · consumes MIRA-06 tokens</span>
+              <span class="pill good push"><span class="dot"></span>✓ Code ↔ Figma in sync · 2h ago</span>
+            </div>
+            <div class="list">
+              <div class="comp-row">
+                <span class="comp-thumb">▭</span>
+                <div class="comp-main">
+                  <div class="comp-name"><code>&lt;Button /&gt;</code> Buttons &amp; actions</div>
+                  <div class="comp-meta">v3 · variants: primary, secondary, danger, ghost · props: size, loading, icon · used in 14 screens</div>
+                </div>
+                <span class="pill good"><span class="dot"></span>✓ Audited</span>
+                <span class="comp-links"><a href="#storybook">Storybook</a><a href="#figma">Figma</a></span>
+              </div>
+              <div class="comp-row">
+                <span class="comp-thumb">▤</span>
+                <div class="comp-main">
+                  <div class="comp-name"><code>&lt;TextField /&gt;</code> <code>&lt;Select /&gt;</code> <code>&lt;FileUpload /&gt;</code> Form fields</div>
+                  <div class="comp-meta">v2 · validation, error &amp; helper states · props: label, required, hint · used in 9 screens</div>
+                </div>
+                <span class="pill good"><span class="dot"></span>✓ Audited</span>
+                <span class="comp-links"><a href="#storybook">Storybook</a><a href="#figma">Figma</a></span>
+              </div>
+              <div class="comp-row">
+                <span class="comp-thumb">▦</span>
+                <div class="comp-main">
+                  <div class="comp-name"><code>&lt;Card /&gt;</code> <code>&lt;ListRow /&gt;</code> <code>&lt;StatusPill /&gt;</code> <code>&lt;EmptyState /&gt;</code> Cards &amp; lists</div>
+                  <div class="comp-meta">v4 · status pills always pair icon + label · used in 17 screens</div>
+                </div>
+                <span class="pill good"><span class="dot"></span>✓ Audited</span>
+                <span class="comp-links"><a href="#storybook">Storybook</a><a href="#figma">Figma</a></span>
+              </div>
+              <div class="comp-row">
+                <span class="comp-thumb">☰</span>
+                <div class="comp-main">
+                  <div class="comp-name"><code>&lt;AppShell /&gt;</code> <code>&lt;SideNav /&gt;</code> <code>&lt;Breadcrumb /&gt;</code> <code>&lt;Tabs /&gt;</code> Navigation</div>
+                  <div class="comp-meta">v2 · keyboard-first focus order · used in 11 screens</div>
+                </div>
+                <span class="pill warning"><span class="dot"></span>⚠ Audit pending</span>
+                <span class="comp-links"><a href="#storybook">Storybook</a><a href="#figma">Figma</a></span>
+              </div>
+              <div class="comp-row">
+                <span class="comp-thumb">▥</span>
+                <div class="comp-main">
+                  <div class="comp-name"><code>&lt;DataTable /&gt;</code> Data table</div>
+                  <div class="comp-meta">v1 · sortable header, row states, pagination · props: columns, onSort · used in 4 screens</div>
+                </div>
+                <span class="pill good"><span class="dot"></span>✓ Audited</span>
+                <span class="comp-links"><a href="#storybook">Storybook</a><a href="#figma">Figma</a></span>
+              </div>
+            </div>
+            <div class="kb-foot">
+              The UI/UX Builder (MIRA-08) composes pre-made designs only from published <code>@moderta/ui</code> components — new patterns enter the library before they enter a design.
+            </div>
+          </section>
+
+          <!-- ============ BUILDER · Pre-made designs · MIRA-08 ============ -->
+          <section class="card" id="MIRA-08">
+            <div class="card-head">
+              <h2>UI/UX Builder — pre-made designs</h2>
+              <span class="hint">composed from wireframes + design settings · designer refines in Figma</span>
+              <span class="sec-tag push">MIRA-08</span>
+            </div>
+            <div class="card-body">
+              <div class="design-grid">
+
+                <div class="design-card">
+                  <div class="design-prev">
+                    <div class="mini-ui" role="img" aria-label="Preview of supplier intake form design">
+                      <div class="mini-top"></div>
+                      <div class="mini-body">
+                        <div class="wf line heading w40"></div>
+                        <div class="wf-grid2">
+                          <div class="wf input" style="height: 16px"></div>
+                          <div class="wf input" style="height: 16px"></div>
+                        </div>
+                        <div class="wf box" style="height: 30px"></div>
+                        <div class="mini-btn"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="design-info">
+                    <div class="design-name">Supplier intake form</div>
+                    <div class="design-meta">From <a href="../Atlas/atlas.html">REQ-031 · ATLAS-07 wireframe</a> + design system v3 · palette applied</div>
+                  </div>
+                  <div class="design-actions">
+                    <button class="btn small primary">◨ Open in Figma to edit</button>
+                    <button class="btn small">Preview</button>
+                    <span class="pill warning" style="margin-left: auto"><span class="dot"></span>⚠ In edit</span>
+                  </div>
+                </div>
+
+                <div class="design-card">
+                  <div class="design-prev">
+                    <div class="mini-ui" role="img" aria-label="Preview of submission status dashboard design">
+                      <div class="mini-top"></div>
+                      <div class="mini-body">
+                        <div class="wf line heading w40"></div>
+                        <div class="wf-row">
+                          <div class="wf box" style="height: 22px"></div>
+                          <div class="wf box" style="height: 22px"></div>
+                          <div class="wf box" style="height: 22px"></div>
+                        </div>
+                        <div class="wf box" style="height: 34px"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="design-info">
+                    <div class="design-name">Submission status dashboard</div>
+                    <div class="design-meta">From <a href="../Atlas/task-review.html">ECO-111</a> · design system v3 · palette applied</div>
+                  </div>
+                  <div class="design-actions">
+                    <button class="btn small primary">◨ Open in Figma to edit</button>
+                    <button class="btn small">Preview</button>
+                    <span class="pill good" style="margin-left: auto"><span class="dot"></span>✓ Signed off</span>
+                  </div>
+                </div>
+
+              </div>
+              <p class="wf-caption" style="margin-top: 12px;">Pre-made designs are drafts — the designer owns the final design; sign-off happens after Figma editing and Mira audit</p>
+            </div>
+          </section>
+
+          <!-- ============ BUILDER · Design audit · MIRA-09 ============ -->
+          <section class="card" id="MIRA-09">
+            <div class="card-head">
+              <h2>Mira design audit — Supplier intake form</h2>
+              <span class="pill warning"><span class="dot"></span>⚠ 2 issues · 1 pass</span>
+              <a class="more" href="#">⟲ Re-run audit</a>
+              <span class="sec-tag">MIRA-09</span>
+            </div>
+            <div class="list">
+              <div class="list-row">
+                <span class="pill serious"><span class="dot"></span>⚠ Serious</span>
+                <div class="row-main">
+                  <div class="row-title">Submit button contrast 2.8:1 on green tint background — below the 4.5:1 minimum</div>
+                  <div class="row-meta">Against MIRA-06 palette rules · component: Buttons v3 · frame 12</div>
+                </div>
+                <a class="btn small" href="#">View in Figma</a>
+              </div>
+              <div class="list-row">
+                <span class="pill warning"><span class="dot"></span>⚠ Minor</span>
+                <div class="row-main">
+                  <div class="row-title">Field spacing 12px — design system Form fields v2 specifies 16px</div>
+                  <div class="row-meta">Against MIRA-07 · frames 4, 7</div>
+                </div>
+                <a class="btn small" href="#">View in Figma</a>
+              </div>
+              <div class="list-row">
+                <span class="pill good"><span class="dot"></span>✓ Pass</span>
+                <div class="row-main">
+                  <div class="row-title">Keyboard order, focus states, and touch targets meet WCAG 2.2 AA</div>
+                  <div class="row-meta">Against MIRA-05 accessibility principle</div>
+                </div>
+              </div>
+            </div>
+            <div class="kb-foot">
+              Audit comments are suggestions — the UI/UX lead decides what to change and owns design sign-off (SEC-09).
+            </div>
+          </section>
+
+        </div>
+
+        <!-- ===== Mira Assistant · MIRA-10 ===== -->
+        <section class="card" id="MIRA-10">
+          <div class="card-head">
+            <h2>Mira Assistant</h2>
+            <span class="sec-tag push">MIRA-10</span>
+          </div>
+          <div class="chat-body">
+            <div class="msg ai">
+              <div class="msg-who">Mira</div>
+              Hi Nadeesha — I audit designs against your philosophy (MIRA-05), color tokens (MIRA-06) and the
+              @moderta/ui React library (MIRA-07), and generate pre-made designs for the builder (MIRA-08).
+              Final design decisions stay with you.
+            </div>
+            <div class="msg user">
+              <div class="msg-who">Nadeesha · UI/UX</div>
+              Generate a pre-made design for the ECO-111 dashboard from its wireframe.
+            </div>
+            <div class="msg ai">
+              <div class="msg-who">Mira</div>
+              Done — composed from the ATLAS-07 wireframe using design system v3 and the approved palette.
+              Added to the builder:
+              <div class="suggest">
+                <div class="suggest-target">→ MIRA-08 · Submission status dashboard</div>
+                <div class="suggest-text">3 stat tiles, submissions table, reminder action — all from audited components. Ready to open in Figma.</div>
+                <div class="suggest-actions">
+                  <button class="btn small primary">◨ Open in Figma</button>
+                  <button class="btn small">✕ Discard</button>
+                  <span class="suggest-note">audit logged</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tool-chips" aria-label="Mira tools">
+            <button class="tool-chip">✦ Generate pre-made design</button>
+            <button class="tool-chip">⟲ Run design audit</button>
+            <button class="tool-chip">◩ Check accessibility</button>
+            <button class="tool-chip">≣ Sync @moderta/ui ↔ Figma</button>
+          </div>
+          <div class="chat-composer">
+            <input type="text" placeholder="Ask Mira to audit, or update a section (e.g. MIRA-06)…" aria-label="Message Mira">
+            <button class="btn primary small">Send</button>
+          </div>
+        </section>
+
+      </div>
+
+      <p class="mock-note">Static HTML/CSS mockup · Moderta Orchestrate v0.1 · no live data · spec: UIX-09 · use section codes MIRA-01…MIRA-10 to request changes</p>
+
+    </main>
+  </div>
+</div>
+<script>
+// MIRA-04 tabs: "Design settings" shows MIRA-05/06/07, "UI/UX Builder" shows MIRA-08/09.
+// The Mira Assistant (MIRA-10) stays visible in both.
+(function () {
+  var tabs = document.querySelectorAll('.step[data-targets]');
+  var all = [];
+  tabs.forEach(function (t) { all = all.concat(t.dataset.targets.split(',')); });
+
+  function select(tab) {
+    tabs.forEach(function (t) { t.classList.toggle('active', t === tab); });
+    var show = tab.dataset.targets.split(',');
+    all.forEach(function (id) {
+      var sec = document.getElementById(id);
+      if (sec) sec.style.display = show.indexOf(id) >= 0 ? '' : 'none';
+    });
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () { select(tab); });
+  });
+
+  var initial = document.querySelector('.step.active[data-targets]');
+  if (initial) select(initial);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moderta Orchestrate — Gaia Research Workspace</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+
+  <!-- ================= Sidebar · GAIA-01 ================= -->
+  <aside class="sidebar" id="GAIA-01">
+    <div class="brand">
+      <div class="brand-mark">M</div>
+      <div>
+        <div class="brand-name">Moderta Orchestrate</div>
+        <div class="brand-sub">AI delivery workflow · v0.1</div>
+      </div>
+    </div>
+
+    <nav class="nav-group" aria-label="Overview">
+      <div class="nav-label">Overview</div>
+      <a class="nav-item" href="../index.html">
+        <span class="nav-icon">◧</span> Dashboard
+      </a>
+      <a class="nav-item" href="review.html">
+        <span class="nav-icon">✓</span> Approvals
+        <span class="nav-count">7</span>
+      </a>
+      <a class="nav-item" href="audit-log.html">
+        <span class="nav-icon">≡</span> Audit log
+      </a>
+      <a class="nav-item" href="metrics.html">
+        <span class="nav-icon">◔</span> Metrics
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="Agents">
+      <div class="nav-label">Agents</div>
+      <a class="nav-item active" href="gaia.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Gaia
+        <span class="nav-count">2</span>
+      </a>
+      <a class="nav-item" href="../Atlas/atlas.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Atlas
+        <span class="nav-count">4</span>
+      </a>
+      <a class="nav-item" href="#ada">
+        <span class="agent-dot" style="background: var(--status-warning)"></span> Ada
+        <span class="nav-count">1</span>
+      </a>
+      <a class="nav-item" href="../Mira/mira.html">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Mira
+      </a>
+      <a class="nav-item" href="../UncleBob/unclebob.html">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Uncle Bob
+      </a>
+      <a class="nav-item" href="#leonidas">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Leonidas
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="Delivery">
+      <div class="nav-label">Delivery</div>
+      <a class="nav-item" href="jira-breakdown.html">
+        <span class="nav-icon">⧉</span> Jira breakdown
+      </a>
+      <a class="nav-item" href="#figma">
+        <span class="nav-icon">◨</span> Figma handoff
+      </a>
+      <a class="nav-item" href="#git">
+        <span class="nav-icon">⑂</span> Git activity
+      </a>
+      <a class="nav-item" href="#docs">
+        <span class="nav-icon">▤</span> Knowledge base
+      </a>
+    </nav>
+
+    <div class="sidebar-foot">
+      Human-in-the-loop by default.<br>
+      AI proposes — people approve.<br>
+      <span class="sec-tag">GAIA-01</span>
+    </div>
+  </aside>
+
+  <!-- ================= Main ================= -->
+  <div class="main">
+
+    <header class="topbar" id="GAIA-02">
+      <span class="crumb">Agents / Gaia — Research</span>
+      <span class="sec-tag">GAIA-02</span>
+      <div class="spacer"></div>
+      <div class="user-chip">
+        <div class="avatar">NW</div>
+        <span>Nimali · Research Assistant</span>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <div class="page-head" id="GAIA-03">
+        <div>
+          <h1>Gaia — Research Library <span class="sec-tag">GAIA-03</span></h1>
+          <p class="sub">Sustainability research, regulation and competitor summaries · drafts stay unpublished until RA approval</p>
+        </div>
+        <div class="actions">
+          <button class="btn primary">＋ New research request</button>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="filters" aria-label="Library filters" id="GAIA-04">
+        <button class="filter">Topic: All <span class="caret">▾</span></button>
+        <button class="filter">Type: All <span class="caret">▾</span></button>
+        <button class="filter">Status: All <span class="caret">▾</span></button>
+        <button class="filter">Only mine</button>
+        <span class="sec-tag push">GAIA-04</span>
+      </div>
+
+      <div class="master-detail has-rail">
+
+        <!-- ===== Research & documents · GAIA-05 ===== -->
+        <section class="card" id="GAIA-05">
+          <div class="card-head">
+            <h2>Research</h2>
+            <span class="hint">4 research · 9 documents</span>
+            <span class="sec-tag push">GAIA-05</span>
+          </div>
+          <div class="list">
+
+            <!-- Research RS-04 (expanded) -->
+            <div class="res-row" aria-expanded="true">
+              <span class="res-caret">▾</span>
+              <span class="res-id">RS-04</span>
+              <span class="res-title">EU CSRD compliance impact</span>
+              <span class="res-count">3 docs</span>
+            </div>
+            <div class="lib-row doc-row selected" aria-current="true">
+              <div class="lib-top">
+                <span class="lib-id">D-08</span> · Regulation
+                <span class="pill warning"><span class="dot"></span>⚠ Needs review</span>
+              </div>
+              <div class="lib-title">EU CSRD reporting rules — 2026 update</div>
+              <div class="lib-meta">Gaia draft · 6 sources · yesterday</div>
+            </div>
+            <div class="lib-row doc-row">
+              <div class="lib-top">
+                <span class="lib-id">D-07</span> · Analysis
+                <span class="pill neutral"><span class="dot"></span>— Queued</span>
+              </div>
+              <div class="lib-title">Member-state transposition matrix</div>
+              <div class="lib-meta">Requested 2h ago by Nimali</div>
+            </div>
+            <div class="lib-row doc-row">
+              <div class="lib-top">
+                <span class="lib-id">D-06</span> · Interview notes
+                <span class="pill good"><span class="dot"></span>✓ Approved</span>
+              </div>
+              <div class="lib-title">Compliance officer interviews — 5 companies</div>
+              <div class="lib-meta">Approved 2d ago</div>
+            </div>
+
+            <!-- Research RS-03 (expanded) -->
+            <div class="res-row" aria-expanded="true">
+              <span class="res-caret">▾</span>
+              <span class="res-id">RS-03</span>
+              <span class="res-title">Supplier emissions data collection</span>
+              <span class="res-count">2 docs</span>
+            </div>
+            <div class="lib-row doc-row">
+              <div class="lib-top">
+                <span class="lib-id">D-05</span> · Customer problem
+                <span class="pill good"><span class="dot"></span>✓ Approved</span>
+              </div>
+              <div class="lib-title">Supplier data collection pain points</div>
+              <div class="lib-meta">Approved 3d ago · <span class="pill accent"><span class="dot"></span>→ Used in REQ-031</span></div>
+            </div>
+            <div class="lib-row doc-row">
+              <div class="lib-top">
+                <span class="lib-id">D-04</span> · Competitor
+                <span class="pill good"><span class="dot"></span>✓ Approved</span>
+              </div>
+              <div class="lib-title">Competitor scan: Persefoni, Watershed, Sweep</div>
+              <div class="lib-meta">Approved last week</div>
+            </div>
+
+            <!-- Research RS-02 (collapsed) -->
+            <div class="res-row" aria-expanded="false">
+              <span class="res-caret">▸</span>
+              <span class="res-id">RS-02</span>
+              <span class="res-title">Carbon accounting market</span>
+              <span class="res-count">3 docs</span>
+            </div>
+
+            <!-- Research RS-01 (collapsed, has rejected doc) -->
+            <div class="res-row" aria-expanded="false">
+              <span class="res-caret">▸</span>
+              <span class="res-id">RS-01</span>
+              <span class="res-title">SME sustainability budgets</span>
+              <span class="res-count">1 doc · ✕ rejected</span>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ===== Note detail ===== -->
+        <section class="card">
+          <div class="draft-banner" id="GAIA-06">
+            <span>⚠ Draft — Gaia · not approved</span>
+            <span class="spacer"></span>
+            <span class="hint">This note cannot be used by Atlas until approved</span>
+            <span class="sec-tag">GAIA-06</span>
+          </div>
+
+          <div class="note-head" id="GAIA-07">
+            <div class="note-title-row">
+              <h2>D-08 · EU CSRD reporting rules — 2026 update</h2>
+              <span class="pill neutral"><span class="dot"></span>Regulation</span>
+              <span class="pill warning"><span class="dot"></span>⚠ Needs review</span>
+              <span class="sec-tag">GAIA-07</span>
+            </div>
+            <div class="note-meta">
+              Part of research <a href="#">RS-04 · EU CSRD compliance impact</a> · requested by Nimali (RA) · drafted by Gaia yesterday 16:42 · prompt template <a href="#">GAIA-REG-v3</a> · run #482
+            </div>
+          </div>
+
+          <!-- Editor toolbar · GAIA-17 -->
+          <div class="editor-toolbar" id="GAIA-17" aria-label="Document editing tools">
+            <button class="tbtn" title="Bold"><b>B</b></button>
+            <button class="tbtn" title="Italic"><i>I</i></button>
+            <button class="tbtn" title="Bullet list">≔</button>
+            <span class="tbtn sep" aria-hidden="true"></span>
+            <button class="tbtn" title="Insert a link to a source, document, or Jira item">🔗 Insert link</button>
+            <button class="tbtn" title="Attach a file">📎 Attach</button>
+            <span class="tbtn sep" aria-hidden="true"></span>
+            <button class="tbtn" title="Download this note as PDF with sources and audit record">⤓ Export PDF</button>
+            <span class="toolbar-hint">Edits are audit-logged</span>
+            <span class="sec-tag">GAIA-17</span>
+          </div>
+
+          <div class="note-section" id="GAIA-08">
+            <h3>Summary <span class="sec-tag">GAIA-08</span>
+              <span class="sec-actions">
+                <button class="sec-btn" title="Edit this section as text">✎ Edit</button>
+                <button class="sec-btn ai" title="Opens Gaia Assistant chat targeting GAIA-08">✦ Edit with AI</button>
+              </span>
+            </h3>
+            <p>
+              The <a href="#">EU Corporate Sustainability Reporting Directive (CSRD)</a> enters its second wave in 2026, extending
+              mandatory ESRS-aligned reporting to large non-listed companies <span class="cite">1</span>. Scope 3
+              supplier emissions disclosure moves from "comply or explain" to mandatory quantitative reporting for
+              most in-scope companies <span class="cite">2</span>, which directly increases demand for supplier
+              data collection tooling like EcoTrace <span class="cite">4</span>.
+            </p>
+          </div>
+
+          <div class="note-section" id="GAIA-09">
+            <h3>Key findings <span class="sec-tag">GAIA-09</span>
+              <span class="sec-actions">
+                <button class="sec-btn" title="Edit this section as text">✎ Edit</button>
+                <button class="sec-btn ai" title="Opens Gaia Assistant chat targeting GAIA-09">✦ Edit with AI</button>
+              </span>
+            </h3>
+            <ul>
+              <li>Wave 2 applies to companies with 250+ employees or €50M+ turnover — an estimated 49,000 companies across the EU <span class="cite">1</span>.</li>
+              <li>Scope 3 category 1 (purchased goods &amp; services) is the largest reporting gap; 68% of surveyed companies lack supplier-level data <span class="cite">2</span> <span class="cite">3</span>.</li>
+              <li>Digital tagging (XBRL) of sustainability statements becomes mandatory, favoring products with structured data export <span class="cite">5</span>.</li>
+              <li>Member-state transposition still varies; Germany and France add stricter assurance requirements <span class="cite">6</span>.</li>
+            </ul>
+          </div>
+
+          <div class="note-section" id="GAIA-10">
+            <h3>Risks &amp; opportunities <span class="sec-tag">GAIA-10</span>
+              <span class="sec-actions">
+                <button class="sec-btn" title="Edit this section as text">✎ Edit</button>
+                <button class="sec-btn ai" title="Opens Gaia Assistant chat targeting GAIA-10">✦ Edit with AI</button>
+              </span>
+            </h3>
+            <ul>
+              <li><strong>Opportunity:</strong> supplier emissions intake (REQ-031 candidate) matches the largest compliance gap <span class="cite">2</span>.</li>
+              <li><strong>Risk:</strong> assurance requirements may demand audit-grade data lineage — affects architecture early.</li>
+            </ul>
+          </div>
+
+          <div class="note-section" id="GAIA-11">
+            <h3><span id="GAIA-11-label">Open questions for the BA</span> <span class="sec-tag">GAIA-11</span>
+              <span class="sec-actions">
+                <span class="pill accent"><span class="dot"></span>✎ Editing as text</span>
+              </span>
+            </h3>
+            <textarea class="edit-area" aria-labelledby="GAIA-11-label">- Do we target Wave 2 companies directly, or their SME suppliers who feed them data?
+- Which member state's transposition should the MVP assume first?
+- Should pricing reflect assurance-readiness as a premium tier?</textarea>
+            <div class="edit-actions">
+              <button class="btn small primary">✓ Save</button>
+              <button class="btn small">✕ Cancel</button>
+              <span class="edit-hint">Manual text edit · saved as human edit in the audit trail</span>
+            </div>
+          </div>
+
+          <!-- Sources · GAIA-12 -->
+          <div class="sources" id="GAIA-12">
+            <div class="sources-head">
+              Sources — verify each before approval
+              <span class="pill warning"><span class="dot"></span>⚠ 4/6 verified</span>
+              <span class="sec-tag">GAIA-12</span>
+            </div>
+            <div class="source-row verified">
+              <span class="src-num">1</span>
+              <div class="src-main">
+                <div class="src-title"><a href="#">EU Commission — CSRD implementation timeline</a></div>
+                <div class="src-meta">ec.europa.eu · accessed yesterday</div>
+              </div>
+              <input type="checkbox" checked aria-label="Source 1 verified"> <span class="verify-label">Verified ✓</span>
+            </div>
+            <div class="source-row verified">
+              <span class="src-num">2</span>
+              <div class="src-main">
+                <div class="src-title"><a href="#">EFRAG — ESRS E1 &amp; Scope 3 disclosure requirements</a></div>
+                <div class="src-meta">efrag.org · accessed yesterday</div>
+              </div>
+              <input type="checkbox" checked aria-label="Source 2 verified"> <span class="verify-label">Verified ✓</span>
+            </div>
+            <div class="source-row verified">
+              <span class="src-num">3</span>
+              <div class="src-main">
+                <div class="src-title"><a href="#">CDP Supply Chain Report 2025 — supplier data gaps</a></div>
+                <div class="src-meta">cdp.net · accessed yesterday</div>
+              </div>
+              <input type="checkbox" checked aria-label="Source 3 verified"> <span class="verify-label">Verified ✓</span>
+            </div>
+            <div class="source-row verified">
+              <span class="src-num">4</span>
+              <div class="src-main">
+                <div class="src-title">Internal — EcoTrace product brief v0.3</div>
+                <div class="src-meta">Moderta docs · approved document</div>
+              </div>
+              <input type="checkbox" checked aria-label="Source 4 verified"> <span class="verify-label">Verified ✓</span>
+            </div>
+            <div class="source-row">
+              <span class="src-num">5</span>
+              <div class="src-main">
+                <div class="src-title"><a href="#">ESMA — digital tagging (XBRL) technical standard draft</a></div>
+                <div class="src-meta">esma.europa.eu · accessed yesterday</div>
+              </div>
+              <input type="checkbox" aria-label="Source 5 not verified"> <span class="verify-label">Not verified</span>
+            </div>
+            <div class="source-row">
+              <span class="src-num">6</span>
+              <div class="src-main">
+                <div class="src-title"><a href="#">Deloitte — member state transposition tracker</a></div>
+                <div class="src-meta">deloitte.com · accessed yesterday</div>
+              </div>
+              <input type="checkbox" aria-label="Source 6 not verified"> <span class="verify-label">Not verified</span>
+            </div>
+          </div>
+
+          <!-- Actions · GAIA-13 -->
+          <div class="action-bar" id="GAIA-13">
+            <button class="btn primary" disabled title="2 sources still unverified">✓ Approve as source of truth</button>
+            <button class="btn">✎ Edit</button>
+            <button class="btn danger">✕ Reject…</button>
+            <button class="btn" title="PDF includes note content, sources, and approval status">⤓ Export PDF</button>
+            <span class="gate-note">Approve unlocks after all 6 sources are verified</span>
+            <span class="sec-tag">GAIA-13</span>
+          </div>
+        </section>
+
+        <!-- ===== Assistant rail ===== -->
+        <div class="rail">
+
+          <!-- Gaia chat · GAIA-14 -->
+          <section class="card" id="GAIA-14">
+            <div class="card-head">
+              <h2>Gaia Assistant</h2>
+              <span class="sec-tag push">GAIA-14</span>
+            </div>
+            <div class="chat-body">
+              <div class="msg ai">
+                <div class="msg-who">Gaia</div>
+                Hi Nimali — I can research topics, find related papers, and propose updates to draft sections
+                (GAIA-07…GAIA-11). Approved notes are locked: there I can only suggest, never change.
+              </div>
+              <div class="msg user">
+                <div class="msg-who">Nimali · RA</div>
+                Update GAIA-08 — mention the EFRAG sector guidance published last week.
+              </div>
+              <div class="msg ai">
+                <div class="msg-who">Gaia</div>
+                Found it — EFRAG published draft sector standards on 28 Jul 2026. Proposed addition:
+                <div class="suggest">
+                  <div class="suggest-target">→ GAIA-08 · Summary</div>
+                  <div class="suggest-text">
+                    Sector-specific ESRS standards are expected to phase in from 2027, further widening
+                    reporting scope for Wave 2 companies <span class="cite">7</span>.
+                  </div>
+                  <div class="suggest-actions">
+                    <button class="btn small primary">✓ Apply to draft</button>
+                    <button class="btn small">✕ Discard</button>
+                    <span class="suggest-note">adds source #7 · audit logged</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tool-chips" aria-label="Research tools">
+              <button class="tool-chip">🔍 Find related papers</button>
+              <button class="tool-chip">⚖ Scan regulations</button>
+              <button class="tool-chip">🏢 Competitor scan</button>
+              <button class="tool-chip">📄 Summarize a source</button>
+            </div>
+            <div class="chat-composer">
+              <input type="text" placeholder="Ask Gaia to research, or update a section (e.g. GAIA-09)…" aria-label="Message Gaia">
+              <button class="btn primary small">Send</button>
+            </div>
+          </section>
+
+          <!-- Related papers · GAIA-15 -->
+          <section class="card" id="GAIA-15">
+            <div class="card-head">
+              <h2>Related papers</h2>
+              <span class="hint">via Find related papers</span>
+              <span class="sec-tag push">GAIA-15</span>
+            </div>
+            <div class="list">
+              <div class="paper-row">
+                <div class="paper-main">
+                  <div class="paper-title"><a href="#">Scope 3 data quality in supplier networks: a systematic review</a></div>
+                  <div class="paper-meta">Müller et al. · J. of Industrial Ecology · 2026</div>
+                  <div class="paper-why">Matches GAIA-09 finding on supplier-level data gaps</div>
+                </div>
+                <span class="pill good"><span class="dot"></span>✓ Kept</span>
+              </div>
+              <div class="paper-row">
+                <div class="paper-main">
+                  <div class="paper-title"><a href="#">CSRD assurance readiness among EU mid-caps</a></div>
+                  <div class="paper-meta">Van Dijk &amp; Rossi · ECGI working paper · 2025</div>
+                  <div class="paper-why">Supports GAIA-10 risk on audit-grade data lineage</div>
+                </div>
+                <button class="btn small">＋ Keep</button>
+              </div>
+              <div class="paper-row">
+                <div class="paper-main">
+                  <div class="paper-title"><a href="#">XBRL tagging of sustainability statements: early adopter costs</a></div>
+                  <div class="paper-meta">Okafor et al. · Accounting &amp; Society · 2026</div>
+                  <div class="paper-why">Relevant to GAIA-09 digital tagging finding</div>
+                </div>
+                <button class="btn small">＋ Keep</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Knowledge base · GAIA-16 -->
+          <section class="card" id="GAIA-16">
+            <div class="card-head">
+              <h2>Knowledge base</h2>
+              <span class="hint">8 items</span>
+              <span class="sec-tag push">GAIA-16</span>
+            </div>
+            <div class="list">
+              <div class="kb-item">
+                <span class="kb-icon">📑</span>
+                <div class="kb-main">
+                  <div class="kb-title">Scope 3 data quality in supplier networks</div>
+                  <div class="kb-meta">Paper · kept today · cited by RS-04 / D-08</div>
+                </div>
+              </div>
+              <div class="kb-item">
+                <span class="kb-icon">📑</span>
+                <div class="kb-main">
+                  <div class="kb-title">CDP Supply Chain Report 2025</div>
+                  <div class="kb-meta">Report · kept last week · cited by RS-03, RS-04</div>
+                </div>
+              </div>
+              <div class="kb-item">
+                <span class="kb-icon">▤</span>
+                <div class="kb-main">
+                  <div class="kb-title">EcoTrace product brief v0.3</div>
+                  <div class="kb-meta">Internal doc · approved · always in context</div>
+                </div>
+              </div>
+            </div>
+            <div class="kb-foot">
+              Kept items are indexed and retrieved as company context for future Gaia research runs (RAG).
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+
+      <p class="mock-note">Static HTML/CSS mockup · Moderta Orchestrate v0.1 · no live data · spec: UIX-08 · use section codes GAIA-01…GAIA-17 to request changes</p>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>
