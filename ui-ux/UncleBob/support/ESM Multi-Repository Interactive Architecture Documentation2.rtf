@@ -1,0 +1,1152 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2868
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 You are a Senior Software Architect, Codebase Analyst, and Technical Documentation Engineer.\
+\
+Your task is to inspect the complete ESM multi-repository project at source-code level and generate a professional, interactive HTML architecture knowledge map.\
+\
+Do not generate a generic architecture diagram.\
+\
+You must inspect the actual implementation, configuration, imports, API clients, routes, controllers, services, modules, schemas, environment variables, package dependencies, deployment files, and shared packages before deciding how the system works.\
+\
+The final document must allow a new developer to understand the ESM platform and the ESM Reporting architecture in under 15 minutes.\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+1. INPUT FILES\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+The following ZIP files are available:\
+\
+- /mnt/data/esm-api.zip\
+- /mnt/data/esm-frontend.zip\
+- /mnt/data/esm-reporting-core.zip\
+- /mnt/data/esm-reporting-api(1).zip\
+- /mnt/data/esm-reporting-frontend.zip\
+- /mnt/data/mint-design-system.zip\
+\
+A visual architecture reference is also available:\
+\
+- /mnt/data/image(1).png\
+\
+The latest diagram image is a proposed architecture concept, not guaranteed implementation truth.\
+\
+Use it to understand the expected architecture direction, including possible concepts such as:\
+\
+- External services\
+- Main ESM backend\
+- Primary database\
+- Read replica\
+- Shared DTO/schema package\
+- Reporting backend\
+- Reporting-core NPM package\
+- Reporting frontend\
+- Object storage or S3\
+- End-user browser\
+- Report JSON\
+- Aggregated reporting data\
+- Calculation utilities\
+- Shared data types\
+\
+However, verify every component and connection against the actual repositories.\
+\
+Never present a diagram component as implemented merely because it appears in the reference image.\
+\
+If a component from the image does not exist in code, classify it as:\
+\
+- Proposed\
+- Planned\
+- Unverified\
+- Not found in the supplied repositories\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+2. WORKSPACE PREPARATION\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+Create a clean analysis workspace and extract each ZIP into a clearly named repository directory.\
+\
+Suggested structure:\
+\
+project-root/\
+\uc0\u9500 \u9472 \u9472  repositories/\
+\uc0\u9474    \u9500 \u9472 \u9472  esm-api/\
+\uc0\u9474    \u9500 \u9472 \u9472  esm-frontend/\
+\uc0\u9474    \u9500 \u9472 \u9472  esm-reporting-core/\
+\uc0\u9474    \u9500 \u9472 \u9472  esm-reporting-api/\
+\uc0\u9474    \u9500 \u9472 \u9472  esm-reporting-frontend/\
+\uc0\u9474    \u9492 \u9472 \u9472  mint-design-system/\
+\uc0\u9492 \u9472 \u9472  docs/\
+\
+Handle nested top-level directories inside ZIP files automatically.\
+\
+Do not modify the original repository source code.\
+\
+Do not install dependencies unless absolutely required for static analysis.\
+\
+Do not run untrusted scripts.\
+\
+Exclude generated or irrelevant folders from detailed source inspection:\
+\
+- node_modules/\
+- dist/\
+- build/\
+- coverage/\
+- .git/\
+- .next/\
+- .turbo/\
+- generated binary files\
+- large compiled assets\
+- package-manager caches\
+\
+Lockfiles may be inspected for dependency/version confirmation, but they should not dominate the analysis.\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+3. ANALYSIS PRINCIPLE\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+Inspect the code thoroughly and systematically.\
+\
+\'93Inspect line by line\'94 means:\
+\
+- Read every architecture-relevant source file.\
+- Do not rely only on README files.\
+- Follow imports and function calls.\
+- Trace API calls from frontend to backend.\
+- Trace controllers to services.\
+- Trace services to repositories, database access, packages, storage, queues, or external APIs.\
+- Trace shared package exports to their consumers.\
+- Trace report data from its source to rendering and export.\
+- Trace design-system components to their consuming frontend pages.\
+- Trace environment variables to the code that uses them.\
+- Trace routes to their page components.\
+- Trace DTOs and schemas across repository boundaries.\
+- Trace actual report-generation and export logic.\
+\
+Implementation is the primary source of truth.\
+\
+If documentation conflicts with code, implementation wins.\
+\
+Never invent missing services, APIs, queues, databases, storage, exports, or deployment components.\
+\
+Clearly distinguish facts from assumptions.\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+4. ANALYSIS ORDER\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+Perform the analysis in this order:\
+\
+1. Discover repository structures.\
+2. Read all README and documentation files.\
+3. Read package.json and workspace configuration.\
+4. Identify languages, frameworks, build systems, and runtimes.\
+5. Identify application entry points.\
+6. Identify frontend routes and page hierarchy.\
+7. Identify backend modules, controllers, services, providers, guards, and middleware.\
+8. Identify shared package exports.\
+9. Identify database entities, schemas, migrations, repositories, and ORM configuration.\
+10. Identify frontend API clients and endpoint configuration.\
+11. Trace report-generation flows.\
+12. Trace rendering and export flows.\
+13. Trace authentication and organization context.\
+14. Trace design-system usage.\
+15. Inspect Docker, CI/CD, infrastructure, and deployment configuration.\
+16. Inspect environment examples and runtime configuration.\
+17. Compare the implementation with the supplied architecture reference image.\
+18. Generate the verified architecture model.\
+19. Generate the final interactive HTML document.\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+5. REPOSITORY DISCOVERY\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+For every repository determine:\
+\
+- Repository name\
+- Repository category\
+- Purpose\
+- Language\
+- Framework\
+- Runtime\
+- Package manager\
+- Build system\
+- Entry points\
+- Deployment target\
+- Main responsibilities\
+- Public interfaces\
+- Internal dependencies\
+- External dependencies\
+- Consumers\
+- Important routes\
+- Important endpoints\
+- Important environment variables\
+- Database usage\
+- Storage usage\
+- Authentication usage\
+- Shared package usage\
+- Current implementation status\
+\
+Expected repository categories may include:\
+\
+- Main frontend\
+- Main backend\
+- Reporting frontend\
+- Reporting backend\
+- Reporting domain/core package\
+- UI/design-system package\
+- Shared contracts package\
+- Infrastructure\
+- Worker\
+- Utility library\
+\
+Do not force a repository into a category that the code does not support.\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+6. EXPECTED ESM AREAS TO INVESTIGATE\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+Pay special attention to the following areas.\
+\
+Main ESM frontend:\
+\
+- Application bootstrap\
+- Router configuration\
+- Authentication handling\
+- Organization selection or context\
+- Carbon, activity, emission-factor, or business modules\
+- Reporting entry points\
+- Navigation from the main ESM platform to reporting\
+- API client configuration\
+- Shared types\
+- Mint Design System imports\
+\
+Main ESM API:\
+\
+- NestJS or other backend bootstrap\
+- Module graph\
+- Controllers\
+- Services\
+- Authentication\
+- Authorization\
+- Organizations\
+- Users\
+- Activities\
+- Emission factors\
+- Metadata\
+- Reporting-related endpoints\
+- Database connections\
+- External-service integrations\
+- Data exposed to reporting\
+\
+Reporting frontend:\
+\
+- Router and report routes\
+- Report document page\
+- Dashboard or report selection\
+- Report preview\
+- HTML rendering\
+- Template rendering\
+- Chart rendering\
+- API calls\
+- State management\
+- Query parameters such as mode=user, if implemented\
+- PDF export\
+- Word export\
+- Excel export\
+- Print behavior\
+- Share or publish behavior\
+- Download flow\
+- Error and loading states\
+- Mint Design System usage\
+\
+Reporting API:\
+\
+- Application bootstrap\
+- Reporting modules\
+- Controllers\
+- Services\
+- DTOs\
+- Validation\
+- Data transformation\
+- Adapter layers\
+- Report orchestration\
+- Main API communication\
+- Direct database or read-replica access\
+- Object-storage integration\
+- Report JSON generation\
+- HTML generation\
+- Export generation\
+- Queue or asynchronous processing\
+- Authentication and authorization\
+- Organization isolation\
+- Error handling\
+\
+Reporting core:\
+\
+- Public exports\
+- Business rules\
+- Calculations\
+- Aggregations\
+- Validators\
+- Domain models\
+- Utility functions\
+- Types\
+- Schemas\
+- Expected consumers\
+- Actual consumers\
+- Whether it is frontend-safe\
+- Whether it is backend-only\
+- Whether calculations are duplicated elsewhere\
+\
+Mint Design System:\
+\
+- Design tokens\
+- Themes\
+- Atoms\
+- Molecules\
+- Organisms\
+- Templates\
+- Export structure\
+- Storybook or documentation\
+- Components used by ESM frontend\
+- Components used by reporting frontend\
+- Missing or duplicated components\
+- Styling integration\
+- Tailwind or CSS architecture\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+7. RELATIONSHIP DISCOVERY\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+Infer repository and component relationships using actual evidence from:\
+\
+- TypeScript and JavaScript imports\
+- Package dependencies\
+- Workspace references\
+- Local package references\
+- HTTP clients\
+- Axios or fetch calls\
+- API base URLs\
+- REST route definitions\
+- GraphQL schemas\
+- gRPC definitions\
+- Message queues\
+- Event emitters\
+- WebSockets\
+- Database configuration\
+- ORM entities\
+- Migrations\
+- Redis clients\
+- Object-storage clients\
+- AWS SDK usage\
+- S3 clients\
+- Environment variables\
+- Docker Compose\
+- Kubernetes manifests\
+- Terraform\
+- Helm\
+- Reverse-proxy configuration\
+- CI/CD workflows\
+- Shared DTOs\
+- Shared validation schemas\
+- Shared domain models\
+- Generated API clients\
+\
+For each relationship record:\
+\
+- Source\
+- Destination\
+- Direction\
+- Communication method\
+- Purpose\
+- Evidence\
+- Confidence\
+- Relevant source files\
+- Relevant source line numbers where practical\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+8. CONNECTION CLASSIFICATION\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+Every architecture connection must use one of these statuses.\
+\
+Verified:\
+\
+Directly supported by implementation or configuration.\
+\
+Examples:\
+\
+- A frontend service calls a specific API URL.\
+- A NestJS module imports a package.\
+- A service initializes an S3 client.\
+- An ORM connection references a database.\
+\
+Inferred:\
+\
+Strongly suggested by multiple implementation clues, but not directly confirmed end-to-end.\
+\
+Planned:\
+\
+Found only in documentation, TODO comments, placeholder code, disabled modules, empty adapters, or the supplied architecture image.\
+\
+Unknown:\
+\
+There is insufficient evidence to establish the connection.\
+\
+Use the following visual styles:\
+\
+- Solid line: Verified\
+- Dotted line: Inferred\
+- Dashed line: Planned\
+- Muted grey line: Unknown\
+\
+Include a visible legend.\
+\
+Do not hide uncertainty.\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+9. REQUIRED REPORTING FLOW INVESTIGATION\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+Trace the complete reporting lifecycle.\
+\
+Determine whether the real flow is similar to any of these possibilities:\
+\
+Browser\
+\uc0\u8594  Main ESM frontend\
+\uc0\u8594  Main ESM API\
+\uc0\u8594  Reporting API\
+\uc0\u8594  Reporting core\
+\uc0\u8594  Database or read replica\
+\uc0\u8594  Report JSON\
+\uc0\u8594  Reporting frontend\
+\uc0\u8594  HTML report\
+\uc0\u8594  PDF, Word, Excel, or print\
+\
+Or:\
+\
+Browser\
+\uc0\u8594  Reporting frontend\
+\uc0\u8594  Reporting API\
+\uc0\u8594  Main ESM API\
+\uc0\u8594  Main database\
+\uc0\u8594  Transformation\
+\uc0\u8594  Report model\
+\uc0\u8594  Renderer\
+\uc0\u8594  Export\
+\
+Or another implementation found in code.\
+\
+Document the actual implementation.\
+\
+Specifically answer:\
+\
+- Where does report generation begin?\
+- Which frontend action starts it?\
+- Which endpoint is called?\
+- Which controller handles the request?\
+- Which service orchestrates report generation?\
+- Where does raw organization/carbon data come from?\
+- Is the main API called over HTTP?\
+- Is a database accessed directly?\
+- Is there a read replica?\
+- Is there a queue?\
+- Is there object storage?\
+- Is Report JSON stored or returned directly?\
+- Is HTML generated in the backend or frontend?\
+- Is PDF generated in the browser or server?\
+- Is Word generated in the browser or server?\
+- Is Excel implemented?\
+- Is export functionality complete, partial, or placeholder?\
+- Which reporting-core functions are executed?\
+- Which schemas or DTOs cross repository boundaries?\
+- How does organization/user authentication reach reporting?\
+- How is tenant or organization isolation enforced?\
+\
+If a flow is incomplete, show the completed and missing sections separately.\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+10. REQUIRED DIAGRAMS\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+Generate the following diagrams.\
+\
+Use Mermaid diagrams embedded directly in the HTML.\
+\
+Initialize Mermaid automatically from a CDN.\
+\
+1. Overall ESM System Architecture\
+\
+Must show:\
+\
+- End user\
+- Main ESM frontend\
+- Main ESM API\
+- Reporting frontend\
+- Reporting API\
+- Reporting core\
+- Mint Design System\
+- Databases\
+- Storage\
+- External services\
+- Shared packages\
+- Deployment components\
+\
+Only show components that exist, while marking proposed components clearly.\
+\
+2. Repository Dependency Diagram\
+\
+Show all repository-to-repository dependencies.\
+\
+3. Main ESM Component Diagram\
+\
+Show the internal modules of the main frontend and main API.\
+\
+4. Reporting Architecture Diagram\
+\
+Show:\
+\
+- Reporting frontend\
+- Reporting API\
+- Reporting core\
+- Main ESM API\
+- Data sources\
+- Storage\
+- Export mechanisms\
+\
+5. Report Generation Data Flow\
+\
+Show the real flow from user interaction to rendered report and export.\
+\
+6. Frontend Route and Navigation Diagram\
+\
+Show how users navigate from ESM content or modules into reporting pages.\
+\
+7. Backend Module Diagram\
+\
+Show controllers, services, adapters, repositories, and external clients.\
+\
+8. Shared Package Consumption Diagram\
+\
+Show which repositories consume:\
+\
+- reporting-core\
+- Mint Design System\
+- DTO/schema packages\
+- other shared libraries\
+\
+9. Deployment Diagram\
+\
+Generate only if supported by Docker, CI/CD, hosting, Kubernetes, Terraform, or related configuration.\
+\
+10. Data Storage Diagram\
+\
+Show primary database, read replica, object storage, report storage, and caching only if they exist.\
+\
+11. Authentication and Organization Context Flow\
+\
+Show how identity, permissions, organization ID, tokens, or tenant context move through the system.\
+\
+12. Export Architecture Diagram\
+\
+Show HTML, PDF, Word, Excel, print, download, share, or publish flows based on actual implementation.\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+11. INTERACTIVE KNOWLEDGE MAP\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+The Overall System Architecture must act as an interactive knowledge map.\
+\
+When the user clicks a node, such as:\
+\
+- Main ESM Frontend\
+- Main ESM API\
+- Reporting Frontend\
+- Reporting API\
+- Reporting Core\
+- Mint Design System\
+- Database\
+- Storage\
+- External Service\
+\
+the page must:\
+\
+1. Highlight the selected node.\
+2. Highlight direct incoming connections.\
+3. Highlight direct outgoing connections.\
+4. Dim unrelated nodes.\
+5. Dim unrelated edges.\
+6. Open a detail panel.\
+7. Display the selected component\'92s full architecture details.\
+8. Show verified source-code evidence.\
+9. Show files and line numbers where practical.\
+10. Show dependencies.\
+11. Show consumers.\
+12. Show routes.\
+13. Show endpoints.\
+14. Show communication methods.\
+15. Show environment variables.\
+16. Show data handled.\
+17. Show implementation status.\
+18. Show open questions or missing pieces.\
+19. Provide a Reset View button.\
+20. Allow another connected node to be selected directly.\
+\
+The detail panel should include tabs or collapsible groups for:\
+\
+- Overview\
+- Responsibilities\
+- Modules\
+- Interfaces\
+- Dependencies\
+- Used By\
+- Data\
+- Configuration\
+- Evidence\
+- Risks\
+- Open Questions\
+\
+Node titles in the architecture chart must be clickable.\
+\
+The knowledge map must support:\
+\
+- Search by repository\
+- Search by module\
+- Search by route\
+- Search by endpoint\
+- Search by service\
+- Search by entity\
+- Search by environment variable\
+- Filters by repository\
+- Filters by architecture layer\
+- Filters by connection status\
+- Filters by communication type\
+\
+Add a breadcrumb or focus indicator, for example:\
+\
+ESM Platform\
+\uc0\u8594  Reporting\
+\uc0\u8594  Reporting API\
+\uc0\u8594  Report Service\
+\
+The user must be able to understand \'93what connects to what\'94 without reading the full document.\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+12. COMPONENT DETAIL SECTIONS\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+Create one detailed section for every repository.\
+\
+Each repository section must contain:\
+\
+Repository overview:\
+\
+- Name\
+- Purpose\
+- Repository type\
+- Technology stack\
+- Runtime\
+- Build command\
+- Entry point\
+- Deployment information\
+\
+Responsibilities:\
+\
+- Concise bullet list\
+\
+Major modules:\
+\
+- Module name\
+- Purpose\
+- Important files\
+\
+Public interfaces:\
+\
+- Routes\
+- REST endpoints\
+- GraphQL operations\
+- Events\
+- Package exports\
+- Storage interfaces\
+\
+Internal dependencies:\
+\
+- Modules\
+- Services\
+- Shared packages\
+\
+External dependencies:\
+\
+- External APIs\
+- Databases\
+- Object storage\
+- Authentication systems\
+- Email or notification systems\
+\
+Used by:\
+\
+- Repositories\
+- Pages\
+- Services\
+- Build pipelines\
+\
+Communication:\
+\
+- REST\
+- GraphQL\
+- Queue\
+- Database\
+- Shared package\
+- Browser state\
+- File output\
+\
+Data:\
+\
+- Input models\
+- Output models\
+- Entities\
+- DTOs\
+- Schemas\
+\
+Diagram:\
+\
+- A small Mermaid diagram showing the repository and its immediate neighbors\
+\
+Evidence:\
+\
+- File paths\
+- Relevant symbols\
+- Relevant line numbers where practical\
+\
+Status:\
+\
+- Implemented\
+- Partial\
+- Placeholder\
+- Planned\
+- Unverified\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+13. FRONTEND DOCUMENTATION\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+For each frontend generate:\
+\
+- Route catalog\
+- Page catalog\
+- Feature/module catalog\
+- State-management summary\
+- API-client catalog\
+- Authentication flow\
+- Organization-context flow\
+- Report navigation flow\
+- Component hierarchy\
+- Design-system usage\
+- Export-related UI flow\
+- Loading and error handling\
+- Environment configuration\
+\
+Where possible, map:\
+\
+Route\
+\uc0\u8594  Page\
+\uc0\u8594  Main components\
+\uc0\u8594  Hook/service\
+\uc0\u8594  API endpoint\
+\uc0\u8594  Backend controller\
+\uc0\u8594  Backend service\
+\
+Create a compact traceability table for these flows.\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+14. BACKEND DOCUMENTATION\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+For each backend generate:\
+\
+- Module catalog\
+- Controller catalog\
+- Endpoint catalog\
+- Service catalog\
+- Provider catalog\
+- Guard/interceptor/middleware catalog\
+- DTO and validation catalog\
+- Database-access catalog\
+- External-client catalog\
+- Storage catalog\
+- Queue or worker catalog\
+- Authentication model\
+- Organization or tenant-isolation model\
+- Error-handling model\
+\
+Where possible, map:\
+\
+Endpoint\
+\uc0\u8594  Controller method\
+\uc0\u8594  Service method\
+\uc0\u8594  Repository/client\
+\uc0\u8594  Entity or external system\
+\uc0\u8594  Response DTO\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+15. PACKAGE DOCUMENTATION\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+For reporting-core and Mint Design System document:\
+\
+- Package name\
+- Package version\
+- Entry points\
+- Export map\
+- Build system\
+- Public APIs\
+- Internal folder structure\
+- Consumers\
+- Tree-shaking or bundling approach\
+- Browser compatibility\
+- Node compatibility\
+- Duplicate implementations\
+- Missing abstractions\
+- Circular dependency risks\
+\
+For reporting-core specifically show:\
+\
+Input\
+\uc0\u8594  Validation\
+\uc0\u8594  Calculation\
+\uc0\u8594  Aggregation\
+\uc0\u8594  Domain model\
+\uc0\u8594  Output\
+\
+For Mint Design System specifically show:\
+\
+Design Tokens\
+\uc0\u8594  Atoms\
+\uc0\u8594  Molecules\
+\uc0\u8594  Organisms\
+\uc0\u8594  Templates\
+\uc0\u8594  ESM pages\
+\
+Only use the Atomic Design labels if the repository actually follows or declares that structure.\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+16. TECHNOLOGY SUMMARY\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+Generate a table with:\
+\
+- Repository\
+- Purpose\
+- Language\
+- Framework\
+- Runtime\
+- State management\
+- Database\
+- Communication\
+- Shared packages\
+- Build system\
+- Deployment\
+- Status\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+17. API AND ROUTE TRACEABILITY\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+Generate a traceability table containing:\
+\
+- User action\
+- Frontend route\
+- Frontend component\
+- Frontend function/hook\
+- HTTP method\
+- API URL\
+- Backend controller\
+- Backend service\
+- Data source\
+- Response model\
+- Evidence\
+- Confidence\
+\
+Prioritize reporting-related functionality.\
+\
+Do not create endpoints that cannot be found in the source.\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+18. ARCHITECTURE COMPARISON\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+Include a section titled:\
+\
+\'93Reference Architecture vs Current Implementation\'94\
+\
+Compare the supplied architecture diagram with the code.\
+\
+Use a table:\
+\
+- Diagram concept\
+- Found in code?\
+- Repository or implementation\
+- Confidence\
+- Difference\
+- Required action\
+\
+Check concepts such as:\
+\
+- Main backend\
+- Primary database\
+- Read replica\
+- Reporting backend\
+- Reporting frontend\
+- reporting-core\
+- Common DTO/schema package\
+- S3 bucket\
+- Report JSON\
+- External services\
+- Direct database read\
+- Main API to reporting API communication\
+- Aggregated reporting data\
+- Browser export\
+- PDF export\
+- Word export\
+- Excel export\
+\
+Do not treat the reference image as evidence of implementation.\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+19. RISKS AND OPEN QUESTIONS\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+Include concise, evidence-based findings for:\
+\
+- Missing API integrations\
+- Placeholder endpoints\
+- Hardcoded data\
+- Duplicated business logic\
+- Duplicated DTOs\
+- Inconsistent schemas\
+- Tight coupling\
+- Circular dependencies\
+- Security concerns\
+- Missing organization isolation\
+- Browser-only export limitations\
+- Large report performance\
+- Read-replica consistency\
+- Storage lifecycle\
+- Missing tests\
+- Missing CI/CD\
+- Incomplete documentation\
+- Environment-variable inconsistencies\
+- Unused packages\
+- Dead code\
+- Planned but unimplemented components\
+\
+Do not turn this into a generic audit.\
+\
+Only include findings supported by the supplied repositories.\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+20. HTML REQUIREMENTS\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+Generate exactly one final deliverable:\
+\
+docs/architecture.html\
+\
+The file must be ready to open directly in a browser.\
+\
+Requirements:\
+\
+- Single HTML file\
+- Modern responsive layout\
+- Light theme\
+- Professional enterprise architecture style\
+- Left navigation sidebar\
+- Sticky table of contents\
+- Search field\
+- Filter controls\
+- Collapsible sections\
+- Interactive architecture knowledge map\
+- Clickable architecture nodes\
+- Detail drawer or side panel\
+- Mermaid diagrams\
+- Mermaid initialized automatically\
+- Print-friendly CSS\
+- Ctrl+F friendly text\
+- Responsive tables\
+- Syntax highlighting where useful\
+- No external build tools\
+- No framework build process\
+- No server required\
+- Semantic HTML\
+- Accessible colors\
+- Keyboard-accessible controls\
+- Visible focus states\
+- Mobile and desktop support\
+- Architecture legend\
+- Connection-status legend\
+- Generated date\
+- Source repository list\
+- Analysis scope\
+- Confidence labels\
+\
+CDN dependencies are allowed for:\
+\
+- Mermaid\
+- A lightweight syntax-highlighting library, only if necessary\
+\
+Do not depend on a local Node.js server.\
+\
+Do not generate separate CSS or JavaScript files.\
+\
+Place all custom CSS and JavaScript inside architecture.html.\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+21. DOCUMENT STRUCTURE\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+Use this structure:\
+\
+1. Title Page\
+2. How to Use This Architecture Map\
+3. Executive Summary\
+4. Interactive ESM Knowledge Map\
+5. Reference Architecture vs Current Implementation\
+6. Overall System Architecture\
+7. ESM Main Platform\
+8. ESM Reporting Platform\
+9. Report Generation Data Flow\
+10. Frontend Navigation and Route Map\
+11. Backend Module and API Map\
+12. Data Architecture\
+13. Authentication and Organization Context\
+14. Shared Packages\
+15. Mint Design System\
+16. Export Architecture\
+17. Deployment Architecture\
+18. Repository Dependency Diagram\
+19. Technology Stack Summary\
+20. API and Route Traceability\
+21. Detailed Repository Documentation\
+22. Risks and Open Questions\
+23. Glossary\
+24. Source Evidence Index\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+22. DOCUMENTATION STYLE\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+Use:\
+\
+- Diagrams\
+- Tables\
+- Short bullet lists\
+- Concise technical descriptions\
+- Architecture terminology\
+- Evidence references\
+- Status badges\
+- Confidence badges\
+\
+Avoid:\
+\
+- Long introductory paragraphs\
+- Generic software explanations\
+- Repeated information\
+- Marketing language\
+- Unsupported claims\
+- Invented components\
+- Huge raw code blocks\
+\
+A diagram should accompany an explanation wherever practical.\
+\
+The HTML must help both technical and less technical team members.\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+23. EVIDENCE RULES\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+Every important architecture claim should be traceable to evidence.\
+\
+Use evidence labels such as:\
+\
+Verified from:\
+\
+- repositories/esm-reporting-api/src/report/report.service.ts\
+- repositories/esm-reporting-frontend/src/services/reportApi.ts\
+- repositories/esm-reporting-core/src/index.ts\
+\
+When practical, include:\
+\
+- File path\
+- Line range\
+- Symbol name\
+- Short explanation\
+\
+Do not expose secrets or real credential values.\
+\
+Environment-variable names may be shown, but values must be redacted.\
+\
+Example:\
+\
+REPORTING_API_URL=[REDACTED]\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+24. QUALITY GATES\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+Before finishing, verify that:\
+\
+- All six supplied repositories were extracted and analyzed.\
+- Every repository has a detailed section.\
+- The main architecture diagram reflects actual code.\
+- The supplied reference image was compared against implementation.\
+- Reporting data flow is fully traced.\
+- Frontend routes are mapped to API calls where possible.\
+- API endpoints are mapped to controllers and services.\
+- reporting-core consumers are verified.\
+- Mint Design System consumers are verified.\
+- Database and storage relationships are evidence-based.\
+- Proposed components are clearly marked.\
+- Diagram nodes are clickable.\
+- Clicking a node highlights its direct connections.\
+- The detail panel displays evidence.\
+- Search works.\
+- Filters work.\
+- Mermaid renders without errors.\
+- The page opens directly from the filesystem.\
+- Print layout is readable.\
+- There are no broken internal links.\
+- There are no invented endpoints.\
+- There are no exposed secrets.\
+- The final file exists at docs/architecture.html.\
+\
+Open the generated HTML in a browser or use an available browser-preview tool to validate:\
+\
+- Layout\
+- Mermaid rendering\
+- Click interactions\
+- Search\
+- Filters\
+- Navigation\
+- Responsive behavior\
+- Console errors\
+\
+Fix all detected issues before completing the task.\
+\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+25. FINAL RESPONSE\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+After creating the file, provide only:\
+\
+- The final file path\
+- A one-sentence summary of what was analyzed\
+- Any major analysis limitation caused by missing implementation evidence\
+\
+Do not provide a speculative architecture summary in the terminal response.\
+\
+The architecture itself must be documented inside:\
+\
+docs/architecture.html}

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moderta Orchestrate — CTO Dashboard</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="dashboards.css">
+</head>
+<body>
+<div class="shell">
+
+  <!-- ================= Sidebar ================= -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">M</div>
+      <div>
+        <div class="brand-name">Moderta Orchestrate</div>
+        <div class="brand-sub">AI delivery workflow · v0.1</div>
+      </div>
+    </div>
+
+    <nav class="nav-group" aria-label="Overview">
+      <div class="nav-label">Overview</div>
+      <a class="nav-item" href="../index.html">
+        <span class="nav-icon">◧</span> Dashboard
+      </a>
+      <a class="nav-item" href="../review.html">
+        <span class="nav-icon">✓</span> Approvals
+        <span class="nav-count">7</span>
+      </a>
+      <a class="nav-item" href="../audit-log.html">
+        <span class="nav-icon">≡</span> Audit log
+      </a>
+      <a class="nav-item" href="../metrics.html">
+        <span class="nav-icon">◔</span> Metrics
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="General">
+      <div class="nav-label">General</div>
+      <a class="nav-item" href="ceo-dashboard.html">
+        <span class="nav-icon">◆</span> CEO dashboard
+      </a>
+      <a class="nav-item active" href="cto-dashboard.html">
+        <span class="nav-icon">◈</span> CTO dashboard
+      </a>
+      <a class="nav-item" href="head-of-engineering-dashboard.html">
+        <span class="nav-icon">⚙</span> Head of Engineering
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="Agents">
+      <div class="nav-label">Agents</div>
+      <a class="nav-item" href="../Gaia/gaia.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Gaia
+        <span class="nav-count">2</span>
+      </a>
+      <a class="nav-item" href="../Atlas/atlas.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Atlas
+        <span class="nav-count">4</span>
+      </a>
+      <a class="nav-item" href="#ada">
+        <span class="agent-dot" style="background: var(--status-warning)"></span> Ada
+        <span class="nav-count">1</span>
+      </a>
+      <a class="nav-item" href="../Mira/mira.html">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Mira
+      </a>
+      <a class="nav-item" href="../UncleBob/unclebob.html">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Uncle Bob
+      </a>
+      <a class="nav-item" href="#leonidas">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Leonidas
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="Delivery">
+      <div class="nav-label">Delivery</div>
+      <a class="nav-item" href="../jira-breakdown.html">
+        <span class="nav-icon">⧉</span> Jira breakdown
+      </a>
+      <a class="nav-item" href="#figma">
+        <span class="nav-icon">◨</span> Figma handoff
+      </a>
+      <a class="nav-item" href="#git">
+        <span class="nav-icon">⑂</span> Git activity
+      </a>
+      <a class="nav-item" href="#docs">
+        <span class="nav-icon">▤</span> Knowledge base
+      </a>
+    </nav>
+
+    <div class="sidebar-foot">
+      Human-in-the-loop by default.<br>
+      AI proposes — people approve.
+    </div>
+  </aside>
+
+  <!-- ================= Main ================= -->
+  <div class="main">
+
+    <header class="topbar">
+      <span class="crumb">General / CTO dashboard</span>
+      <div class="spacer"></div>
+      <button class="btn small">Export report</button>
+      <div class="user-chip">
+        <div class="avatar">TJ</div>
+        <span>Tharindu · BA</span>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <div class="page-head">
+        <div>
+          <h1>CTO dashboard</h1>
+          <p class="sub">Platform health, AI agent performance and technology spend</p>
+        </div>
+        <div class="actions">
+          <button class="btn">Cost breakdown</button>
+          <button class="btn primary">Platform status</button>
+        </div>
+      </div>
+
+      <!-- One filter row above everything it scopes -->
+      <div class="filters" aria-label="Dashboard filters">
+        <button class="filter">Last 30 days <span class="caret">▾</span></button>
+        <button class="filter">All agents <span class="caret">▾</span></button>
+      </div>
+
+      <!-- KPI row -->
+      <section class="stat-row" aria-label="Key numbers">
+        <div class="stat-tile">
+          <span class="stat-label">Platform uptime</span>
+          <span class="stat-value">99.97%</span>
+          <span class="stat-note">1 incident · 14 min · Jul 19</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">AI agent runs</span>
+          <span class="stat-value">412</span>
+          <span class="stat-note"><span class="up">▲ 12%</span> vs previous 30 days</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">LLM spend — July</span>
+          <span class="stat-value">$1,842</span>
+          <span class="stat-note"><span class="up">▼ 8%</span> under monthly budget</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Avg draft acceptance</span>
+          <span class="stat-value">78%</span>
+          <span class="stat-note">18 accepted · 3 edited · 2 rejected this week</span>
+        </div>
+      </section>
+
+      <div class="cols-2">
+
+        <!-- Draft outcomes by week -->
+        <section class="card">
+          <div class="card-head">
+            <h2>AI draft outcomes by week</h2>
+            <span class="hint">human verdict on every AI draft</span>
+          </div>
+          <div class="card-body">
+            <div class="colchart">
+              <div class="col-plot">
+                <div class="gridline" style="top: 0"><span class="tick">24</span></div>
+                <div class="gridline" style="top: 50%"><span class="tick">12</span></div>
+                <div class="gridline" style="top: 100%"><span class="tick">0</span></div>
+                <div class="col-bands">
+                  <div class="band" tabindex="0" role="img" aria-label="Week 27&#10;12 accepted · 3 edited · 1 rejected" data-tip="Week 27&#10;12 accepted · 3 edited · 1 rejected">
+                    <div class="col stacked">
+                      <div class="seg good" style="height: 50%"></div>
+                      <div class="seg neutral" style="height: 12.5%"></div>
+                      <div class="seg critical" style="height: 4.2%"></div>
+                    </div>
+                  </div>
+                  <div class="band" tabindex="0" role="img" aria-label="Week 28&#10;14 accepted · 4 edited · 2 rejected" data-tip="Week 28&#10;14 accepted · 4 edited · 2 rejected">
+                    <div class="col stacked">
+                      <div class="seg good" style="height: 58.3%"></div>
+                      <div class="seg neutral" style="height: 16.7%"></div>
+                      <div class="seg critical" style="height: 8.3%"></div>
+                    </div>
+                  </div>
+                  <div class="band" tabindex="0" role="img" aria-label="Week 29&#10;15 accepted · 3 edited · 1 rejected" data-tip="Week 29&#10;15 accepted · 3 edited · 1 rejected">
+                    <div class="col stacked">
+                      <div class="seg good" style="height: 62.5%"></div>
+                      <div class="seg neutral" style="height: 12.5%"></div>
+                      <div class="seg critical" style="height: 4.2%"></div>
+                    </div>
+                  </div>
+                  <div class="band" tabindex="0" role="img" aria-label="Week 30&#10;17 accepted · 4 edited · 2 rejected" data-tip="Week 30&#10;17 accepted · 4 edited · 2 rejected">
+                    <div class="col stacked">
+                      <div class="seg good" style="height: 70.8%"></div>
+                      <div class="seg neutral" style="height: 16.7%"></div>
+                      <div class="seg critical" style="height: 8.3%"></div>
+                    </div>
+                  </div>
+                  <div class="band" tabindex="0" role="img" aria-label="Week 31&#10;16 accepted · 4 edited · 3 rejected" data-tip="Week 31&#10;16 accepted · 4 edited · 3 rejected">
+                    <div class="col stacked">
+                      <div class="seg good" style="height: 66.7%"></div>
+                      <div class="seg neutral" style="height: 16.7%"></div>
+                      <div class="seg critical" style="height: 12.5%"></div>
+                    </div>
+                  </div>
+                  <div class="band" tabindex="0" role="img" aria-label="Week 32&#10;18 accepted · 3 edited · 2 rejected" data-tip="Week 32&#10;18 accepted · 3 edited · 2 rejected">
+                    <div class="col stacked">
+                      <div class="seg good" style="height: 75%"></div>
+                      <div class="seg neutral" style="height: 12.5%"></div>
+                      <div class="seg critical" style="height: 8.3%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-x">
+                <span>W27</span><span>W28</span><span>W29</span><span>W30</span><span>W31</span><span>W32</span>
+              </div>
+            </div>
+            <div class="viz-legend" aria-label="Legend">
+              <span class="key"><span class="swatch good"></span>✓ Accepted</span>
+              <span class="key"><span class="swatch neutral"></span>✎ Edited</span>
+              <span class="key"><span class="swatch critical"></span>✕ Rejected</span>
+            </div>
+            <details class="table-view">
+              <summary>View as table</summary>
+              <table class="data">
+                <thead><tr><th>Week</th><th>Accepted</th><th>Edited</th><th>Rejected</th></tr></thead>
+                <tbody>
+                  <tr><td>W27</td><td class="num">12</td><td class="num">3</td><td class="num">1</td></tr>
+                  <tr><td>W28</td><td class="num">14</td><td class="num">4</td><td class="num">2</td></tr>
+                  <tr><td>W29</td><td class="num">15</td><td class="num">3</td><td class="num">1</td></tr>
+                  <tr><td>W30</td><td class="num">17</td><td class="num">4</td><td class="num">2</td></tr>
+                  <tr><td>W31</td><td class="num">16</td><td class="num">4</td><td class="num">3</td></tr>
+                  <tr><td>W32</td><td class="num">18</td><td class="num">3</td><td class="num">2</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </div>
+        </section>
+
+        <!-- AI runs by agent -->
+        <section class="card">
+          <div class="card-head">
+            <h2>AI runs by agent</h2>
+            <span class="hint">last 30 days</span>
+          </div>
+          <div class="card-body">
+            <div class="hbars">
+              <div class="hbar-row">
+                <span class="hlabel">Atlas</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Atlas · 186 runs" data-tip="Atlas · 186 runs">
+                  <div class="hbar" style="width: 89%"></div>
+                  <span class="val" style="left: calc(89% + 8px)">186</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">Gaia</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Gaia · 124 runs" data-tip="Gaia · 124 runs">
+                  <div class="hbar" style="width: 66.7%"></div>
+                  <span class="val" style="left: calc(66.7% + 8px)">124</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">Ada</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Ada · 58 runs" data-tip="Ada · 58 runs">
+                  <div class="hbar" style="width: 31.2%"></div>
+                  <span class="val" style="left: calc(31.2% + 8px)">58</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">Mira</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Mira · 24 runs" data-tip="Mira · 24 runs">
+                  <div class="hbar" style="width: 12.9%"></div>
+                  <span class="val" style="left: calc(12.9% + 8px)">24</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">Uncle Bob</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Uncle Bob · 14 runs" data-tip="Uncle Bob · 14 runs">
+                  <div class="hbar" style="width: 7.5%"></div>
+                  <span class="val" style="left: calc(7.5% + 8px)">14</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">Leonidas</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Leonidas · 6 runs" data-tip="Leonidas · 6 runs">
+                  <div class="hbar" style="width: 3.2%"></div>
+                  <span class="val" style="left: calc(3.2% + 8px)">6</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Prompt metrics KPI row -->
+      <section class="stat-row" aria-label="Prompt metrics">
+        <div class="stat-tile">
+          <span class="stat-label">Prompts — last 30 days</span>
+          <span class="stat-value">912</span>
+          <span class="stat-note"><span class="up">▲ 9%</span> vs previous 30 days</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Prompt rework rate</span>
+          <span class="stat-value">14%</span>
+          <span class="stat-note"><span class="up">▼ 4 pts</span> — re-prompted before acceptance</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Prompts per accepted draft</span>
+          <span class="stat-value">2.1</span>
+          <span class="stat-note">quality proxy · lower is better</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">AWS cost — July</span>
+          <span class="stat-value">$3,720</span>
+          <span class="stat-note"><span class="up">▼ 5%</span> vs June · breakdown below</span>
+        </div>
+      </section>
+
+      <div class="cols-2">
+
+        <!-- Prompt volume & rework -->
+        <section class="card">
+          <div class="card-head">
+            <h2>Prompt volume &amp; rework by week</h2>
+            <span class="hint">reworked = re-prompted before the draft was accepted</span>
+          </div>
+          <div class="card-body">
+            <div class="colchart">
+              <div class="col-plot">
+                <div class="gridline" style="top: 0"><span class="tick">240</span></div>
+                <div class="gridline" style="top: 50%"><span class="tick">120</span></div>
+                <div class="gridline" style="top: 100%"><span class="tick">0</span></div>
+                <div class="col-bands">
+                  <div class="band" tabindex="0" role="img" aria-label="Week 27 — 168 prompts, 30 reworked, 18 percent rework" data-tip="Week 27 · 168 prompts&#10;30 reworked (18%)">
+                    <div class="col stacked">
+                      <div class="seg series" style="height: 57.5%"></div>
+                      <div class="seg neutral" style="height: 12.5%"></div>
+                    </div>
+                  </div>
+                  <div class="band" tabindex="0" role="img" aria-label="Week 28 — 182 prompts, 34 reworked, 19 percent rework" data-tip="Week 28 · 182 prompts&#10;34 reworked (19%)">
+                    <div class="col stacked">
+                      <div class="seg series" style="height: 61.7%"></div>
+                      <div class="seg neutral" style="height: 14.2%"></div>
+                    </div>
+                  </div>
+                  <div class="band" tabindex="0" role="img" aria-label="Week 29 — 190 prompts, 30 reworked, 16 percent rework" data-tip="Week 29 · 190 prompts&#10;30 reworked (16%)">
+                    <div class="col stacked">
+                      <div class="seg series" style="height: 66.7%"></div>
+                      <div class="seg neutral" style="height: 12.5%"></div>
+                    </div>
+                  </div>
+                  <div class="band" tabindex="0" role="img" aria-label="Week 30 — 204 prompts, 32 reworked, 16 percent rework" data-tip="Week 30 · 204 prompts&#10;32 reworked (16%)">
+                    <div class="col stacked">
+                      <div class="seg series" style="height: 71.7%"></div>
+                      <div class="seg neutral" style="height: 13.3%"></div>
+                    </div>
+                  </div>
+                  <div class="band" tabindex="0" role="img" aria-label="Week 31 — 216 prompts, 30 reworked, 14 percent rework" data-tip="Week 31 · 216 prompts&#10;30 reworked (14%)">
+                    <div class="col stacked">
+                      <div class="seg series" style="height: 77.5%"></div>
+                      <div class="seg neutral" style="height: 12.5%"></div>
+                    </div>
+                  </div>
+                  <div class="band" tabindex="0" role="img" aria-label="Week 32 — 224 prompts, 32 reworked, 14 percent rework" data-tip="Week 32 · 224 prompts&#10;32 reworked (14%)">
+                    <div class="col stacked">
+                      <div class="seg series" style="height: 80%"></div>
+                      <div class="seg neutral" style="height: 13.3%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-x">
+                <span>W27</span><span>W28</span><span>W29</span><span>W30</span><span>W31</span><span>W32</span>
+              </div>
+            </div>
+            <div class="viz-legend" aria-label="Legend">
+              <span class="key"><span class="swatch series"></span>Accepted first pass</span>
+              <span class="key"><span class="swatch neutral"></span>✎ Reworked</span>
+            </div>
+            <details class="table-view">
+              <summary>View as table</summary>
+              <table class="data">
+                <thead><tr><th>Week</th><th>Prompts</th><th>Reworked</th><th>Rework rate</th></tr></thead>
+                <tbody>
+                  <tr><td>W27</td><td class="num">168</td><td class="num">30</td><td class="num">18%</td></tr>
+                  <tr><td>W28</td><td class="num">182</td><td class="num">34</td><td class="num">19%</td></tr>
+                  <tr><td>W29</td><td class="num">190</td><td class="num">30</td><td class="num">16%</td></tr>
+                  <tr><td>W30</td><td class="num">204</td><td class="num">32</td><td class="num">16%</td></tr>
+                  <tr><td>W31</td><td class="num">216</td><td class="num">30</td><td class="num">14%</td></tr>
+                  <tr><td>W32</td><td class="num">224</td><td class="num">32</td><td class="num">14%</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </div>
+        </section>
+
+        <!-- AI usage by user -->
+        <section class="card">
+          <div class="card-head">
+            <h2>AI usage by user</h2>
+            <span class="hint">prompts · last 30 days</span>
+          </div>
+          <div class="card-body">
+            <div class="hbars wide-labels">
+              <div class="hbar-row">
+                <span class="hlabel">Tharindu · BA</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Tharindu, BA — 248 prompts" data-tip="Tharindu · 248 prompts">
+                  <div class="hbar" style="width: 88.6%"></div>
+                  <span class="val" style="left: calc(88.6% + 8px)">248</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">Nadeesha · PM</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Nadeesha, PM — 186 prompts" data-tip="Nadeesha · 186 prompts">
+                  <div class="hbar" style="width: 66.4%"></div>
+                  <span class="val" style="left: calc(66.4% + 8px)">186</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">Kasun · Dev</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Kasun, developer — 152 prompts" data-tip="Kasun · 152 prompts">
+                  <div class="hbar" style="width: 54.3%"></div>
+                  <span class="val" style="left: calc(54.3% + 8px)">152</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">Ishara · QA</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Ishara, QA — 124 prompts" data-tip="Ishara · 124 prompts">
+                  <div class="hbar" style="width: 44.3%"></div>
+                  <span class="val" style="left: calc(44.3% + 8px)">124</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">Dilini · Design</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Dilini, design — 98 prompts" data-tip="Dilini · 98 prompts">
+                  <div class="hbar" style="width: 35%"></div>
+                  <span class="val" style="left: calc(35% + 8px)">98</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">Others (4)</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Four other users — 104 prompts" data-tip="4 other users · 104 prompts">
+                  <div class="hbar" style="width: 37.1%"></div>
+                  <span class="val" style="left: calc(37.1% + 8px)">104</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <div class="cols-2">
+
+        <!-- Cost per AWS service -->
+        <section class="card">
+          <div class="card-head">
+            <h2>Cost per AWS service</h2>
+            <span class="hint">July · total $3,720</span>
+            <a class="more" href="#cost">Cost explorer →</a>
+          </div>
+          <div class="card-body">
+            <div class="hbars wide-labels">
+              <div class="hbar-row">
+                <span class="hlabel">Bedrock (LLM)</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Bedrock, LLM — 1,842 dollars" data-tip="Bedrock (LLM) · $1,842">
+                  <div class="hbar" style="width: 87.7%"></div>
+                  <span class="val" style="left: calc(87.7% + 8px)">$1,842</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">ECS Fargate</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="ECS Fargate — 940 dollars" data-tip="ECS Fargate · $940">
+                  <div class="hbar" style="width: 44.8%"></div>
+                  <span class="val" style="left: calc(44.8% + 8px)">$940</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">RDS</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="RDS — 486 dollars" data-tip="RDS · $486">
+                  <div class="hbar" style="width: 23.1%"></div>
+                  <span class="val" style="left: calc(23.1% + 8px)">$486</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">S3</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="S3 — 212 dollars" data-tip="S3 · $212">
+                  <div class="hbar" style="width: 10.1%"></div>
+                  <span class="val" style="left: calc(10.1% + 8px)">$212</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">Lambda</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Lambda — 148 dollars" data-tip="Lambda · $148">
+                  <div class="hbar" style="width: 7%"></div>
+                  <span class="val" style="left: calc(7% + 8px)">$148</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">CloudWatch</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="CloudWatch — 92 dollars" data-tip="CloudWatch · $92">
+                  <div class="hbar" style="width: 4.4%"></div>
+                  <span class="val" style="left: calc(4.4% + 8px)">$92</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- AI usage by system -->
+        <section class="card">
+          <div class="card-head">
+            <h2>AI usage by system</h2>
+            <span class="hint">prompts · last 30 days</span>
+          </div>
+          <div class="card-body">
+            <div class="hbars wide-labels">
+              <div class="hbar-row">
+                <span class="hlabel">Orchestrate agents</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Orchestrate agents — 486 prompts" data-tip="Orchestrate agents · 486 prompts">
+                  <div class="hbar" style="width: 90%"></div>
+                  <span class="val" style="left: calc(90% + 8px)">486</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">Mint AI assistant</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Mint AI assistant — 214 prompts" data-tip="Mint AI assistant · 214 prompts">
+                  <div class="hbar" style="width: 39.6%"></div>
+                  <span class="val" style="left: calc(39.6% + 8px)">214</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">ESM reporting</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="ESM reporting — 132 prompts" data-tip="ESM reporting · 132 prompts">
+                  <div class="hbar" style="width: 24.4%"></div>
+                  <span class="val" style="left: calc(24.4% + 8px)">132</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">Internal tooling</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Internal tooling — 80 prompts" data-tip="Internal tooling · 80 prompts">
+                  <div class="hbar" style="width: 14.8%"></div>
+                  <span class="val" style="left: calc(14.8% + 8px)">80</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Tech risk & platform -->
+      <section class="card">
+        <div class="card-head">
+          <h2>Technology risk &amp; platform</h2>
+          <span class="hint">items the CTO office is tracking</span>
+          <a class="more" href="../audit-log.html">Audit log →</a>
+        </div>
+        <div class="list">
+          <div class="list-row">
+            <span class="agent-badge"><span class="glyph">Le</span></span>
+            <div class="row-main">
+              <div class="row-title">Prompt-injection review — Gaia external web sources</div>
+              <div class="row-meta">Leonidas pilot scope · mitigation draft due this week</div>
+            </div>
+            <span class="pill serious"><span class="dot"></span>▲ High priority</span>
+          </div>
+          <div class="list-row">
+            <span class="agent-badge"><span class="glyph">Dp</span></span>
+            <div class="row-main">
+              <div class="row-title">Dependency audit — 2 moderate advisories in frontend build chain</div>
+              <div class="row-meta">No known exploit · patch scheduled for next release train</div>
+            </div>
+            <span class="pill warning"><span class="dot"></span>⚠ Patch pending</span>
+          </div>
+          <div class="list-row">
+            <span class="agent-badge"><span class="glyph">Ml</span></span>
+            <div class="row-main">
+              <div class="row-title">Model version rollout — new Claude release in staging</div>
+              <div class="row-meta">A/B against current drafts · promotion gated on acceptance rate</div>
+            </div>
+            <span class="pill accent"><span class="dot"></span>◈ In staging</span>
+          </div>
+          <div class="list-row">
+            <span class="agent-badge"><span class="glyph">Tk</span></span>
+            <div class="row-main">
+              <div class="row-title">Token budget — 61% of monthly cap consumed</div>
+              <div class="row-meta">On pace to finish under cap · alerts set at 85%</div>
+            </div>
+            <span class="pill good"><span class="dot"></span>✓ Healthy</span>
+          </div>
+        </div>
+      </section>
+
+      <p class="mock-note">Static HTML/CSS mockup · Moderta Orchestrate v0.1 · no live data</p>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

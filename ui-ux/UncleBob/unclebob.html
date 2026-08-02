@@ -133,7 +133,7 @@
             <div class="card-head">
               <h2>Architecture designer — ESM knowledge map</h2>
               <span class="pill good"><span class="dot"></span>✓ Built from repo evidence · 1h ago</span>
-              <span class="hint">16 components · 20 connections</span>
+              <span class="hint">16 components · 20 connections · filter · search · drill down</span>
               <span class="sec-tag push">BOB-05</span>
             </div>
             <div class="card-body" style="display: flex; flex-direction: column; gap: 14px;">
@@ -144,11 +144,60 @@
                   <button type="button" class="active">L2 · Services &amp; infra</button>
                   <button type="button">L3 · Components</button>
                 </div>
-                <span class="arch-note">select a component to highlight its connections</span>
+                <span class="arch-note">select a component for tabbed details · filter or search below</span>
                 <span class="push">
                   <button class="btn small">≣ Re-scan repos + AWS</button>
                   <button class="btn small">⇪ Export diagram</button>
                 </span>
+              </div>
+
+              <div class="map-filters" aria-label="Knowledge map filters">
+                <input type="search" id="map-search" class="map-search" placeholder="Find component… name, module, route, env var" aria-label="Search components">
+                <label>Repo
+                  <select id="filter-repo">
+                    <option value="all">all</option>
+                    <option value="esm-frontend">esm-frontend</option>
+                    <option value="esm-api">esm-api</option>
+                    <option value="esm-reporting-frontend">esm-reporting-frontend</option>
+                    <option value="esm-reporting-api">esm-reporting-api</option>
+                    <option value="esm-reporting-core">esm-reporting-core</option>
+                    <option value="mint-design-system">mint-design-system</option>
+                    <option value="external">external</option>
+                  </select>
+                </label>
+                <label>Layer
+                  <select id="filter-layer">
+                    <option value="all">all</option>
+                    <option value="experience">experience</option>
+                    <option value="service">service</option>
+                    <option value="shared">shared</option>
+                    <option value="data">data</option>
+                    <option value="external">external</option>
+                  </select>
+                </label>
+                <label>Status
+                  <select id="filter-status">
+                    <option value="all">all</option>
+                    <option value="verified">verified</option>
+                    <option value="partial">partial</option>
+                    <option value="planned">planned</option>
+                    <option value="unknown">unknown</option>
+                  </select>
+                </label>
+                <label>Communication
+                  <select id="filter-comm">
+                    <option value="all">all</option>
+                    <option value="browser">browser</option>
+                    <option value="rest">REST</option>
+                    <option value="database">database</option>
+                    <option value="package">package</option>
+                    <option value="sdk">SDK</option>
+                    <option value="service">service</option>
+                    <option value="navigation">navigation</option>
+                    <option value="replication">replication</option>
+                  </select>
+                </label>
+                <button class="btn small" id="reset-map" type="button">⟲ Reset</button>
               </div>
 
               <div class="map-wrap">
@@ -161,12 +210,12 @@
       <marker id="arrow-unknown" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9299a1"></path></marker>
     </defs>
     <g class="edge-layer"><path class="map-edge edge-verified" data-source="browser" data-dest="main-frontend" data-status="verified" data-comm="browser" d="M188 292 C205 250 205 150 225 133" marker-end="url(#arrow-verified)"><title>End-user Browser → Main ESM Frontend: Opens SPA [verified]</title></path><path class="map-edge edge-verified" data-source="browser" data-dest="reporting-frontend" data-status="verified" data-comm="browser" d="M188 312 C210 340 205 420 225 428" marker-end="url(#arrow-verified)"><title>End-user Browser → Reporting Frontend: Opens standalone report SPA [verified]</title></path><path class="map-edge edge-verified" data-source="main-frontend" data-dest="main-api" data-status="verified" data-comm="rest" d="M410 133 L475 130" marker-end="url(#arrow-verified)"><title>Main ESM Frontend → Main ESM API: RTK Query REST + bearer token [verified]</title></path><path class="map-edge edge-verified" data-source="main-api" data-dest="primary-db" data-status="verified" data-comm="database" d="M655 118 C705 105 720 104 760 104" marker-end="url(#arrow-verified)"><title>Main ESM API → Primary PostgreSQL: Sequelize/PostgreSQL [verified]</title></path><path class="map-edge edge-verified" data-source="main-api" data-dest="supabase" data-status="verified" data-comm="sdk" d="M655 135 C705 145 720 176 760 184" marker-end="url(#arrow-verified)"><title>Main ESM API → Supabase Auth: Supabase auth SDK [verified]</title></path><path class="map-edge edge-verified" data-source="main-api" data-dest="uploads-s3" data-status="verified" data-comm="sdk" d="M655 148 C705 175 720 238 760 258" marker-end="url(#arrow-verified)"><title>Main ESM API → Main Upload S3: AWS SDK / presigned PUT [verified]</title></path><path class="map-edge edge-verified" data-source="main-frontend" data-dest="assistant" data-status="verified" data-comm="rest" d="M410 150 C560 220 650 320 760 332" marker-end="url(#arrow-verified)"><title>Main ESM Frontend → Mint AI Service: Assistant package endpoint [verified]</title></path><path class="map-edge edge-verified" data-source="main-frontend" data-dest="api-contracts" data-status="verified" data-comm="package" d="M410 114 C650 20 875 160 970 276" marker-end="url(#arrow-verified)"><title>Main ESM Frontend → API Contracts Package: NPM types [verified]</title></path><path class="map-edge edge-verified" data-source="main-api" data-dest="api-contracts" data-status="verified" data-comm="package" d="M655 130 C800 135 875 225 970 274" marker-end="url(#arrow-verified)"><title>Main ESM API → API Contracts Package: NPM contracts [verified]</title></path><path class="map-edge edge-verified" data-source="reporting-frontend" data-dest="reporting-api" data-status="verified" data-comm="rest" d="M410 428 L475 426" marker-end="url(#arrow-verified)"><title>Reporting Frontend → Reporting API: Stationary GET only [verified]</title></path><path class="map-edge edge-verified" data-source="reporting-frontend" data-dest="mint-ds" data-status="verified" data-comm="package" d="M225 449 C205 475 190 500 188 505" marker-end="url(#arrow-verified)"><title>Reporting Frontend → Mint Design System: React components + CSS [verified]</title></path><path class="map-edge edge-verified" data-source="reporting-api" data-dest="reporting-core" data-status="verified" data-comm="package" d="M655 425 L760 424" marker-end="url(#arrow-verified)"><title>Reporting API → Reporting Core: In-process calculation [verified]</title></path><path class="map-edge edge-verified" data-source="reporting-api" data-dest="api-contracts" data-status="verified" data-comm="package" d="M655 407 C800 350 875 298 970 282" marker-end="url(#arrow-verified)"><title>Reporting API → API Contracts Package: NPM contracts [verified]</title></path><path class="map-edge edge-verified" data-source="reporting-api" data-dest="primary-db" data-status="verified" data-comm="database" d="M565 385 C590 280 690 130 760 108" marker-end="url(#arrow-verified)"><title>Reporting API → Primary PostgreSQL: Direct Sequelize read [verified]</title></path><path class="map-edge edge-planned" data-source="reporting-api" data-dest="metadata-db" data-status="planned" data-comm="database" d="M655 448 C705 475 720 510 760 521" marker-end="url(#arrow-planned)"><title>Reporting API → Reporting Metadata DB: Provider exists; module not imported [planned]</title></path><path class="map-edge edge-planned" data-source="reporting-api" data-dest="artifact-s3" data-status="planned" data-comm="sdk" d="M655 453 C700 520 720 590 760 601" marker-end="url(#arrow-planned)"><title>Reporting API → Report Artifact S3: Uploader exists; not invoked [planned]</title></path><path class="map-edge edge-planned" data-source="reporting-api" data-dest="pdf" data-status="planned" data-comm="service" d="M565 467 L565 560" marker-end="url(#arrow-planned)"><title>Reporting API → Puppeteer PDF Renderer: Services exist; not exposed [planned]</title></path><path class="map-edge edge-unknown" data-source="primary-db" data-dest="read-replica" data-status="unknown" data-comm="replication" d="M940 103 L970 126" marker-end="url(#arrow-unknown)"><title>Primary PostgreSQL → Read Replica: No implementation evidence [unknown]</title></path><path class="map-edge edge-planned" data-source="main-frontend" data-dest="reporting-frontend" data-status="planned" data-comm="navigation" d="M318 171 L318 390" marker-end="url(#arrow-planned)"><title>Main ESM Frontend → Reporting Frontend: No route/link found [planned]</title></path><path class="map-edge edge-unknown" data-source="main-api" data-dest="reporting-api" data-status="unknown" data-comm="rest" d="M565 170 L565 385" marker-end="url(#arrow-unknown)"><title>Main ESM API → Reporting API: No client or route found [unknown]</title></path></g>
-    <g class="node-layer"><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for End-user Browser" data-id="browser" data-repo="external" data-layer="experience" data-status="verified" data-code="ARC-01" data-desc="End-user browser running the main ESM SPA or the standalone reporting SPA. Browser print is currently the only complete report export path." data-details="BrowserRouter routes in both SPAs | window.print + blob URL download helper | passes context via URL/query parameters" data-search="end-user browser runs the main esm spa or the standalone reporting spa. browser print is the only complete report export path. browserrouter window.print blob url download helper main frontend routes reporting frontend routes url/query parameters"><rect x="38" y="270" width="150" height="64" rx="12"></rect><text class="node-code" x="48" y="286">ARC-01</text><text x="113.0" y="302.0" text-anchor="middle"><tspan x="113.0" dy="0">End-user Browser</tspan></text><circle class="status-dot" cx="177" cy="281" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Main ESM Frontend" data-id="main-frontend" data-repo="esm-frontend" data-layer="experience" data-status="verified" data-code="ARC-02" data-desc="React/Vite SPA for projects, carbon scopes, analytics, energy, product carbon and water footprint." data-details="routes/sections.tsx · auth/context · utils/api | MUI theme · organization-carbon-analytics | Mint AI assistant embedded via package | env: VITE_API_END_POINT, VITE_ASSISTANT_API_END_POINT" data-search="main esm frontend react/vite spa for projects, carbon scopes, analytics, energy, product carbon and water footprint. routes/sections.tsx auth/context utils/api organization-carbon-analytics mui theme /dashboard/* vite_api_end_point mint ai assistant endpoint vite_api_end_point vite_assistant_api_end_point"><rect x="225" y="95" width="185" height="76" rx="12"></rect><text class="node-code" x="235" y="111">ARC-02</text><text x="317.5" y="133.0" text-anchor="middle"><tspan x="317.5" dy="0">Main ESM Frontend</tspan></text><circle class="status-dot" cx="399" cy="106" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Main ESM API" data-id="main-api" data-repo="esm-api" data-layer="service" data-status="verified" data-code="ARC-03" data-desc="NestJS system-of-record API with project-scoped carbon, energy, water, users and company functionality." data-details="routes: /auth/*, /projects/:projectId/*, /upload/* | Swagger at /api | env: DB_*, SUPABASE_*, AWS_*, CORS_ORIGIN, PORT" data-search="main esm api nestjs system-of-record api with project-scoped carbon, energy, water, users and company functionality. auth users companies projects scope 1/2/3 emissions summary product carbon organization energy water footprint upload swagger /api /auth/* /projects/:projectid/* /upload/* db_* supabase_* aws_* cors_origin port"><rect x="475" y="90" width="180" height="80" rx="12"></rect><text class="node-code" x="485" y="106">ARC-03</text><text x="565.0" y="130.0" text-anchor="middle"><tspan x="565.0" dy="0">Main ESM API</tspan></text><circle class="status-dot" cx="644" cy="101" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Primary PostgreSQL" data-id="primary-db" data-repo="esm-api" data-layer="data" data-status="verified" data-code="ARC-04" data-desc="Sequelize-backed operational PostgreSQL database for the main ESM API." data-details="Sequelize models · PostgreSQL protocol | env: DB_HOST, DB_PORT, DB_USERNAME/DB_USER, DB_PASSWORD, DB_NAME" data-search="primary postgresql sequelize-backed operational database for the main esm api. sequelize models postgresql protocol db_host db_port db_username/db_user db_password db_name"><rect x="760" y="72" width="180" height="64" rx="12"></rect><text class="node-code" x="770" y="88">ARC-04</text><text x="850.0" y="104.0" text-anchor="middle"><tspan x="850.0" dy="0">Primary PostgreSQL</tspan></text><circle class="status-dot" cx="929" cy="83" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Supabase Auth" data-id="supabase" data-repo="external" data-layer="external" data-status="verified" data-code="ARC-05" data-desc="External identity provider used by the main ESM API." data-details="SupabaseService · SupabaseAuthGuard · Supabase JS SDK | env: SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY" data-search="supabase auth external identity provider used by the main esm api. supabaseservice supabaseauthguard supabase js sdk supabase_url supabase_anon_key supabase_service_role_key"><rect x="760" y="155" width="180" height="58" rx="12"></rect><text class="node-code" x="770" y="171">ARC-05</text><text x="850.0" y="184.0" text-anchor="middle"><tspan x="850.0" dy="0">Supabase Auth</tspan></text><circle class="status-dot" cx="929" cy="166" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Main Upload S3" data-id="uploads-s3" data-repo="external" data-layer="external" data-status="verified" data-code="ARC-06" data-desc="S3 bucket used by the main API file upload and presigned URL flows." data-details="UploadService · AWS SDK PutObject · presigned PUT URL | env: AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_BUCKET/AWS_S3_BUCKET" data-search="main upload s3 s3 bucket used by main api file upload and presigned url flows. uploadservice aws sdk putobject presigned put url aws_region aws_access_key_id aws_secret_access_key aws_bucket/aws_s3_bucket"><rect x="760" y="229" width="180" height="58" rx="12"></rect><text class="node-code" x="770" y="245">ARC-06</text><text x="850.0" y="258.0" text-anchor="middle"><tspan x="850.0" dy="0">Main Upload S3</tspan></text><circle class="status-dot" cx="929" cy="240" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Mint AI Service" data-id="assistant" data-repo="external" data-layer="external" data-status="verified" data-code="ARC-07" data-desc="External assistant API consumed by the main frontend through @moderta/mint-ai-assistant." data-details="MintAiAssistant component | HTTP endpoint supplied to the package | env: VITE_ASSISTANT_API_END_POINT" data-search="mint ai service external assistant api consumed by the main frontend through @moderta/mint-ai-assistant. mintaiassistant http endpoint supplied to package vite_assistant_api_end_point"><rect x="760" y="303" width="180" height="58" rx="12"></rect><text class="node-code" x="770" y="319">ARC-07</text><text x="850.0" y="332.0" text-anchor="middle"><tspan x="850.0" dy="0">Mint AI Service</tspan></text><circle class="status-dot" cx="929" cy="314" r="5"></circle></g><g class="map-node node-partial" tabindex="0" role="button" aria-label="Open details for Reporting Frontend" data-id="reporting-frontend" data-repo="esm-reporting-frontend" data-layer="experience" data-status="partial" data-code="ARC-08" data-desc="Standalone React report setup/document SPA. The full report defaults to mock data; only the stationary breakdown calls the reporting API." data-details="ReportSetupPage · ReportDocumentPage · RTK Query endpoints | report pages + print CSS | routes: /reports/organization-carbon(/document) | env: VITE_REPORT_API_BASE_URL, VITE_REPORT_DATA_SOURCE, VITE_*_REPORT_PATH" data-search="reporting frontend standalone react report setup/document spa. full report defaults to mock; stationary breakdown can call the reporting api. reportsetuppage reportdocumentpage rtk query endpoints report pages print css /reports/organization-carbon /reports/organization-carbon/document vite_report_api_base_url vite_report_data_source vite_*_report_path vite_scope1_stationary_breakdown_path"><rect x="225" y="390" width="185" height="78" rx="12"></rect><text class="node-code" x="235" y="406">ARC-08</text><text x="317.5" y="429.0" text-anchor="middle"><tspan x="317.5" dy="0">Reporting Frontend</tspan></text><circle class="status-dot" cx="399" cy="401" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Mint Design System" data-id="mint-ds" data-repo="mint-design-system" data-layer="shared" data-status="verified" data-code="ARC-09" data-desc="React/Tailwind component package with explicit atomic design layers and report templates." data-details="tokens · atoms · molecules · organisms · templates | BrandProvider · Storybook | @moderta/mint-design-system · styles.css · theme.css" data-search="mint design system react/tailwind component package with explicit atomic design layers and report templates. tokens atoms molecules organisms templates brandprovider storybook @moderta/mint-design-system styles.css theme.css css custom properties"><rect x="38" y="470" width="150" height="68" rx="12"></rect><text class="node-code" x="48" y="486">ARC-09</text><text x="113.0" y="504.0" text-anchor="middle"><tspan x="113.0" dy="0">Mint Design System</tspan></text><circle class="status-dot" cx="177" cy="481" r="5"></circle></g><g class="map-node node-partial" tabindex="0" role="button" aria-label="Open details for Reporting API" data-id="reporting-api" data-repo="esm-reporting-api" data-layer="service" data-status="partial" data-code="ARC-10" data-desc="NestJS reporting service with one stationary breakdown route, a direct PostgreSQL read and in-process core calculation; metadata, S3 and PDF components are dormant." data-details="GET /reports/scope-1/stationary-breakdown | imported: ReportingModule, DatabaseModule | not imported: ReportingMetadataModule, PdfModule | env: DB_*, REPORTING_DB_*, REPORT_ARTIFACTS_S3_BUCKET, CORS_ORIGINS, PUPPETEER_EXECUTABLE_PATH" data-search="reporting api nestjs reporting service with one stationary breakdown route, direct postgresql read, core calculation, dormant metadata/s3/pdf components. reportingmodule databasemodule reportingmetadatamodule (not imported) pdfmodule (not imported) get /reports/scope-1/stationary-breakdown db_* reporting_db_* report_artifacts_s3_bucket cors_origins puppeteer_executable_path"><rect x="475" y="385" width="180" height="82" rx="12"></rect><text class="node-code" x="485" y="401">ARC-10</text><text x="565.0" y="426.0" text-anchor="middle"><tspan x="565.0" dy="0">Reporting API</tspan></text><circle class="status-dot" cx="644" cy="396" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Reporting Core" data-id="reporting-core" data-repo="esm-reporting-core" data-layer="shared" data-status="verified" data-code="ARC-11" data-desc="Framework-free domain and calculation package. It performs no HTTP, DB, rendering, auth or export." data-details="application/calculations · definitions · builders | domain · shared/result | @moderta/reporting-core package exports" data-search="reporting core framework-free domain and calculation package. it performs no http, db, rendering, auth or export. application/calculations application/definitions application/builders domain shared/result @moderta/reporting-core package exports "><rect x="760" y="390" width="180" height="68" rx="12"></rect><text class="node-code" x="770" y="406">ARC-11</text><text x="850.0" y="424.0" text-anchor="middle"><tspan x="850.0" dy="0">Reporting Core</tspan></text><circle class="status-dot" cx="929" cy="401" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for API Contracts Package" data-id="api-contracts" data-repo="external" data-layer="shared" data-status="verified" data-code="ARC-12" data-desc="External @moderta/api-contracts package referenced by four supplied repositories; source is not included." data-details="npm package · consumed by both frontends and both APIs | source not supplied" data-search="api contracts package external @moderta/api-contracts package referenced by four supplied repositories; source is not included. unknown—package source not supplied npm package "><rect x="970" y="250" width="160" height="68" rx="12"></rect><text class="node-code" x="980" y="266">ARC-12</text><text x="1050.0" y="275.0" text-anchor="middle"><tspan x="1050.0" dy="0">API Contracts</tspan><tspan x="1050.0" dy="18">Package</tspan></text><circle class="status-dot" cx="1119" cy="261" r="5"></circle></g><g class="map-node node-planned" tabindex="0" role="button" aria-label="Open details for Reporting Metadata DB" data-id="metadata-db" data-repo="esm-reporting-api" data-layer="data" data-status="planned" data-code="ARC-13" data-desc="Separate Sequelize connection with report_generations/report_artifacts models exists, but its module is not imported." data-details="ReportingMetadataModule · PostgresReportGenerationRepository | env: REPORTING_DB_* with DB_* fallback" data-search="reporting metadata db separate sequelize connection and report_generations/report_artifacts models exist, but its module is not imported. reportingmetadatamodule postgresreportgenerationrepository postgresql protocol reporting_db_* with db_* fallback"><rect x="760" y="490" width="180" height="62" rx="12"></rect><text class="node-code" x="770" y="506">ARC-13</text><text x="850.0" y="512.0" text-anchor="middle"><tspan x="850.0" dy="0">Reporting Metadata</tspan><tspan x="850.0" dy="18">DB</tspan></text><circle class="status-dot" cx="929" cy="501" r="5"></circle></g><g class="map-node node-planned" tabindex="0" role="button" aria-label="Open details for Report Artifact S3" data-id="artifact-s3" data-repo="esm-reporting-api" data-layer="external" data-status="planned" data-code="ARC-14" data-desc="Service can upload report JSON with checksum and metadata, but it is not invoked in the supplied code." data-details="ReportingObjectStorageService · AWS S3 PutObject | env: REPORT_ARTIFACTS_S3_BUCKET, AWS_REGION/AWS_DEFAULT_REGION" data-search="report artifact s3 service can upload report json with checksum and metadata, but it is not invoked in the supplied code. reportingobjectstorageservice aws s3 putobject report_artifacts_s3_bucket aws_region/aws_default_region"><rect x="760" y="570" width="180" height="62" rx="12"></rect><text class="node-code" x="770" y="586">ARC-14</text><text x="850.0" y="601.0" text-anchor="middle"><tspan x="850.0" dy="0">Report Artifact S3</tspan></text><circle class="status-dot" cx="929" cy="581" r="5"></circle></g><g class="map-node node-planned" tabindex="0" role="button" aria-label="Open details for Puppeteer PDF Renderer" data-id="pdf" data-repo="esm-reporting-api" data-layer="service" data-status="planned" data-code="ARC-15" data-desc="Self-contained HTML template and Puppeteer renderer exist, but the controller and module graph do not expose them." data-details="PdfBrowserService · PdfRendererService · Scope1StationaryBreakdownPdfService | Handlebars template · in-process service | env: PUPPETEER_EXECUTABLE_PATH" data-search="puppeteer pdf renderer self-contained html template and puppeteer renderer exist, but controller and module graph do not expose them. pdfbrowserservice pdfrendererservice scope1stationarybreakdownpdfservice handlebars template in-process service; intended http response puppeteer_executable_path"><rect x="475" y="560" width="180" height="68" rx="12"></rect><text class="node-code" x="485" y="576">ARC-15</text><text x="565.0" y="585.0" text-anchor="middle"><tspan x="565.0" dy="0">Puppeteer PDF</tspan><tspan x="565.0" dy="18">Renderer</tspan></text><circle class="status-dot" cx="644" cy="571" r="5"></circle></g><g class="map-node node-unknown" tabindex="0" role="button" aria-label="Open details for Read Replica" data-id="read-replica" data-repo="external" data-layer="data" data-status="unknown" data-code="ARC-16" data-desc="Shown as an expected concept in the textual brief, but no replica-specific implementation evidence exists." data-details="no implementation evidence — status unknown" data-search="read replica shown as an expected concept in the textual brief, but no replica-specific implementation evidence exists.  unknown "><rect x="970" y="100" width="160" height="58" rx="12"></rect><text class="node-code" x="980" y="116">ARC-16</text><text x="1050.0" y="129.0" text-anchor="middle"><tspan x="1050.0" dy="0">Read Replica</tspan></text><circle class="status-dot" cx="1119" cy="111" r="5"></circle></g></g>
+    <g class="node-layer"><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for End-user Browser" data-id="browser" data-repo="external" data-layer="experience" data-status="verified" data-code="ARC-01" data-desc="End-user browser running the main ESM SPA or the standalone reporting SPA. Browser print is currently the only complete report export path." data-details="BrowserRouter routes in both SPAs | window.print + blob URL download helper | passes context via URL/query parameters" data-tech="client" data-tech-label="◍ Browser client" data-search="end-user browser runs the main esm spa or the standalone reporting spa. browser print is the only complete report export path. browserrouter window.print blob url download helper main frontend routes reporting frontend routes url/query parameters"><rect x="38" y="270" width="150" height="64" rx="12"></rect><rect class="tech-bar tech-client" x="39.5" y="271.5" width="5" height="61" rx="2.5"></rect><text class="node-tech tech-client" x="50" y="326">◍ Browser client</text><text class="node-code" x="48" y="286">ARC-01</text><text x="113.0" y="302.0" text-anchor="middle"><tspan x="113.0" dy="0">End-user Browser</tspan></text><circle class="status-dot" cx="177" cy="281" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Main ESM Frontend" data-id="main-frontend" data-repo="esm-frontend" data-layer="experience" data-status="verified" data-code="ARC-02" data-desc="React/Vite SPA for projects, carbon scopes, analytics, energy, product carbon and water footprint." data-details="routes/sections.tsx · auth/context · utils/api | MUI theme · organization-carbon-analytics | Mint AI assistant embedded via package | env: VITE_API_END_POINT, VITE_ASSISTANT_API_END_POINT" data-tech="react" data-tech-label="⚛ React SPA" data-lld="TD-009" data-search="main esm frontend react/vite spa for projects, carbon scopes, analytics, energy, product carbon and water footprint. routes/sections.tsx auth/context utils/api organization-carbon-analytics mui theme /dashboard/* vite_api_end_point mint ai assistant endpoint vite_api_end_point vite_assistant_api_end_point"><rect x="225" y="95" width="185" height="76" rx="12"></rect><rect class="tech-bar tech-react" x="226.5" y="96.5" width="5" height="73" rx="2.5"></rect><text class="node-tech tech-react" x="237" y="163">⚛ React SPA</text><text class="node-lld" x="400" y="163" text-anchor="end">▤ TD-009</text><text class="node-code" x="235" y="111">ARC-02</text><text x="317.5" y="133.0" text-anchor="middle"><tspan x="317.5" dy="0">Main ESM Frontend</tspan></text><circle class="status-dot" cx="399" cy="106" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Main ESM API" data-id="main-api" data-repo="esm-api" data-layer="service" data-status="verified" data-code="ARC-03" data-desc="NestJS system-of-record API with project-scoped carbon, energy, water, users and company functionality." data-details="routes: /auth/*, /projects/:projectId/*, /upload/* | Swagger at /api | env: DB_*, SUPABASE_*, AWS_*, CORS_ORIGIN, PORT" data-tech="nest" data-tech-label="◆ NestJS API" data-lld="TD-012" data-search="main esm api nestjs system-of-record api with project-scoped carbon, energy, water, users and company functionality. auth users companies projects scope 1/2/3 emissions summary product carbon organization energy water footprint upload swagger /api /auth/* /projects/:projectid/* /upload/* db_* supabase_* aws_* cors_origin port"><rect x="475" y="90" width="180" height="80" rx="12"></rect><rect class="tech-bar tech-nest" x="476.5" y="91.5" width="5" height="77" rx="2.5"></rect><text class="node-tech tech-nest" x="487" y="162">◆ NestJS API</text><text class="node-lld" x="645" y="162" text-anchor="end">▤ TD-012</text><text class="node-code" x="485" y="106">ARC-03</text><text x="565.0" y="130.0" text-anchor="middle"><tspan x="565.0" dy="0">Main ESM API</tspan></text><circle class="status-dot" cx="644" cy="101" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Primary PostgreSQL" data-id="primary-db" data-repo="esm-api" data-layer="data" data-status="verified" data-code="ARC-04" data-desc="Sequelize-backed operational PostgreSQL database for the main ESM API." data-details="Sequelize models · PostgreSQL protocol | env: DB_HOST, DB_PORT, DB_USERNAME/DB_USER, DB_PASSWORD, DB_NAME" data-tech="db" data-tech-label="◫ PostgreSQL" data-search="primary postgresql sequelize-backed operational database for the main esm api. sequelize models postgresql protocol db_host db_port db_username/db_user db_password db_name"><rect x="760" y="72" width="180" height="64" rx="12"></rect><rect class="tech-bar tech-db" x="761.5" y="73.5" width="5" height="61" rx="2.5"></rect><text class="node-tech tech-db" x="772" y="128">◫ PostgreSQL</text><text class="node-code" x="770" y="88">ARC-04</text><text x="850.0" y="104.0" text-anchor="middle"><tspan x="850.0" dy="0">Primary PostgreSQL</tspan></text><circle class="status-dot" cx="929" cy="83" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Supabase Auth" data-id="supabase" data-repo="external" data-layer="external" data-status="verified" data-code="ARC-05" data-desc="External identity provider used by the main ESM API." data-details="SupabaseService · SupabaseAuthGuard · Supabase JS SDK | env: SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY" data-tech="ext" data-tech-label="◈ External · auth" data-search="supabase auth external identity provider used by the main esm api. supabaseservice supabaseauthguard supabase js sdk supabase_url supabase_anon_key supabase_service_role_key"><rect x="760" y="155" width="180" height="58" rx="12"></rect><rect class="tech-bar tech-ext" x="761.5" y="156.5" width="5" height="55" rx="2.5"></rect><text class="node-tech tech-ext" x="772" y="205">◈ External · auth</text><text class="node-code" x="770" y="171">ARC-05</text><text x="850.0" y="184.0" text-anchor="middle"><tspan x="850.0" dy="0">Supabase Auth</tspan></text><circle class="status-dot" cx="929" cy="166" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Main Upload S3" data-id="uploads-s3" data-repo="external" data-layer="external" data-status="verified" data-code="ARC-06" data-desc="S3 bucket used by the main API file upload and presigned URL flows." data-details="UploadService · AWS SDK PutObject · presigned PUT URL | env: AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_BUCKET/AWS_S3_BUCKET" data-tech="aws" data-tech-label="☁ AWS S3" data-search="main upload s3 s3 bucket used by main api file upload and presigned url flows. uploadservice aws sdk putobject presigned put url aws_region aws_access_key_id aws_secret_access_key aws_bucket/aws_s3_bucket"><rect x="760" y="229" width="180" height="58" rx="12"></rect><rect class="tech-bar tech-aws" x="761.5" y="230.5" width="5" height="55" rx="2.5"></rect><text class="node-tech tech-aws" x="772" y="279">☁ AWS S3</text><text class="node-code" x="770" y="245">ARC-06</text><text x="850.0" y="258.0" text-anchor="middle"><tspan x="850.0" dy="0">Main Upload S3</tspan></text><circle class="status-dot" cx="929" cy="240" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Mint AI Service" data-id="assistant" data-repo="external" data-layer="external" data-status="verified" data-code="ARC-07" data-desc="External assistant API consumed by the main frontend through @moderta/mint-ai-assistant." data-details="MintAiAssistant component | HTTP endpoint supplied to the package | env: VITE_ASSISTANT_API_END_POINT" data-tech="ext" data-tech-label="◈ External · AI" data-search="mint ai service external assistant api consumed by the main frontend through @moderta/mint-ai-assistant. mintaiassistant http endpoint supplied to package vite_assistant_api_end_point"><rect x="760" y="303" width="180" height="58" rx="12"></rect><rect class="tech-bar tech-ext" x="761.5" y="304.5" width="5" height="55" rx="2.5"></rect><text class="node-tech tech-ext" x="772" y="353">◈ External · AI</text><text class="node-code" x="770" y="319">ARC-07</text><text x="850.0" y="332.0" text-anchor="middle"><tspan x="850.0" dy="0">Mint AI Service</tspan></text><circle class="status-dot" cx="929" cy="314" r="5"></circle></g><g class="map-node node-partial" tabindex="0" role="button" aria-label="Open details for Reporting Frontend" data-id="reporting-frontend" data-repo="esm-reporting-frontend" data-layer="experience" data-status="partial" data-code="ARC-08" data-desc="Standalone React report setup/document SPA. The full report defaults to mock data; only the stationary breakdown calls the reporting API." data-details="ReportSetupPage · ReportDocumentPage · RTK Query endpoints | report pages + print CSS | routes: /reports/organization-carbon(/document) | env: VITE_REPORT_API_BASE_URL, VITE_REPORT_DATA_SOURCE, VITE_*_REPORT_PATH" data-tech="react" data-tech-label="⚛ React SPA" data-lld="TD-013" data-search="reporting frontend standalone react report setup/document spa. full report defaults to mock; stationary breakdown can call the reporting api. reportsetuppage reportdocumentpage rtk query endpoints report pages print css /reports/organization-carbon /reports/organization-carbon/document vite_report_api_base_url vite_report_data_source vite_*_report_path vite_scope1_stationary_breakdown_path td-013"><rect x="225" y="390" width="185" height="78" rx="12"></rect><rect class="tech-bar tech-react" x="226.5" y="391.5" width="5" height="75" rx="2.5"></rect><text class="node-tech tech-react" x="237" y="460">⚛ React SPA</text><text class="node-lld" x="400" y="460" text-anchor="end">▤ TD-013</text><text class="node-code" x="235" y="406">ARC-08</text><text x="317.5" y="429.0" text-anchor="middle"><tspan x="317.5" dy="0">Reporting Frontend</tspan></text><circle class="status-dot" cx="399" cy="401" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Mint Design System" data-id="mint-ds" data-repo="mint-design-system" data-layer="shared" data-status="verified" data-code="ARC-09" data-desc="React/Tailwind component package with explicit atomic design layers and report templates." data-details="tokens · atoms · molecules · organisms · templates | BrandProvider · Storybook | @moderta/mint-design-system · styles.css · theme.css" data-tech="npm" data-tech-label="⬡ npm · React UI" data-search="mint design system react/tailwind component package with explicit atomic design layers and report templates. tokens atoms molecules organisms templates brandprovider storybook @moderta/mint-design-system styles.css theme.css css custom properties"><rect x="38" y="470" width="150" height="68" rx="12"></rect><rect class="tech-bar tech-npm" x="39.5" y="471.5" width="5" height="65" rx="2.5"></rect><text class="node-tech tech-npm" x="50" y="530">⬡ npm · React UI</text><text class="node-code" x="48" y="486">ARC-09</text><text x="113.0" y="504.0" text-anchor="middle"><tspan x="113.0" dy="0">Mint Design System</tspan></text><circle class="status-dot" cx="177" cy="481" r="5"></circle></g><g class="map-node node-partial" tabindex="0" role="button" aria-label="Open details for Reporting API" data-id="reporting-api" data-repo="esm-reporting-api" data-layer="service" data-status="partial" data-code="ARC-10" data-desc="NestJS reporting service with one stationary breakdown route, a direct PostgreSQL read and in-process core calculation; metadata, S3 and PDF components are dormant." data-details="GET /reports/scope-1/stationary-breakdown | imported: ReportingModule, DatabaseModule | not imported: ReportingMetadataModule, PdfModule | env: DB_*, REPORTING_DB_*, REPORT_ARTIFACTS_S3_BUCKET, CORS_ORIGINS, PUPPETEER_EXECUTABLE_PATH" data-tech="nest" data-tech-label="◆ NestJS API" data-lld="TD-011" data-search="reporting api nestjs reporting service with one stationary breakdown route, direct postgresql read, core calculation, dormant metadata/s3/pdf components. reportingmodule databasemodule reportingmetadatamodule (not imported) pdfmodule (not imported) get /reports/scope-1/stationary-breakdown db_* reporting_db_* report_artifacts_s3_bucket cors_origins puppeteer_executable_path"><rect x="475" y="385" width="180" height="82" rx="12"></rect><rect class="tech-bar tech-nest" x="476.5" y="386.5" width="5" height="79" rx="2.5"></rect><text class="node-tech tech-nest" x="487" y="459">◆ NestJS API</text><text class="node-lld" x="645" y="459" text-anchor="end">▤ TD-011</text><text class="node-code" x="485" y="401">ARC-10</text><text x="565.0" y="426.0" text-anchor="middle"><tspan x="565.0" dy="0">Reporting API</tspan></text><circle class="status-dot" cx="644" cy="396" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for Reporting Core" data-id="reporting-core" data-repo="esm-reporting-core" data-layer="shared" data-status="verified" data-code="ARC-11" data-desc="Framework-free domain and calculation package. It performs no HTTP, DB, rendering, auth or export." data-details="application/calculations · definitions · builders | domain · shared/result | @moderta/reporting-core package exports" data-tech="npm" data-tech-label="⬡ npm · domain" data-search="reporting core framework-free domain and calculation package. it performs no http, db, rendering, auth or export. application/calculations application/definitions application/builders domain shared/result @moderta/reporting-core package exports "><rect x="760" y="390" width="180" height="68" rx="12"></rect><rect class="tech-bar tech-npm" x="761.5" y="391.5" width="5" height="65" rx="2.5"></rect><text class="node-tech tech-npm" x="772" y="450">⬡ npm · domain</text><text class="node-code" x="770" y="406">ARC-11</text><text x="850.0" y="424.0" text-anchor="middle"><tspan x="850.0" dy="0">Reporting Core</tspan></text><circle class="status-dot" cx="929" cy="401" r="5"></circle></g><g class="map-node node-verified" tabindex="0" role="button" aria-label="Open details for API Contracts Package" data-id="api-contracts" data-repo="external" data-layer="shared" data-status="verified" data-code="ARC-12" data-desc="External @moderta/api-contracts package referenced by four supplied repositories; source is not included." data-details="npm package · consumed by both frontends and both APIs | source not supplied" data-tech="npm" data-tech-label="⬡ npm · types" data-search="api contracts package external @moderta/api-contracts package referenced by four supplied repositories; source is not included. unknown—package source not supplied npm package "><rect x="970" y="250" width="160" height="68" rx="12"></rect><rect class="tech-bar tech-npm" x="971.5" y="251.5" width="5" height="65" rx="2.5"></rect><text class="node-tech tech-npm" x="982" y="310">⬡ npm · types</text><text class="node-code" x="980" y="266">ARC-12</text><text x="1050.0" y="275.0" text-anchor="middle"><tspan x="1050.0" dy="0">API Contracts</tspan><tspan x="1050.0" dy="18">Package</tspan></text><circle class="status-dot" cx="1119" cy="261" r="5"></circle></g><g class="map-node node-planned" tabindex="0" role="button" aria-label="Open details for Reporting Metadata DB" data-id="metadata-db" data-repo="esm-reporting-api" data-layer="data" data-status="planned" data-code="ARC-13" data-desc="Separate Sequelize connection with report_generations/report_artifacts models exists, but its module is not imported." data-details="ReportingMetadataModule · PostgresReportGenerationRepository | env: REPORTING_DB_* with DB_* fallback" data-tech="db" data-tech-label="◫ PostgreSQL" data-lld="TD-011" data-search="reporting metadata db separate sequelize connection and report_generations/report_artifacts models exist, but its module is not imported. reportingmetadatamodule postgresreportgenerationrepository postgresql protocol reporting_db_* with db_* fallback"><rect x="760" y="490" width="180" height="62" rx="12"></rect><rect class="tech-bar tech-db" x="761.5" y="491.5" width="5" height="59" rx="2.5"></rect><text class="node-tech tech-db" x="772" y="544">◫ PostgreSQL</text><text class="node-lld" x="930" y="544" text-anchor="end">▤ TD-011</text><text class="node-code" x="770" y="506">ARC-13</text><text x="850.0" y="512.0" text-anchor="middle"><tspan x="850.0" dy="0">Reporting Metadata</tspan><tspan x="850.0" dy="18">DB</tspan></text><circle class="status-dot" cx="929" cy="501" r="5"></circle></g><g class="map-node node-planned" tabindex="0" role="button" aria-label="Open details for Report Artifact S3" data-id="artifact-s3" data-repo="esm-reporting-api" data-layer="external" data-status="planned" data-code="ARC-14" data-desc="Service can upload report JSON with checksum and metadata, but it is not invoked in the supplied code." data-details="ReportingObjectStorageService · AWS S3 PutObject | env: REPORT_ARTIFACTS_S3_BUCKET, AWS_REGION/AWS_DEFAULT_REGION" data-tech="aws" data-tech-label="☁ AWS S3" data-lld="TD-011" data-search="report artifact s3 service can upload report json with checksum and metadata, but it is not invoked in the supplied code. reportingobjectstorageservice aws s3 putobject report_artifacts_s3_bucket aws_region/aws_default_region"><rect x="760" y="570" width="180" height="62" rx="12"></rect><rect class="tech-bar tech-aws" x="761.5" y="571.5" width="5" height="59" rx="2.5"></rect><text class="node-tech tech-aws" x="772" y="624">☁ AWS S3</text><text class="node-lld" x="930" y="624" text-anchor="end">▤ TD-011</text><text class="node-code" x="770" y="586">ARC-14</text><text x="850.0" y="601.0" text-anchor="middle"><tspan x="850.0" dy="0">Report Artifact S3</tspan></text><circle class="status-dot" cx="929" cy="581" r="5"></circle></g><g class="map-node node-planned" tabindex="0" role="button" aria-label="Open details for Puppeteer PDF Renderer" data-id="pdf" data-repo="esm-reporting-api" data-layer="service" data-status="planned" data-code="ARC-15" data-desc="Self-contained HTML template and Puppeteer renderer exist, but the controller and module graph do not expose them." data-details="PdfBrowserService · PdfRendererService · Scope1StationaryBreakdownPdfService | Handlebars template · in-process service | env: PUPPETEER_EXECUTABLE_PATH" data-tech="nest" data-tech-label="◆ NestJS service" data-lld="TD-011" data-search="puppeteer pdf renderer self-contained html template and puppeteer renderer exist, but controller and module graph do not expose them. pdfbrowserservice pdfrendererservice scope1stationarybreakdownpdfservice handlebars template in-process service; intended http response puppeteer_executable_path"><rect x="475" y="560" width="180" height="68" rx="12"></rect><rect class="tech-bar tech-nest" x="476.5" y="561.5" width="5" height="65" rx="2.5"></rect><text class="node-tech tech-nest" x="487" y="620">◆ NestJS service</text><text class="node-lld" x="645" y="620" text-anchor="end">▤ TD-011</text><text class="node-code" x="485" y="576">ARC-15</text><text x="565.0" y="585.0" text-anchor="middle"><tspan x="565.0" dy="0">Puppeteer PDF</tspan><tspan x="565.0" dy="18">Renderer</tspan></text><circle class="status-dot" cx="644" cy="571" r="5"></circle></g><g class="map-node node-unknown" tabindex="0" role="button" aria-label="Open details for Read Replica" data-id="read-replica" data-repo="external" data-layer="data" data-status="unknown" data-code="ARC-16" data-desc="Shown as an expected concept in the textual brief, but no replica-specific implementation evidence exists." data-details="no implementation evidence — status unknown" data-tech="db" data-tech-label="◫ PostgreSQL" data-search="read replica shown as an expected concept in the textual brief, but no replica-specific implementation evidence exists.  unknown "><rect x="970" y="100" width="160" height="58" rx="12"></rect><rect class="tech-bar tech-db" x="971.5" y="101.5" width="5" height="55" rx="2.5"></rect><text class="node-tech tech-db" x="982" y="150">◫ PostgreSQL</text><text class="node-code" x="980" y="116">ARC-16</text><text x="1050.0" y="129.0" text-anchor="middle"><tspan x="1050.0" dy="0">Read Replica</tspan></text><circle class="status-dot" cx="1119" cy="111" r="5"></circle></g></g>
     </svg>
               </div>
 
               <div class="map-detail" id="map-detail" aria-live="polite">
-                <span class="map-detail-empty">Select a component (ARC-01…ARC-16) to see its description, implementation details and direct connections — ask Uncle Bob in chat (BOB-07) to change the map.</span>
+                <div class="drawer-empty">Select a component (ARC-01…ARC-16) — its overview, responsibilities, modules, interfaces, dependencies, data, configuration, evidence, risks and open questions open here in tabs. Components carrying a ▤ TD badge also open a graphical <strong>Low-Level Design</strong> tab — component diagram, module tree, API surface, data model and business flow rendered from the design document. Ask Uncle Bob in chat (BOB-07) to change the map.</div>
               </div>
 
               <div class="arch-legend">
@@ -175,6 +224,17 @@
                 <span class="key"><span class="key-line planned"></span> Planned — code exists, not wired</span>
                 <span class="key"><span class="key-line unknown"></span> Unknown — no evidence</span>
                 <span class="key"><span class="key-line inferred"></span> Inferred connection</span>
+              </div>
+
+              <div class="arch-legend">
+                <span class="key"><span class="key-chip" style="background: #0ea5e9"></span> ⚛ React SPA</span>
+                <span class="key"><span class="key-chip" style="background: #e0234e"></span> ◆ NestJS</span>
+                <span class="key"><span class="key-chip" style="background: #8250df"></span> ⬡ npm library</span>
+                <span class="key"><span class="key-chip" style="background: #336791"></span> ◫ PostgreSQL</span>
+                <span class="key"><span class="key-chip" style="background: #d97706"></span> ☁ AWS S3</span>
+                <span class="key"><span class="key-chip" style="background: #0f766e"></span> ◈ External service</span>
+                <span class="key"><span class="key-chip" style="background: #64748b"></span> ◍ Browser</span>
+                <span class="key"><span class="sec-tag">▤ LLD</span> has a Low-Level Design in Technical designs (BOB-06)</span>
               </div>
             </div>
             <div class="kb-foot">
@@ -192,36 +252,47 @@
             </div>
             <div class="list">
               <div class="list-row">
-                <span class="tdoc-id">TD-012</span>
-                <span class="tdoc-fmt">HTML</span>
+                <span class="tdoc-id">TD-013</span>
+                <span class="tdoc-fmt">LLD</span>
                 <div class="row-main">
-                  <div class="row-title">esm-api — queue-based report generation</div>
-                  <div class="row-meta">Linked to BOB-05: Main ESM API, Reporting API · AI edited 10m ago</div>
+                  <div class="row-title">esm-reporting-frontend — report SPA low-level design</div>
+                  <div class="row-meta">Linked to BOB-05: Reporting Frontend (ARC-08) · built from repo scan · AI drafted 5m ago</div>
                 </div>
                 <span class="pill warning"><span class="dot"></span>⚠ Draft — AI edited</span>
-                <button class="btn small">Preview</button>
+                <button class="btn small" data-lld-node="reporting-frontend">Preview</button>
+                <button class="btn small">✦ Edit with AI</button>
+              </div>
+              <div class="list-row">
+                <span class="tdoc-id">TD-012</span>
+                <span class="tdoc-fmt">LLD</span>
+                <div class="row-main">
+                  <div class="row-title">esm-api — service low-level design</div>
+                  <div class="row-meta">Linked to BOB-05: Main ESM API (ARC-03) · AI edited 10m ago</div>
+                </div>
+                <span class="pill warning"><span class="dot"></span>⚠ Draft — AI edited</span>
+                <button class="btn small" data-lld-node="main-api">Preview</button>
                 <button class="btn small">✦ Edit with AI</button>
               </div>
               <div class="list-row">
                 <span class="tdoc-id">TD-011</span>
-                <span class="tdoc-fmt">HTML</span>
+                <span class="tdoc-fmt">LLD</span>
                 <div class="row-main">
                   <div class="row-title">esm-reporting-api — expose PDF renderer &amp; metadata DB</div>
                   <div class="row-meta">Wires the three planned edges on BOB-05 · with sample code + branch <span class="tdoc-id">feat/reporting-pdf</span></div>
                 </div>
                 <span class="pill accent"><span class="dot"></span>In review · BA + Architect</span>
-                <button class="btn small">Preview</button>
+                <button class="btn small" data-lld-node="reporting-api">Preview</button>
                 <button class="btn small">✦ Edit with AI</button>
               </div>
               <div class="list-row">
                 <span class="tdoc-id">TD-009</span>
-                <span class="tdoc-fmt">HTML</span>
+                <span class="tdoc-fmt">LLD</span>
                 <div class="row-main">
                   <div class="row-title">esm-frontend — dashboard data-loading design</div>
                   <div class="row-meta">Approved by Ruwan · 2026-07-28 · AI may only add separate suggestions</div>
                 </div>
                 <span class="pill good"><span class="dot"></span>✓ Approved · locked</span>
-                <button class="btn small">Preview</button>
+                <button class="btn small" data-lld-node="main-frontend">Preview</button>
                 <button class="btn small" disabled title="Locked after human approval">✦ Edit with AI</button>
               </div>
               <div class="list-row">
@@ -294,6 +365,966 @@
   </div>
 </div>
 <script>
+// ============================================================================
+// Low-Level Design (LLD) documents + graphical renderer — window.LLD
+// Structure follows the LLD template in support/low-level.md (Overview,
+// Requirements, Architecture, Module Design, API Design, Database Design,
+// Business Flow, Validation/Errors/Security/Logging/Testing/Deployment,
+// Future Improvements, Appendix), rendered as diagrams instead of prose.
+// TD-009/TD-012/TD-013 are grounded in the actual repositories
+// (frontend/, esm-api/, esm-reporting-frontend/); TD-011 is grounded in the
+// multi-repo architecture analysis because esm-reporting-api is not in this
+// workspace.
+// ============================================================================
+(function () {
+  var UID = 0;
+
+  function esc(v) {
+    return String(v == null ? '' : v).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function markerDefs(uid) {
+    return '<defs>' +
+      '<marker id="lldA' + uid + '" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#178a60"></path></marker>' +
+      '<marker id="lldW' + uid + '" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#b7791f"></path></marker>' +
+      '<marker id="lldR' + uid + '" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#9299a1"></path></marker>' +
+      '</defs>';
+  }
+
+  // ---- 3. Architecture: layered component diagram ----
+  function componentDiagram(arch) {
+    var uid = ++UID;
+    var GUT = 104, BW = 172, BH = 48, GX = 24, PT = 16, LH = 88;
+    var maxItems = 1;
+    arch.lanes.forEach(function (l) { maxItems = Math.max(maxItems, l.items.length); });
+    var width = Math.max(640, GUT + maxItems * (BW + GX) + 8);
+    var height = PT + arch.lanes.length * LH - 20;
+    var pos = {};
+    var out = [];
+    arch.lanes.forEach(function (lane, li) {
+      var y = PT + li * LH;
+      if (li) out.push('<line class="lane" x1="8" y1="' + (y - 18) + '" x2="' + (width - 8) + '" y2="' + (y - 18) + '"></line>');
+      out.push('<text class="lane-label" x="10" y="' + (y + BH / 2 + 3) + '">' + esc(lane.label.toUpperCase()) + '</text>');
+      lane.items.forEach(function (it, ii) {
+        var x = GUT + ii * (BW + GX);
+        pos[it.id] = { x: x, y: y, cx: x + BW / 2, cy: y + BH / 2 };
+        out.push('<rect class="box' + (it.hot ? ' hot' : '') + '" x="' + x + '" y="' + y + '" width="' + BW + '" height="' + BH + '" rx="9"></rect>');
+        out.push('<text x="' + (x + BW / 2) + '" y="' + (y + (it.sub ? 20 : BH / 2 + 4)) + '" text-anchor="middle">' + esc(it.label) + '</text>');
+        if (it.sub) out.push('<text class="sub" x="' + (x + BW / 2) + '" y="' + (y + 35) + '" text-anchor="middle">' + esc(it.sub) + '</text>');
+      });
+    });
+    var edges = [], labels = [];
+    (arch.flows || []).forEach(function (f) {
+      var a = pos[f.from], b = pos[f.to];
+      if (!a || !b) return;
+      var d, lx, ly;
+      if (Math.abs(a.cy - b.cy) < 2) {
+        var x1 = a.cx < b.cx ? a.x + BW : a.x, x2 = a.cx < b.cx ? b.x - 2 : b.x + BW + 2;
+        d = 'M' + x1 + ' ' + a.cy + ' L' + x2 + ' ' + b.cy;
+        lx = (x1 + x2) / 2; ly = a.y - 6;
+      } else {
+        var sy = a.cy < b.cy ? a.y + BH : a.y;
+        var ty = a.cy < b.cy ? b.y - 3 : b.y + BH + 3;
+        var my = (sy + ty) / 2;
+        d = 'M' + a.cx + ' ' + sy + ' C' + a.cx + ' ' + my + ' ' + b.cx + ' ' + my + ' ' + b.cx + ' ' + ty;
+        lx = (a.cx + b.cx) / 2; ly = my - 4;
+      }
+      edges.push('<path class="flow' + (f.dashed ? ' dashed' : '') + '" d="' + d + '" marker-end="url(#lld' + (f.dashed ? 'W' : 'A') + uid + ')"></path>');
+      if (f.label) labels.push('<text class="flow-label" x="' + lx + '" y="' + ly + '" text-anchor="middle">' + esc(f.label) + '</text>');
+    });
+    return '<div class="lld-diagram"><svg class="lld-svg" viewBox="0 0 ' + width + ' ' + height + '" role="img" aria-label="Component diagram">' +
+      markerDefs(uid) + edges.join('') + out.join('') + labels.join('') + '</svg></div>';
+  }
+
+  // ---- 7. Business flow: sequence diagram ----
+  function sequenceDiagram(flow) {
+    var uid = ++UID;
+    var n = flow.actors.length;
+    var SP = Math.max(148, Math.min(210, 960 / n));
+    var AX0 = 104;
+    var width = Math.max(640, AX0 + (n - 1) * SP + 104);
+    var idx = {};
+    flow.actors.forEach(function (a, i) { idx[a.id] = i; });
+    function ax(id) { return AX0 + idx[id] * SP; }
+    var out = [];
+    var y = 78;
+    var msgs = [];
+    flow.steps.forEach(function (s, i) {
+      var num = i + 1;
+      if (s.f === s.t) {
+        var x = ax(s.f);
+        msgs.push('<path class="seq-msg' + (s.ret ? ' ret' : '') + '" d="M' + x + ' ' + y + ' C' + (x + 46) + ' ' + y + ' ' + (x + 46) + ' ' + (y + 14) + ' ' + (x + 3) + ' ' + (y + 14) + '" marker-end="url(#lld' + (s.ret ? 'R' : 'A') + uid + ')"></path>');
+        msgs.push('<text class="flow-label" x="' + (x + 54) + '" y="' + (y + 11) + '"><tspan class="seq-num">' + num + '</tspan> ' + esc(s.label) + '</text>');
+        y += 46;
+      } else {
+        var x1 = ax(s.f), x2 = ax(s.t);
+        var dir = x1 < x2 ? -4 : 4;
+        msgs.push('<line class="seq-msg' + (s.ret ? ' ret' : '') + '" x1="' + x1 + '" y1="' + y + '" x2="' + (x2 + dir) + '" y2="' + y + '" marker-end="url(#lld' + (s.ret ? 'R' : 'A') + uid + ')"></line>');
+        msgs.push('<text class="flow-label" x="' + ((x1 + x2) / 2) + '" y="' + (y - 6) + '" text-anchor="middle"><tspan class="seq-num">' + num + '</tspan> ' + esc(s.label) + '</text>');
+        y += 34;
+      }
+    });
+    var height = y + 14;
+    flow.actors.forEach(function (a) {
+      var x = ax(a.id);
+      var bw = Math.min(SP - 12, 168);
+      out.push('<line class="seq-life" x1="' + x + '" y1="44" x2="' + x + '" y2="' + (height - 6) + '"></line>');
+      out.push('<rect class="box' + (a.hot ? ' hot' : '') + '" x="' + (x - bw / 2) + '" y="8" width="' + bw + '" height="36" rx="8"></rect>');
+      out.push('<text x="' + x + '" y="' + (a.sub ? 23 : 30) + '" text-anchor="middle">' + esc(a.label) + '</text>');
+      if (a.sub) out.push('<text class="sub" x="' + x + '" y="37" text-anchor="middle">' + esc(a.sub) + '</text>');
+    });
+    return '<div class="lld-diagram"><svg class="lld-svg" viewBox="0 0 ' + width + ' ' + height + '" role="img" aria-label="Business flow sequence diagram">' +
+      markerDefs(uid) + out.join('') + msgs.join('') + '</svg></div>';
+  }
+
+  // ---- 6. Database design: ER-style diagram ----
+  function erDiagram(er) {
+    var TW = 250, HH = 26, RH = 17, PB = 7, GAPX = 120, GAPY = 34, MX = 14, MY = 14;
+    var nCols = er.tables.length > 1 ? 2 : 1;
+    var colY = [], c;
+    for (c = 0; c < nCols; c++) colY[c] = MY;
+    var pos = {};
+    var out = [];
+    er.tables.forEach(function (t) {
+      c = 0;
+      for (var k = 1; k < nCols; k++) if (colY[k] < colY[c]) c = k;
+      var h = HH + t.cols.length * RH + PB;
+      var x = MX + c * (TW + GAPX);
+      var y = colY[c];
+      pos[t.name] = { x: x, y: y, w: TW, h: h };
+      colY[c] += h + GAPY;
+      out.push('<rect class="er-body" x="' + x + '" y="' + y + '" width="' + TW + '" height="' + h + '" rx="8"></rect>');
+      out.push('<path class="er-head" d="M' + x + ' ' + (y + 8) + ' a8 8 0 0 1 8 -8 h' + (TW - 16) + ' a8 8 0 0 1 8 8 v' + (HH - 8) + ' h-' + TW + ' z"></path>');
+      out.push('<text class="er-title" x="' + (x + 10) + '" y="' + (y + 17.5) + '">' + esc(t.name) + '</text>');
+      t.cols.forEach(function (col, ri) {
+        var ry = y + HH + (ri + 1) * RH - 4.5;
+        if (col[2]) out.push('<text class="er-key" x="' + (x + 8) + '" y="' + ry + '">' + esc(col[2]) + '</text>');
+        out.push('<text class="er-col" x="' + (x + 32) + '" y="' + ry + '">' + esc(col[0]) + '</text>');
+        out.push('<text class="er-type" x="' + (x + TW - 8) + '" y="' + ry + '" text-anchor="end">' + esc(col[1]) + '</text>');
+      });
+    });
+    var rels = [];
+    (er.rels || []).forEach(function (r) {
+      var a = pos[r.from], b = pos[r.to];
+      if (!a || !b) return;
+      var x1, y1, x2, y2;
+      if (a.x + a.w < b.x) { x1 = a.x + a.w; y1 = a.y + Math.min(44, a.h / 2); x2 = b.x; y2 = b.y + Math.min(44, b.h / 2); }
+      else if (b.x + b.w < a.x) { x1 = a.x; y1 = a.y + Math.min(44, a.h / 2); x2 = b.x + b.w; y2 = b.y + Math.min(44, b.h / 2); }
+      else if (a.y < b.y) { x1 = a.x + a.w / 2; y1 = a.y + a.h; x2 = b.x + b.w / 2; y2 = b.y; }
+      else { x1 = a.x + a.w / 2; y1 = a.y; x2 = b.x + b.w / 2; y2 = b.y + b.h; }
+      var mx = (x1 + x2) / 2, my2 = (y1 + y2) / 2;
+      rels.push('<path class="er-rel" d="M' + x1 + ' ' + y1 + ' C' + mx + ' ' + y1 + ' ' + mx + ' ' + y2 + ' ' + x2 + ' ' + y2 + '"></path>');
+      if (r.label) rels.push('<text class="er-rel-label" x="' + mx + '" y="' + (my2 - 5) + '" text-anchor="middle">' + esc(r.label) + '</text>');
+    });
+    var height = Math.max.apply(null, colY) - GAPY + MY;
+    var width = MX * 2 + nCols * TW + (nCols - 1) * GAPX;
+    return '<div class="lld-diagram"><svg class="lld-svg" viewBox="0 0 ' + width + ' ' + height + '" role="img" aria-label="Data model diagram">' +
+      rels.join('') + out.join('') + '</svg></div>';
+  }
+
+  // ---- 4. Module design: directory tree ----
+  function moduleTree(mods) {
+    return '<div class="lld-tree">' + mods.map(function (m) {
+      var mm = /^([\s│├└─]*)([\s\S]*)$/.exec(m[0]);
+      var isDir = /\/\s*$/.test(mm[2]) || /\/ ×\d+$/.test(mm[2]);
+      return '<div><span class="t-branch">' + esc(mm[1]) + '</span><span' + (isDir ? ' class="t-dir"' : '') + '>' + esc(mm[2]) + '</span>' +
+        (m[1] ? ' <span class="t-note">— ' + esc(m[1]) + '</span>' : '') + '</div>';
+    }).join('') + '</div>';
+  }
+
+  // ---- 5. API design: endpoint cards ----
+  function apiCards(apis) {
+    return '<div class="lld-apis">' + apis.map(function (a) {
+      var body = '';
+      if (a.req || a.res) {
+        var cells = [];
+        if (a.req) cells.push('<div><h4>Request</h4><pre class="lld-json">' + esc(a.req) + '</pre></div>');
+        if (a.res) cells.push('<div><h4>Response</h4><pre class="lld-json">' + esc(a.res) + '</pre></div>');
+        body = '<div class="api-body' + (cells.length === 1 ? ' single' : '') + '">' + cells.join('') + '</div>';
+      }
+      return '<details class="lld-api"' + (a.open ? ' open' : '') + '><summary>' +
+        '<span class="m-chip m-' + a.m.toLowerCase() + '">' + esc(a.m) + '</span>' +
+        '<span class="api-path">' + esc(a.p) + '</span>' +
+        (a.n ? '<span class="api-note">' + esc(a.n) + '</span>' : '') +
+        '</summary>' + body + '</details>';
+    }).join('') + '</div>';
+  }
+
+  function ul(items) {
+    return '<ul>' + (items || []).map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>';
+  }
+
+  function fact(num, title, items) {
+    return '<div class="lld-fact"><div class="fact-k"><span class="lld-num" style="width:16px;height:16px;font-size:9px;border-radius:5px;display:grid;place-items:center;background:var(--accent-tint);color:var(--accent)">' + num + '</span>' + esc(title) + '</div>' + ul(items) + '</div>';
+  }
+
+  function section(anchor, num, title, inner) {
+    return '<section class="lld-sec" id="lld-' + anchor + '"><div class="lld-sec-title"><span class="lld-num">' + num + '</span>' + esc(title) + '</div>' + inner + '</section>';
+  }
+
+  function render(tdId) {
+    var d = DOCS[tdId];
+    if (!d) return '<p class="drawer-none">No Low-Level Design found for ' + esc(tdId) + '.</p>';
+    var toc = [
+      ['overview', '1 Overview'], ['reqs', '2 Requirements'], ['arch', '3 Architecture'],
+      ['modules', '4 Modules'], ['api', '5 API'], ['data', '6 Data'], ['flow', '7 Flow'],
+      ['ops', '8–13 Rules & Ops'], ['future', '14 Future'], ['appendix', 'Appendix']
+    ];
+    var html = '<div class="lld">';
+    html += '<div class="lld-doc-head"><span class="tdoc-id">' + esc(d.doc) + '</span><span class="tdoc-fmt">LLD</span><strong>' + esc(d.title) + '</strong>' +
+      (d.covers || []).map(function (c) { return '<span class="sec-tag">' + esc(c) + '</span>'; }).join('') +
+      '<span class="pill ' + d.status[0] + '"><span class="dot"></span>' + esc(d.status[1]) + '</span>' +
+      '<span class="lld-doc-meta">v' + esc(d.version) + ' · ' + esc(d.date) + ' · ' + esc(d.author) + '</span></div>';
+    html += '<div class="lld-toc">' + toc.map(function (t) {
+      return '<button type="button" data-target="lld-' + t[0] + '">' + esc(t[1]) + '</button>';
+    }).join('') + '</div>';
+
+    html += section('overview', '1', 'Overview', '<p>' + esc(d.purpose) + '</p>' +
+      (d.note ? '<p class="lld-note">' + esc(d.note) + '</p>' : '') +
+      '<div class="lld-scope">' +
+      '<div class="lld-scope-col"><span class="detail-label">In scope</span><div class="lld-chip-row">' + d.inScope.map(function (s) { return '<span class="chip in">' + esc(s) + '</span>'; }).join('') + '</div></div>' +
+      '<div class="lld-scope-col"><span class="detail-label">Out of scope</span><div class="lld-chip-row">' + d.outScope.map(function (s) { return '<span class="chip out">' + esc(s) + '</span>'; }).join('') + '</div></div>' +
+      '</div>');
+
+    html += section('reqs', '2', 'Requirements', '<div class="lld-reqs">' +
+      d.fr.map(function (r, i) { return '<div class="lld-req"><span class="req-id">FR-' + ('00' + (i + 1)).slice(-3) + '</span><span class="req-text">' + esc(r) + '</span></div>'; }).join('') +
+      d.nfr.map(function (r) { return '<div class="lld-req nfr"><span class="req-id">NFR · ' + esc(r[0]) + '</span><span class="req-text">' + esc(r[1]) + '</span></div>'; }).join('') +
+      '</div>');
+
+    html += section('arch', '3', 'Architecture — components & flows', componentDiagram(d.arch) +
+      (d.archNote ? '<p class="lld-note">' + esc(d.archNote) + '</p>' : ''));
+    html += section('modules', '4', 'Module design', moduleTree(d.modules));
+    html += section('api', '5', 'API design', apiCards(d.apis) +
+      (d.apiNote ? '<p class="lld-note">' + esc(d.apiNote) + '</p>' : ''));
+    html += section('data', '6', d.dataTitle || 'Database design', erDiagram(d.er) +
+      (d.erNote ? '<p class="lld-note">' + esc(d.erNote) + '</p>' : ''));
+    html += section('flow', '7', 'Business flow', sequenceDiagram(d.flow));
+
+    html += section('ops', '8–13', 'Validation · Errors · Security · Logging · Testing · Deployment',
+      '<div class="lld-grid">' +
+      fact('8', 'Validation rules', d.validation) +
+      fact('9', 'Error handling', d.errors) +
+      fact('10', 'Security', d.security) +
+      fact('11', 'Logging', d.logging) +
+      fact('12', 'Testing', d.testing) +
+      fact('13', 'Deployment notes', d.deployment) +
+      '</div>');
+
+    html += section('future', '14', 'Future improvements', ul(d.future.map(esc)));
+
+    html += section('appendix', 'A', 'Appendix — evidence & version history',
+      '<div class="lld-evidence">' + d.evidence.map(function (e) { return '<span class="ev">' + esc(e) + '</span>'; }).join('') + '</div>' +
+      '<table class="lld-table"><thead><tr><th>Version</th><th>Date</th><th>Author</th><th>Changes</th></tr></thead><tbody>' +
+      d.history.map(function (h) { return '<tr><td>' + esc(h[0]) + '</td><td>' + esc(h[1]) + '</td><td>' + esc(h[2]) + '</td><td>' + esc(h[3]) + '</td></tr>'; }).join('') +
+      '</tbody></table>');
+
+    return html + '</div>';
+  }
+
+  function wire(root) {
+    root.querySelectorAll('.lld-toc button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var t = root.querySelector('#' + b.dataset.target);
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  }
+
+  var DOCS = {};
+
+  window.LLD = {
+    has: function (id) { return !!DOCS[id]; },
+    register: function (id, doc) { DOCS[id] = doc; },
+    render: render,
+    wire: wire
+  };
+})();
+</script>
+<script>
+// ---------------------------------------------------------------------------
+// LLD documents. TD-009 (ARC-02), TD-012 (ARC-03), TD-013 (ARC-08) are built
+// from scanning frontend/, esm-api/ and esm-reporting-frontend/ in this
+// workspace; TD-011 (ARC-10/13/14/15) from the architecture analysis evidence.
+// ---------------------------------------------------------------------------
+(function () {
+
+  // ===== TD-009 · Main ESM Frontend (ARC-02) =====
+  window.LLD.register('TD-009', {
+    doc: 'TD-009', covers: ['ARC-02'],
+    title: 'esm-frontend — dashboard data-loading design',
+    status: ['good', '✓ Approved · locked'], version: '1.0', date: '2026-07-28', author: 'Uncle Bob · approved by Ruwan',
+    purpose: 'React 18 + Vite SPA for enterprise carbon accounting: users sign in, pick a project (?id=<projectId>) and record GHG emissions across Scope 1 (stationary/mobile/fugitive), Scope 2 and all 15 Scope 3 categories, plus Product Carbon (LCA), Organization Energy and Water Footprint. A single config-driven table/form engine renders ~18 CRUD modules; one generated RTK Query slice exposes ~170 endpoints.',
+    inScope: ['Route/page composition', 'RTK Query data loading', 'Generic table/form engine', 'Auth & session handling', 'Project scoping via ?id='],
+    outScope: ['Reporting SPA (ARC-08)', 'Backend calculations (ARC-03)', 'Mint design system (ARC-09)'],
+    fr: [
+      'Sign in via POST /auth/signin and persist accessToken/refreshToken cookies (1-day expiry)',
+      'Scope every dashboard query by projectId read from the ?id= URL parameter (useProjectId)',
+      'Render all Scope 1/2/3 CRUD pages through the config-driven TablePage engine (hook names passed as strings)',
+      'Validate forms with zod schemas shared with the API via @moderta/api-contracts/validation',
+      'On 401, refresh the session via POST auth/refresh and retry; redirect to /auth/sign-in when no refresh token'
+    ],
+    nfr: [
+      ['Performance', 'React.lazy route-level code splitting; RTK Query tag-based cache invalidation'],
+      ['Security', 'Bearer token from accessToken cookie on every request (prepareHeaders)'],
+      ['Scalability', 'New module = descriptor + zod schema + view config — no new data-layer code'],
+      ['Consistency', 'Client and API validate with the same shared zod schemas']
+    ],
+    arch: {
+      lanes: [
+        { label: 'Routing', items: [
+          { id: 'router', label: 'routes/sections.tsx', sub: 'React.lazy route table' },
+          { id: 'layout', label: 'DashboardLayout', sub: 'nav-config per module' },
+          { id: 'guard', label: 'AuthGuard', sub: 'splash only — no redirect ⚠' }] },
+        { label: 'Features', items: [
+          { id: 'pages', label: 'pages/*', sub: 'thin route entries' },
+          { id: 'sections', label: 'sections/* ×40', sub: 'one per emission category' },
+          { id: 'schemas', label: 'zod schemas', sub: '@moderta/api-contracts' }] },
+        { label: 'Engine', items: [
+          { id: 'table', label: 'TablePage engine', sub: 'page-template-one', hot: true },
+          { id: 'form', label: 'FormTemplateOne', sub: 'react-hook-form + zodResolver', hot: true }] },
+        { label: 'Data', items: [
+          { id: 'slice', label: 'baseSliceAPI', sub: '~170 generated endpoints', hot: true },
+          { id: 'basequery', label: 'customFetchBase', sub: 'Bearer + 401 refresh' },
+          { id: 'store', label: 'Redux store', sub: '+ productCarbonSlice' }] },
+        { label: 'Server', items: [
+          { id: 'api', label: 'Main ESM API · ARC-03', sub: 'VITE_API_END_POINT' }] }
+      ],
+      flows: [
+        { from: 'router', to: 'pages', label: 'lazy render' },
+        { from: 'pages', to: 'table', label: 'config + hook names' },
+        { from: 'sections', to: 'form', label: 'field defs' },
+        { from: 'schemas', to: 'form', label: 'zodResolver' },
+        { from: 'table', to: 'slice', label: 'useGet…Query' },
+        { from: 'form', to: 'slice', label: 'mutation · invalidatesTags' },
+        { from: 'slice', to: 'basequery' },
+        { from: 'basequery', to: 'api', label: 'REST · Bearer' }
+      ]
+    },
+    archNote: 'The engine resolves RTK Query hooks dynamically from string names (apiQueryHooks[api] || baseSliceAPI[api]) and injects projectId from the URL — pages never touch fetch code.',
+    modules: [
+      ['src/', ''],
+      ['├─ routes/', 'paths.ts · sections.tsx · ErrorBoundary'],
+      ['├─ pages/', 'thin page.tsx entries per route'],
+      ['├─ sections/ ×40', 'feature modules — one per emission category'],
+      ['├─ templates/', 'table-page-processor · common form/table templates'],
+      ['├─ utils/api/', 'base-slice · base-query · api-details (38 descriptor files)'],
+      ['├─ auth/', 'context · guard · view (sign-in / sign-up)'],
+      ['├─ redux/', 'store.ts · slices/productCarbonSlice.ts'],
+      ['├─ layouts/', 'dashboard · auth · nav-config-*.tsx'],
+      ['├─ components/', '~45 shared primitives (hook-form · table · chart · snackbar)'],
+      ['├─ theme/', 'MUI v6 CSS-vars theme + energySourceColors palette'],
+      ['├─ _mock/', 'static reference data — factors · fuels · units'],
+      ['└─ locales/', 'i18next setup']
+    ],
+    apis: [
+      { m: 'POST', p: '/auth/signin', n: 'writes token cookies', open: true,
+        req: '{\n  "email": "user@company.com",\n  "password": "········"\n}',
+        res: '{\n  "accessToken": "eyJhbGciOi…",\n  "refreshToken": "eyJhbGciOi…",\n  "user": { "id": "…", "companyId": "…" }\n}' },
+      { m: 'POST', p: 'auth/refresh', n: '401 recovery · retries original request' },
+      { m: 'GET', p: '/general-projects', n: 'project picker' },
+      { m: 'GET', p: '/projects/{projectId}/ocs1-stationary-emissions', n: 'list · providesTags' },
+      { m: 'POST', p: '/projects/{projectId}/ocs1-stationary-emissions', n: 'create · invalidatesTags',
+        req: '{\n  "component": "boiler",\n  "fuel": "diesel",\n  "emissionFactor": "ipcc",\n  "month": "january",\n  "amount": 1200,\n  "unit": "litres",\n  "attachment": "https://…/invoice.pdf"\n}' },
+      { m: 'PATCH', p: '/projects/{projectId}/ocs1-stationary-emissions/{id}', n: 'update' },
+      { m: 'GET', p: 'projects/{projectId}/product-carbon/summary', n: '⚠ no leading slash' },
+      { m: 'GET', p: 'projects/{projectId}/organization-energy/analytics?year=', n: 'charts' },
+      { m: 'GET', p: '/projects/{projectId}/water-footprint/total', n: 'aggregate' }
+    ],
+    apiNote: '~170 endpoints are generated from declarative descriptors in utils/api/api-details/** — each is { getUrl, method, tags }. Mutations send the whole params object as the body.',
+    dataTitle: 'Data design — client state & session',
+    er: {
+      tables: [
+        { name: 'baseSlice · RTK Query cache', cols: [['queries / mutations', '~170 generated', ''], ['tagTypes', 'StationaryEmissions · …', ''], ['baseUrl', 'VITE_API_END_POINT', '']] },
+        { name: 'productCarbonSlice', cols: [['currentProjectId', 'string', 'PK'], ['goalScope', 'object', ''], ['materials', 'array', ''], ['energy', 'array', '']] },
+        { name: 'cookies (js-cookie)', cols: [['accessToken', 'JWT · 1 day', 'PK'], ['refreshToken', 'JWT', '']] },
+        { name: 'URL state', cols: [['id', 'projectId query param', 'FK'], ['section', 'water-footprint sub-view', '']] }
+      ],
+      rels: [
+        { from: 'baseSlice · RTK Query cache', to: 'cookies (js-cookie)', label: 'reads Bearer' },
+        { from: 'baseSlice · RTK Query cache', to: 'URL state', label: 'projectId scope' },
+        { from: 'productCarbonSlice', to: 'URL state', label: 'resets on change' }
+      ]
+    },
+    erNote: 'Server data lives in the RTK Query cache only — there is no duplicated client copy. productCarbonSlice holds draft LCA state and resets when the project id changes.',
+    flow: {
+      actors: [
+        { id: 'user', label: 'User' },
+        { id: 'page', label: 'Page / View', sub: 'sections/*' },
+        { id: 'engine', label: 'TablePage engine', sub: 'templates/', hot: true },
+        { id: 'slice', label: 'baseSliceAPI', sub: 'RTK Query' },
+        { id: 'fetch', label: 'customFetchBase', sub: 'Bearer + refresh' },
+        { id: 'api', label: 'ESM API', sub: 'ARC-03' }
+      ],
+      steps: [
+        { f: 'user', t: 'page', label: 'open /dashboard/ocs1/stationary-emissions?id=P1' },
+        { f: 'page', t: 'engine', label: 'config · api="useGetStationaryEmissionsQuery"' },
+        { f: 'engine', t: 'slice', label: 'resolve hook · inject projectId from ?id=' },
+        { f: 'slice', t: 'fetch', label: 'build request · providesTags' },
+        { f: 'fetch', t: 'api', label: 'GET /projects/P1/ocs1-stationary-emissions · Bearer' },
+        { f: 'api', t: 'fetch', label: '200 rows', ret: true },
+        { f: 'fetch', t: 'fetch', label: 'on 401 → POST auth/refresh · retry', ret: true },
+        { f: 'slice', t: 'engine', label: 'cached data → format()', ret: true },
+        { f: 'engine', t: 'user', label: 'render table rows', ret: true }
+      ]
+    },
+    validation: [
+      'zod v4 + react-hook-form via <code>@hookform/resolvers</code> — no yup anywhere',
+      'Shared server schemas: <code>CreateMobileEmissionSchema</code> etc. from @moderta/api-contracts/validation',
+      '<code>withFileUrlAttachment</code> canonicalizes attachment/fileUrl — “Proof is required”',
+      'Preprocess strips conditionally hidden fields before the schema runs (e.g. fuelAllowance)'
+    ],
+    errors: [
+      'Route: <code>ErrorBoundary</code> errorElement — “Page not found!” / “Something went wrong!”',
+      '401: refresh + retry in base-query, else redirect to /auth/sign-in',
+      '404 on lists treated as empty (<code>isNotFoundError</code>)',
+      'Server field errors → <code>setError(field, server message)</code>',
+      '⚠ sonner toasts fire but the Snackbar host is not mounted in app.tsx'
+    ],
+    security: [
+      'Bearer <code>accessToken</code> cookie attached in prepareHeaders',
+      '⚠ AuthGuard never redirects — protection is effectively the API returning 401',
+      '⚠ Sign-out clears sessionStorage but not the token cookies',
+      '⚠ Two parallel auth mechanisms: cookie/RTK (live) vs sessionStorage/axios (template leftover)'
+    ],
+    logging: [
+      '⚠ redux-logger enabled in all environments, including production',
+      'Redux devTools only when <code>import.meta.env.DEV</code>'
+    ],
+    testing: [
+      'Playwright E2E: 97 tests · Chromium (smoke · auth · purchased-goods · 18 list modules)',
+      'Stateful in-memory MockBackend via <code>page.route</code> + fake JWT cookies',
+      'No unit test runner (no vitest/jest)'
+    ],
+    deployment: [
+      '<code>VITE_API_END_POINT</code> required at build time (not in committed .env ⚠)',
+      'Vite 6 · dev port 8081 · build = <code>tsc && vite build</code>',
+      'Dockerfile → nginx:alpine SPA fallback · vercel.json rewrite',
+      'GitHub Actions: push to staging → GHCR image <code>esm-web</code>'
+    ],
+    future: [
+      'Make AuthGuard redirect unauthenticated users; unify the two auth mechanisms',
+      'Remove redux-logger from production builds',
+      'Mount the Snackbar host so toasts render',
+      'Normalize leading-slash inconsistency (product-carbon / organization-energy paths)',
+      'Route or remove dead pages: other-levels-results, /auth/verify'
+    ],
+    evidence: [
+      'src/routes/sections.tsx', 'src/utils/api/base-slice.ts', 'src/utils/api/base-query.ts',
+      'src/templates/table-page-processor/page-template-one.tsx', 'src/auth/guard/auth-guard.tsx',
+      'src/redux/store.ts', 'e2e/README.md · 97 tests'
+    ],
+    history: [
+      ['1.0', '2026-07-28', 'Uncle Bob', 'Approved by Ruwan — locked; AI may only propose separate suggestions'],
+      ['0.2', '2026-07-24', 'Uncle Bob', 'Added engine/data-flow diagrams from repo scan'],
+      ['0.1', '2026-07-21', 'Uncle Bob', 'Initial draft']
+    ]
+  });
+
+  // ===== TD-012 · Main ESM API (ARC-03) =====
+  window.LLD.register('TD-012', {
+    doc: 'TD-012', covers: ['ARC-03'],
+    title: 'esm-api — service low-level design',
+    status: ['warning', '⚠ Draft — AI edited'], version: '0.3', date: '2026-08-02', author: 'Uncle Bob',
+    purpose: 'NestJS 11 REST backend for the ESM platform: GHG Scope 1/2/3 inventories, Product Carbon (LCA), Organization Energy and Water Footprint. Emission data is stored in PostgreSQL through Sequelize (57 models, autoload + sync alter); identity and tenancy (users, companies, projects) live in Supabase and are reached through the Supabase JS client. 222 routes across 37 controllers.',
+    note: 'Repo scan correction: no S3/upload module exists in src/ — attachments are stored as URL strings set by the client. The earlier architecture map claim of an Upload module is superseded by this document.',
+    inScope: ['222 REST routes · 37 controllers', 'Guard-based project authorization', 'Sequelize persistence + calculations', 'Supabase identity & tenancy'],
+    outScope: ['Report generation (ARC-10)', 'File/S3 uploads — URL strings only', 'Frontend rendering'],
+    fr: [
+      'CRUD for every Scope 1/2/3 category under /projects/:projectId/* with a uniform module pattern',
+      'Compute gas breakdown + CO₂e into paired *_calculations tables (JSONB final_result on the parent row)',
+      'Authenticate every non-public route with a Supabase Bearer token (SupabaseAuthGuard)',
+      'Authorize project access: company match + explicit general_projects_users assignment (ProjectAccessGuard)',
+      'Expose Swagger UI at /api and JSON at /api-json',
+      'Seed default admin (ADMIN_*) and default energy sources/units at bootstrap'
+    ],
+    nfr: [
+      ['Performance', 'Per-request authenticated Supabase client; service-role client only for tenancy checks'],
+      ['Security', 'Guard chain on all project routes — but CORS is “*” and CompanyController is unguarded ⚠'],
+      ['Scalability', 'Uniform module pattern (model + calc model + DTO + service + controller) ×35'],
+      ['Reliability', 'Schema via sync:{alter:true} at boot — no migration files ⚠']
+    ],
+    arch: {
+      lanes: [
+        { label: 'HTTP', items: [
+          { id: 'boot', label: 'main.ts', sub: 'CORS · ValidationPipe · Swagger /api' },
+          { id: 'ctrl', label: 'Controllers ×37', sub: '222 routes', hot: true }] },
+        { label: 'Auth', items: [
+          { id: 'sag', label: 'SupabaseAuthGuard', sub: 'Bearer → auth.getUser()' },
+          { id: 'pag', label: 'ProjectAccessGuard', sub: 'company + assignment row' },
+          { id: 'int', label: 'CurrentUserInterceptor', sub: 'global APP_INTERCEPTOR' }] },
+        { label: 'Domain', items: [
+          { id: 'svc', label: 'Services ×41', sub: 'emission calculations', hot: true },
+          { id: 'dto', label: 'DTOs ×54', sub: 'class-validator · 4× zod' }] },
+        { label: 'Data access', items: [
+          { id: 'models', label: 'Sequelize models ×57', sub: 'autoLoad · sync alter' },
+          { id: 'supasvc', label: 'SupabaseService', sub: 'anon · authed · service-role' }] },
+        { label: 'Stores', items: [
+          { id: 'pg', label: 'Primary PostgreSQL · ARC-04', sub: 'emission / energy / water' },
+          { id: 'supa', label: 'Supabase · ARC-05', sub: 'auth + users/companies/projects' }] }
+      ],
+      flows: [
+        { from: 'boot', to: 'ctrl', label: 'route dispatch' },
+        { from: 'ctrl', to: 'sag', label: 'guard chain' },
+        { from: 'sag', to: 'pag' },
+        { from: 'ctrl', to: 'svc', label: 'validated request (DTO)' },
+        { from: 'sag', to: 'supasvc', label: 'getUser + tenant row' },
+        { from: 'pag', to: 'supasvc', label: 'service-role check' },
+        { from: 'svc', to: 'models', label: 'project-scoped CRUD' },
+        { from: 'models', to: 'pg', label: 'SQL' },
+        { from: 'supasvc', to: 'supa', label: 'PostgREST / auth API' }
+      ]
+    },
+    archNote: 'Two data stores by design: domain rows in PostgreSQL via Sequelize; identity/tenancy rows in Supabase (users, general_companies, general_projects, general_projects_users) with no Sequelize models in this repo.',
+    modules: [
+      ['src/', ''],
+      ['├─ main.ts', 'bootstrap · CORS · global pipe/filter · Swagger'],
+      ['├─ app.module.ts', '35 feature modules + Sequelize + Supabase'],
+      ['├─ auth/', 'guards · decorators · authorization service · admin seed'],
+      ['├─ supabase/', 'global service — 3 client factories'],
+      ['├─ users/ · companies/ · general-project/', 'identity & tenancy (Supabase tables)'],
+      ['├─ ocs1-*/ ×3', 'Scope 1 — stationary · mobile · fugitive'],
+      ['├─ ocs2-indirect-emission/', 'Scope 2'],
+      ['├─ ocs3-*/ ×15', 'Scope 3 categories 1–15'],
+      ['├─ product-carbon/', 'LCA goal/scope · GHG inventory · summary'],
+      ['├─ organization-energy/', 'departments · sources · monthly consumption · analytics'],
+      ['├─ water-footprint*/ ×8', 'blue/green/grey · individual/process/organizational'],
+      ['├─ config/', 'reference data — ⚠ module never imported'],
+      ['└─ common/', 'zod pipe · AllExceptionsFilter (⚠ unwired)']
+    ],
+    apis: [
+      { m: 'GET', p: '/health', n: 'liveness' },
+      { m: 'POST', p: '/auth/signin', n: '@Public', open: true,
+        req: '{\n  "email": "user@company.com",\n  "password": "········"\n}',
+        res: '{\n  "accessToken": "eyJhbGciOi…",\n  "refreshToken": "eyJhbGciOi…",\n  "user": { "id": "…", "email": "…" }\n}' },
+      { m: 'POST', p: '/auth/refresh', n: '@Public' },
+      { m: 'GET', p: '/general-projects', n: '@Auth' },
+      { m: 'GET', p: '/projects/:projectId/ocs1-stationary-emissions', n: '@AuthWithProjectAccess' },
+      { m: 'POST', p: '/projects/:projectId/ocs1-stationary-emissions', n: 'zod-validated',
+        req: '{\n  "component": "boiler",\n  "fuel": "diesel",\n  "emissionFactor": "ipcc",\n  "month": "january",\n  "amount": 1200,\n  "unit": "litres"\n}',
+        res: '{\n  "id": "6f0e…",\n  "final_result": {\n    "total_kg_co2e": 3210.4,\n    "total_tonnes_co2e": 3.2104\n  }\n}' },
+      { m: 'PATCH', p: '/projects/:projectId/ocs1-stationary-emissions/:id', n: 'update' },
+      { m: 'DELETE', p: '/projects/:projectId/ocs1-stationary-emissions/:id', n: 'delete' },
+      { m: 'POST', p: '/projects/:projectId/ocs3-fuel-and-energy/import', n: 'bulk import' },
+      { m: 'GET', p: '/projects/:projectId/product-carbon/summary', n: '16 product-carbon routes' },
+      { m: 'GET', p: '/projects/:projectId/organization-energy/analytics', n: '?year= · 14 routes' },
+      { m: 'GET', p: '/projects/:projectId/water-footprint/total', n: '8 water modules' }
+    ],
+    apiNote: '222 routes over 37 controllers; every Scope category repeats POST / GET / GET:id / PUT|PATCH:id / DELETE:id. Swagger at /api (no bearer scheme configured ⚠). The 17 public /config reference routes are unreachable — their module is never imported ⚠.',
+    er: {
+      tables: [
+        { name: 'users · Supabase', cols: [['id', 'uuid = auth user', 'PK'], ['user_name', 'text', ''], ['email', 'text', ''], ['company_id', 'uuid', 'FK'], ['phone', 'text', '']] },
+        { name: 'general_projects · Supabase', cols: [['id', 'uuid', 'PK'], ['name', 'text', ''], ['year', 'int', ''], ['type', 'text', ''], ['company_id', 'uuid', 'FK']] },
+        { name: 'general_projects_users · Supabase', cols: [['id', 'uuid', 'PK'], ['user_id', 'uuid', 'FK'], ['project_id', 'uuid', 'FK']] },
+        { name: 'ocs1_stationary_emissions', cols: [['id', 'uuid v4', 'PK'], ['project_id', 'uuid', 'FK'], ['company_id · user_id', 'uuid', 'FK'], ['component · fuel · month', 'enum', ''], ['amount', 'float', ''], ['unit', 'varchar', ''], ['final_result', 'jsonb', '']] },
+        { name: 'ocs1_stationary_emission_calculations', cols: [['id', 'uuid', 'PK'], ['stationary_emission_id', 'uuid · unique', 'FK'], ['mass_by_gas_kg', 'jsonb {co2,ch4,n2o}', ''], ['co2e_breakdown_kg', 'jsonb', '']] },
+        { name: 'oe_departments', cols: [['id', 'int autoinc', 'PK'], ['name', 'varchar', ''], ['project_id', 'uuid', 'FK'], ['is_active', 'bool', '']] },
+        { name: 'oe_monthly_consumption', cols: [['id', 'int', 'PK'], ['department_id', 'int', 'FK'], ['energy_source_id', 'int', 'FK'], ['month · year', 'int', ''], ['amount', 'decimal(15,4)', ''], ['project_id', 'uuid', 'FK']] }
+      ],
+      rels: [
+        { from: 'users · Supabase', to: 'general_projects_users · Supabase', label: '1 ─ n' },
+        { from: 'general_projects · Supabase', to: 'general_projects_users · Supabase', label: '1 ─ n' },
+        { from: 'general_projects · Supabase', to: 'ocs1_stationary_emissions', label: '1 ─ n · project_id' },
+        { from: 'ocs1_stationary_emissions', to: 'ocs1_stationary_emission_calculations', label: '1 ─ 1 · @HasOne' },
+        { from: 'oe_departments', to: 'oe_monthly_consumption', label: '1 ─ n' }
+      ]
+    },
+    erNote: 'Pattern: every Scope 1/2/3 category is an activity table + a *_calculations child (unique FK, JSONB gas breakdowns). 68 table names are centralized in utils/constants/table-names.ts.',
+    flow: {
+      actors: [
+        { id: 'client', label: 'Client', sub: 'esm-frontend' },
+        { id: 'sag', label: 'SupabaseAuthGuard' },
+        { id: 'pag', label: 'ProjectAccessGuard' },
+        { id: 'ctrl', label: 'Controller', hot: true },
+        { id: 'svc', label: 'Service' },
+        { id: 'pg', label: 'PostgreSQL', sub: 'Sequelize' }
+      ],
+      steps: [
+        { f: 'client', t: 'sag', label: 'GET /projects/P1/ocs1-stationary-emissions · Bearer' },
+        { f: 'sag', t: 'sag', label: 'auth.getUser() + users row → companyId (Supabase)' },
+        { f: 'sag', t: 'pag', label: 'request.user = { userId, companyId }' },
+        { f: 'pag', t: 'pag', label: 'verifyProjectAccess — company match + assignment (service-role)' },
+        { f: 'pag', t: 'ctrl', label: 'request.projectId set' },
+        { f: 'ctrl', t: 'svc', label: 'findAll(projectId, @CurrentUser)' },
+        { f: 'svc', t: 'pg', label: 'SELECT … WHERE project_id = P1 (+ calculations)' },
+        { f: 'pg', t: 'svc', label: 'rows', ret: true },
+        { f: 'svc', t: 'ctrl', label: 'DTO', ret: true },
+        { f: 'ctrl', t: 'client', label: '200 JSON · 401/403 on guard failure', ret: true }
+      ]
+    },
+    validation: [
+      'Global <code>ValidationPipe({ whitelist, transform })</code> + ValidationExceptionFilter (field → message map)',
+      'class-validator across 54 DTOs (@IsEnum ×50 · @IsNotEmpty ×179 · @Min ×46)',
+      '<code>ZodValidationPipe</code> with shared @moderta/api-contracts schemas on 4 controllers',
+      'Enum sources centralized in utils/constants (fuel, component, months, …)'
+    ],
+    errors: [
+      '<code>400</code> field→message map from ValidationExceptionFilter',
+      '<code>401</code> “No authorization header” / “Invalid token”',
+      '<code>403</code> “You do not have access to this project”',
+      '<code>404</code> NotFoundException — 133 call sites · <code>409</code> user-create conflict',
+      '<code>500</code> Nest default — ⚠ AllExceptionsFilter exists but is never registered'
+    ],
+    security: [
+      '@AuthWithProjectAccess guard chain on every /projects/:projectId controller',
+      'Service-role Supabase client confined to AuthorizationService',
+      '⚠ CORS origin “*” · CompanyController has no guard · Swagger lacks bearer scheme',
+      'Default admin seeded from ADMIN_* env at bootstrap'
+    ],
+    logging: [
+      '⚠ Sequelize SQL → console.log for every query (off only when NODE_ENV=test)',
+      'Nest Logger used only in AdminSetupService — no request/correlation logging'
+    ],
+    testing: [
+      '33 jest E2E suites — testcontainers PostgreSQL + fake Supabase stub + shared CRUD contract suite',
+      '2 unit specs (stationary emissions service + controller)',
+      '⚠ no test step in the deploy workflow'
+    ],
+    deployment: [
+      'env: <code>DB_*</code> · <code>SUPABASE_URL/ANON_KEY/SERVICE_ROLE_KEY</code> · <code>ADMIN_*</code> · <code>PORT</code> (3000)',
+      'Two-stage node:20-alpine Docker build · non-root user · EXPOSE 3000',
+      'docker-compose: api + postgres:15-alpine (healthcheck) · GH Actions → staging EC2 (arm64)',
+      '⚠ schema managed by sync:{alter:true} — no migrations'
+    ],
+    future: [
+      'Wire AllExceptionsFilter, restrict CORS, guard CompanyController',
+      'Import the src/config module (17 reference routes currently unreachable)',
+      'Replace sync:alter with real migrations',
+      'Add bearer auth to Swagger; expand unit coverage beyond stationary',
+      'Remove unused typeorm/passport/jwt dependencies'
+    ],
+    evidence: [
+      'src/main.ts:9–31', 'src/app.module.ts:46–110', 'src/auth/guards/project-access.guard.ts:19–63',
+      'src/ocs1-stationary-emission/stationary-emission.model.ts', 'src/supabase/supabase.service.ts',
+      'filters/validation-exception.filter.ts', 'test/e2e — 33 suites'
+    ],
+    history: [
+      ['0.3', '2026-08-02', 'Uncle Bob', 'Rebuilt from repo scan — upload/S3 module removed (no such code in src/)'],
+      ['0.2', '2026-07-30', 'Uncle Bob', 'Queue-based report generation appendix'],
+      ['0.1', '2026-07-25', 'Uncle Bob', 'Initial skeleton from module list']
+    ]
+  });
+
+  // ===== TD-011 · Reporting API pipeline (ARC-10 / 13 / 14 / 15) =====
+  window.LLD.register('TD-011', {
+    doc: 'TD-011', covers: ['ARC-10', 'ARC-13', 'ARC-14', 'ARC-15'],
+    title: 'esm-reporting-api — expose PDF renderer & metadata DB',
+    status: ['accent', 'In review · BA + Architect'], version: '0.9', date: '2026-08-01', author: 'Uncle Bob',
+    purpose: 'The reporting service currently exposes one verified route — GET /reports/scope-1/stationary-breakdown — backed by a direct PostgreSQL read and an in-process @moderta/reporting-core calculation. This design wires the three dormant components into the module graph: PdfModule (Puppeteer A4 rendering), ReportingMetadataModule (report_generations / report_artifacts) and the S3 artifact uploader. Approving it flips the three planned edges on the map to verified after the next repo scan.',
+    note: 'esm-reporting-api is not part of this workspace — sections are grounded in the ESM multi-repository architecture analysis evidence (file/line references below). Sample code lives on branch feat/reporting-pdf.',
+    inScope: ['Import PdfModule + ReportingMetadataModule', 'Expose the PDF endpoint', 'Invoke the S3 artifact uploader', 'Record a generation row per request'],
+    outScope: ['Full report endpoints for ARC-08', 'Auth / tenancy guard (tracked as open risk)', 'Read replica (ARC-16)'],
+    fr: [
+      'Serve the stationary breakdown DTO (exists — verified)',
+      'Serve the same breakdown as an A4 PDF rendered by Puppeteer from the Handlebars template (new)',
+      'Record a report_generations row for every generation request (new)',
+      'Upload the report JSON artifact to S3 with checksum + metadata (new)',
+      'Keep @moderta/reporting-core free of HTTP, DB, rendering, auth and export concerns'
+    ],
+    nfr: [
+      ['Performance', 'Puppeteer rendering is heavy and synchronous — single shared browser; queueing is a follow-up'],
+      ['Security', '⚠ no auth/tenant guard today — the PDF route must not ship publicly'],
+      ['Reliability', 'Metadata writes must not block the synchronous data read'],
+      ['Isolation', 'Reporting metadata uses REPORTING_DB_* credentials with DB_* fallback']
+    ],
+    arch: {
+      lanes: [
+        { label: 'HTTP', items: [
+          { id: 'ctrl', label: 'ReportingController', sub: 'GET …/stationary-breakdown', hot: true },
+          { id: 'pdfroute', label: 'GET …/pdf', sub: 'planned route' }] },
+        { label: 'Services', items: [
+          { id: 'brk', label: 'BreakdownService', sub: 'verified' },
+          { id: 'pdfsvc', label: 'Breakdown PDF Service', sub: 'planned' },
+          { id: 'rend', label: 'PdfRendererService', sub: 'Puppeteer · A4 · no remote assets' }] },
+        { label: 'Persistence', items: [
+          { id: 'db', label: 'DatabaseModule', sub: 'Sequelize direct read' },
+          { id: 'meta', label: 'Generation Repository', sub: 'report_generations' },
+          { id: 's3', label: 'ObjectStorageService', sub: 'PutObject + checksum' }] },
+        { label: 'Stores & domain', items: [
+          { id: 'pg', label: 'Primary PostgreSQL', sub: 'ARC-04' },
+          { id: 'core', label: 'reporting-core', sub: 'ARC-11 · in-process' },
+          { id: 'mdb', label: 'Metadata DB', sub: 'ARC-13' },
+          { id: 'bucket', label: 'Artifact S3', sub: 'ARC-14' }] }
+      ],
+      flows: [
+        { from: 'ctrl', to: 'brk', label: 'execute' },
+        { from: 'brk', to: 'db', label: 'read rows' },
+        { from: 'db', to: 'pg' },
+        { from: 'brk', to: 'core', label: 'calculate' },
+        { from: 'pdfroute', to: 'pdfsvc', label: 'planned', dashed: true },
+        { from: 'pdfsvc', to: 'rend', label: 'HTML → PDF', dashed: true },
+        { from: 'ctrl', to: 'meta', label: 'record generation', dashed: true },
+        { from: 'meta', to: 'mdb', dashed: true },
+        { from: 'pdfsvc', to: 's3', label: 'JSON artifact', dashed: true },
+        { from: 's3', to: 'bucket', dashed: true }
+      ]
+    },
+    archNote: 'Solid green arrows exist in code today; dashed amber arrows are the three dormant paths this design wires in (module imports + controller exposure + service invocation).',
+    modules: [
+      ['src/', ''],
+      ['├─ main.ts', 'bootstrap · CORS_ORIGINS'],
+      ['├─ app.module.ts', 'imports Reporting + Database — ⚠ Pdf/Metadata not imported'],
+      ['├─ reporting/', 'controller · module'],
+      ['│   └─ services/', 'scope1-stationary-breakdown(.pdf).service.ts'],
+      ['├─ database/', 'database.provider.ts — Sequelize → primary PostgreSQL'],
+      ['├─ reporting-metadata/', 'module · reporting-object-storage.service.ts'],
+      ['│   └─ repositories/', 'postgres-report-generation.repository.ts'],
+      ['└─ pdf/', 'pdf.module.ts · pdf-renderer.service.ts (Puppeteer)']
+    ],
+    apis: [
+      { m: 'GET', p: '/reports/scope-1/stationary-breakdown', n: 'verified — the only live route', open: true,
+        res: '{\n  "reportingPeriod": "2026",\n  "rows": [\n    { "source": "Diesel generator",\n      "activity": 1200, "unit": "litres",\n      "totalTco2e": 3.21 }\n  ],\n  "totalTco2e": 128.4\n}' },
+      { m: 'GET', p: '/reports/scope-1/stationary-breakdown/pdf', n: 'planned — application/pdf attachment' },
+      { m: 'POST', p: '/reports/generations', n: 'planned — record + return generation id' }
+    ],
+    apiNote: 'CORS from CORS_ORIGINS allowlist. The frontend consumes the breakdown via VITE_SCOPE1_STATIONARY_BREAKDOWN_PATH.',
+    er: {
+      tables: [
+        { name: 'report_generations', cols: [['id', 'uuid', 'PK'], ['report_type', 'varchar', ''], ['status', 'varchar', ''], ['parameters', 'jsonb', ''], ['requested_at', 'timestamp', ''], ['completed_at', 'timestamp', '']] },
+        { name: 'report_artifacts', cols: [['id', 'uuid', 'PK'], ['generation_id', 'uuid', 'FK'], ['s3_bucket', 'varchar', ''], ['s3_key', 'varchar', ''], ['checksum', 'varchar', ''], ['content_type', 'varchar', '']] },
+        { name: 'ocs1_stationary_emissions · read-only', cols: [['id', 'uuid', 'PK'], ['project_id', 'uuid', 'FK'], ['fuel · month', 'enum', ''], ['amount', 'float', ''], ['final_result', 'jsonb', '']] }
+      ],
+      rels: [
+        { from: 'report_generations', to: 'report_artifacts', label: '1 ─ n' },
+        { from: 'ocs1_stationary_emissions · read-only', to: 'report_generations', label: 'source of · direct SQL read' }
+      ]
+    },
+    erNote: 'report_generations / report_artifacts live on a separate Sequelize connection (REPORTING_DB_* with DB_* fallback). The stationary table is read directly from the primary DB — read-only/replica isolation is an open question (ARC-16).',
+    flow: {
+      actors: [
+        { id: 'client', label: 'Client', sub: 'ARC-08' },
+        { id: 'ctrl', label: 'ReportingController', hot: true },
+        { id: 'brk', label: 'BreakdownService' },
+        { id: 'pg', label: 'PostgreSQL', sub: 'primary' },
+        { id: 'core', label: 'reporting-core', sub: 'ARC-11' },
+        { id: 'rend', label: 'PdfRenderer', sub: 'planned' }
+      ],
+      steps: [
+        { f: 'client', t: 'ctrl', label: 'GET /reports/scope-1/stationary-breakdown' },
+        { f: 'ctrl', t: 'brk', label: 'execute(query)' },
+        { f: 'brk', t: 'pg', label: 'SELECT stationary rows (direct Sequelize)' },
+        { f: 'pg', t: 'brk', label: 'rows', ret: true },
+        { f: 'brk', t: 'core', label: 'stationary-combustion-breakdown calculator' },
+        { f: 'core', t: 'brk', label: 'breakdown result', ret: true },
+        { f: 'brk', t: 'ctrl', label: 'presentation DTO', ret: true },
+        { f: 'ctrl', t: 'rend', label: 'planned: render(template + DTO)' },
+        { f: 'rend', t: 'ctrl', label: 'planned: PDF buffer', ret: true },
+        { f: 'ctrl', t: 'client', label: '200 JSON · planned: application/pdf', ret: true }
+      ]
+    },
+    validation: [
+      'Query params validated at the controller',
+      'Domain inputs validated inside reporting-core (shared/result Result type)',
+      'Contracts from <code>@moderta/api-contracts@0.3.5</code> (⚠ main platform pins 0.3.4)'
+    ],
+    errors: [
+      '<code>400</code> invalid query parameters',
+      '⚠ Nest DI failure if metadata services are injected without importing their module (current blocker)',
+      'planned: <code>404</code> unknown generation id · <code>503</code> renderer unavailable'
+    ],
+    security: [
+      '⚠ No auth or tenant guard on the service today — must land with the PDF route',
+      'CORS_ORIGINS allowlist',
+      'Artifact bucket private; uploads carry checksum + metadata'
+    ],
+    logging: [
+      'Nest default logger only',
+      'planned: correlation via generation id recorded in report_generations'
+    ],
+    testing: [
+      'reporting.controller.spec.ts exists',
+      'planned: e2e for the PDF route + metadata writes once modules are wired'
+    ],
+    deployment: [
+      'env: <code>DB_*</code> · <code>REPORTING_DB_*</code> (fallback) · <code>REPORT_ARTIFACTS_S3_BUCKET</code> · <code>CORS_ORIGINS</code> · <code>PUPPETEER_EXECUTABLE_PATH</code>',
+      'Chromium/Puppeteer must be present in the runtime image',
+      'Sample code on branch <code>feat/reporting-pdf</code>'
+    ],
+    future: [
+      'Queue-based async generation (see TD-012 appendix discussion)',
+      'Read replica for reporting reads (ARC-16 — currently no evidence)',
+      'Full report endpoints so ARC-08 can leave mock mode'
+    ],
+    evidence: [
+      'esm-reporting-api/src/reporting/reporting.controller.ts:7–20',
+      'esm-reporting-api/src/reporting/reporting.module.ts:8–18',
+      'esm-reporting-api/src/reporting/services/scope1-stationary-breakdown.service.ts:18–56',
+      'esm-reporting-api/src/reporting-metadata/reporting-metadata.module.ts:8–20',
+      'esm-reporting-api/src/reporting-metadata/repositories/postgres-report-generation.repository.ts:18–63',
+      'esm-reporting-api/src/pdf/pdf-renderer.service.ts'
+    ],
+    history: [
+      ['0.9', '2026-08-01', 'Uncle Bob', 'In review — BA + Architect'],
+      ['0.5', '2026-07-29', 'Uncle Bob', 'Wire plan for the three planned edges + sample code branch']
+    ]
+  });
+
+  // ===== TD-013 · Reporting Frontend (ARC-08) =====
+  window.LLD.register('TD-013', {
+    doc: 'TD-013', covers: ['ARC-08'],
+    title: 'esm-reporting-frontend — report SPA low-level design',
+    status: ['warning', '⚠ Draft — AI edited'], version: '0.1', date: '2026-08-02', author: 'Uncle Bob',
+    purpose: 'Standalone React 18 + Vite SPA that generates, views and prints the Organization Carbon Inventory Report. Two screens: a setup screen (organization + reporting period, Generate/View) and a document screen rendering 17 conditional A4 pages composed from @moderta/mint-design-system templates. Mock-first by design — the whole flow runs with no backend.',
+    inScope: ['Setup + document screens', '17 A4 report pages', 'Mock ↔ API source switching', 'Browser print (A4)', 'Blob download hook'],
+    outScope: ['Client-side PDF generation', 'Authentication UI', 'Navigation bridge from main ESM', 'Full report API (ARC-10)'],
+    fr: [
+      'Render the setup screen with organization, period, status and Generate/View actions',
+      'Render 17 conditional A4 pages from OrganizationCarbonReportViewModel (TOC from a fixed 17-title array)',
+      'Switch data source via VITE_REPORT_DATA_SOURCE — an invalid value throws at module load',
+      'Print via window.print() with A4 @page rules, per-page break-after and exact color adjust',
+      'Download the report blob via a temporary <a download> anchor when the API is configured'
+    ],
+    nfr: [
+      ['Performance', 'Mock latencies 220 ms (get) / 550 ms (generate); RTK Query tag cache (OrganizationCarbonReport)'],
+      ['Print fidelity', '210 mm width forced in print media; break-inside avoided on panels and table rows'],
+      ['Security', 'Bearer from the accessToken cookie — token expected from the platform'],
+      ['Config safety', 'API mode asserts base URL + path before any call — never silently falls back to mock']
+    ],
+    arch: {
+      lanes: [
+        { label: 'Pages', items: [
+          { id: 'setup', label: 'ReportSetupPage', sub: '/reports/organization-carbon' },
+          { id: 'doc', label: 'ReportDocumentPage', sub: '…/document · toolbar' }] },
+        { label: 'Feature', items: [
+          { id: 'hooks', label: 'Feature hooks ×3', sub: 'load · generate · download' },
+          { id: 'rpages', label: 'Report pages ×17', sub: 'A4 · mint templates', hot: true },
+          { id: 'states', label: 'Status components', sub: 'loading · error · empty' }] },
+        { label: 'Data', items: [
+          { id: 'endp', label: 'report.endpoints.ts', sub: 'RTK Query ×3', hot: true },
+          { id: 'mapper', label: 'report.mapper.ts', sub: 'requiredString / requiredNumber' },
+          { id: 'mock', label: 'report.mock.ts', sub: '178-line fixture' }] },
+        { label: 'Platform', items: [
+          { id: 'store', label: 'Redux store', sub: 'baseSliceAPI' },
+          { id: 'bq', label: 'base-query.ts', sub: 'Bearer accessToken cookie' },
+          { id: 'env', label: 'config/env.ts', sub: 'source switch + asserts' }] },
+        { label: 'External', items: [
+          { id: 'rapi', label: 'Reporting API · ARC-10', sub: 'VITE_REPORT_API_BASE_URL' },
+          { id: 'mint', label: 'mint-design-system · ARC-09', sub: 'templates + tokens' }] }
+      ],
+      flows: [
+        { from: 'setup', to: 'hooks', label: 'generate · view' },
+        { from: 'doc', to: 'hooks', label: 'load by reportId' },
+        { from: 'doc', to: 'rpages', label: 'view model' },
+        { from: 'hooks', to: 'endp' },
+        { from: 'endp', to: 'mock', label: 'mock mode (default)', dashed: true },
+        { from: 'endp', to: 'mapper', label: 'API DTO → view model' },
+        { from: 'endp', to: 'bq', label: 'api mode' },
+        { from: 'bq', to: 'rapi', label: 'REST · Bearer' },
+        { from: 'rpages', to: 'mint', label: 'CoverPage · StatGrid · DataTable' }
+      ]
+    },
+    archNote: 'Every endpoint is queryFn-based: the mock branch short-circuits to the fixture; the api branch asserts configuration, runs the shared baseQuery, then maps the raw DTO with runtime validation.',
+    modules: [
+      ['src/', ''],
+      ['├─ main.tsx', 'providers + router · imports mint styles + print.css'],
+      ['├─ app/', 'router.tsx · store.ts · providers.tsx'],
+      ['├─ config/', 'env.ts · report-api.config.ts asserts'],
+      ['├─ api/', 'base-slice · base-query (Bearer) · api-error'],
+      ['├─ styles/', 'global.css (Tailwind v4 tokens) · print.css (A4)'],
+      ['└─ features/organization-carbon-report/', 'the single feature module'],
+      ['    ├─ pages/', 'report-setup-page · report-document-page'],
+      ['    ├─ report-pages/', '17 A4 pages + report-page-shared'],
+      ['    ├─ api/', 'report.endpoints.ts · report.mapper.ts'],
+      ['    ├─ hooks/', 'use-organization-carbon-report · use-generate · use-download'],
+      ['    ├─ components/', 'toolbar · generation card · status states'],
+      ['    ├─ mock/', 'report.mock.ts — full demo view model'],
+      ['    ├─ types/', 'report.types.ts · report-api.types.ts'],
+      ['    └─ utils/', 'report-formatters · report-calculations']
+    ],
+    apis: [
+      { m: 'GET', p: 'env.getReportPath · VITE_GET_ORGANIZATION_CARBON_REPORT_PATH', n: 'providesTags', open: true,
+        req: 'params: { "reportId": "rep-2026-001" }   // optional',
+        res: '{\n  "reportId": "rep-2026-001",\n  "metadata": { "organizationName": "…",\n    "reportingPeriod": "2026", "status": "…" },\n  "summary": { "totalTco2e": 1693.79 },\n  "sections": { … }\n}' },
+      { m: 'POST', p: 'env.generateReportPath · VITE_GENERATE_ORGANIZATION_CARBON_REPORT_PATH', n: 'invalidatesTags',
+        req: '{\n  "organizationName": "EcoSmart Manufacturing",\n  "reportingPeriodStart": "2026-01-01",\n  "reportingPeriodEnd": "2026-12-31"\n}',
+        res: '{ "reportId": "rep-2026-001", "status": "generated" }' },
+      { m: 'GET', p: 'env.downloadReportPath · VITE_DOWNLOAD_ORGANIZATION_CARBON_REPORT_PATH', n: 'blob → <a download>' }
+    ],
+    apiNote: 'Base URL: VITE_REPORT_API_BASE_URL. In mock mode each endpoint resolves the fixture after its mock delay; download throws “Download is not available yet.” and the button is disabled.',
+    dataTitle: 'Data design — client view models',
+    er: {
+      tables: [
+        { name: 'OrganizationCarbonReportViewModel', cols: [['metadata', 'ReportMetadata', 'FK'], ['executiveSummary', 'totals + unit', ''], ['scope1 · scope2 · scope3', 'ScopeReportSection', 'FK'], ['hotspots', 'EmissionHotspot[]', ''], ['dataQuality', 'rating High/Moderate/Low', ''], ['recommendations', 'ReportRecommendation[]', ''], ['conclusion', 'string[]', '']] },
+        { name: 'ReportMetadata', cols: [['reportId', 'string', 'PK'], ['organizationId · Name', 'string', ''], ['reportingPeriodStart/End', 'ISO date', ''], ['generatedAt', 'ISO datetime', ''], ['status', 'string', ''], ['preparedFor · preparedBy', 'string', '']] },
+        { name: 'ScopeReportSection', cols: [['totalTco2e', 'number', ''], ['sources', 'EmissionSource[]', 'FK'], ['narrative', 'string[]', '']] },
+        { name: 'EmissionSource', cols: [['source', 'string', 'PK'], ['activity', 'string', ''], ['unit', 'string', ''], ['totalTco2e', 'number', '']] }
+      ],
+      rels: [
+        { from: 'OrganizationCarbonReportViewModel', to: 'ReportMetadata', label: '1 ─ 1' },
+        { from: 'OrganizationCarbonReportViewModel', to: 'ScopeReportSection', label: '1 ─ 3 · scopes' },
+        { from: 'ScopeReportSection', to: 'EmissionSource', label: '1 ─ n' }
+      ]
+    },
+    erNote: '⚠ Types are defined locally (report.types.ts) — @moderta/api-contracts is not a dependency of this app. The mapper currently validates only metadata + executiveSummary from the raw API DTO.',
+    flow: {
+      actors: [
+        { id: 'user', label: 'User' },
+        { id: 'setup', label: 'ReportSetupPage' },
+        { id: 'endp', label: 'RTK Query endpoints', hot: true },
+        { id: 'rapi', label: 'Reporting API', sub: 'or mock fixture' },
+        { id: 'doc', label: 'ReportDocumentPage' }
+      ],
+      steps: [
+        { f: 'user', t: 'setup', label: 'Generate report' },
+        { f: 'setup', t: 'endp', label: 'generateOrganizationCarbonReport(input)' },
+        { f: 'endp', t: 'rapi', label: 'POST generate path (api mode)' },
+        { f: 'rapi', t: 'endp', label: '200 DTO → mapper → view model', ret: true },
+        { f: 'endp', t: 'endp', label: 'mock mode: fixture after 550 ms', ret: true },
+        { f: 'setup', t: 'doc', label: 'navigate /document?mode=user' },
+        { f: 'doc', t: 'endp', label: 'getOrganizationCarbonReport(reportId?)' },
+        { f: 'endp', t: 'doc', label: 'OrganizationCarbonReportViewModel', ret: true },
+        { f: 'doc', t: 'user', label: '17 A4 pages · window.print() · blob download', ret: true }
+      ]
+    },
+    validation: [
+      '<code>env.ts</code> throws at module load on an invalid VITE_REPORT_DATA_SOURCE',
+      '<code>assertReportApiConfigured(\'generate\'|\'get\'|\'download\')</code> before any API call',
+      'Mapper runtime validation: <code>requiredString</code> / <code>requiredNumber</code>',
+      'No form validation library — setup form is display + actions'
+    ],
+    errors: [
+      '<code>ApiError</code> normalization via toApiError / fromQueryError',
+      '<code>ReportErrorState</code> (role="alert") with retry action',
+      'Mock download throws “Download is not available yet.” — button disabled',
+      'Config errors are thrown, never silently mocked'
+    ],
+    security: [
+      'Bearer <code>accessToken</code> cookie via js-cookie',
+      'No auth UI or guard — the token is expected from the platform',
+      'Print/export path is fully client-side'
+    ],
+    logging: [
+      'None found — console only'
+    ],
+    testing: [
+      '⚠ None found — no unit or e2e runner; scripts are dev · build · lint · format'
+    ],
+    deployment: [
+      'Vite 6 + Tailwind v4 · alias @ → src',
+      '5 env vars: <code>VITE_REPORT_DATA_SOURCE</code> · <code>VITE_REPORT_API_BASE_URL</code> · 3 path vars',
+      'Deploys independently of the main ESM frontend'
+    ],
+    future: [
+      'Real full-report API — today only the mock covers all 17 sections (needs TD-011 follow-up)',
+      'Add tests (none exist)',
+      'Use or drop the ?mode=user parameter (written, never read)',
+      'Adopt @moderta/api-contracts instead of local types',
+      'Fix stale README (describes a TanStack/axios layer that does not exist)'
+    ],
+    evidence: [
+      'src/app/router.tsx:5–9', 'src/config/env.ts:1–15',
+      'features/organization-carbon-report/api/report.endpoints.ts:42–135',
+      'features/organization-carbon-report/pages/report-document-page.tsx',
+      'src/styles/print.css', 'features/organization-carbon-report/mock/report.mock.ts'
+    ],
+    history: [
+      ['0.1', '2026-08-02', 'Uncle Bob', 'Initial draft from repo scan']
+    ]
+  });
+})();
+</script>
+<script>
 // BOB-04 tabs: "Architecture design" shows BOB-05, "Technical designs" shows BOB-06.
 // The Uncle Bob Assistant (BOB-07) stays visible in both.
 (function () {
@@ -318,92 +1349,208 @@
   if (initial) select(initial);
 })();
 
-// BOB-05 knowledge map: select a node to highlight its direct edges and
-// show its connections in the detail panel. Click the background to clear.
+// BOB-05 knowledge map: filter/search the components; select one to highlight
+// its direct connections and open the tabbed detail drawer. NODE_DATA comes from
+// the ESM multi-repository architecture analysis (architecture (1).html).
 (function () {
+  var NODE_DATA = {"browser":{"title":"End-user Browser","repo":"external","layer":"experience","status":"verified","x":38,"y":270,"w":150,"h":64,"overview":"Runs the main ESM SPA or the standalone reporting SPA. Browser print is the only complete report export path.","responsibilities":["Render React applications","Hold access token cookie/session state","Invoke REST APIs","Print rendered report"],"modules":["BrowserRouter","window.print","Blob URL download helper"],"interfaces":["Main frontend routes","Reporting frontend routes"],"dependencies":["esm-frontend","esm-reporting-frontend"],"usedBy":["End users"],"data":["JWT/access token","projectId","reportId","rendered report DOM"],"configuration":["URL/query parameters"],"evidence":["esm-frontend/src/main.tsx:12–31","esm-reporting-frontend/src/app/router.tsx:5–9","esm-reporting-frontend/src/styles/print.css"],"risks":["Separate SPAs have no verified navigation bridge."],"questions":["How is reporting deployed and linked from the main product?"]},"main-frontend":{"title":"Main ESM Frontend","repo":"esm-frontend","layer":"experience","status":"verified","x":225,"y":95,"w":185,"h":76,"overview":"React/Vite SPA for projects, carbon scopes, analytics, energy, product carbon and water footprint.","responsibilities":["Route/page composition","RTK Query API access","Supabase-style session handling","Project-scoped product UI"],"modules":["routes/sections.tsx","auth/context","utils/api","organization-carbon-analytics","MUI theme"],"interfaces":["/dashboard/*","VITE_API_END_POINT","Mint AI assistant endpoint"],"dependencies":["Main ESM API","@moderta/api-contracts","@moderta/mint-ai-assistant"],"usedBy":["End-user Browser"],"data":["Project carbon records","Analytics DTOs","JWT claims","sessionStorage user"],"configuration":["VITE_API_END_POINT","VITE_ASSISTANT_API_END_POINT"],"evidence":["esm-frontend/src/main.tsx:12–31","esm-frontend/src/routes/sections.tsx:26+","esm-frontend/src/utils/api/base-query.ts"],"risks":["AuthGuard does not currently block unauthenticated users."],"questions":["Where should the reporting entry point be added?"]},"main-api":{"title":"Main ESM API","repo":"esm-api","layer":"service","status":"verified","x":475,"y":90,"w":180,"h":80,"overview":"NestJS system-of-record API with project-scoped carbon, energy, water, users and company functionality.","responsibilities":["REST APIs","Project authorization","Persistence","Supabase authentication","Uploads"],"modules":["Auth","Users","Companies","Projects","Scope 1/2/3","Emissions Summary","Product Carbon","Organization Energy","Water Footprint","Upload"],"interfaces":["Swagger /api","/auth/*","/projects/:projectId/*","/upload/*"],"dependencies":["PostgreSQL","Supabase","AWS S3","@moderta/api-contracts"],"usedBy":["Main ESM Frontend"],"data":["Project/entity rows","Emission calculations","User/company associations"],"configuration":["DB_*","SUPABASE_*","AWS_*","CORS_ORIGIN","PORT"],"evidence":["esm-api/src/main.ts:9–31","esm-api/src/app.module.ts:46–110","esm-api/src/auth/guards/project-access.guard.ts:19–63"],"risks":["No verified integration with the reporting service."],"questions":["Should reporting read via API or a read-only database connection?"]},"primary-db":{"title":"Primary PostgreSQL","repo":"esm-api","layer":"data","status":"verified","x":760,"y":72,"w":180,"h":64,"overview":"Sequelize-backed operational database for the main ESM API.","responsibilities":["Persist projects and domain records","Store emission rows/calculations"],"modules":["Sequelize models"],"interfaces":["PostgreSQL protocol"],"dependencies":[],"usedBy":["Main ESM API","Reporting API (direct connection target, operationally configurable)"],"data":["ocs1_stationary_emissions","ocs1_stationary_emission_calculations","other domain tables"],"configuration":["DB_HOST","DB_PORT","DB_USERNAME/DB_USER","DB_PASSWORD","DB_NAME"],"evidence":["esm-api/src/app.module.ts:53–73","esm-reporting-api/src/database/database.provider.ts:7–28"],"risks":["Reporting direct access lacks explicit read-only/replica configuration."],"questions":["Is reporting pointed to the primary or an operational replica?"]},"supabase":{"title":"Supabase Auth","repo":"external","layer":"external","status":"verified","x":760,"y":155,"w":180,"h":58,"overview":"External identity provider used by the main ESM API.","responsibilities":["Sign-in/sign-up/refresh/sign-out","Token/user lookup"],"modules":["SupabaseService","SupabaseAuthGuard"],"interfaces":["Supabase JS SDK"],"dependencies":[],"usedBy":["Main ESM API"],"data":["Identity and JWT data"],"configuration":["SUPABASE_URL","SUPABASE_ANON_KEY","SUPABASE_SERVICE_ROLE_KEY"],"evidence":["esm-api/src/supabase/supabase.service.ts","esm-api/src/auth/auth.controller.ts"],"risks":[],"questions":["How should reporting validate the same identity?"]},"uploads-s3":{"title":"Main Upload S3","repo":"external","layer":"external","status":"verified","x":760,"y":229,"w":180,"h":58,"overview":"S3 bucket used by main API file upload and presigned URL flows.","responsibilities":["Store uploaded files"],"modules":["UploadService"],"interfaces":["AWS SDK PutObject","Presigned PUT URL"],"dependencies":[],"usedBy":["Main ESM API"],"data":["Images, PDFs, CSV, spreadsheets"],"configuration":["AWS_REGION","AWS_ACCESS_KEY_ID","AWS_SECRET_ACCESS_KEY","AWS_BUCKET/AWS_S3_BUCKET"],"evidence":["esm-api/src/upload/upload.service.ts:31–53","esm-api/src/upload/upload.service.ts:56–111"],"risks":["Credential configuration is required at service construction."],"questions":["Is this bucket separate from future report artifacts?"]},"assistant":{"title":"Mint AI Service","repo":"external","layer":"external","status":"verified","x":760,"y":303,"w":180,"h":58,"overview":"External assistant API consumed by the main frontend through @moderta/mint-ai-assistant.","responsibilities":["Assistant UI/backend interaction"],"modules":["MintAIAssistant"],"interfaces":["HTTP endpoint supplied to package"],"dependencies":[],"usedBy":["Main ESM Frontend"],"data":["User prompts/context"],"configuration":["VITE_ASSISTANT_API_END_POINT"],"evidence":["esm-frontend/src/app.tsx:3–12"],"risks":[],"questions":["What data governance applies to assistant context?"]},"reporting-frontend":{"title":"Reporting Frontend","repo":"esm-reporting-frontend","layer":"experience","status":"partial","x":225,"y":390,"w":185,"h":78,"overview":"Standalone React report setup/document SPA. Full report defaults to mock; stationary breakdown can call the reporting API.","responsibilities":["Report setup","Multi-page rendering","Stationary data display","Print/download UI"],"modules":["ReportSetupPage","ReportDocumentPage","RTK Query endpoints","report pages","print CSS"],"interfaces":["/reports/organization-carbon","/reports/organization-carbon/document","VITE_REPORT_API_BASE_URL"],"dependencies":["Reporting API","Mint Design System"],"usedBy":["End-user Browser"],"data":["OrganizationCarbonReportViewModel","Scope1StationaryBreakdownApiResponse"],"configuration":["VITE_REPORT_DATA_SOURCE","VITE_*_REPORT_PATH","VITE_SCOPE1_STATIONARY_BREAKDOWN_PATH"],"evidence":["esm-reporting-frontend/src/app/router.tsx:5–9","esm-reporting-frontend/src/config/env.ts:1–15","esm-reporting-frontend/src/features/organization-carbon-report/api/report.endpoints.ts:42–135"],"risks":["Mock is default; full report endpoints absent."],"questions":["How will project, organization and token context enter this SPA?"]},"mint-ds":{"title":"Mint Design System","repo":"mint-design-system","layer":"shared","status":"verified","x":38,"y":470,"w":150,"h":68,"overview":"React/Tailwind component package with explicit Atomic Design layers and report templates.","responsibilities":["Tokens/theme","Atoms/molecules/organisms/templates","Report layout components"],"modules":["tokens","atoms","molecules","organisms","templates","BrandProvider","Storybook"],"interfaces":["@moderta/mint-design-system","styles.css","theme.css"],"dependencies":["React peer dependency"],"usedBy":["Reporting Frontend"],"data":["Brand tokens and presentation props"],"configuration":["CSS custom properties"],"evidence":["mint-design-system/package.json exports","mint-design-system/src/index.ts","mint-design-system/README.md"],"risks":["Main frontend uses a separate MUI system, so product/report UI systems diverge."],"questions":["Should main ESM adopt Mint or remain intentionally separate?"]},"reporting-api":{"title":"Reporting API","repo":"esm-reporting-api","layer":"service","status":"partial","x":475,"y":385,"w":180,"h":82,"overview":"NestJS reporting service with one stationary breakdown route, direct PostgreSQL read, core calculation, dormant metadata/S3/PDF components.","responsibilities":["Read report data","Run reporting-core calculation","Return presentation DTO","Intended metadata/PDF/artifact handling"],"modules":["ReportingModule","DatabaseModule","ReportingMetadataModule (not imported)","PdfModule (not imported)"],"interfaces":["GET /reports/scope-1/stationary-breakdown"],"dependencies":["Reporting Core","PostgreSQL","@moderta/api-contracts","Puppeteer/AWS SDK (unwired)"],"usedBy":["Reporting Frontend"],"data":["Stationary emission rows","Breakdown response","Potential report metadata/artifacts"],"configuration":["DB_*","REPORTING_DB_*","REPORT_ARTIFACTS_S3_BUCKET","CORS_ORIGINS","PUPPETEER_EXECUTABLE_PATH"],"evidence":["esm-reporting-api/src/reporting/reporting.controller.ts:7–20","esm-reporting-api/src/reporting/reporting.module.ts:8–18","esm-reporting-api/src/reporting/services/scope1-stationary-breakdown.service.ts:18–56"],"risks":["Unresolved dependency injection; no auth/tenant guard."],"questions":["Should metadata writing be required for synchronous data reads?"]},"reporting-core":{"title":"Reporting Core","repo":"esm-reporting-core","layer":"shared","status":"verified","x":760,"y":390,"w":180,"h":68,"overview":"Framework-free domain and calculation package. It performs no HTTP, DB, rendering, auth or export.","responsibilities":["Validation/domain rules","Calculation registry/pipeline","Aggregation","Report definitions/builders"],"modules":["application/calculations","application/definitions","application/builders","domain","shared/result"],"interfaces":["@moderta/reporting-core package exports"],"dependencies":["@moderta/api-contracts"],"usedBy":["Reporting API"],"data":["Calculation inputs/outputs and report domain models"],"configuration":[],"evidence":["esm-reporting-core/src/index.ts","esm-reporting-core/README.md","esm-reporting-core/src/application/calculations/calculators/carbon/scope-1/stationary-combustion-breakdown-calculator.ts"],"risks":["Only one verified end-to-end consumer path currently exercises it."],"questions":["Which planned report sections should become core definitions next?"]},"api-contracts":{"title":"API Contracts Package","repo":"external","layer":"shared","status":"verified","x":970,"y":250,"w":160,"h":68,"overview":"External @moderta/api-contracts package referenced by four supplied repositories; source is not included.","responsibilities":["Shared DTOs/types/enums"],"modules":["Unknown—package source not supplied"],"interfaces":["NPM package"],"dependencies":[],"usedBy":["Main Frontend","Main API","Reporting Core","Reporting API"],"data":["Contract types"],"configuration":[],"evidence":["package.json dependency declarations and imports"],"risks":["Versions differ: 0.3.4 on main platform, 0.3.5 on reporting."],"questions":["Are the versions backward compatible and is one canonical report schema included?"]},"metadata-db":{"title":"Reporting Metadata DB","repo":"esm-reporting-api","layer":"data","status":"planned","x":760,"y":490,"w":180,"h":62,"overview":"Separate Sequelize connection and report_generations/report_artifacts models exist, but its module is not imported.","responsibilities":["Record report generation and artifact metadata"],"modules":["ReportingMetadataModule","PostgresReportGenerationRepository"],"interfaces":["PostgreSQL protocol"],"dependencies":[],"usedBy":["Reporting API (intended)"],"data":["report_generations","report_artifacts"],"configuration":["REPORTING_DB_* with DB_* fallback"],"evidence":["esm-reporting-api/src/reporting-metadata/reporting-metadata.module.ts:8–20","esm-reporting-api/src/reporting-metadata/repositories/postgres-report-generation.repository.ts:18–63"],"risks":["Unwired; synchronous service injection currently breaks module resolution."],"questions":["Separate database or same database/schema?"]},"artifact-s3":{"title":"Report Artifact S3","repo":"esm-reporting-api","layer":"external","status":"planned","x":760,"y":570,"w":180,"h":62,"overview":"Service can upload report JSON with checksum and metadata, but it is not invoked in the supplied code.","responsibilities":["Store report JSON artifacts"],"modules":["ReportingObjectStorageService"],"interfaces":["AWS S3 PutObject"],"dependencies":[],"usedBy":["Reporting API (intended)"],"data":["application/json artifacts"],"configuration":["REPORT_ARTIFACTS_S3_BUCKET","AWS_REGION/AWS_DEFAULT_REGION"],"evidence":["esm-reporting-api/src/reporting-metadata/reporting-object-storage.service.ts:29–72"],"risks":["No lifecycle, retrieval, authorization or orchestration path."],"questions":["Will JSON be immutable/versioned and how will users download it?"]},"pdf":{"title":"Puppeteer PDF Renderer","repo":"esm-reporting-api","layer":"service","status":"planned","x":475,"y":560,"w":180,"h":68,"overview":"Self-contained HTML template and Puppeteer renderer exist, but controller and module graph do not expose them.","responsibilities":["Render HTML to A4 PDF","Block remote resources"],"modules":["PdfBrowserService","PdfRendererService","Scope1StationaryBreakdownPdfService","Handlebars template"],"interfaces":["In-process service; intended HTTP response"],"dependencies":["Chromium/Puppeteer"],"usedBy":["Reporting API (intended)"],"data":["HTML","PDF bytes"],"configuration":["PUPPETEER_EXECUTABLE_PATH"],"evidence":["esm-reporting-api/src/pdf/pdf-renderer.service.ts","esm-reporting-api/src/reporting/services/scope1-stationary-breakdown-pdf.service.ts"],"risks":["No operational endpoint and potential heavy synchronous rendering."],"questions":["Inline vs attachment endpoint, limits and concurrency?"]},"read-replica":{"title":"Read Replica","repo":"external","layer":"data","status":"unknown","x":970,"y":100,"w":160,"h":58,"overview":"Shown as an expected concept in the textual brief, but no replica-specific implementation evidence exists.","responsibilities":["Proposed reporting read isolation"],"modules":[],"interfaces":["Unknown"],"dependencies":[],"usedBy":["Unknown"],"data":["Potential replicated ESM data"],"configuration":[],"evidence":["Not found in supplied repositories"],"risks":["Presenting it as current architecture would be inaccurate."],"questions":["Does infrastructure route reporting DB credentials to a replica outside these repositories?"]}};
+  var TABS = ['Overview', 'Responsibilities', 'Modules', 'Interfaces', 'Dependencies', 'Used By', 'Data', 'Configuration', 'Evidence', 'Risks', 'Open Questions'];
+  var TAB_KEY = { 'Responsibilities': 'responsibilities', 'Modules': 'modules', 'Interfaces': 'interfaces', 'Dependencies': 'dependencies', 'Used By': 'usedBy', 'Data': 'data', 'Configuration': 'configuration', 'Evidence': 'evidence', 'Risks': 'risks', 'Open Questions': 'questions' };
+  var LLD_TAB = '▤ Low-Level Design';
+
   var svg = document.getElementById('knowledge-svg');
   var detail = document.getElementById('map-detail');
   if (!svg || !detail) return;
-  var nodes = svg.querySelectorAll('.map-node');
-  var edges = svg.querySelectorAll('.map-edge');
+  var nodes = Array.prototype.slice.call(svg.querySelectorAll('.map-node'));
+  var edges = Array.prototype.slice.call(svg.querySelectorAll('.map-edge'));
   var emptyHTML = detail.innerHTML;
-  var current = null;
+  var selected = null;
 
   var statusPill = {
-    verified: '<span class="pill good"><span class="dot"></span>✓ Verified</span>',
-    partial:  '<span class="pill warning"><span class="dot"></span>⚠ Partial</span>',
-    planned:  '<span class="pill warning"><span class="dot"></span>◌ Planned</span>',
+    verified: '<span class="pill good"><span class="dot"></span>\u2713 Verified</span>',
+    partial:  '<span class="pill warning"><span class="dot"></span>\u26a0 Partial</span>',
+    planned:  '<span class="pill warning"><span class="dot"></span>\u25cc Planned</span>',
     unknown:  '<span class="pill neutral"><span class="dot"></span>? Unknown</span>'
   };
 
-  function esc(s) {
-    var d = document.createElement('div');
-    d.textContent = s;
-    return d.innerHTML;
+  function esc(v) {
+    return String(v == null ? '' : v).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
   }
 
-  function clear() {
-    current = null;
-    svg.classList.remove('has-selection');
-    nodes.forEach(function (n) { n.classList.remove('selected', 'neighbor'); });
-    edges.forEach(function (e) { e.classList.remove('active'); });
-    detail.innerHTML = emptyHTML;
+  function list(items) {
+    if (!items || !items.length) return '<p class="drawer-none">None found.</p>';
+    return '<ul>' + items.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
   }
 
-  function select(node) {
-    if (current === node) { clear(); return; }
-    clear();
-    current = node;
-    var id = node.dataset.id;
-    svg.classList.add('has-selection');
-    node.classList.add('selected');
+  function nodeById(id) {
+    return svg.querySelector('.map-node[data-id="' + id + '"]');
+  }
 
+  function connections(id) {
     var outs = [], ins = [];
     edges.forEach(function (e) {
       if (e.dataset.source !== id && e.dataset.dest !== id) return;
-      e.classList.add('active');
-      var otherId = e.dataset.source === id ? e.dataset.dest : e.dataset.source;
-      var other = svg.querySelector('.map-node[data-id="' + otherId + '"]');
-      if (other) other.classList.add('neighbor');
       var t = e.querySelector('title');
-      (e.dataset.source === id ? outs : ins).push(t ? t.textContent : otherId);
+      (e.dataset.source === id ? outs : ins).push(t ? t.textContent : '');
     });
+    return { outs: outs, ins: ins };
+  }
 
-    var name = (node.getAttribute('aria-label') || '').replace('Open details for ', '');
-    var repo = node.dataset.repo === 'external' ? 'EXTERNAL' : node.dataset.repo;
-    var html = '<div class="detail-head">' +
-      (node.dataset.code ? '<span class="sec-tag">' + esc(node.dataset.code) + '</span> ' : '') +
-      '<strong>' + esc(name) + '</strong>' +
-      ' <span class="tdoc-fmt">' + esc(repo) + '</span> ' +
-      (statusPill[node.dataset.status] || '') + '</div>';
-    if (node.dataset.desc) {
-      html += '<p class="detail-desc">' + esc(node.dataset.desc) + '</p>';
-    }
-    if (node.dataset.details) {
-      html += '<div class="detail-group"><span class="detail-label">Implementation details</span>' +
-        node.dataset.details.split('|').map(function (d) {
-          return '<div class="detail-conn">' + esc(d.trim()) + '</div>';
-        }).join('') + '</div>';
-    }
-    if (outs.length) {
+  function tabContent(id, n, tab) {
+    if (tab !== 'Overview') return list(n[TAB_KEY[tab]]);
+    var conn = connections(id);
+    var html = '<p class="detail-desc">' + esc(n.overview) + '</p>';
+    if (conn.outs.length) {
       html += '<div class="detail-group"><span class="detail-label">Outgoing</span>' +
-        outs.map(function (l) { return '<div class="detail-conn">' + esc(l) + '</div>'; }).join('') + '</div>';
+        conn.outs.map(function (l) { return '<div class="detail-conn">' + esc(l) + '</div>'; }).join('') + '</div>';
     }
-    if (ins.length) {
+    if (conn.ins.length) {
       html += '<div class="detail-group"><span class="detail-label">Incoming</span>' +
-        ins.map(function (l) { return '<div class="detail-conn">' + esc(l) + '</div>'; }).join('') + '</div>';
+        conn.ins.map(function (l) { return '<div class="detail-conn">' + esc(l) + '</div>'; }).join('') + '</div>';
     }
-    if (!outs.length && !ins.length) html += '<div class="detail-conn">No connections recorded.</div>';
-    detail.innerHTML = html;
+    return html;
+  }
+
+  function renderDrawer(id, activeTab) {
+    var n = NODE_DATA[id];
+    var node = nodeById(id);
+    if (!n || !node) return;
+    activeTab = activeTab || 'Overview';
+    var code = node.dataset.code || '';
+    var hasLLD = !!(node.dataset.lld && window.LLD && window.LLD.has(node.dataset.lld));
+    var tabList = hasLLD ? [TABS[0], LLD_TAB].concat(TABS.slice(1)) : TABS;
+    if (activeTab === LLD_TAB && !hasLLD) activeTab = 'Overview';
+    detail.innerHTML = '<div class="drawer-head">' +
+      '<div class="drawer-crumb">ESM Platform \u2192 ' + esc(n.layer) + ' \u2192 ' + esc(n.title) + '</div>' +
+      '<div class="detail-head">' +
+      (code ? '<span class="sec-tag">' + esc(code) + '</span> ' : '') +
+      '<strong>' + esc(n.title) + '</strong> ' +
+      '<span class="tdoc-fmt">' + esc(n.repo === 'external' ? 'EXTERNAL' : n.repo) + '</span> ' +
+      '<span class="tdoc-fmt">' + esc(n.layer) + '</span> ' +
+      (node.dataset.techLabel ? '<span class="tech-chip tech-' + esc(node.dataset.tech) + '">' + esc(node.dataset.techLabel) + '</span> ' : '') +
+      (node.dataset.lld ? '<span class="tdoc-fmt lld-chip" title="Open the Low-Level Design">\u25a4 LLD ' + esc(node.dataset.lld) + ' \u00b7 BOB-06</span> ' : '') +
+      (statusPill[n.status] || '') +
+      '</div></div>' +
+      '<div class="tab-list" role="tablist">' +
+      tabList.map(function (t) {
+        return '<button type="button" role="tab" aria-selected="' + (t === activeTab) + '" class="' +
+          (t === activeTab ? 'active ' : '') + (t === LLD_TAB ? 'lld-tab' : '') + '" data-tab="' + esc(t) + '">' + esc(t) + '</button>';
+      }).join('') + '</div>' +
+      '<div class="tab-panel" role="tabpanel">' +
+      (activeTab === LLD_TAB ? window.LLD.render(node.dataset.lld, id) : tabContent(id, n, activeTab)) +
+      '</div>';
+    detail.querySelectorAll('[data-tab]').forEach(function (b) {
+      b.addEventListener('click', function () { renderDrawer(id, b.dataset.tab); });
+    });
+    var chip = detail.querySelector('.lld-chip');
+    if (chip && hasLLD) chip.addEventListener('click', function () { renderDrawer(id, LLD_TAB); });
+    if (activeTab === LLD_TAB && window.LLD.wire) window.LLD.wire(detail);
+  }
+
+  // Open a node's Low-Level Design directly (used by BOB-06 Preview buttons).
+  window.__openLLD = function (nodeId) {
+    var node = nodeById(nodeId);
+    if (!node) return;
+    if (selected !== nodeId) selectNode(nodeId);
+    if (node.dataset.lld && window.LLD && window.LLD.has(node.dataset.lld)) renderDrawer(nodeId, LLD_TAB);
+    detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  function clearSelection() {
+    selected = null;
+    nodes.forEach(function (n) { n.classList.remove('selected', 'related', 'dimmed'); });
+    edges.forEach(function (e) { e.classList.remove('related', 'dimmed'); });
+    detail.innerHTML = emptyHTML;
+  }
+
+  function selectNode(id) {
+    if (selected === id) { clearSelection(); return; }
+    clearSelection();
+    selected = id;
+    var related = {};
+    related[id] = true;
+    edges.forEach(function (e) {
+      if (e.dataset.source === id || e.dataset.dest === id) {
+        e.classList.add('related');
+        related[e.dataset.source] = true;
+        related[e.dataset.dest] = true;
+      } else {
+        e.classList.add('dimmed');
+      }
+    });
+    nodes.forEach(function (n) {
+      if (n.dataset.id === id) n.classList.add('selected');
+      else if (related[n.dataset.id]) n.classList.add('related');
+      else n.classList.add('dimmed');
+    });
+    renderDrawer(id, 'Overview');
+  }
+
+  // Filters + search
+  var searchBox = document.getElementById('map-search');
+  var selRepo = document.getElementById('filter-repo');
+  var selLayer = document.getElementById('filter-layer');
+  var selStatus = document.getElementById('filter-status');
+  var selComm = document.getElementById('filter-comm');
+
+  var searchText = {};
+  nodes.forEach(function (n) {
+    var d = NODE_DATA[n.dataset.id] || {};
+    var extra = TABS.slice(1).map(function (t) { return (d[TAB_KEY[t]] || []).join(' '); }).join(' ');
+    searchText[n.dataset.id] = ((d.title || '') + ' ' + (d.overview || '') + ' ' +
+      (n.dataset.search || '') + ' ' + (n.dataset.techLabel || '') + ' ' + (n.dataset.lld || '') + ' ' + extra).toLowerCase();
+  });
+
+  function applyFilters() {
+    var q = (searchBox.value || '').trim().toLowerCase();
+    nodes.forEach(function (n) {
+      var show = (selRepo.value === 'all' || n.dataset.repo === selRepo.value) &&
+                 (selLayer.value === 'all' || n.dataset.layer === selLayer.value) &&
+                 (selStatus.value === 'all' || n.dataset.status === selStatus.value) &&
+                 (!q || searchText[n.dataset.id].indexOf(q) >= 0);
+      n.classList.toggle('filtered', !show);
+    });
+    edges.forEach(function (e) {
+      var s = nodeById(e.dataset.source), d = nodeById(e.dataset.dest);
+      var hidden = (s && s.classList.contains('filtered')) || (d && d.classList.contains('filtered')) ||
+                   (selComm.value !== 'all' && e.dataset.comm !== selComm.value);
+      e.classList.toggle('filtered', hidden);
+    });
+    if (selected) {
+      var cur = nodeById(selected);
+      if (cur && cur.classList.contains('filtered')) clearSelection();
+    }
   }
 
   nodes.forEach(function (node) {
-    node.addEventListener('click', function (ev) { ev.stopPropagation(); select(node); });
+    node.addEventListener('click', function (ev) { ev.stopPropagation(); selectNode(node.dataset.id); });
     node.addEventListener('keydown', function (ev) {
-      if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); select(node); }
+      if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); selectNode(node.dataset.id); }
     });
   });
-  svg.addEventListener('click', clear);
+  svg.addEventListener('click', clearSelection);
+  [selRepo, selLayer, selStatus, selComm].forEach(function (s) { s.addEventListener('change', applyFilters); });
+  searchBox.addEventListener('input', applyFilters);
+  document.getElementById('reset-map').addEventListener('click', function () {
+    searchBox.value = '';
+    [selRepo, selLayer, selStatus, selComm].forEach(function (s) { s.value = 'all'; });
+    clearSelection();
+    applyFilters();
+  });
+})();
+
+// BOB-06 Preview buttons: jump to the Architecture tab, select the linked
+// component and open its Low-Level Design tab.
+(function () {
+  document.querySelectorAll('[data-lld-node]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var archTab = document.querySelector('.step[data-targets="BOB-05"]');
+      if (archTab) archTab.click();
+      if (window.__openLLD) window.__openLLD(btn.dataset.lldNode);
+    });
+  });
 })();
 </script>
 </body>

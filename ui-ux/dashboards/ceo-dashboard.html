@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moderta Orchestrate — CEO Dashboard</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="dashboards.css">
+</head>
+<body>
+<div class="shell">
+
+  <!-- ================= Sidebar ================= -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">M</div>
+      <div>
+        <div class="brand-name">Moderta Orchestrate</div>
+        <div class="brand-sub">AI delivery workflow · v0.1</div>
+      </div>
+    </div>
+
+    <nav class="nav-group" aria-label="Overview">
+      <div class="nav-label">Overview</div>
+      <a class="nav-item" href="../index.html">
+        <span class="nav-icon">◧</span> Dashboard
+      </a>
+      <a class="nav-item" href="../review.html">
+        <span class="nav-icon">✓</span> Approvals
+        <span class="nav-count">7</span>
+      </a>
+      <a class="nav-item" href="../audit-log.html">
+        <span class="nav-icon">≡</span> Audit log
+      </a>
+      <a class="nav-item" href="../metrics.html">
+        <span class="nav-icon">◔</span> Metrics
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="General">
+      <div class="nav-label">General</div>
+      <a class="nav-item active" href="ceo-dashboard.html">
+        <span class="nav-icon">◆</span> CEO dashboard
+      </a>
+      <a class="nav-item" href="cto-dashboard.html">
+        <span class="nav-icon">◈</span> CTO dashboard
+      </a>
+      <a class="nav-item" href="head-of-engineering-dashboard.html">
+        <span class="nav-icon">⚙</span> Head of Engineering
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="Agents">
+      <div class="nav-label">Agents</div>
+      <a class="nav-item" href="../Gaia/gaia.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Gaia
+        <span class="nav-count">2</span>
+      </a>
+      <a class="nav-item" href="../Atlas/atlas.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Atlas
+        <span class="nav-count">4</span>
+      </a>
+      <a class="nav-item" href="#ada">
+        <span class="agent-dot" style="background: var(--status-warning)"></span> Ada
+        <span class="nav-count">1</span>
+      </a>
+      <a class="nav-item" href="../Mira/mira.html">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Mira
+      </a>
+      <a class="nav-item" href="../UncleBob/unclebob.html">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Uncle Bob
+      </a>
+      <a class="nav-item" href="#leonidas">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Leonidas
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="Delivery">
+      <div class="nav-label">Delivery</div>
+      <a class="nav-item" href="../jira-breakdown.html">
+        <span class="nav-icon">⧉</span> Jira breakdown
+      </a>
+      <a class="nav-item" href="#figma">
+        <span class="nav-icon">◨</span> Figma handoff
+      </a>
+      <a class="nav-item" href="#git">
+        <span class="nav-icon">⑂</span> Git activity
+      </a>
+      <a class="nav-item" href="#docs">
+        <span class="nav-icon">▤</span> Knowledge base
+      </a>
+    </nav>
+
+    <div class="sidebar-foot">
+      Human-in-the-loop by default.<br>
+      AI proposes — people approve.
+    </div>
+  </aside>
+
+  <!-- ================= Main ================= -->
+  <div class="main">
+
+    <header class="topbar">
+      <span class="crumb">General / CEO dashboard</span>
+      <div class="spacer"></div>
+      <button class="btn small">Export board pack</button>
+      <div class="user-chip">
+        <div class="avatar">TJ</div>
+        <span>Tharindu · BA</span>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <div class="page-head">
+        <div>
+          <h1>CEO dashboard</h1>
+          <p class="sub">Portfolio delivery, AI leverage and cost — across all initiatives</p>
+        </div>
+        <div class="actions">
+          <button class="btn">Weekly report</button>
+          <button class="btn primary">Quarterly review</button>
+        </div>
+      </div>
+
+      <!-- One filter row above everything it scopes -->
+      <div class="filters" aria-label="Dashboard filters">
+        <button class="filter">This quarter <span class="caret">▾</span></button>
+        <button class="filter">All initiatives <span class="caret">▾</span></button>
+      </div>
+
+      <!-- KPI row -->
+      <section class="stat-row" aria-label="Key numbers">
+        <div class="stat-tile">
+          <span class="stat-label">Initiatives on track</span>
+          <span class="stat-value">4 / 5</span>
+          <span class="stat-note">1 at risk — Supplier portal revamp</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Features shipped this quarter</span>
+          <span class="stat-value">14</span>
+          <span class="stat-note"><span class="up">▲ 4</span> vs last quarter</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">AI draft acceptance</span>
+          <span class="stat-value">78%</span>
+          <span class="stat-note"><span class="up">▲ 5 pts</span> vs June</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Cost per delivered story</span>
+          <span class="stat-value">$412</span>
+          <span class="stat-note"><span class="up">▼ 9%</span> vs last quarter</span>
+        </div>
+      </section>
+
+      <div class="cols-2">
+
+        <!-- Features shipped per month -->
+        <section class="card">
+          <div class="card-head">
+            <h2>Features shipped per month</h2>
+            <span class="hint">all initiatives · 2026</span>
+          </div>
+          <div class="card-body">
+            <div class="colchart">
+              <div class="col-plot">
+                <div class="gridline" style="top: 0"><span class="tick">6</span></div>
+                <div class="gridline" style="top: 50%"><span class="tick">3</span></div>
+                <div class="gridline" style="top: 100%"><span class="tick">0</span></div>
+                <div class="col-bands">
+                  <div class="band" tabindex="0" role="img" aria-label="March · 2 features" data-tip="March · 2 features">
+                    <div class="col" style="height: 33.3%"></div>
+                  </div>
+                  <div class="band" tabindex="0" role="img" aria-label="April · 3 features" data-tip="April · 3 features">
+                    <div class="col" style="height: 50%"></div>
+                  </div>
+                  <div class="band" tabindex="0" role="img" aria-label="May · 3 features" data-tip="May · 3 features">
+                    <div class="col" style="height: 50%"></div>
+                  </div>
+                  <div class="band" tabindex="0" role="img" aria-label="June · 4 features" data-tip="June · 4 features">
+                    <div class="col" style="height: 66.7%"></div>
+                  </div>
+                  <div class="band" tabindex="0" role="img" aria-label="July · 5 features" data-tip="July · 5 features">
+                    <div class="col" style="height: 83.3%"></div>
+                  </div>
+                  <div class="band" tabindex="0" role="img" aria-label="August · 6 features" data-tip="August · 6 features">
+                    <span class="val">6</span>
+                    <div class="col" style="height: 100%"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-x">
+                <span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span>
+              </div>
+            </div>
+            <details class="table-view">
+              <summary>View as table</summary>
+              <table class="data">
+                <thead><tr><th>Month</th><th>Features shipped</th></tr></thead>
+                <tbody>
+                  <tr><td>March</td><td class="num">2</td></tr>
+                  <tr><td>April</td><td class="num">3</td></tr>
+                  <tr><td>May</td><td class="num">3</td></tr>
+                  <tr><td>June</td><td class="num">4</td></tr>
+                  <tr><td>July</td><td class="num">5</td></tr>
+                  <tr><td>August</td><td class="num">6</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </div>
+        </section>
+
+        <!-- Initiative health -->
+        <section class="card">
+          <div class="card-head">
+            <h2>Initiative health</h2>
+            <span class="hint">progress to milestone</span>
+          </div>
+          <div class="list">
+            <div class="list-row">
+              <div class="row-main">
+                <div class="row-title">EcoTrace — carbon reporting MVP</div>
+                <div class="row-meta meter-row">
+                  <span class="meter"><span class="fill" style="width: 62%"></span></span>
+                  <span class="pct">62%</span>
+                </div>
+              </div>
+              <span class="pill good"><span class="dot"></span>✓ On track</span>
+            </div>
+            <div class="list-row">
+              <div class="row-main">
+                <div class="row-title">Supplier portal revamp</div>
+                <div class="row-meta meter-row">
+                  <span class="meter"><span class="fill" style="width: 38%"></span></span>
+                  <span class="pct">38%</span>
+                </div>
+              </div>
+              <span class="pill warning"><span class="dot"></span>⚠ At risk</span>
+            </div>
+            <div class="list-row">
+              <div class="row-main">
+                <div class="row-title">ESG disclosure automation</div>
+                <div class="row-meta meter-row">
+                  <span class="meter"><span class="fill" style="width: 81%"></span></span>
+                  <span class="pct">81%</span>
+                </div>
+              </div>
+              <span class="pill good"><span class="dot"></span>✓ On track</span>
+            </div>
+            <div class="list-row">
+              <div class="row-main">
+                <div class="row-title">Mint AI assistant rollout</div>
+                <div class="row-meta meter-row">
+                  <span class="meter"><span class="fill" style="width: 54%"></span></span>
+                  <span class="pct">54%</span>
+                </div>
+              </div>
+              <span class="pill good"><span class="dot"></span>✓ On track</span>
+            </div>
+            <div class="list-row">
+              <div class="row-main">
+                <div class="row-title">Data platform migration</div>
+                <div class="row-meta meter-row">
+                  <span class="meter"><span class="fill" style="width: 17%"></span></span>
+                  <span class="pct">17%</span>
+                </div>
+              </div>
+              <span class="pill neutral"><span class="dot"></span>— Kick-off</span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Sprint-based delivery -->
+      <section class="card">
+        <div class="card-head">
+          <h2>Delivery by sprint</h2>
+          <span class="hint">items delivered per sprint · click a sprint to open its full delivery</span>
+          <a class="more" href="sprint-delivery.html">Open Sprint 14 delivery →</a>
+        </div>
+        <div class="card-body">
+          <div class="colchart">
+            <div class="col-plot">
+              <div class="gridline" style="top: 0"><span class="tick">8</span></div>
+              <div class="gridline" style="top: 50%"><span class="tick">4</span></div>
+              <div class="gridline" style="top: 100%"><span class="tick">0</span></div>
+              <div class="col-bands">
+                <a class="band" href="sprint-delivery.html" aria-label="Sprint 9 — 4 items delivered. Open sprint delivery." data-tip="Sprint 9 · 4 items delivered&#10;Open sprint delivery →">
+                  <div class="col" style="height: 50%"></div>
+                </a>
+                <a class="band" href="sprint-delivery.html" aria-label="Sprint 10 — 5 items delivered. Open sprint delivery." data-tip="Sprint 10 · 5 items delivered&#10;Open sprint delivery →">
+                  <div class="col" style="height: 62.5%"></div>
+                </a>
+                <a class="band" href="sprint-delivery.html" aria-label="Sprint 11 — 5 items delivered. Open sprint delivery." data-tip="Sprint 11 · 5 items delivered&#10;Open sprint delivery →">
+                  <div class="col" style="height: 62.5%"></div>
+                </a>
+                <a class="band" href="sprint-delivery.html" aria-label="Sprint 12 — 6 items delivered. Open sprint delivery." data-tip="Sprint 12 · 6 items delivered&#10;Open sprint delivery →">
+                  <div class="col" style="height: 75%"></div>
+                </a>
+                <a class="band" href="sprint-delivery.html" aria-label="Sprint 13 — 7 items delivered. Open sprint delivery." data-tip="Sprint 13 · 7 items delivered&#10;Open sprint delivery →">
+                  <div class="col" style="height: 87.5%"></div>
+                </a>
+                <a class="band" href="sprint-delivery.html" aria-label="Sprint 14 — 8 items delivered so far. Open sprint delivery." data-tip="Sprint 14 · 8 items so far&#10;Open sprint delivery →">
+                  <span class="val">8</span>
+                  <div class="col" style="height: 100%"></div>
+                </a>
+              </div>
+            </div>
+            <div class="col-x">
+              <span>S9</span><span>S10</span><span>S11</span><span>S12</span><span>S13</span><span>S14 · current</span>
+            </div>
+          </div>
+          <details class="table-view">
+            <summary>View as table</summary>
+            <table class="data">
+              <thead><tr><th>Sprint</th><th>Items delivered</th><th>Delivery</th></tr></thead>
+              <tbody>
+                <tr><td>Sprint 9</td><td class="num">4</td><td><a href="sprint-delivery.html">Open →</a></td></tr>
+                <tr><td>Sprint 10</td><td class="num">5</td><td><a href="sprint-delivery.html">Open →</a></td></tr>
+                <tr><td>Sprint 11</td><td class="num">5</td><td><a href="sprint-delivery.html">Open →</a></td></tr>
+                <tr><td>Sprint 12</td><td class="num">6</td><td><a href="sprint-delivery.html">Open →</a></td></tr>
+                <tr><td>Sprint 13</td><td class="num">7</td><td><a href="sprint-delivery.html">Open →</a></td></tr>
+                <tr><td>Sprint 14 · current</td><td class="num">8</td><td><a href="sprint-delivery.html">Open →</a></td></tr>
+              </tbody>
+            </table>
+          </details>
+        </div>
+      </section>
+
+      <!-- Decisions waiting -->
+      <section class="card">
+        <div class="card-head">
+          <h2>Decisions waiting on you</h2>
+          <span class="hint">executive sign-off required before work continues</span>
+          <a class="more" href="../review.html">All approvals →</a>
+        </div>
+        <div class="list">
+          <div class="list-row">
+            <span class="agent-badge"><span class="glyph">Ph</span></span>
+            <div class="row-main">
+              <div class="row-title">Phase 2 agent budget — Gaia + Ada expansion</div>
+              <div class="row-meta">Finance pack attached · requested by Head of Engineering · 2 days ago</div>
+            </div>
+            <span class="pill warning"><span class="dot"></span>⚠ Awaiting decision</span>
+            <a class="btn small primary" href="../review.html">Review</a>
+          </div>
+          <div class="list-row">
+            <span class="agent-badge"><span class="glyph">Ve</span></span>
+            <div class="row-main">
+              <div class="row-title">LLM vendor contract renewal — 12-month term</div>
+              <div class="row-meta">Cost projection from CTO office · renewal window closes Aug 15</div>
+            </div>
+            <span class="pill critical"><span class="dot"></span>✕ Due in 13 days</span>
+            <a class="btn small primary" href="../review.html">Review</a>
+          </div>
+          <div class="list-row">
+            <span class="agent-badge"><span class="glyph">Hr</span></span>
+            <div class="row-main">
+              <div class="row-title">Q4 hiring plan — 2 senior engineers, 1 designer</div>
+              <div class="row-meta">Drafted with Atlas capacity model · 5 days ago</div>
+            </div>
+            <span class="pill warning"><span class="dot"></span>⚠ Awaiting decision</span>
+            <a class="btn small primary" href="../review.html">Review</a>
+          </div>
+        </div>
+      </section>
+
+      <p class="mock-note">Static HTML/CSS mockup · Moderta Orchestrate v0.1 · no live data</p>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

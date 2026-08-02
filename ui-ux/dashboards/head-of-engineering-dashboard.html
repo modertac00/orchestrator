@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moderta Orchestrate — Head of Engineering Dashboard</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="dashboards.css">
+</head>
+<body>
+<div class="shell">
+
+  <!-- ================= Sidebar ================= -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">M</div>
+      <div>
+        <div class="brand-name">Moderta Orchestrate</div>
+        <div class="brand-sub">AI delivery workflow · v0.1</div>
+      </div>
+    </div>
+
+    <nav class="nav-group" aria-label="Overview">
+      <div class="nav-label">Overview</div>
+      <a class="nav-item" href="../index.html">
+        <span class="nav-icon">◧</span> Dashboard
+      </a>
+      <a class="nav-item" href="../review.html">
+        <span class="nav-icon">✓</span> Approvals
+        <span class="nav-count">7</span>
+      </a>
+      <a class="nav-item" href="../audit-log.html">
+        <span class="nav-icon">≡</span> Audit log
+      </a>
+      <a class="nav-item" href="../metrics.html">
+        <span class="nav-icon">◔</span> Metrics
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="General">
+      <div class="nav-label">General</div>
+      <a class="nav-item" href="ceo-dashboard.html">
+        <span class="nav-icon">◆</span> CEO dashboard
+      </a>
+      <a class="nav-item" href="cto-dashboard.html">
+        <span class="nav-icon">◈</span> CTO dashboard
+      </a>
+      <a class="nav-item active" href="head-of-engineering-dashboard.html">
+        <span class="nav-icon">⚙</span> Head of Engineering
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="Agents">
+      <div class="nav-label">Agents</div>
+      <a class="nav-item" href="../Gaia/gaia.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Gaia
+        <span class="nav-count">2</span>
+      </a>
+      <a class="nav-item" href="../Atlas/atlas.html">
+        <span class="agent-dot" style="background: var(--status-good)"></span> Atlas
+        <span class="nav-count">4</span>
+      </a>
+      <a class="nav-item" href="#ada">
+        <span class="agent-dot" style="background: var(--status-warning)"></span> Ada
+        <span class="nav-count">1</span>
+      </a>
+      <a class="nav-item" href="../Mira/mira.html">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Mira
+      </a>
+      <a class="nav-item" href="../UncleBob/unclebob.html">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Uncle Bob
+      </a>
+      <a class="nav-item" href="#leonidas">
+        <span class="agent-dot" style="background: var(--ink-muted)"></span> Leonidas
+      </a>
+    </nav>
+
+    <nav class="nav-group" aria-label="Delivery">
+      <div class="nav-label">Delivery</div>
+      <a class="nav-item" href="../jira-breakdown.html">
+        <span class="nav-icon">⧉</span> Jira breakdown
+      </a>
+      <a class="nav-item" href="#figma">
+        <span class="nav-icon">◨</span> Figma handoff
+      </a>
+      <a class="nav-item" href="#git">
+        <span class="nav-icon">⑂</span> Git activity
+      </a>
+      <a class="nav-item" href="#docs">
+        <span class="nav-icon">▤</span> Knowledge base
+      </a>
+    </nav>
+
+    <div class="sidebar-foot">
+      Human-in-the-loop by default.<br>
+      AI proposes — people approve.
+    </div>
+  </aside>
+
+  <!-- ================= Main ================= -->
+  <div class="main">
+
+    <header class="topbar">
+      <span class="crumb">General / Head of Engineering</span>
+      <div class="spacer"></div>
+      <button class="btn small">Sprint report</button>
+      <div class="user-chip">
+        <div class="avatar">TJ</div>
+        <span>Tharindu · BA</span>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <div class="page-head">
+        <div>
+          <h1>Head of Engineering dashboard</h1>
+          <p class="sub">Delivery execution — pipeline flow, review turnaround and team ↔ agent workload</p>
+        </div>
+        <div class="actions">
+          <button class="btn">Capacity plan</button>
+          <button class="btn primary">Unblock queue</button>
+        </div>
+      </div>
+
+      <!-- One filter row above everything it scopes -->
+      <div class="filters" aria-label="Dashboard filters">
+        <button class="filter">Sprint 14 <span class="caret">▾</span></button>
+        <button class="filter">All stages <span class="caret">▾</span></button>
+      </div>
+
+      <!-- KPI row -->
+      <section class="stat-row" aria-label="Key numbers">
+        <div class="stat-tile">
+          <span class="stat-label">Active workflow items</span>
+          <span class="stat-value">12</span>
+          <span class="stat-note">across 5 pipeline stages</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Avg cycle time — idea to release</span>
+          <span class="stat-value">9.5d</span>
+          <span class="stat-note"><span class="up">▼ 1.2d</span> vs Sprint 13</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Pending human approvals</span>
+          <span class="stat-value">7</span>
+          <span class="stat-note">3 waiting more than 24h</span>
+        </div>
+        <div class="stat-tile">
+          <span class="stat-label">Sprint completion</span>
+          <span class="stat-value">82%</span>
+          <span class="stat-note">day 8 of 10 · Sprint 14</span>
+        </div>
+      </section>
+
+      <div class="cols-2">
+
+        <!-- Review turnaround trend -->
+        <section class="card">
+          <div class="card-head">
+            <h2>Human review turnaround</h2>
+            <span class="hint">avg minutes per approval · last 8 weeks</span>
+          </div>
+          <div class="card-body">
+            <div class="line-plot">
+              <svg viewBox="0 0 560 170" role="img" aria-label="Line chart: average review turnaround fell from 26 minutes in week 25 to 14 minutes in week 32">
+                <line class="grid" x1="40" y1="10"    x2="540" y2="10"/>
+                <line class="grid" x1="40" y1="56.7"  x2="540" y2="56.7"/>
+                <line class="grid" x1="40" y1="103.3" x2="540" y2="103.3"/>
+                <line class="grid" x1="40" y1="150"   x2="540" y2="150"/>
+                <text class="tick-t" x="32" y="13"    text-anchor="end">30</text>
+                <text class="tick-t" x="32" y="59.7"  text-anchor="end">20</text>
+                <text class="tick-t" x="32" y="106.3" text-anchor="end">10</text>
+                <text class="tick-t" x="32" y="153"   text-anchor="end">0</text>
+                <path class="area" d="M40,150 L40,28.7 L111.4,38 L182.9,33.3 L254.3,47.3 L325.7,56.7 L397.1,52 L468.6,70.7 L540,84.7 L540,150 Z"/>
+                <polyline class="line" points="40,28.7 111.4,38 182.9,33.3 254.3,47.3 325.7,56.7 397.1,52 468.6,70.7 540,84.7"/>
+                <circle class="dot" cx="540" cy="84.7" r="4.5"/>
+                <text class="label-t" x="532" y="78" text-anchor="end">14m</text>
+                <text class="tick-t" x="40"    y="166" text-anchor="middle">W25</text>
+                <text class="tick-t" x="111.4" y="166" text-anchor="middle">W26</text>
+                <text class="tick-t" x="182.9" y="166" text-anchor="middle">W27</text>
+                <text class="tick-t" x="254.3" y="166" text-anchor="middle">W28</text>
+                <text class="tick-t" x="325.7" y="166" text-anchor="middle">W29</text>
+                <text class="tick-t" x="397.1" y="166" text-anchor="middle">W30</text>
+                <text class="tick-t" x="468.6" y="166" text-anchor="middle">W31</text>
+                <text class="tick-t" x="540"   y="166" text-anchor="middle">W32</text>
+              </svg>
+              <div class="line-hits">
+                <span style="left: 7.1%"  tabindex="0" role="img" aria-label="Week 25 · 26 min avg" data-tip="Week 25 · 26 min avg"></span>
+                <span style="left: 19.9%" tabindex="0" role="img" aria-label="Week 26 · 24 min avg" data-tip="Week 26 · 24 min avg"></span>
+                <span style="left: 32.7%" tabindex="0" role="img" aria-label="Week 27 · 25 min avg" data-tip="Week 27 · 25 min avg"></span>
+                <span style="left: 45.4%" tabindex="0" role="img" aria-label="Week 28 · 22 min avg" data-tip="Week 28 · 22 min avg"></span>
+                <span style="left: 58.2%" tabindex="0" role="img" aria-label="Week 29 · 20 min avg" data-tip="Week 29 · 20 min avg"></span>
+                <span style="left: 70.9%" tabindex="0" role="img" aria-label="Week 30 · 21 min avg" data-tip="Week 30 · 21 min avg"></span>
+                <span style="left: 83.7%" tabindex="0" role="img" aria-label="Week 31 · 17 min avg" data-tip="Week 31 · 17 min avg"></span>
+                <span style="left: 96.4%" tabindex="0" role="img" aria-label="Week 32 · 14 min avg" data-tip="Week 32 · 14 min avg"></span>
+              </div>
+            </div>
+            <details class="table-view">
+              <summary>View as table</summary>
+              <table class="data">
+                <thead><tr><th>Week</th><th>Avg review time (min)</th></tr></thead>
+                <tbody>
+                  <tr><td>W25</td><td class="num">26</td></tr>
+                  <tr><td>W26</td><td class="num">24</td></tr>
+                  <tr><td>W27</td><td class="num">25</td></tr>
+                  <tr><td>W28</td><td class="num">22</td></tr>
+                  <tr><td>W29</td><td class="num">20</td></tr>
+                  <tr><td>W30</td><td class="num">21</td></tr>
+                  <tr><td>W31</td><td class="num">17</td></tr>
+                  <tr><td>W32</td><td class="num">14</td></tr>
+                </tbody>
+              </table>
+            </details>
+          </div>
+        </section>
+
+        <!-- Time in stage -->
+        <section class="card">
+          <div class="card-head">
+            <h2>Avg time in stage</h2>
+            <span class="hint">days · requirements is the current bottleneck</span>
+          </div>
+          <div class="card-body">
+            <div class="hbars">
+              <div class="hbar-row">
+                <span class="hlabel">Research</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Research · 1.8 days avg" data-tip="Research · 1.8 days avg">
+                  <div class="hbar" style="width: 51.4%"></div>
+                  <span class="val" style="left: calc(51.4% + 8px)">1.8</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">Requirements</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Requirements · 3.2 days avg" data-tip="Requirements · 3.2 days avg">
+                  <div class="hbar" style="width: 88.9%"></div>
+                  <span class="val" style="left: calc(88.9% + 8px)">3.2</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">UI/UX design</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="UI/UX design · 1.6 days avg" data-tip="UI/UX design · 1.6 days avg">
+                  <div class="hbar" style="width: 45.7%"></div>
+                  <span class="val" style="left: calc(45.7% + 8px)">1.6</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">Development</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Development · 2.4 days avg" data-tip="Development · 2.4 days avg">
+                  <div class="hbar" style="width: 68.6%"></div>
+                  <span class="val" style="left: calc(68.6% + 8px)">2.4</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">QA &amp; tests</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="QA and tests · 1.2 days avg" data-tip="QA &amp; tests · 1.2 days avg">
+                  <div class="hbar" style="width: 34.3%"></div>
+                  <span class="val" style="left: calc(34.3% + 8px)">1.2</span>
+                </div>
+              </div>
+              <div class="hbar-row">
+                <span class="hlabel">Security</span>
+                <div class="hbar-track" tabindex="0" role="img" aria-label="Security · 0.8 days avg" data-tip="Security · 0.8 days avg">
+                  <div class="hbar" style="width: 22.9%"></div>
+                  <span class="val" style="left: calc(22.9% + 8px)">0.8</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Team ↔ agent workload -->
+      <section class="card">
+        <div class="card-head">
+          <h2>Team ↔ agent workload</h2>
+          <span class="hint">queue depth and human acceptance per active agent</span>
+          <a class="more" href="../metrics.html">Full metrics →</a>
+        </div>
+        <table class="data">
+          <thead>
+            <tr>
+              <th>Agent</th>
+              <th>Pipeline stage</th>
+              <th>Queue</th>
+              <th>Runs today</th>
+              <th>Acceptance</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="agent-badge"><span class="glyph">At</span> Atlas</span></td>
+              <td>Requirements</td>
+              <td class="num">4</td>
+              <td class="num">9</td>
+              <td class="num">82%</td>
+              <td><span class="pill good"><span class="dot"></span>✓ Active</span></td>
+            </tr>
+            <tr>
+              <td><span class="agent-badge"><span class="glyph">Ga</span> Gaia</span></td>
+              <td>Research</td>
+              <td class="num">2</td>
+              <td class="num">3</td>
+              <td class="num">75%</td>
+              <td><span class="pill good"><span class="dot"></span>✓ Active</span></td>
+            </tr>
+            <tr>
+              <td><span class="agent-badge"><span class="glyph">Ad</span> Ada</span></td>
+              <td>QA &amp; tests</td>
+              <td class="num">1</td>
+              <td class="num">2</td>
+              <td class="num">68%</td>
+              <td><span class="pill warning"><span class="dot"></span>⚠ Pilot</span></td>
+            </tr>
+            <tr>
+              <td><span class="agent-badge"><span class="glyph">Mi</span> Mira</span></td>
+              <td>UI/UX design</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td class="num">—</td>
+              <td><span class="pill neutral"><span class="dot"></span>— Planned · Phase 4</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Blockers -->
+      <section class="card">
+        <div class="card-head">
+          <h2>Blockers</h2>
+          <span class="hint">items stalling the pipeline right now</span>
+          <a class="more" href="../review.html">All approvals →</a>
+        </div>
+        <div class="list">
+          <div class="list-row">
+            <span class="agent-badge"><span class="glyph">Ad</span></span>
+            <div class="row-main">
+              <div class="row-title">Test case set — CSV import edge cases (14 cases)</div>
+              <div class="row-meta">Ada · story ECO-112 · blocks QA hand-off</div>
+            </div>
+            <span class="pill critical"><span class="dot"></span>✕ Overdue 24h+</span>
+            <a class="btn small primary" href="../review.html">Review</a>
+          </div>
+          <div class="list-row">
+            <span class="agent-badge"><span class="glyph">At</span></span>
+            <div class="row-main">
+              <div class="row-title">HTML/CSS mockup — emissions dashboard v2</div>
+              <div class="row-meta">Atlas · requirement REQ-031 · design stage waiting on approval</div>
+            </div>
+            <span class="pill warning"><span class="dot"></span>⚠ Needs review</span>
+            <a class="btn small primary" href="../review.html">Review</a>
+          </div>
+          <div class="list-row">
+            <span class="agent-badge"><span class="glyph">Ci</span></span>
+            <div class="row-main">
+              <div class="row-title">Flaky end-to-end suite on staging — 3 intermittent failures</div>
+              <div class="row-meta">CI · blocks release candidate cut for Sprint 14</div>
+            </div>
+            <span class="pill serious"><span class="dot"></span>▲ Investigating</span>
+          </div>
+        </div>
+      </section>
+
+      <p class="mock-note">Static HTML/CSS mockup · Moderta Orchestrate v0.1 · no live data</p>
+
+    </main>
+  </div>
+</div>
+</body>
+</html>

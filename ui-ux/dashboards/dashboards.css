@@ -1,0 +1,316 @@
+/* ============================================================
+   Moderta Orchestrate — executive dashboards (General section)
+   Chart layer shared by ceo-dashboard.html, cto-dashboard.html,
+   head-of-engineering-dashboard.html. Loads AFTER ../styles.css.
+
+   Data-viz tokens follow the validated reference palette:
+   series marks wear categorical slot 1 (blue); status colors are
+   reserved for series that MEAN good/bad and always ship with an
+   icon + label; text never wears the data color.
+   ============================================================ */
+
+:root {
+  --viz-series-1:      #2a78d6;                 /* categorical slot 1, light */
+  --viz-series-1-wash: rgba(42, 120, 214, 0.10); /* area fill wash */
+  --viz-track:         #cde2fb;                 /* meter track — same-ramp light step */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --viz-series-1:      #3987e5;               /* slot 1 stepped for dark surface */
+    --viz-series-1-wash: rgba(57, 135, 229, 0.10);
+    --viz-track:         #104281;
+  }
+}
+
+/* ---------- Tooltip layer (hover + keyboard focus, never the only channel) ---------- */
+[data-tip] { position: relative; cursor: default; }
+
+[data-tip]:hover::after,
+[data-tip]:focus-visible::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: var(--page);
+  padding: 5px 9px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 550;
+  line-height: 1.4;
+  white-space: pre;
+  z-index: 20;
+  pointer-events: none;
+  box-shadow: var(--shadow);
+}
+
+[data-tip]:focus-visible { outline: none; }
+
+/* ---------- Column chart ---------- */
+.colchart { display: flex; flex-direction: column; }
+
+.col-plot { position: relative; height: 170px; }
+
+.col-plot .gridline {
+  position: absolute;
+  left: 44px;
+  right: 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.col-plot .gridline .tick {
+  position: absolute;
+  left: -44px;
+  top: -8px;
+  width: 36px;
+  text-align: right;
+  font-size: 11px;
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.col-bands {
+  position: absolute;
+  left: 44px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+}
+
+.band {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  border-radius: 4px 4px 0 0;
+}
+
+.band:hover, .band:focus-visible { background: var(--tint-neutral); }
+
+.band .val {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  margin-bottom: 3px;
+}
+
+.band .col {
+  width: 22px;
+  background: var(--viz-series-1);
+  border-radius: 4px 4px 0 0; /* rounded data-end, square at the baseline */
+}
+
+/* Stacked variant — 2px surface gaps separate segments, no strokes.
+   Full-height wrapper so segment percentage heights resolve against the plot. */
+.band .col.stacked {
+  background: transparent;
+  height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2px;
+}
+
+.band .col.stacked .seg { width: 100%; }
+.band .col.stacked .seg:last-child { border-radius: 4px 4px 0 0; }
+.seg.series   { background: var(--viz-series-1); }
+.seg.good     { background: var(--status-good); }
+.seg.neutral  { background: var(--ink-muted); }
+.seg.critical { background: var(--status-critical); }
+
+.col-x {
+  display: flex;
+  margin-left: 44px;
+  padding-top: 6px;
+}
+
+.col-x span {
+  flex: 1;
+  text-align: center;
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+
+/* ---------- Horizontal bar chart ---------- */
+.hbars { display: flex; flex-direction: column; gap: 12px; }
+
+.hbar-row {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Longer row labels (user names, AWS service names) */
+.hbars.wide-labels .hbar-row { grid-template-columns: 132px 1fr; }
+
+.hbar-row .hlabel {
+  font-size: 12px;
+  font-weight: 550;
+  color: var(--ink-secondary);
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hbar-track { position: relative; height: 18px; border-radius: 0 4px 4px 0; }
+.hbar-track:hover .hbar, .hbar-track:focus-visible .hbar { filter: brightness(1.12); }
+
+.hbar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 18px;
+  background: var(--viz-series-1);
+  border-radius: 0 4px 4px 0; /* rounded data-end, square at the baseline */
+}
+
+.hbar-track .val {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  white-space: nowrap;
+}
+
+/* ---------- Line chart (inline SVG) ---------- */
+.line-plot { position: relative; }
+.line-plot svg { display: block; width: 100%; height: auto; }
+
+.line-plot .grid    { stroke: var(--hairline); stroke-width: 1; }
+.line-plot .area    { fill: var(--viz-series-1); opacity: 0.1; }
+.line-plot .line    { fill: none; stroke: var(--viz-series-1); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.line-plot .dot     { fill: var(--viz-series-1); stroke: var(--surface); stroke-width: 2; }
+.line-plot .tick-t  { fill: var(--ink-muted); font-size: 11px; }
+.line-plot .label-t { fill: var(--ink-secondary); font-size: 11px; font-weight: 600; }
+
+.line-hits { position: absolute; inset: 0; }
+
+.line-hits span {
+  position: absolute;
+  top: 0;
+  bottom: 12%;
+  width: 12%;
+  transform: translateX(-50%);
+}
+
+.line-hits span:hover::before,
+.line-hits span:focus-visible::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  border-left: 1px solid var(--ink-muted);
+}
+
+/* ---------- Meter (progress) — track is a lighter step of the same ramp ---------- */
+.meter {
+  position: relative;
+  height: 8px;
+  border-radius: 99px;
+  background: var(--viz-track);
+  overflow: hidden;
+  flex: 1;
+}
+
+.meter .fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--viz-series-1);
+  border-radius: 99px;
+}
+
+.meter-row { display: flex; align-items: center; gap: 12px; }
+.meter-row .pct {
+  width: 34px;
+  text-align: right;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Legend (present whenever ≥ 2 series share a plot) ---------- */
+.viz-legend {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 14px;
+  font-size: 12px;
+  color: var(--ink-secondary);
+}
+
+.viz-legend .key { display: inline-flex; align-items: center; gap: 6px; font-weight: 550; }
+.viz-legend .swatch { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+.viz-legend .swatch.series   { background: var(--viz-series-1); }
+.viz-legend .swatch.good     { background: var(--status-good); }
+.viz-legend .swatch.neutral  { background: var(--ink-muted); }
+.viz-legend .swatch.critical { background: var(--status-critical); }
+
+/* ---------- Sprint delivery ---------- */
+/* Clickable sprint columns — each band is a link that opens the sprint's delivery page */
+a.band { color: inherit; }
+a.band:hover, a.band:focus-visible { text-decoration: none; background: var(--tint-neutral); }
+
+.deliv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 1080px) { .deliv-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 780px)  { .deliv-grid { grid-template-columns: 1fr; } }
+
+/* Deliverables without a UI get a simple marked tile instead of a preview */
+.no-ui-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px;
+  min-height: 106px;
+  background: var(--tint-neutral);
+  border-bottom: 1px solid var(--hairline);
+  color: var(--ink-muted);
+  text-align: center;
+}
+
+.no-ui-tile .glyph-big { font-size: 22px; line-height: 1; }
+
+.no-ui-tile .no-ui-label {
+  font-size: 11px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.no-ui-tile .no-ui-kind { font-size: 11.5px; color: var(--ink-secondary); }
+
+/* Tiny bar sketch used inside UI previews */
+.mini-bars { display: flex; align-items: flex-end; gap: 3px; height: 36px; padding: 2px 0; }
+.mini-bars i { flex: 1; background: var(--viz-series-1); border-radius: 2px 2px 0 0; }
+
+/* ---------- Table view twin (every chart's WCAG-clean equivalent) ---------- */
+details.table-view { border-top: 1px solid var(--hairline); margin-top: 16px; }
+
+details.table-view summary {
+  padding: 10px 0 0;
+  font-size: 12px;
+  font-weight: 550;
+  color: var(--accent);
+  cursor: pointer;
+  list-style-position: inside;
+}
+
+details.table-view table.data td,
+details.table-view table.data th { padding-left: 0; }

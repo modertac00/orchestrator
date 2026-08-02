@@ -17,11 +17,27 @@ His studio has **two sections** (tabs) plus an always-visible chat:
    - Edges are typed connections (REST, SDK, database, npm package, navigation) with the same
      evidence statuses and arrow markers.
    - **Interactive:** selecting a node (click or keyboard) highlights its direct incoming and
-     outgoing connections, dims the rest, and opens a detail panel; clicking the background
+     outgoing connections, dims the rest, and opens the detail drawer; clicking the background
      clears the selection.
+   - **Filters + search:** filter the map by repository, layer (experience / service / shared /
+     data / external), evidence status, and communication type (REST / database / SDK / package /
+     browser / navigation / replication); free-text search matches names, modules, routes and
+     env vars. Reset restores the full map.
+   - **Tabbed detail drawer:** selecting a component opens a drawer with 11 tabs — Overview
+     (description + direct connections), Responsibilities, Modules, Interfaces, Dependencies,
+     Used By, Data, Configuration, Evidence, Risks, Open Questions — backed by the `NODE_DATA`
+     extracted from the ESM multi-repository architecture analysis (`architecture (1).html`;
+     the two RTF files in this folder are the analysis prompts that produced it).
    - Every component carries its own **section code `ARC-01`…`ARC-16`** (shown on the tile,
-     usable in chat to request changes) plus a **description** and **implementation details**
-     (modules, routes, env vars) — all rendered in the detail panel on selection.
+     usable in chat to request changes), displayed in the drawer head.
+   - **Technology encoding:** each tile shows its stack with a colored left stripe + symbol +
+     label — ⚛ React SPA (sky), ◆ NestJS (red), ⬡ npm library (purple), ◫ PostgreSQL (blue),
+     ☁ AWS S3 (orange), ◈ external service (teal), ◍ browser client (slate). Border color/dash
+     stays reserved for evidence status, so the two encodings never collide.
+   - **LLD badges:** tiles whose component has a Low-Level Design document in Technical designs
+     (BOB-06) show a `▤ TD-xxx` badge (main-frontend → TD-009, main-api → TD-012; reporting-api,
+     pdf, metadata-db, artifact-s3 → TD-011). The drawer head repeats the tech chip and the LLD
+     reference; tech labels and LLD ids are searchable.
    - The architecture has **levels** (C4-style): L1 system context, L2 services & infrastructure
      (the default, populated view), L3 components.
    - The map is edited **through chat**: ask Uncle Bob to add / connect / re-verify components;
