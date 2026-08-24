@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moderta Orchestrate — Gaia Research Workspace</title>
+<title>Moderta AI — Research Workspace (Gaia)</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -40,7 +40,7 @@
       <div class="nav-label">Agents</div>
       <a class="nav-item active" href="gaia.html">
         <span class="agent-dot" style="background: var(--status-good)"></span> Gaia
-        <span class="nav-count">2</span>
+        <span class="nav-count">4</span>
       </a>
       <a class="nav-item" href="../Atlas/atlas.html">
         <span class="agent-dot" style="background: var(--status-good)"></span> Atlas
@@ -61,6 +61,27 @@
       </a>
     </nav>
 
+    <!-- Research types are workspace-level scopes, not separate products · BR-001 / BR-075 -->
+    <nav class="nav-group" aria-label="Research">
+      <div class="nav-label">Research</div>
+      <a class="nav-item" href="#GAIA-05">
+        <span class="nav-icon">🎓</span> Academic
+        <span class="nav-count">12</span>
+      </a>
+      <a class="nav-item" href="#GAIA-05">
+        <span class="nav-icon">🏢</span> Business
+        <span class="nav-count">6</span>
+      </a>
+      <a class="nav-item" href="#GAIA-05">
+        <span class="nav-icon">📈</span> Market
+        <span class="nav-count">5</span>
+      </a>
+      <a class="nav-item" href="#GAIA-05">
+        <span class="nav-icon">🌱</span> Sustainability
+        <span class="nav-count">9</span>
+      </a>
+    </nav>
+
     <nav class="nav-group" aria-label="Delivery">
       <div class="nav-label">Delivery</div>
       <a class="nav-item" href="jira-breakdown.html">
@@ -72,7 +93,7 @@
       <a class="nav-item" href="#git">
         <span class="nav-icon">⑂</span> Git activity
       </a>
-      <a class="nav-item" href="#docs">
+      <a class="nav-item" href="#GAIA-16">
         <span class="nav-icon">▤</span> Knowledge base
       </a>
     </nav>
@@ -88,9 +109,10 @@
   <div class="main">
 
     <header class="topbar" id="GAIA-02">
-      <span class="crumb">Agents / Gaia — Research</span>
+      <span class="crumb">Agents / Gaia — Research Workspace</span>
       <span class="sec-tag">GAIA-02</span>
       <div class="spacer"></div>
+      <span class="pill neutral"><span class="dot"></span>Workspace: EcoTrace</span>
       <div class="user-chip">
         <div class="avatar">NW</div>
         <span>Nimali · Research Assistant</span>
@@ -101,104 +123,232 @@
 
       <div class="page-head" id="GAIA-03">
         <div>
-          <h1>Gaia — Research Library <span class="sec-tag">GAIA-03</span></h1>
-          <p class="sub">Sustainability research, regulation and competitor summaries · drafts stay unpublished until RA approval</p>
+          <h1>Moderta AI — Research Workspace <span class="sec-tag">GAIA-03</span></h1>
+          <p class="sub">Academic · Business · Market · Sustainability research — drafted by Gaia, source-verified and approved by a human</p>
         </div>
         <div class="actions">
+          <button class="btn">⤓ Export…</button>
           <button class="btn primary">＋ New research request</button>
         </div>
       </div>
 
-      <!-- Filters -->
+      <!-- ===== New research request · GAIA-18 (BR-001, BR-002, BR-076) ===== -->
+      <section class="card" id="GAIA-18">
+        <div class="card-head">
+          <h2>New research request</h2>
+          <span class="hint">Step 1 of 2 · research type first</span>
+          <span class="sec-tag push">GAIA-18</span>
+        </div>
+
+        <div class="card-body" style="display:flex; flex-direction:column; gap:16px;">
+
+          <div>
+            <div class="stat-label" style="margin-bottom:8px;">
+              1 · Research type — determines workflow, note template, tools, evidence rules and output format
+            </div>
+            <div class="type-grid" role="radiogroup" aria-label="Research type">
+              <button class="type-card on" role="radio" aria-checked="true">
+                <span class="tc-top">🎓 Academic <span class="tc-mark">✓ selected</span></span>
+                <span class="tc-desc">Journal papers, thesis chapters, conference papers, literature &amp; systematic reviews.</span>
+                <span class="tc-sets">Academic note template · peer-review evidence rules · citation-style output</span>
+              </button>
+              <button class="type-card" role="radio" aria-checked="false">
+                <span class="tc-top">🏢 Business</span>
+                <span class="tc-desc">Company, strategy, product, customer and competitor research.</span>
+                <span class="tc-sets">Business note template · reliability-tier evidence rules · report output</span>
+              </button>
+              <button class="type-card" role="radio" aria-checked="false">
+                <span class="tc-top">📈 Market</span>
+                <span class="tc-desc">Market sizing, trends, segmentation, forecasting and competitive scans.</span>
+                <span class="tc-sets">Market note template · triangulation rules · spreadsheet output</span>
+              </button>
+              <button class="type-card" role="radio" aria-checked="false">
+                <span class="tc-top">🌱 Sustainability</span>
+                <span class="tc-desc">Regulation, ESG, climate and LCA research (the original Gaia scope).</span>
+                <span class="tc-sets">Sustainability note template · framework evidence rules · regulation output</span>
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <div class="stat-label" style="margin-bottom:8px;">2 · Intake — shared fields plus the fields Academic research requires</div>
+            <div class="form-grid">
+              <div class="field wide">
+                <label for="nr-title">Title <span class="req">*</span></label>
+                <input id="nr-title" type="text" value="Supplier emissions data quality: a systematic review (2019–2026)">
+              </div>
+              <div class="field">
+                <label for="nr-ws">Workspace <span class="req">*</span></label>
+                <select id="nr-ws"><option>EcoTrace</option><option>Moderta platform</option><option>Client — Northwind</option></select>
+              </div>
+              <div class="field wide">
+                <label for="nr-q">Research question <span class="req">*</span></label>
+                <input id="nr-q" type="text" value="Do supplier-level primary data programmes reduce Scope 3 estimation error?">
+              </div>
+              <div class="field">
+                <label for="nr-out">Output format</label>
+                <select id="nr-out"><option>Literature review</option><option>Systematic review</option><option>Research paper</option><option>Thesis section</option></select>
+              </div>
+
+              <div class="field">
+                <label for="nr-fos">Field of study <span class="req">*</span> <span class="typed">Academic</span></label>
+                <input id="nr-fos" type="text" value="Industrial ecology / carbon accounting">
+              </div>
+              <div class="field">
+                <label for="nr-cite">Citation style <span class="req">*</span> <span class="typed">Academic</span></label>
+                <select id="nr-cite"><option>APA 7</option><option>MLA 9</option><option>Chicago 17</option><option>Harvard</option><option>IEEE</option><option>Vancouver</option><option>AMA 11</option></select>
+              </div>
+              <div class="field">
+                <label for="nr-study">Study type <span class="typed">Academic</span></label>
+                <select id="nr-study"><option>Systematic review</option><option>Meta-analysis</option><option>Empirical — quantitative</option><option>Empirical — qualitative</option><option>Conceptual</option></select>
+              </div>
+              <div class="field wide">
+                <label for="nr-scope">Guiding questions &amp; scope notes</label>
+                <textarea id="nr-scope">Peer-reviewed only, 2019–2026, EU + North America. Exclude vendor whitepapers unless they publish method. Extract sample size, method and reported error.</textarea>
+              </div>
+              <div class="field">
+                <label for="nr-due">Needed by</label>
+                <input id="nr-due" type="text" value="12 Sep 2026">
+                <span class="field-hint">Recorded as the request input for traceability</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-scroll">
+            <table class="data compact">
+              <caption class="stat-label" style="text-align:left; padding:0 0 6px;">Type-specific intake fields (configurable per research type · BR-002, BR-076)</caption>
+              <thead>
+                <tr><th>Research type</th><th>Required fields added to the shared intake</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><span class="rtype on">🎓 Academic</span></td><td>Field of study · Citation style · Study type · Publication target</td></tr>
+                <tr><td><span class="rtype">🏢 Business</span></td><td>Company · Industry · Business question · Decision to support</td></tr>
+                <tr><td><span class="rtype">📈 Market</span></td><td>Geography · Market / segment · Currency · Base year &amp; forecast horizon</td></tr>
+                <tr><td><span class="rtype">🌱 Sustainability</span></td><td>Sustainability topic · Framework (CSRD / ESRS / GHG Protocol / TCFD) · Jurisdiction · Reporting year</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="edit-actions">
+            <button class="btn primary small">→ Create request</button>
+            <button class="btn small">✕ Cancel</button>
+            <span class="edit-hint">Research type and intake answers are stored as the recorded input for this research</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Filters · GAIA-04 (BR-003, BR-004) ===== -->
       <div class="filters" aria-label="Library filters" id="GAIA-04">
+        <button class="filter">🎓 Research type: Academic <span class="caret">▾</span></button>
+        <button class="filter" aria-expanded="true" aria-controls="doctype-panel">Document type: 3 selected <span class="caret">▾</span></button>
         <button class="filter">Topic: All <span class="caret">▾</span></button>
-        <button class="filter">Type: All <span class="caret">▾</span></button>
         <button class="filter">Status: All <span class="caret">▾</span></button>
+        <button class="filter">Workspace: EcoTrace <span class="caret">▾</span></button>
         <button class="filter">Only mine</button>
         <span class="sec-tag push">GAIA-04</span>
       </div>
 
+      <!-- Document type list, shown open · BR-004 -->
+      <div class="filter-menu open" id="doctype-panel" role="group" aria-label="Document type">
+        <div class="fm-head">Document type — expanded for academic, business and market research</div>
+        <div class="fm-opts">
+          <label class="opt"><input type="checkbox" checked> Literature review</label>
+          <label class="opt"><input type="checkbox" checked> Systematic review</label>
+          <label class="opt"><input type="checkbox" checked> Research paper</label>
+          <label class="opt"><input type="checkbox"> Case study</label>
+          <label class="opt"><input type="checkbox"> Market sizing</label>
+          <label class="opt"><input type="checkbox"> Market analysis</label>
+          <label class="opt"><input type="checkbox"> Survey / primary data</label>
+          <label class="opt"><input type="checkbox"> Financial report</label>
+          <label class="opt"><input type="checkbox"> Patent</label>
+          <label class="opt"><input type="checkbox"> Competitor analysis</label>
+          <label class="opt"><input type="checkbox"> Regulation</label>
+          <label class="opt"><input type="checkbox"> Interview notes</label>
+        </div>
+        <div class="fm-foot">Document types are configuration, not code — new types can be added per research type.</div>
+      </div>
+
       <div class="master-detail has-rail">
 
-        <!-- ===== Research & documents · GAIA-05 ===== -->
+        <!-- ===== Research & documents · GAIA-05 (BR-005, BR-006) ===== -->
         <section class="card" id="GAIA-05">
           <div class="card-head">
             <h2>Research</h2>
-            <span class="hint">4 research · 9 documents</span>
+            <span class="hint">8 research · 21 documents</span>
             <span class="sec-tag push">GAIA-05</span>
           </div>
           <div class="list">
 
-            <!-- Research RS-04 (expanded) -->
+            <!-- RS-07 Academic (expanded) -->
             <div class="res-row" aria-expanded="true">
               <span class="res-caret">▾</span>
-              <span class="res-id">RS-04</span>
-              <span class="res-title">EU CSRD compliance impact</span>
-              <span class="res-count">3 docs</span>
+              <span class="res-id">RS-07</span>
+              <span class="res-title">Scope 3 data quality — systematic literature review</span>
+              <span class="rtype on">🎓 Academic</span>
             </div>
             <div class="lib-row doc-row selected" aria-current="true">
               <div class="lib-top">
-                <span class="lib-id">D-08</span> · Regulation
+                <span class="lib-id">D-14</span> · <span class="doctype">Literature review</span>
                 <span class="pill warning"><span class="dot"></span>⚠ Needs review</span>
               </div>
-              <div class="lib-title">EU CSRD reporting rules — 2026 update</div>
-              <div class="lib-meta">Gaia draft · 6 sources · yesterday</div>
+              <div class="lib-title">Supplier emissions data quality: a systematic review (2019–2026)</div>
+              <div class="lib-meta">Gaia draft · 38 studies included · 8 sources · yesterday</div>
             </div>
             <div class="lib-row doc-row">
               <div class="lib-top">
-                <span class="lib-id">D-07</span> · Analysis
+                <span class="lib-id">D-13</span> · <span class="doctype">Systematic review</span>
+                <span class="pill neutral"><span class="dot"></span>— In screening</span>
+              </div>
+              <div class="lib-title">Screening log — 412 records identified</div>
+              <div class="lib-meta">271 excluded · 78 full-text · 38 included</div>
+            </div>
+            <div class="lib-row doc-row">
+              <div class="lib-top">
+                <span class="lib-id">D-12</span> · <span class="doctype">Research paper</span>
+                <span class="pill good"><span class="dot"></span>✓ Approved</span>
+              </div>
+              <div class="lib-title">Methodological quality of Scope 3 estimation studies</div>
+              <div class="lib-meta">Approved 4d ago · <span class="pill accent"><span class="dot"></span>→ Used in Thesis §2.3</span></div>
+            </div>
+            <div class="lib-row doc-row">
+              <div class="lib-top">
+                <span class="lib-id">D-11</span> · <span class="doctype">Survey / primary data</span>
                 <span class="pill neutral"><span class="dot"></span>— Queued</span>
               </div>
-              <div class="lib-title">Member-state transposition matrix</div>
-              <div class="lib-meta">Requested 2h ago by Nimali</div>
-            </div>
-            <div class="lib-row doc-row">
-              <div class="lib-top">
-                <span class="lib-id">D-06</span> · Interview notes
-                <span class="pill good"><span class="dot"></span>✓ Approved</span>
-              </div>
-              <div class="lib-title">Compliance officer interviews — 5 companies</div>
-              <div class="lib-meta">Approved 2d ago</div>
+              <div class="lib-title">Practitioner survey — data collection maturity</div>
+              <div class="lib-meta">Requested 3h ago by Nimali</div>
             </div>
 
-            <!-- Research RS-03 (expanded) -->
-            <div class="res-row" aria-expanded="true">
-              <span class="res-caret">▾</span>
-              <span class="res-id">RS-03</span>
-              <span class="res-title">Supplier emissions data collection</span>
-              <span class="res-count">2 docs</span>
-            </div>
-            <div class="lib-row doc-row">
-              <div class="lib-top">
-                <span class="lib-id">D-05</span> · Customer problem
-                <span class="pill good"><span class="dot"></span>✓ Approved</span>
-              </div>
-              <div class="lib-title">Supplier data collection pain points</div>
-              <div class="lib-meta">Approved 3d ago · <span class="pill accent"><span class="dot"></span>→ Used in REQ-031</span></div>
-            </div>
-            <div class="lib-row doc-row">
-              <div class="lib-top">
-                <span class="lib-id">D-04</span> · Competitor
-                <span class="pill good"><span class="dot"></span>✓ Approved</span>
-              </div>
-              <div class="lib-title">Competitor scan: Persefoni, Watershed, Sweep</div>
-              <div class="lib-meta">Approved last week</div>
-            </div>
-
-            <!-- Research RS-02 (collapsed) -->
+            <!-- RS-06 Market (collapsed) -->
             <div class="res-row" aria-expanded="false">
               <span class="res-caret">▸</span>
-              <span class="res-id">RS-02</span>
-              <span class="res-title">Carbon accounting market</span>
-              <span class="res-count">3 docs</span>
+              <span class="res-id">RS-06</span>
+              <span class="res-title">Carbon accounting software market 2026–2030</span>
+              <span class="rtype">📈 Market</span>
             </div>
 
-            <!-- Research RS-01 (collapsed, has rejected doc) -->
+            <!-- RS-05 Business (collapsed) -->
+            <div class="res-row" aria-expanded="false">
+              <span class="res-caret">▸</span>
+              <span class="res-id">RS-05</span>
+              <span class="res-title">Competitor &amp; business-model scan — EcoTrace</span>
+              <span class="rtype">🏢 Business</span>
+            </div>
+
+            <!-- RS-04 Sustainability (collapsed) -->
+            <div class="res-row" aria-expanded="false">
+              <span class="res-caret">▸</span>
+              <span class="res-id">RS-04</span>
+              <span class="res-title">EU CSRD compliance impact</span>
+              <span class="rtype">🌱 Sustainability</span>
+            </div>
+
+            <!-- RS-01 (collapsed, rejected doc) -->
             <div class="res-row" aria-expanded="false">
               <span class="res-caret">▸</span>
               <span class="res-id">RS-01</span>
-              <span class="res-title">SME sustainability budgets</span>
-              <span class="res-count">1 doc · ✕ rejected</span>
+              <span class="res-title">SME sustainability budgets · ✕ 1 rejected</span>
+              <span class="rtype">🌱 Sustainability</span>
             </div>
 
           </div>
@@ -209,23 +359,54 @@
           <div class="draft-banner" id="GAIA-06">
             <span>⚠ Draft — Gaia · not approved</span>
             <span class="spacer"></span>
-            <span class="hint">This note cannot be used by Atlas until approved</span>
+            <span class="hint">Draft → Verify sources → Approve · unchanged for every research type</span>
             <span class="sec-tag">GAIA-06</span>
+          </div>
+
+          <div style="padding:14px 18px 0;">
+            <div class="steps">
+              <div class="step done"><span class="step-num">1</span> Draft <span class="step-state">Gaia · done</span></div>
+              <div class="step active"><span class="step-num">2</span> Verify sources <span class="step-state">5 of 8</span></div>
+              <div class="step"><span class="step-num">3</span> Approve <span class="step-state">locked</span></div>
+            </div>
           </div>
 
           <div class="note-head" id="GAIA-07">
             <div class="note-title-row">
-              <h2>D-08 · EU CSRD reporting rules — 2026 update</h2>
-              <span class="pill neutral"><span class="dot"></span>Regulation</span>
+              <h2>D-14 · Supplier emissions data quality: a systematic review (2019–2026)</h2>
+              <span class="rtype on">🎓 Academic</span>
+              <span class="doctype">Literature review</span>
               <span class="pill warning"><span class="dot"></span>⚠ Needs review</span>
               <span class="sec-tag">GAIA-07</span>
             </div>
             <div class="note-meta">
-              Part of research <a href="#">RS-04 · EU CSRD compliance impact</a> · requested by Nimali (RA) · drafted by Gaia yesterday 16:42 · prompt template <a href="#">GAIA-REG-v3</a> · run #482
+              Part of research <a href="#GAIA-05">RS-07 · Scope 3 data quality</a> · requested by Nimali (RA) · drafted by Gaia yesterday 16:42 ·
+              prompt template <a href="#">GAIA-ACAD-v2</a> · run #517 · citation style APA 7
             </div>
           </div>
 
-          <!-- Editor toolbar · GAIA-17 -->
+          <!-- ===== Note template · GAIA-19 (BR-007 … BR-010, BR-076) ===== -->
+          <div class="tpl-bar" id="GAIA-19">
+            <span class="tpl-label">Note template:</span>
+            <button class="filter">🎓 Academic — Literature review <span class="caret">▾</span></button>
+            <button class="btn small">⇄ Change structure</button>
+            <span class="tpl-note">Structure follows research type · templates are configurable <span class="sec-tag">GAIA-19</span></span>
+          </div>
+          <div class="tpl-sections" aria-label="Sections in this template">
+            <span class="tpl-chip on">Research question</span>
+            <span class="tpl-chip on">Objectives</span>
+            <span class="tpl-chip">Literature review</span>
+            <span class="tpl-chip">Methodology</span>
+            <span class="tpl-chip on">Findings</span>
+            <span class="tpl-chip on">Discussion</span>
+            <span class="tpl-chip on">Limitations</span>
+            <span class="tpl-chip on">Research gaps</span>
+            <span class="tpl-chip">Implications</span>
+            <span class="tpl-chip">Conclusion</span>
+            <span class="tpl-chip">References</span>
+          </div>
+
+          <!-- Editor toolbar · GAIA-17 (BR-014, BR-015, BR-050, BR-051) -->
           <div class="editor-toolbar" id="GAIA-17" aria-label="Document editing tools">
             <button class="tbtn" title="Bold"><b>B</b></button>
             <button class="tbtn" title="Italic"><i>I</i></button>
@@ -234,52 +415,138 @@
             <button class="tbtn" title="Insert a link to a source, document, or Jira item">🔗 Insert link</button>
             <button class="tbtn" title="Attach a file">📎 Attach</button>
             <span class="tbtn sep" aria-hidden="true"></span>
-            <button class="tbtn" title="Download this note as PDF with sources and audit record">⤓ Export PDF</button>
+            <button class="tbtn" title="Insert a structured data table into this section">▦ Insert table</button>
+            <button class="tbtn" title="Insert a chart built from a table or the evidence matrix">▥ Insert chart</button>
+            <span class="tbtn sep" aria-hidden="true"></span>
+            <button class="tbtn" title="AI drafting help — proposes text, never replaces it silently">✦ AI draft</button>
+            <button class="tbtn" title="Academic style and grammar check">🅐 Style &amp; grammar</button>
+            <span class="tbtn sep" aria-hidden="true"></span>
+            <button class="tbtn" title="Export as PDF, DOCX, spreadsheet, citations or full research package">⤓ Export ▾</button>
             <span class="toolbar-hint">Edits are audit-logged</span>
             <span class="sec-tag">GAIA-17</span>
           </div>
 
+          <!-- Template section 1–2 -->
           <div class="note-section" id="GAIA-08">
-            <h3>Summary <span class="sec-tag">GAIA-08</span>
+            <h3>Research question &amp; objectives <span class="sec-tag">GAIA-08</span>
               <span class="sec-actions">
                 <button class="sec-btn" title="Edit this section as text">✎ Edit</button>
                 <button class="sec-btn ai" title="Opens Gaia Assistant chat targeting GAIA-08">✦ Edit with AI</button>
               </span>
             </h3>
             <p>
-              The <a href="#">EU Corporate Sustainability Reporting Directive (CSRD)</a> enters its second wave in 2026, extending
-              mandatory ESRS-aligned reporting to large non-listed companies <span class="cite">1</span>. Scope 3
-              supplier emissions disclosure moves from "comply or explain" to mandatory quantitative reporting for
-              most in-scope companies <span class="cite">2</span>, which directly increases demand for supplier
-              data collection tooling like EcoTrace <span class="cite">4</span>.
+              <strong>RQ.</strong> Do supplier-level primary data programmes reduce Scope 3 category&nbsp;1 estimation error
+              compared with spend-based methods <span class="cite">3</span> <span class="cite">7</span>?
             </p>
+            <ul>
+              <li><strong>O1.</strong> Map estimation methods used in peer-reviewed Scope 3 studies, 2019–2026.</li>
+              <li><strong>O2.</strong> Compare reported error ranges by method and by sample size <span class="cite">12</span>.</li>
+              <li><strong>O3.</strong> Identify the conditions under which primary data collection is cost-justified.</li>
+            </ul>
           </div>
 
           <div class="note-section" id="GAIA-09">
-            <h3>Key findings <span class="sec-tag">GAIA-09</span>
+            <h3>Findings <span class="sec-tag">GAIA-09</span>
               <span class="sec-actions">
                 <button class="sec-btn" title="Edit this section as text">✎ Edit</button>
                 <button class="sec-btn ai" title="Opens Gaia Assistant chat targeting GAIA-09">✦ Edit with AI</button>
               </span>
             </h3>
             <ul>
-              <li>Wave 2 applies to companies with 250+ employees or €50M+ turnover — an estimated 49,000 companies across the EU <span class="cite">1</span>.</li>
-              <li>Scope 3 category 1 (purchased goods &amp; services) is the largest reporting gap; 68% of surveyed companies lack supplier-level data <span class="cite">2</span> <span class="cite">3</span>.</li>
-              <li>Digital tagging (XBRL) of sustainability statements becomes mandatory, favoring products with structured data export <span class="cite">5</span>.</li>
-              <li>Member-state transposition still varies; Germany and France add stricter assurance requirements <span class="cite">6</span>.</li>
+              <li>Across 38 included studies, supplier-primary methods report a mean estimation error of 9% against 42% for industry-average proxies <span class="cite">3</span> <span class="cite">7</span> <span class="cite">12</span>.</li>
+              <li>Error falls sharply once primary coverage passes ~40% of purchased-goods spend; beyond ~70% the marginal gain is small <span class="cite">12</span>.</li>
+              <li>Only 11 of 38 studies report an uncertainty interval at all — the field's largest reporting weakness <span class="cite">3</span>.</li>
             </ul>
+
+            <!-- Embedded data table block · GAIA-20 (BR-014, BR-027) -->
+            <div class="block" id="GAIA-20">
+              <div class="block-head">
+                <span class="block-kind">Data table</span>
+                <span class="block-title">Extracted study data — estimation error by method</span>
+                <span class="block-actions">
+                  <button class="btn small">✎ Edit data</button>
+                  <button class="btn small">＋ Column</button>
+                  <button class="btn small">▥ Chart this</button>
+                  <span class="sec-tag">GAIA-20</span>
+                </span>
+              </div>
+              <div class="block-body table-scroll" style="padding:0;">
+                <table class="data compact">
+                  <thead>
+                    <tr><th>Method</th><th class="num">Studies</th><th class="num">Median sample</th><th class="num">Mean error</th><th class="num">Reports CI</th><th>Source</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Supplier primary data</td><td class="num">9</td><td class="num">142</td><td class="num">9%</td><td class="num">5</td><td><span class="cite">3</span> <span class="cite">12</span></td></tr>
+                    <tr><td>Hybrid (primary + spend)</td><td class="num">11</td><td class="num">96</td><td class="num">17%</td><td class="num">4</td><td><span class="cite">7</span> <span class="cite">12</span></td></tr>
+                    <tr><td>Spend-based EEIO</td><td class="num">13</td><td class="num">210</td><td class="num">31%</td><td class="num">2</td><td><span class="cite">3</span> <span class="cite">9</span></td></tr>
+                    <tr><td>Industry-average proxy</td><td class="num">5</td><td class="num">64</td><td class="num">42%</td><td class="num">0</td><td><span class="cite">9</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="block-foot">
+                <span>Rows extracted from the evidence matrix — each cell keeps its source link</span>
+                <span class="pill accent"><span class="dot"></span>⤓ Exports to CSV / XLSX with the note</span>
+              </div>
+            </div>
+
+            <!-- Embedded chart block · GAIA-21 (BR-015, BR-016) -->
+            <div class="block" id="GAIA-21">
+              <div class="block-head">
+                <span class="block-kind">Chart</span>
+                <span class="block-title">Mean Scope 3 estimation error by method</span>
+                <span class="block-actions">
+                  <button class="btn small">✎ Edit chart</button>
+                  <button class="btn small">▦ View as table</button>
+                  <span class="sec-tag">GAIA-21</span>
+                </span>
+              </div>
+              <div class="block-body">
+                <div class="chart">
+                  <div class="chart-sub">38 peer-reviewed studies, 2019–2026 · lower is better</div>
+                  <div class="bars">
+                    <div class="bar-row">
+                      <span class="bar-name">Supplier primary data</span>
+                      <div class="bar-track"><div class="bar-fill" style="width:21.4%" data-tip="Supplier primary data · 9% mean error · 9 studies"></div></div>
+                      <span class="bar-val">9%</span>
+                    </div>
+                    <div class="bar-row">
+                      <span class="bar-name">Hybrid (primary + spend)</span>
+                      <div class="bar-track"><div class="bar-fill" style="width:40.5%" data-tip="Hybrid · 17% mean error · 11 studies"></div></div>
+                      <span class="bar-val">17%</span>
+                    </div>
+                    <div class="bar-row">
+                      <span class="bar-name">Spend-based EEIO</span>
+                      <div class="bar-track"><div class="bar-fill" style="width:73.8%" data-tip="Spend-based EEIO · 31% mean error · 13 studies"></div></div>
+                      <span class="bar-val">31%</span>
+                    </div>
+                    <div class="bar-row">
+                      <span class="bar-name">Industry-average proxy</span>
+                      <div class="bar-track"><div class="bar-fill" style="width:100%" data-tip="Industry-average proxy · 42% mean error · 5 studies"></div></div>
+                      <span class="bar-val">42%</span>
+                    </div>
+                  </div>
+                  <div class="bar-axis"><span>0%</span><span>Mean estimation error</span><span>42%</span></div>
+                </div>
+              </div>
+              <div class="block-foot">
+                <span>Data: GAIA-20 table (rows 1–4, 38 studies)</span>
+                <span>Sources: <span class="cite">3</span> <span class="cite">7</span> <span class="cite">9</span> <span class="cite">12</span></span>
+                <span class="pill accent"><span class="dot"></span>🔗 Source references travel with the chart</span>
+              </div>
+            </div>
           </div>
 
           <div class="note-section" id="GAIA-10">
-            <h3>Risks &amp; opportunities <span class="sec-tag">GAIA-10</span>
+            <h3>Discussion · limitations · research gaps <span class="sec-tag">GAIA-10</span>
               <span class="sec-actions">
                 <button class="sec-btn" title="Edit this section as text">✎ Edit</button>
                 <button class="sec-btn ai" title="Opens Gaia Assistant chat targeting GAIA-10">✦ Edit with AI</button>
               </span>
             </h3>
             <ul>
-              <li><strong>Opportunity:</strong> supplier emissions intake (REQ-031 candidate) matches the largest compliance gap <span class="cite">2</span>.</li>
-              <li><strong>Risk:</strong> assurance requirements may demand audit-grade data lineage — affects architecture early.</li>
+              <li><strong>Discussion:</strong> the error gap between primary and proxy methods is consistent across sectors, but 6 studies report no significant difference in low-complexity supply chains <span class="cite">5</span>.</li>
+              <li><strong>Limitation:</strong> English-language, peer-reviewed only; grey literature and vendor benchmarks excluded by protocol.</li>
+              <li><strong>Research gap:</strong> no longitudinal study follows the same supplier base for more than two reporting cycles <span class="cite">7</span>.</li>
             </ul>
           </div>
 
@@ -289,9 +556,9 @@
                 <span class="pill accent"><span class="dot"></span>✎ Editing as text</span>
               </span>
             </h3>
-            <textarea class="edit-area" aria-labelledby="GAIA-11-label">- Do we target Wave 2 companies directly, or their SME suppliers who feed them data?
-- Which member state's transposition should the MVP assume first?
-- Should pricing reflect assurance-readiness as a premium tier?</textarea>
+            <textarea class="edit-area" aria-labelledby="GAIA-11-label">- Does EcoTrace target the 40% primary-coverage threshold as its onboarding goal?
+- Should uncertainty intervals be a first-class field in the supplier intake?
+- Do we publish this review, or keep it as internal evidence for REQ-031?</textarea>
             <div class="edit-actions">
               <button class="btn small primary">✓ Save</button>
               <button class="btn small">✕ Cancel</button>
@@ -299,70 +566,263 @@
             </div>
           </div>
 
-          <!-- Sources · GAIA-12 -->
+          <!-- Remaining template sections, collapsed -->
+          <div style="padding:12px 0 0;">
+            <div class="stub-row"><span class="stub-caret">▸</span><span class="stub-name">Literature review</span><span>4 themes · 38 studies</span><span class="stub-state pill neutral"><span class="dot"></span>Drafted</span></div>
+            <div class="stub-row"><span class="stub-caret">▸</span><span class="stub-name">Methodology</span><span>PRISMA protocol · inclusion criteria</span><span class="stub-state pill neutral"><span class="dot"></span>Drafted</span></div>
+            <div class="stub-row"><span class="stub-caret">▸</span><span class="stub-name">Implications</span><span>Practice + policy</span><span class="stub-state pill warning"><span class="dot"></span>⚠ Empty</span></div>
+            <div class="stub-row"><span class="stub-caret">▸</span><span class="stub-name">Conclusion</span><span>—</span><span class="stub-state pill warning"><span class="dot"></span>⚠ Empty</span></div>
+            <div class="stub-row"><span class="stub-caret">▸</span><span class="stub-name">References</span><span>APA 7 · 8 entries · auto-formatted</span><span class="stub-state pill good"><span class="dot"></span>✓ In sync</span></div>
+          </div>
+
+          <!-- ===== Sources · GAIA-12 (BR-017 … BR-024, BR-073) ===== -->
           <div class="sources" id="GAIA-12">
             <div class="sources-head">
-              Sources — verify each before approval
-              <span class="pill warning"><span class="dot"></span>⚠ 4/6 verified</span>
+              Sources — classify the evidence, then verify each one
+              <span class="pill warning"><span class="dot"></span>⚠ 5/8 verified</span>
               <span class="sec-tag">GAIA-12</span>
             </div>
-            <div class="source-row verified">
-              <span class="src-num">1</span>
-              <div class="src-main">
-                <div class="src-title"><a href="#">EU Commission — CSRD implementation timeline</a></div>
-                <div class="src-meta">ec.europa.eu · accessed yesterday</div>
-              </div>
-              <input type="checkbox" checked aria-label="Source 1 verified"> <span class="verify-label">Verified ✓</span>
-            </div>
-            <div class="source-row verified">
-              <span class="src-num">2</span>
-              <div class="src-main">
-                <div class="src-title"><a href="#">EFRAG — ESRS E1 &amp; Scope 3 disclosure requirements</a></div>
-                <div class="src-meta">efrag.org · accessed yesterday</div>
-              </div>
-              <input type="checkbox" checked aria-label="Source 2 verified"> <span class="verify-label">Verified ✓</span>
-            </div>
-            <div class="source-row verified">
+
+            <div class="source-row rich verified">
               <span class="src-num">3</span>
               <div class="src-main">
-                <div class="src-title"><a href="#">CDP Supply Chain Report 2025 — supplier data gaps</a></div>
-                <div class="src-meta">cdp.net · accessed yesterday</div>
+                <div class="src-title"><a href="#">Scope 3 data quality in supplier networks: a systematic review</a></div>
+                <div class="src-meta">Müller, A., Schmidt, K. &amp; Lorenz, P. · Journal of Industrial Ecology · 2026 · doi:10.1111/jiec.13488 · review · 61 studies</div>
+                <div class="src-badges">
+                  <span class="pill good"><span class="dot"></span>✓ Peer-reviewed</span>
+                  <span class="pill neutral"><span class="dot"></span>Cited 214×</span>
+                  <span class="pill neutral"><span class="dot"></span>Method: systematic review</span>
+                  <span class="seg-ctl" role="group" aria-label="Evidence classification for source 3">
+                    <button class="seg-opt on">✓ Supporting</button>
+                    <button class="seg-opt">✕ Contradicting</button>
+                    <button class="seg-opt">○ Mentioning</button>
+                  </span>
+                </div>
               </div>
-              <input type="checkbox" checked aria-label="Source 3 verified"> <span class="verify-label">Verified ✓</span>
+              <div class="src-verify">
+                <button class="btn small">✦ Ask this source</button>
+                <input type="checkbox" checked aria-label="Source 3 verified"> <span class="verify-label">Verified ✓</span>
+              </div>
+
+              <!-- Auto-generated highlight summary · BR-023 -->
+              <div class="src-summary">
+                <div class="ss-head">Gaia source highlights — generated on add</div>
+                <dl>
+                  <dt>Key points</dt><dd>Primary-data programmes cut reported Scope 3 error by 22–34 pp versus proxy methods.</dd>
+                  <dt>Methodology</dt><dd>PRISMA systematic review of 61 studies; quality appraisal with CASP.</dd>
+                  <dt>Findings</dt><dd>Effect holds across manufacturing and retail; weaker in services.</dd>
+                  <dt>Relevance</dt><dd>Directly answers RQ · supports findings 1 and 2 in GAIA-09.</dd>
+                </dl>
+                <div class="ss-actions">
+                  <button class="btn small">✦ Ask this source</button>
+                  <button class="btn small">＋ Extract to evidence matrix</button>
+                  <span class="edit-hint">Passage, page and section are returned with every answer</span>
+                </div>
+              </div>
             </div>
-            <div class="source-row verified">
-              <span class="src-num">4</span>
+
+            <div class="source-row rich verified">
+              <span class="src-num">7</span>
               <div class="src-main">
-                <div class="src-title">Internal — EcoTrace product brief v0.3</div>
-                <div class="src-meta">Moderta docs · approved document</div>
+                <div class="src-title"><a href="#">CSRD assurance readiness among EU mid-caps</a></div>
+                <div class="src-meta">Van Dijk, M. &amp; Rossi, L. · ECGI working paper 812/2025 · 2025 · survey · n=304</div>
+                <div class="src-badges">
+                  <span class="pill warning"><span class="dot"></span>⚠ Not peer-reviewed — working paper</span>
+                  <span class="pill neutral"><span class="dot"></span>Cited 37×</span>
+                  <span class="pill neutral"><span class="dot"></span>Method: survey</span>
+                  <span class="seg-ctl" role="group" aria-label="Evidence classification for source 7">
+                    <button class="seg-opt on">✓ Supporting</button>
+                    <button class="seg-opt">✕ Contradicting</button>
+                    <button class="seg-opt">○ Mentioning</button>
+                  </span>
+                </div>
               </div>
-              <input type="checkbox" checked aria-label="Source 4 verified"> <span class="verify-label">Verified ✓</span>
+              <div class="src-verify">
+                <button class="btn small">✦ Ask this source</button>
+                <input type="checkbox" checked aria-label="Source 7 verified"> <span class="verify-label">Verified ✓</span>
+              </div>
             </div>
-            <div class="source-row">
+
+            <div class="source-row rich verified">
               <span class="src-num">5</span>
               <div class="src-main">
-                <div class="src-title"><a href="#">ESMA — digital tagging (XBRL) technical standard draft</a></div>
-                <div class="src-meta">esma.europa.eu · accessed yesterday</div>
+                <div class="src-title"><a href="#">Primary data collection in low-complexity supply chains: no measurable gain</a></div>
+                <div class="src-meta">Chen, Y. et al. · Environmental Science &amp; Technology · 2023 · doi:10.1021/acs.est.3c0217 · empirical · n=88</div>
+                <div class="src-badges">
+                  <span class="pill good"><span class="dot"></span>✓ Peer-reviewed</span>
+                  <span class="pill neutral"><span class="dot"></span>Cited 96×</span>
+                  <span class="seg-ctl" role="group" aria-label="Evidence classification for source 5">
+                    <button class="seg-opt">✓ Supporting</button>
+                    <button class="seg-opt on against">✕ Contradicting</button>
+                    <button class="seg-opt">○ Mentioning</button>
+                  </span>
+                </div>
               </div>
-              <input type="checkbox" aria-label="Source 5 not verified"> <span class="verify-label">Not verified</span>
+              <div class="src-verify">
+                <button class="btn small">✦ Ask this source</button>
+                <input type="checkbox" checked aria-label="Source 5 verified"> <span class="verify-label">Verified ✓</span>
+              </div>
             </div>
-            <div class="source-row">
-              <span class="src-num">6</span>
+
+            <div class="source-row rich verified">
+              <span class="src-num">9</span>
               <div class="src-main">
-                <div class="src-title"><a href="#">Deloitte — member state transposition tracker</a></div>
-                <div class="src-meta">deloitte.com · accessed yesterday</div>
+                <div class="src-title">Internal — EcoTrace supplier pilot results Q2 2026</div>
+                <div class="src-meta">Moderta docs · approved document · 14 suppliers · measured intake</div>
+                <div class="src-badges">
+                  <span class="pill good"><span class="dot"></span>◆ Primary data</span>
+                  <span class="pill neutral"><span class="dot"></span>First-party</span>
+                  <span class="seg-ctl" role="group" aria-label="Evidence classification for source 9">
+                    <button class="seg-opt on">✓ Supporting</button>
+                    <button class="seg-opt">✕ Contradicting</button>
+                    <button class="seg-opt">○ Mentioning</button>
+                  </span>
+                </div>
               </div>
-              <input type="checkbox" aria-label="Source 6 not verified"> <span class="verify-label">Not verified</span>
+              <div class="src-verify">
+                <button class="btn small">✦ Ask this source</button>
+                <input type="checkbox" checked aria-label="Source 9 verified"> <span class="verify-label">Verified ✓</span>
+              </div>
+            </div>
+
+            <div class="source-row rich">
+              <span class="src-num">12</span>
+              <div class="src-main">
+                <div class="src-title"><a href="#">Carbon accounting software — market outlook 2026–2030</a></div>
+                <div class="src-meta">Verdantix · analyst report · 2026 · vendor interviews + modelling</div>
+                <div class="src-badges">
+                  <span class="pill warning"><span class="dot"></span>◇ Analyst estimate</span>
+                  <span class="pill neutral"><span class="dot"></span>Method not published</span>
+                  <span class="seg-ctl" role="group" aria-label="Evidence classification for source 12">
+                    <button class="seg-opt">✓ Supporting</button>
+                    <button class="seg-opt">✕ Contradicting</button>
+                    <button class="seg-opt on mention">○ Mentioning</button>
+                  </span>
+                </div>
+              </div>
+              <div class="src-verify">
+                <button class="btn small">✦ Ask this source</button>
+                <input type="checkbox" aria-label="Source 12 not verified"> <span class="verify-label">Not verified</span>
+              </div>
+            </div>
+
+            <div class="source-row rich">
+              <span class="src-num">14</span>
+              <div class="src-main">
+                <div class="src-title"><a href="#">"Suppliers halve reporting errors with new data rules"</a></div>
+                <div class="src-meta">Trade press · 2026 · secondary reporting of an unnamed study</div>
+                <div class="src-badges">
+                  <span class="pill neutral"><span class="dot"></span>◌ Press coverage</span>
+                  <span class="pill warning"><span class="dot"></span>⚠ Underlying study not identified</span>
+                  <span class="seg-ctl" role="group" aria-label="Evidence classification for source 14">
+                    <button class="seg-opt">✓ Supporting</button>
+                    <button class="seg-opt">✕ Contradicting</button>
+                    <button class="seg-opt on mention">○ Mentioning</button>
+                  </span>
+                </div>
+              </div>
+              <div class="src-verify">
+                <button class="btn small">✦ Ask this source</button>
+                <input type="checkbox" aria-label="Source 14 not verified"> <span class="verify-label">Not verified</span>
+              </div>
+            </div>
+
+            <!-- Unsubstantiated candidate · BR-072, BR-073 -->
+            <div class="source-row rich">
+              <span class="src-num">16</span>
+              <div class="src-main">
+                <div class="src-title">Suggested reference — could not be resolved</div>
+                <div class="src-meta">Proposed by Gaia · no matching DOI, title or author record found in Crossref / OpenAlex</div>
+                <div class="src-badges">
+                  <span class="pill critical"><span class="dot"></span>⚠ Evidence not verified — requires verification</span>
+                  <span class="pill neutral"><span class="dot"></span>Cannot be cited until resolved</span>
+                </div>
+              </div>
+              <div class="src-verify">
+                <button class="btn small">🔎 Find real source</button>
+                <button class="btn small danger">✕ Remove</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== Systematic review mode · GAIA-22 (BR-011, BR-012, BR-013) ===== -->
+          <div class="sources" id="GAIA-22">
+            <div class="sources-head">
+              Systematic review mode — screening &amp; PRISMA record
+              <span class="pill accent"><span class="dot"></span>🎓 Academic only</span>
+              <span class="sec-tag">GAIA-22</span>
+            </div>
+
+            <div style="padding:12px 14px;">
+              <div class="prisma">
+                <div class="pr"><div class="pr-n">412</div><div class="pr-l">Identified</div></div>
+                <div class="pr out"><div class="pr-n">63</div><div class="pr-l">Duplicates removed</div></div>
+                <div class="pr"><div class="pr-n">349</div><div class="pr-l">Screened</div></div>
+                <div class="pr out"><div class="pr-n">271</div><div class="pr-l">Excluded</div></div>
+                <div class="pr"><div class="pr-n">78</div><div class="pr-l">Full-text assessed</div></div>
+                <div class="pr in"><div class="pr-n">38</div><div class="pr-l">Included</div></div>
+              </div>
+            </div>
+
+            <div class="screen-row">
+              <div class="sr-main">
+                <div class="sr-title">Müller et al. 2026 — Scope 3 data quality in supplier networks</div>
+                <div class="sr-reason">Reason: meets protocol — peer-reviewed, reports method and error</div>
+              </div>
+              <span class="seg-ctl" role="group" aria-label="Screening decision">
+                <button class="seg-opt on">✓ Include</button>
+                <button class="seg-opt">✕ Exclude</button>
+                <button class="seg-opt">? Uncertain</button>
+              </span>
+            </div>
+            <div class="screen-row">
+              <div class="sr-main">
+                <div class="sr-title">Okafor et al. 2026 — XBRL tagging of sustainability statements</div>
+                <div class="sr-reason">Reason: out of scope — reporting format, not estimation error</div>
+              </div>
+              <span class="seg-ctl" role="group" aria-label="Screening decision">
+                <button class="seg-opt">✓ Include</button>
+                <button class="seg-opt on against">✕ Exclude</button>
+                <button class="seg-opt">? Uncertain</button>
+              </span>
+            </div>
+            <div class="screen-row">
+              <div class="sr-main">
+                <div class="sr-title">Park 2024 — Supplier engagement programmes in electronics</div>
+                <div class="sr-reason">Reason: error reported only for a sub-sample — needs full-text check by Nimali</div>
+              </div>
+              <span class="seg-ctl" role="group" aria-label="Screening decision">
+                <button class="seg-opt">✓ Include</button>
+                <button class="seg-opt">✕ Exclude</button>
+                <button class="seg-opt on mention">? Uncertain</button>
+              </span>
+            </div>
+            <div class="screen-row">
+              <div class="sr-main">
+                <div class="sr-title">⧉ Duplicate detected — Silva 2019 (2 records merged)</div>
+                <div class="sr-reason">Matched on DOI 10.1016/j.jclepro.2019.118012 · title + first author + year identical · similarity 0.98</div>
+              </div>
+              <span class="pill neutral"><span class="dot"></span>⧉ Merged — screened once</span>
+            </div>
+            <div class="screen-row">
+              <div class="sr-main">
+                <div class="sr-title">⧉ Possible duplicate — Chen 2023 preprint vs journal version</div>
+                <div class="sr-reason">No DOI match · title similarity 0.94, same authors and year — human decision required</div>
+              </div>
+              <span class="src-verify">
+                <button class="btn small">⧉ Merge</button>
+                <button class="btn small">✕ Keep both</button>
+              </span>
             </div>
           </div>
 
           <!-- Actions · GAIA-13 -->
           <div class="action-bar" id="GAIA-13">
-            <button class="btn primary" disabled title="2 sources still unverified">✓ Approve as source of truth</button>
+            <button class="btn primary" disabled title="3 sources still unverified">✓ Approve as source of truth</button>
             <button class="btn">✎ Edit</button>
             <button class="btn danger">✕ Reject…</button>
-            <button class="btn" title="PDF includes note content, sources, and approval status">⤓ Export PDF</button>
-            <span class="gate-note">Approve unlocks after all 6 sources are verified</span>
+            <button class="btn" title="PDF, DOCX, spreadsheet, citations or full research package">⤓ Export ▾</button>
+            <span class="gate-note">Approve unlocks after all 8 sources are verified · workflow identical for every research type</span>
             <span class="sec-tag">GAIA-13</span>
           </div>
         </section>
@@ -370,7 +830,7 @@
         <!-- ===== Assistant rail ===== -->
         <div class="rail">
 
-          <!-- Gaia chat · GAIA-14 -->
+          <!-- Gaia chat · GAIA-14 (BR-041 … BR-045, BR-052, BR-053, BR-074) -->
           <section class="card" id="GAIA-14">
             <div class="card-head">
               <h2>Gaia Assistant</h2>
@@ -379,117 +839,918 @@
             <div class="chat-body">
               <div class="msg ai">
                 <div class="msg-who">Gaia</div>
-                Hi Nimali — I can research topics, find related papers, and propose updates to draft sections
-                (GAIA-07…GAIA-11). Approved notes are locked: there I can only suggest, never change.
+                Academic mode. I can search literature, extract evidence, compare studies and draft sections
+                (GAIA-08…GAIA-11). I only cite sources that are in this research or that I can resolve — I never
+                invent a paper, DOI or figure.
               </div>
               <div class="msg user">
                 <div class="msg-who">Nimali · RA</div>
-                Update GAIA-08 — mention the EFRAG sector guidance published last week.
+                Draft the opening of GAIA-10 using what we have on the 40% coverage threshold.
               </div>
               <div class="msg ai">
                 <div class="msg-who">Gaia</div>
-                Found it — EFRAG published draft sector standards on 28 Jul 2026. Proposed addition:
+                Proposed text — citations restricted to this research's verified source set:
                 <div class="suggest">
-                  <div class="suggest-target">→ GAIA-08 · Summary</div>
+                  <div class="suggest-target">→ GAIA-10 · Discussion</div>
                   <div class="suggest-text">
-                    Sector-specific ESRS standards are expected to phase in from 2027, further widening
-                    reporting scope for Wave 2 companies <span class="cite">7</span>.
+                    The relationship between primary-data coverage and estimation error is non-linear: gains
+                    concentrate below ~40% of purchased-goods spend and flatten thereafter
+                    <span class="cite">12</span>, which suggests a coverage target rather than full census
+                    collection <span class="cite">3</span>.
                   </div>
                   <div class="suggest-actions">
                     <button class="btn small primary">✓ Apply to draft</button>
+                    <button class="btn small">✎ Edit first</button>
                     <button class="btn small">✕ Discard</button>
-                    <span class="suggest-note">adds source #7 · audit logged</span>
+                  </div>
+                  <div class="suggest-note" style="margin-left:0; margin-top:6px;">
+                    Proposal only — nothing is written to the note until you apply it · audit logged
                   </div>
                 </div>
               </div>
             </div>
-            <div class="tool-chips" aria-label="Research tools">
-              <button class="tool-chip">🔍 Find related papers</button>
-              <button class="tool-chip">⚖ Scan regulations</button>
-              <button class="tool-chip">🏢 Competitor scan</button>
-              <button class="tool-chip">📄 Summarize a source</button>
+
+            <div class="tabbar" aria-label="Tool set follows research type">
+              <button class="tab on">🎓 Academic</button>
+              <button class="tab">🏢 Business</button>
+              <button class="tab">📈 Market</button>
+              <button class="tab">🌱 Sustainability</button>
             </div>
+
+            <div class="chip-group">
+              <div class="cg-label">Academic tools · active</div>
+              <div class="tool-chips" aria-label="Academic research tools">
+                <button class="tool-chip">🔍 Find papers</button>
+                <button class="tool-chip">🕸 Related research</button>
+                <button class="tool-chip">📚 Literature review</button>
+                <button class="tool-chip">⛏ Evidence extraction</button>
+                <button class="tool-chip">⚖ Compare studies</button>
+                <button class="tool-chip">❝ Citation analysis</button>
+                <button class="tool-chip">◌ Research gaps</button>
+                <button class="tool-chip">✦ Ask source</button>
+              </div>
+            </div>
+
+            <div class="chip-group off">
+              <div class="cg-label">Business tools · switch type to use</div>
+              <div class="tool-chips" aria-label="Business research tools">
+                <button class="tool-chip">🏢 Company research</button>
+                <button class="tool-chip">⚔ Competitor scan</button>
+                <button class="tool-chip">👥 Customer research</button>
+                <button class="tool-chip">🏭 Industry analysis</button>
+                <button class="tool-chip">▦ Business model analysis</button>
+                <button class="tool-chip">⇄ Company comparison</button>
+              </div>
+            </div>
+
+            <div class="chip-group off">
+              <div class="cg-label">Market tools · switch type to use</div>
+              <div class="tool-chips" aria-label="Market research tools">
+                <button class="tool-chip">📐 Market sizing</button>
+                <button class="tool-chip">📈 Market trends</button>
+                <button class="tool-chip">◫ Segmentation</button>
+                <button class="tool-chip">⚔ Competitor scan</button>
+                <button class="tool-chip">⇉ Forecast comparison</button>
+                <button class="tool-chip">🏭 Industry analysis</button>
+              </div>
+            </div>
+
+            <div class="chip-group off">
+              <div class="cg-label">Sustainability tools · switch type to use</div>
+              <div class="tool-chips" aria-label="Sustainability research tools">
+                <button class="tool-chip">⚖ Regulation scan</button>
+                <button class="tool-chip">🌿 ESG research</button>
+                <button class="tool-chip">🌡 Climate research</button>
+                <button class="tool-chip">♻ LCA research</button>
+                <button class="tool-chip">🌱 Sustainability research</button>
+                <button class="tool-chip">⚔ Competitor scan</button>
+              </div>
+            </div>
+
             <div class="chat-composer">
               <input type="text" placeholder="Ask Gaia to research, or update a section (e.g. GAIA-09)…" aria-label="Message Gaia">
               <button class="btn primary small">Send</button>
             </div>
           </section>
 
-          <!-- Related papers · GAIA-15 -->
+          <!-- Related research + graph · GAIA-15 (BR-029 … BR-032) -->
           <section class="card" id="GAIA-15">
             <div class="card-head">
-              <h2>Related papers</h2>
-              <span class="hint">via Find related papers</span>
+              <h2>Related research</h2>
+              <span class="hint">graph view</span>
               <span class="sec-tag push">GAIA-15</span>
             </div>
-            <div class="list">
+
+            <div class="filters" style="padding:10px 14px 0;">
+              <button class="filter">Methodology <span class="caret">▾</span></button>
+              <button class="filter">Source quality <span class="caret">▾</span></button>
+              <button class="filter">Published: 2019+ <span class="caret">▾</span></button>
+              <button class="filter">Research type <span class="caret">▾</span></button>
+              <button class="filter">Study type <span class="caret">▾</span></button>
+            </div>
+
+            <div class="graph-wrap">
+              <svg class="graph-svg" viewBox="0 0 320 190" role="img"
+                   aria-label="Network of 8 studies related to this note. This note sits at the centre with citation links to Müller 2026, Okafor 2026 and Chen 2023, a similarity link to Van Dijk 2025, and secondary links between the surrounding studies.">
+                <!-- edges -->
+                <line class="gedge" x1="158" y1="96" x2="62"  y2="46"></line>
+                <line class="gedge" x1="158" y1="96" x2="252" y2="52"></line>
+                <line class="gedge" x1="158" y1="96" x2="240" y2="142"></line>
+                <line class="gedge sim" x1="158" y1="96" x2="70" y2="148"></line>
+                <line class="gedge cocite" x1="62" y1="46" x2="158" y2="26"></line>
+                <line class="gedge sim" x1="70" y1="148" x2="26" y2="98"></line>
+                <line class="gedge author" x1="240" y1="142" x2="292" y2="100"></line>
+                <line class="gedge cocite" x1="252" y1="52" x2="240" y2="142"></line>
+                <!-- nodes (2px surface ring keeps overlaps legible) -->
+                <circle class="gnode seed" cx="158" cy="96" r="12" stroke="var(--surface)" stroke-width="2"><title>D-14 — this note (seed)</title></circle>
+                <circle class="gnode" cx="62"  cy="46"  r="9" stroke="var(--surface)" stroke-width="2"><title>Müller 2026 · cited by this note · 214 citations</title></circle>
+                <circle class="gnode" cx="252" cy="52"  r="8" stroke="var(--surface)" stroke-width="2"><title>Okafor 2026 · cited by this note · 41 citations</title></circle>
+                <circle class="gnode" cx="70"  cy="148" r="8" stroke="var(--surface)" stroke-width="2"><title>Van Dijk 2025 · similar topic · 37 citations</title></circle>
+                <circle class="gnode" cx="240" cy="142" r="10" stroke="var(--surface)" stroke-width="2"><title>Chen 2023 · contradicting finding · 96 citations</title></circle>
+                <circle class="gnode discovered" cx="158" cy="26"  r="7" stroke="var(--surface)" stroke-width="2"><title>Hoffmann 2021 · co-cited · not yet in this research</title></circle>
+                <circle class="gnode discovered" cx="26"  cy="98"  r="7" stroke="var(--surface)" stroke-width="2"><title>Silva 2019 · bibliographic coupling · not yet in this research</title></circle>
+                <circle class="gnode discovered" cx="292" cy="100" r="6" stroke="var(--surface)" stroke-width="2"><title>Park 2024 · same author as Chen 2023</title></circle>
+                <!-- selective labels only -->
+                <text class="glabel" x="158" y="118" text-anchor="middle">D-14 (this note)</text>
+                <text class="glabel" x="62"  y="32"  text-anchor="middle">Müller 2026</text>
+                <text class="glabel" x="240" y="160" text-anchor="middle">Chen 2023</text>
+              </svg>
+            </div>
+
+            <div class="graph-legend">
+              <span class="gl"><svg width="18" height="6"><line x1="0" y1="3" x2="18" y2="3" stroke="currentColor"></line></svg> Citation</span>
+              <span class="gl"><svg width="18" height="6"><line x1="0" y1="3" x2="18" y2="3" stroke="currentColor" stroke-dasharray="4 3"></line></svg> Similarity / bibliographic coupling</span>
+              <span class="gl"><svg width="18" height="6"><line x1="0" y1="3" x2="18" y2="3" stroke="currentColor" stroke-dasharray="1 3"></line></svg> Co-citation</span>
+              <span class="gl"><svg width="18" height="6"><line x1="0" y1="3" x2="18" y2="3" stroke="currentColor" stroke-dasharray="6 2 1 2"></line></svg> Shared author</span>
+              <span class="gl"><svg width="10" height="10"><circle cx="5" cy="5" r="4" fill="var(--chart-1)"></circle></svg> In this research</span>
+              <span class="gl"><svg width="10" height="10"><circle cx="5" cy="5" r="4" fill="var(--chart-neutral)"></circle></svg> Discovered</span>
+              <span class="gl">Node size = citation count · topic &amp; year read on the timeline below</span>
+            </div>
+
+            <div class="card-head" style="border-top:1px solid var(--hairline);">
+              <h2>Research evolution</h2>
+              <span class="hint">foundational → recent</span>
+            </div>
+            <div class="timeline" aria-label="Studies per year, 2019 to 2026">
+              <div class="tl"><div class="tl-dot"></div><div class="tl-n">2</div>2019</div>
+              <div class="tl"><div class="tl-dot"></div><div class="tl-n">3</div>2021</div>
+              <div class="tl"><div class="tl-dot"></div><div class="tl-n">6</div>2023</div>
+              <div class="tl"><div class="tl-dot"></div><div class="tl-n">9</div>2024</div>
+              <div class="tl"><div class="tl-dot"></div><div class="tl-n">7</div>2025</div>
+              <div class="tl now"><div class="tl-dot"></div><div class="tl-n">11</div>2026</div>
+            </div>
+
+            <div class="list" style="border-top:1px solid var(--hairline);">
               <div class="paper-row">
                 <div class="paper-main">
                   <div class="paper-title"><a href="#">Scope 3 data quality in supplier networks: a systematic review</a></div>
-                  <div class="paper-meta">Müller et al. · J. of Industrial Ecology · 2026</div>
+                  <div class="paper-meta">Müller et al. · J. of Industrial Ecology · 2026 · peer-reviewed · cited 214×</div>
                   <div class="paper-why">Matches GAIA-09 finding on supplier-level data gaps</div>
                 </div>
                 <span class="pill good"><span class="dot"></span>✓ Kept</span>
               </div>
               <div class="paper-row">
                 <div class="paper-main">
-                  <div class="paper-title"><a href="#">CSRD assurance readiness among EU mid-caps</a></div>
-                  <div class="paper-meta">Van Dijk &amp; Rossi · ECGI working paper · 2025</div>
-                  <div class="paper-why">Supports GAIA-10 risk on audit-grade data lineage</div>
+                  <div class="paper-title"><a href="#">Longitudinal supplier engagement and emissions accuracy</a></div>
+                  <div class="paper-meta">Hoffmann · Ecological Economics · 2021 · peer-reviewed · cited 158×</div>
+                  <div class="paper-why">Co-cited with Müller 2026 — closest thing to the longitudinal gap in GAIA-10</div>
                 </div>
                 <button class="btn small">＋ Keep</button>
               </div>
               <div class="paper-row">
                 <div class="paper-main">
-                  <div class="paper-title"><a href="#">XBRL tagging of sustainability statements: early adopter costs</a></div>
-                  <div class="paper-meta">Okafor et al. · Accounting &amp; Society · 2026</div>
-                  <div class="paper-why">Relevant to GAIA-09 digital tagging finding</div>
+                  <div class="paper-title"><a href="#">Supplier engagement programmes in electronics</a></div>
+                  <div class="paper-meta">Park · Sustainable Production · 2024 · peer-reviewed · cited 22×</div>
+                  <div class="paper-why">Same author group as Chen 2023 — check for overlapping sample</div>
                 </div>
                 <button class="btn small">＋ Keep</button>
               </div>
             </div>
           </section>
 
-          <!-- Knowledge base · GAIA-16 -->
+          <!-- Knowledge base · GAIA-16 (BR-060, BR-061, BR-062) -->
           <section class="card" id="GAIA-16">
             <div class="card-head">
               <h2>Knowledge base</h2>
-              <span class="hint">8 items</span>
+              <span class="hint">tagged by type &amp; workspace</span>
               <span class="sec-tag push">GAIA-16</span>
+            </div>
+            <div class="filters" style="padding:10px 14px 0;">
+              <button class="filter">Type: Academic <span class="caret">▾</span></button>
+              <button class="filter">Workspace: EcoTrace <span class="caret">▾</span></button>
+              <button class="filter">Access: Internal <span class="caret">▾</span></button>
             </div>
             <div class="list">
               <div class="kb-item">
                 <span class="kb-icon">📑</span>
                 <div class="kb-main">
                   <div class="kb-title">Scope 3 data quality in supplier networks</div>
-                  <div class="kb-meta">Paper · kept today · cited by RS-04 / D-08</div>
+                  <div class="kb-meta">🎓 Academic · EcoTrace · Topic: Scope 3 · Journal article · Elsevier · 2026 · Public</div>
                 </div>
               </div>
               <div class="kb-item">
-                <span class="kb-icon">📑</span>
+                <span class="kb-icon">📊</span>
                 <div class="kb-main">
                   <div class="kb-title">CDP Supply Chain Report 2025</div>
-                  <div class="kb-meta">Report · kept last week · cited by RS-03, RS-04</div>
+                  <div class="kb-meta">🌱 Sustainability · EcoTrace · Topic: Supplier data · Report · CDP · 2025 · Public</div>
                 </div>
               </div>
               <div class="kb-item">
                 <span class="kb-icon">▤</span>
                 <div class="kb-main">
-                  <div class="kb-title">EcoTrace product brief v0.3</div>
-                  <div class="kb-meta">Internal doc · approved · always in context</div>
+                  <div class="kb-title">EcoTrace supplier pilot results Q2 2026</div>
+                  <div class="kb-meta">🏢 Business · EcoTrace · Topic: Pilot · Internal doc · Moderta · 2026 · Confidential</div>
+                </div>
+              </div>
+              <div class="kb-item">
+                <span class="kb-icon">📈</span>
+                <div class="kb-main">
+                  <div class="kb-title">Carbon accounting market outlook 2026–2030</div>
+                  <div class="kb-meta">📈 Market · EcoTrace · Topic: Market size · Analyst report · Verdantix · 2026 · Licensed</div>
                 </div>
               </div>
             </div>
             <div class="kb-foot">
-              Kept items are indexed and retrieved as company context for future Gaia research runs (RAG).
+              Approved items stay retrievable for future research. Retrieval is scoped by research type and
+              workspace, so market or sustainability material is never pulled into an academic note by accident.
             </div>
           </section>
 
         </div>
-
       </div>
 
-      <p class="mock-note">Static HTML/CSS mockup · Moderta Orchestrate v0.1 · no live data · spec: UIX-08 · use section codes GAIA-01…GAIA-17 to request changes</p>
+      <!-- ================= Research intelligence ================= -->
+      <div class="band">Research intelligence</div>
+
+      <!-- ===== Evidence matrix · GAIA-23 (BR-025 … BR-028) ===== -->
+      <section class="card" id="GAIA-23">
+        <div class="card-head">
+          <h2>Evidence matrix</h2>
+          <span class="hint">cross-source extraction · 38 studies</span>
+          <span class="sec-tag push">GAIA-23</span>
+        </div>
+        <div class="matrix-toolbar">
+          <span>Columns:</span>
+          <span class="doctype">Study</span>
+          <span class="doctype">Year</span>
+          <span class="doctype">Method</span>
+          <span class="doctype">Sample</span>
+          <span class="doctype">Reported error</span>
+          <span class="doctype">Coverage %</span>
+          <span class="doctype">Sector ✎ custom</span>
+          <button class="btn small">＋ Add column</button>
+          <span class="mt-push pill accent"><span class="dot"></span>4 AI extractions awaiting review</span>
+        </div>
+        <div class="table-scroll">
+          <table class="data matrix">
+            <thead>
+              <tr>
+                <th>Study</th><th>Year</th><th>Method</th><th>Sample</th><th>Reported error</th><th>Coverage %</th><th>Sector <span class="doctype">custom</span></th><th>Review</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Müller et al.<span class="cell-src">Source <span class="cite">3</span> · p. 14, Table 2</span></td>
+                <td>2026</td>
+                <td>Systematic review<span class="cell-src">p. 6, §3.1</span></td>
+                <td>61 studies</td>
+                <td>−22 to −34 pp<span class="cell-src">p. 19, Fig. 4</span></td>
+                <td>—</td>
+                <td>Mixed</td>
+                <td><span class="pill good"><span class="dot"></span>✓ Accepted</span></td>
+              </tr>
+              <tr>
+                <td>Chen et al.<span class="cell-src">Source <span class="cite">5</span> · p. 8, Table 1</span></td>
+                <td>2023</td>
+                <td>Empirical<span class="cell-src">p. 5, §2.2</span></td>
+                <td>n = 88</td>
+                <td>No sig. difference<span class="cell-src">p. 11, §4.3</span></td>
+                <td>52%</td>
+                <td>Services</td>
+                <td><span class="pill good"><span class="dot"></span>✓ Accepted</span></td>
+              </tr>
+              <tr>
+                <td>Van Dijk &amp; Rossi<span class="cell-src">Source <span class="cite">7</span> · p. 22</span></td>
+                <td>2025</td>
+                <td>Survey<span class="cell-src">p. 9, §3</span></td>
+                <td>n = 304</td>
+                <td>Not reported</td>
+                <td>31%</td>
+                <td>Manufacturing</td>
+                <td><span class="pill good"><span class="dot"></span>✓ Accepted</span></td>
+              </tr>
+              <tr class="proposed">
+                <td>Park<span class="cell-src">Source <span class="cite">18</span> · p. 4, Table 1</span></td>
+                <td>2024</td>
+                <td>Case study<span class="cell-src">p. 3, §2</span></td>
+                <td>n = 12 suppliers</td>
+                <td>−18 pp<span class="cell-src">p. 7, Fig. 2 — AI extracted</span></td>
+                <td>68%</td>
+                <td>Electronics</td>
+                <td>
+                  <span class="row-actions">
+                    <button class="btn small primary">✓ Accept</button>
+                    <button class="btn small">✎ Edit</button>
+                    <button class="btn small danger">✕ Reject</button>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="block-foot" style="border-top:1px solid var(--hairline); border-radius:0 0 var(--radius) var(--radius);">
+          <span>Every cell links back to its source, page and passage — extraction never detaches from evidence.</span>
+          <span class="pill warning"><span class="dot"></span>⚠ AI extractions stay proposed until a human accepts them</span>
+          <button class="btn small">⤓ Export matrix (CSV / XLSX)</button>
+        </div>
+      </section>
+
+      <div class="cols-2 even">
+
+        <!-- ===== Research synthesis · GAIA-24 (BR-033, BR-034, BR-035) ===== -->
+        <section class="card" id="GAIA-24">
+          <div class="card-head">
+            <h2>Research synthesis</h2>
+            <span class="hint">across 38 sources</span>
+            <span class="sec-tag push">GAIA-24</span>
+          </div>
+          <div class="card-body" style="display:flex; flex-direction:column; gap:16px;">
+
+            <div>
+              <div class="stat-label">Consensus — “Do supplier-level primary data programmes reduce Scope 3 estimation error?”</div>
+              <div class="scale" style="margin:8px 0 10px;">
+                <span class="sc on">✓ Evidence leans yes</span>
+                <span class="sc">✕ Evidence leans no</span>
+                <span class="sc">◑ Mixed / contested</span>
+                <span class="sc">○ Insufficient evidence</span>
+              </div>
+              <div class="meter" role="img" aria-label="Of 38 studies: 21 supporting, 11 mixed or neutral, 6 contradicting.">
+                <div class="seg-fill s1" style="width:55.3%">21</div>
+                <div class="seg-fill sn" style="width:28.9%">11</div>
+                <div class="seg-fill s2" style="width:15.8%">6</div>
+              </div>
+              <div class="legend" style="margin-top:7px;">
+                <span class="lg"><span class="key k1"></span> ✓ Supporting · 21</span>
+                <span class="lg"><span class="key kn"></span> ○ Mixed / neutral · 11</span>
+                <span class="lg"><span class="key k2"></span> ✕ Contradicting · 6</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="stat-label" style="margin-bottom:7px;">Contradiction detection</div>
+              <div class="card-grid">
+                <div class="mini-card">
+                  <div class="mc-top"><span class="pill critical"><span class="dot"></span>✕ Direct contradiction</span><span class="mc-title">Effect in low-complexity chains</span></div>
+                  <div class="mc-body">
+                    Müller 2026 <span class="cite">3</span> reports a 22–34 pp error reduction across all sectors;
+                    Chen 2023 <span class="cite">5</span> finds no significant difference for services with fewer than 50 suppliers.
+                  </div>
+                  <div class="mc-actions">
+                    <button class="btn small">⚖ Compare methods</button>
+                    <button class="btn small">＋ Note in Discussion</button>
+                  </div>
+                </div>
+                <div class="mini-card">
+                  <div class="mc-top"><span class="pill warning"><span class="dot"></span>⚠ Figure mismatch</span><span class="mc-title">Coverage threshold</span></div>
+                  <div class="mc-body">
+                    The 40% threshold in GAIA-09 comes from <span class="cite">12</span>; <span class="cite">7</span> puts the inflection at 55%.
+                  </div>
+                  <div class="mc-actions"><button class="btn small">⚖ Reconcile</button></div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="stat-label" style="margin-bottom:7px;">Cross-source synthesis</div>
+              <dl class="kv">
+                <dt>Themes</dt><dd>Data collection cost · method selection · assurance readiness · supplier capability</dd>
+                <dt>Common findings</dt><dd>Primary data lowers error; effect strongest in manufacturing (26 of 38)</dd>
+                <dt>Disagreements</dt><dd>Where the coverage inflection sits; whether services benefit at all</dd>
+                <dt>Emerging findings</dt><dd>2025–26 studies begin reporting cost-per-supplier alongside error (5 studies)</dd>
+                <dt>Evidence gaps</dt><dd>No study beyond two reporting cycles; none from Global South supply bases</dd>
+              </dl>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== Research gap finder · GAIA-25 (BR-036, BR-037, BR-038) ===== -->
+        <section class="card" id="GAIA-25">
+          <div class="card-head">
+            <h2>Research gap finder</h2>
+            <span class="hint">7 gap types scanned</span>
+            <span class="sec-tag push">GAIA-25</span>
+          </div>
+          <div class="card-body">
+            <div class="filters" style="margin-bottom:12px;">
+              <span class="doctype">Geographic</span><span class="doctype">Methodological</span><span class="doctype">Theoretical</span>
+              <span class="doctype">Sectoral</span><span class="doctype">Data</span><span class="doctype">Temporal</span><span class="doctype">Application</span>
+            </div>
+            <div class="card-grid">
+
+              <div class="mini-card">
+                <div class="mc-top"><span class="pill accent"><span class="dot"></span>Temporal</span><span class="mc-title">No multi-cycle longitudinal evidence</span></div>
+                <div class="mc-body">No included study follows the same supplier base beyond two reporting cycles, so durability of the error reduction is unknown.</div>
+                <div class="mc-evidence">Identified from 38 studies · strongest signal in <span class="cite">3</span> <span class="cite">7</span> <span class="cite">12</span> · <a href="#GAIA-23">see evidence</a></div>
+                <div class="mc-actions">
+                  <button class="btn small">→ Research question</button>
+                  <button class="btn small">→ Objective</button>
+                  <button class="btn small">→ Hypothesis</button>
+                  <button class="btn small">→ Study idea</button>
+                </div>
+              </div>
+
+              <div class="mini-card">
+                <div class="mc-top"><span class="pill accent"><span class="dot"></span>Geographic</span><span class="mc-title">Global South supply bases absent</span></div>
+                <div class="mc-body">36 of 38 studies sample EU or North American buyers; supplier capability constraints elsewhere are untested.</div>
+                <div class="mc-evidence">Derived from the Sector + Geography columns of the evidence matrix · <a href="#GAIA-23">see evidence</a></div>
+                <div class="mc-actions">
+                  <button class="btn small">→ Research question</button>
+                  <button class="btn small">→ Study idea</button>
+                </div>
+              </div>
+
+              <div class="mini-card">
+                <div class="mc-top"><span class="pill accent"><span class="dot"></span>Methodological</span><span class="mc-title">Uncertainty rarely quantified</span></div>
+                <div class="mc-body">Only 11 of 38 studies report a confidence interval, which weakens any meta-analytic pooling of the effect.</div>
+                <div class="mc-evidence">Counted from the “Reports CI” column · sources <span class="cite">3</span> <span class="cite">9</span> · <a href="#GAIA-23">see evidence</a></div>
+                <div class="mc-actions">
+                  <button class="btn small">→ Objective</button>
+                  <button class="btn small">→ Hypothesis</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="cols-2 even">
+
+        <!-- ===== Research idea lab · GAIA-26 (BR-039, BR-040) ===== -->
+        <section class="card" id="GAIA-26">
+          <div class="card-head">
+            <h2>Research idea lab</h2>
+            <span class="hint">from topic → evaluated ideas</span>
+            <span class="sec-tag push">GAIA-26</span>
+          </div>
+          <div class="card-body" style="display:flex; flex-direction:column; gap:12px;">
+            <div class="field">
+              <label for="idea-topic">Topic or gap</label>
+              <input id="idea-topic" type="text" value="Durability of Scope 3 error reduction after supplier onboarding">
+            </div>
+
+            <div class="mini-card">
+              <div class="mc-top"><span class="mc-title">Idea 1 — Two-cycle panel study of onboarded suppliers</span><span class="pill good"><span class="dot"></span>4.2 / 5</span></div>
+              <div class="mc-body">Track 60 suppliers across three reporting cycles; measure error drift after the onboarding programme ends.</div>
+              <div class="crit-row"><span>Novelty</span><div class="crit-track"><div class="crit-fill" style="width:90%"></div></div><span class="crit-val">4.5</span></div>
+              <div class="crit-row"><span>Feasibility</span><div class="crit-track"><div class="crit-fill" style="width:70%"></div></div><span class="crit-val">3.5</span></div>
+              <div class="crit-row"><span>Literature gap</span><div class="crit-track"><div class="crit-fill" style="width:96%"></div></div><span class="crit-val">4.8</span></div>
+              <div class="crit-row"><span>Data availability</span><div class="crit-track"><div class="crit-fill" style="width:60%"></div></div><span class="crit-val">3.0</span></div>
+              <div class="crit-row"><span>Industry relevance</span><div class="crit-track"><div class="crit-fill" style="width:94%"></div></div><span class="crit-val">4.7</span></div>
+              <div class="crit-row"><span>Publication potential</span><div class="crit-track"><div class="crit-fill" style="width:88%"></div></div><span class="crit-val">4.4</span></div>
+              <div class="mc-evidence">Generated from gap “No multi-cycle longitudinal evidence” · <a href="#GAIA-25">see gap</a></div>
+              <div class="mc-actions">
+                <button class="btn small primary">＋ Start research</button>
+                <button class="btn small">→ Hypotheses</button>
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mc-top"><span class="mc-title">Idea 2 — Cost-per-percentage-point of coverage</span><span class="pill neutral"><span class="dot"></span>3.6 / 5</span></div>
+              <div class="mc-body">Model the marginal cost of each additional coverage point to locate an economically optimal target.</div>
+              <div class="crit-row"><span>Novelty</span><div class="crit-track"><div class="crit-fill" style="width:72%"></div></div><span class="crit-val">3.6</span></div>
+              <div class="crit-row"><span>Feasibility</span><div class="crit-track"><div class="crit-fill" style="width:84%"></div></div><span class="crit-val">4.2</span></div>
+              <div class="crit-row"><span>Data availability</span><div class="crit-track"><div class="crit-fill" style="width:50%"></div></div><span class="crit-val">2.5</span></div>
+              <div class="mc-actions"><button class="btn small">＋ Start research</button></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== Citation & evidence review · GAIA-28 (BR-054, BR-055) ===== -->
+        <section class="card" id="GAIA-28">
+          <div class="card-head">
+            <h2>Citation &amp; evidence review</h2>
+            <span class="hint">claim-level checking</span>
+            <span class="sec-tag push">GAIA-28</span>
+          </div>
+
+          <div class="claim-row">
+            <div class="cl-text">“Supplier-primary methods report a mean estimation error of 9%…” <span class="cite">3</span></div>
+            <div class="cl-meta">
+              <span class="pill good"><span class="dot"></span>✓ Strongly supports</span>
+              Müller 2026 · p. 19, Fig. 4 — figure matches the claim
+            </div>
+          </div>
+          <div class="claim-row">
+            <div class="cl-text">“Error falls sharply once primary coverage passes ~40% of spend” <span class="cite">12</span></div>
+            <div class="cl-meta">
+              <span class="pill warning"><span class="dot"></span>◑ Weakly supports</span>
+              Verdantix 2026 · analyst estimate, threshold stated without published method — consider citing <span class="cite">7</span> instead
+            </div>
+          </div>
+          <div class="claim-row">
+            <div class="cl-text">“The effect holds across sectors” <span class="cite">5</span></div>
+            <div class="cl-meta">
+              <span class="pill critical"><span class="dot"></span>✕ Contradicts</span>
+              Chen 2023 finds no significant difference in services — this citation argues against the claim
+            </div>
+          </div>
+          <div class="claim-row">
+            <div class="cl-text">“Digital tagging favours structured data export” <span class="cite">14</span></div>
+            <div class="cl-meta">
+              <span class="pill neutral"><span class="dot"></span>○ Mentions only</span>
+              Trade press mentions the topic but provides no evidence for the claim
+            </div>
+          </div>
+
+          <div class="card-head" style="border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline);">
+            <h2>Citation audit</h2>
+            <span class="hint">APA 7</span>
+          </div>
+          <div class="check-row">
+            <div class="ck-main"><div class="ck-name">Missing references</div><div class="ck-detail">Claim in GAIA-10 cites <span class="cite">18</span> — not in the reference list</div></div>
+            <span class="pill critical"><span class="dot"></span>✕ 1</span>
+          </div>
+          <div class="check-row">
+            <div class="ck-main"><div class="ck-name">Uncited references</div><div class="ck-detail">Sources 14 and 16 appear in the list but are never cited</div></div>
+            <span class="pill warning"><span class="dot"></span>⚠ 2</span>
+          </div>
+          <div class="check-row">
+            <div class="ck-main"><div class="ck-name">Duplicate references</div><div class="ck-detail">Chen 2023 listed twice (preprint + journal)</div></div>
+            <span class="pill warning"><span class="dot"></span>⚠ 1</span>
+          </div>
+          <div class="check-row">
+            <div class="ck-main"><div class="ck-name">DOI errors</div><div class="ck-detail">Source 12 DOI does not resolve</div></div>
+            <span class="pill critical"><span class="dot"></span>✕ 1</span>
+          </div>
+          <div class="check-row">
+            <div class="ck-main"><div class="ck-name">Citation / reference mismatch</div><div class="ck-detail">Author, year and title agree for all remaining entries</div></div>
+            <span class="pill good"><span class="dot"></span>✓ 0</span>
+          </div>
+        </section>
+      </div>
+
+      <!-- ===== Market & competitive intelligence · GAIA-27 (BR-046 … BR-049) ===== -->
+      <section class="card" id="GAIA-27">
+        <div class="card-head">
+          <h2>Market &amp; competitive intelligence</h2>
+          <span class="hint">📈 Market / 🏢 Business tools · shown from RS-06</span>
+          <span class="sec-tag push">GAIA-27</span>
+        </div>
+
+        <div class="card-body" style="display:flex; flex-direction:column; gap:18px;">
+
+          <div>
+            <div class="stat-label" style="margin-bottom:8px;">
+              Market sizing — carbon accounting software · EU-27 · USD · base year 2026 · forecast to 2030
+            </div>
+            <div class="chart">
+              <div class="chart-sub">Selected estimate after triangulation across 4 sources · CAGR 18.4%</div>
+              <div class="bars">
+                <div class="bar-row">
+                  <span class="bar-name">TAM — total</span>
+                  <div class="bar-track"><div class="bar-fill seq-3" style="width:100%" data-tip="TAM · $4.8B · all sustainability-reporting software, EU-27, 2026"></div></div>
+                  <span class="bar-val">$4.8B</span>
+                </div>
+                <div class="bar-row">
+                  <span class="bar-name">SAM — serviceable</span>
+                  <div class="bar-track"><div class="bar-fill seq-2" style="width:39.6%" data-tip="SAM · $1.9B · Scope 3 supplier-data segment"></div></div>
+                  <span class="bar-val">$1.9B</span>
+                </div>
+                <div class="bar-row">
+                  <span class="bar-name">SOM — 3-year target</span>
+                  <div class="bar-track"><div class="bar-fill seq-1" style="width:4.4%; min-width:6px;" data-tip="SOM · $210M · reachable share by 2029"></div></div>
+                  <span class="bar-val">$210M</span>
+                </div>
+              </div>
+              <div class="bar-axis"><span>$0</span><span>Market value, 2026</span><span>$4.8B</span></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="stat-label" style="margin-bottom:8px;">Multi-source triangulation — no single figure is accepted on its own</div>
+            <div class="table-scroll">
+              <table class="data compact">
+                <thead>
+                  <tr><th>Source</th><th class="num">Estimate (TAM)</th><th>Method &amp; assumptions</th><th class="num">Year</th><th>Reliability tier</th><th>Evidence quality</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Verdantix <span class="cite">12</span></td><td class="num">$5.2B</td><td>Vendor interviews + modelling; method not published</td><td class="num">2026</td><td>◇ Analyst estimate</td><td><span class="pill warning"><span class="dot"></span>⚠ Medium</span></td></tr>
+                  <tr><td>IDC <span class="cite">19</span></td><td class="num">$4.4B</td><td>Bottom-up from vendor revenue, EU-27 only</td><td class="num">2026</td><td>◇ Analyst estimate</td><td><span class="pill good"><span class="dot"></span>✓ High</span></td></tr>
+                  <tr><td>EU firmographics <span class="cite">20</span></td><td class="num">$4.6B</td><td>Top-down: 49,000 in-scope companies × observed ACV</td><td class="num">2026</td><td>◆ Primary data</td><td><span class="pill good"><span class="dot"></span>✓ High</span></td></tr>
+                  <tr><td>Trade press <span class="cite">14</span></td><td class="num">$7.0B</td><td>Restates an unnamed forecast; global, not EU</td><td class="num">2025</td><td>◌ Press coverage</td><td><span class="pill critical"><span class="dot"></span>✕ Low — excluded</span></td></tr>
+                  <tr><td><strong>Range (included sources)</strong></td><td class="num"><strong>$4.4B – $5.2B</strong></td><td>Spread 18% · driven by ACV assumption</td><td class="num">2026</td><td>—</td><td>—</td></tr>
+                  <tr><td><strong>Selected estimate</strong></td><td class="num"><strong>$4.8B</strong></td><td>Midpoint weighted toward the two high-quality sources</td><td class="num">2026</td><td>—</td><td><span class="pill good"><span class="dot"></span>✓ Defensible</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div>
+            <div class="stat-label" style="margin-bottom:8px;">Competitive research</div>
+            <div class="table-scroll">
+              <table class="data compact">
+                <thead>
+                  <tr><th>Company</th><th>Product</th><th>Key features</th><th>Pricing</th><th>Positioning</th><th>Strengths</th><th>Weaknesses</th><th>Market presence</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Persefoni</td><td>Climate management platform</td><td>Audit-grade ledger, Scope 1–3, assurance workflow</td><td>Enterprise, quote-based</td><td>Assurance-first</td><td>Auditability, finance-team fit</td><td>Cost, long onboarding</td><td>US + EU enterprise</td>
+                  </tr>
+                  <tr>
+                    <td>Watershed</td><td>Carbon platform</td><td>Supplier engagement, reduction planning</td><td>Enterprise, quote-based</td><td>Programme-led</td><td>Supplier network, brand</td><td>Thin for regulated disclosure</td><td>US-heavy</td>
+                  </tr>
+                  <tr>
+                    <td>Sweep</td><td>ESG + carbon</td><td>Group consolidation, CSRD module</td><td>Tiered subscription</td><td>EU compliance</td><td>CSRD coverage</td><td>Shallow Scope 3 data intake</td><td>EU mid-market</td>
+                  </tr>
+                  <tr>
+                    <td><strong>EcoTrace</strong> (us)</td><td>Supplier emissions intake</td><td>Structured supplier data collection, lineage</td><td>Per-supplier tier</td><td>Data-quality-first</td><td>Fills the largest reported gap</td><td>No assurance workflow yet</td><td>Pilot — 14 suppliers</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Publication & delivery ================= -->
+      <div class="band">Publication &amp; delivery</div>
+
+      <!-- ===== Publication · GAIA-29 (BR-068, BR-069, BR-070) ===== -->
+      <section class="card" id="GAIA-29">
+        <div class="card-head">
+          <h2>Publication</h2>
+          <span class="hint">🎓 Academic · journal finder, fit analysis, readiness</span>
+          <span class="sec-tag push">GAIA-29</span>
+        </div>
+        <div class="card-body cols-2 even" style="gap:18px;">
+
+          <div>
+            <div class="stat-label" style="margin-bottom:8px;">Journal / publication finder &amp; fit</div>
+            <div class="table-scroll">
+              <table class="data compact">
+                <thead><tr><th>Venue</th><th>Type</th><th>Scope match</th><th class="num">Fit</th></tr></thead>
+                <tbody>
+                  <tr><td>Journal of Industrial Ecology</td><td>Journal · Q1</td><td>Topic ✓ · method ✓ · article type ✓</td><td class="num">92%</td></tr>
+                  <tr><td>Journal of Cleaner Production</td><td>Journal · Q1</td><td>Topic ✓ · method ✓ · scope broad</td><td class="num">84%</td></tr>
+                  <tr><td>Business Strategy &amp; the Environment</td><td>Journal · Q1</td><td>Topic ✓ · method ◑ · management framing needed</td><td class="num">68%</td></tr>
+                  <tr><td>EurOMA 2027</td><td>Conference</td><td>Topic ✓ · early-stage work welcome</td><td class="num">61%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <dl class="kv" style="margin-top:12px;">
+              <dt>Field</dt><dd>Industrial ecology / carbon accounting</dd>
+              <dt>Methodology</dt><dd>PRISMA systematic review</dd>
+              <dt>Article type</dt><dd>Review article</dd>
+              <dt>Fit drivers</dt><dd>Review articles accepted · Scope 3 in aims &amp; scope · 3 cited papers published there</dd>
+            </dl>
+          </div>
+
+          <div>
+            <div class="stat-label" style="margin-bottom:8px;">Manuscript readiness review</div>
+            <div style="border:1px solid var(--hairline); border-radius:var(--radius-sm); overflow:hidden;">
+              <div class="check-row"><div class="ck-main"><div class="ck-name">Structure</div><div class="ck-detail">Implications and Conclusion are still empty</div></div><span class="pill warning"><span class="dot"></span>⚠ Incomplete</span></div>
+              <div class="check-row"><div class="ck-main"><div class="ck-name">Literature coverage</div><div class="ck-detail">38 studies · 2 seminal works not cited</div></div><span class="pill warning"><span class="dot"></span>⚠ Review</span></div>
+              <div class="check-row"><div class="ck-main"><div class="ck-name">Evidence</div><div class="ck-detail">Every finding traces to the evidence matrix</div></div><span class="pill good"><span class="dot"></span>✓ Pass</span></div>
+              <div class="check-row"><div class="ck-main"><div class="ck-name">Citations</div><div class="ck-detail">5 issues open in GAIA-28</div></div><span class="pill critical"><span class="dot"></span>✕ Fix</span></div>
+              <div class="check-row"><div class="ck-main"><div class="ck-name">Methodology</div><div class="ck-detail">PRISMA record complete and reproducible</div></div><span class="pill good"><span class="dot"></span>✓ Pass</span></div>
+              <div class="check-row"><div class="ck-main"><div class="ck-name">Academic writing</div><div class="ck-detail">7 informal phrases, 3 long sentences</div></div><span class="pill warning"><span class="dot"></span>⚠ Review</span></div>
+              <div class="check-row"><div class="ck-main"><div class="ck-name">Novelty indicators</div><div class="ck-detail">Longitudinal gap is not addressed elsewhere in the corpus</div></div><span class="pill good"><span class="dot"></span>✓ Strong</span></div>
+              <div class="check-row"><div class="ck-main"><div class="ck-name">Publication fit</div><div class="ck-detail">Best match 92% — J. of Industrial Ecology</div></div><span class="pill good"><span class="dot"></span>✓ Pass</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="cols-2 even">
+
+        <!-- ===== Approve & export · GAIA-30 (BR-056 … BR-059, BR-065, BR-066) ===== -->
+        <section class="card" id="GAIA-30">
+          <div class="card-head">
+            <h2>Approve &amp; export</h2>
+            <span class="hint">same gate for every research type</span>
+            <span class="sec-tag push">GAIA-30</span>
+          </div>
+          <div class="card-body" style="display:flex; flex-direction:column; gap:14px;">
+
+            <div class="steps">
+              <div class="step done"><span class="step-num">1</span> Draft</div>
+              <div class="step active"><span class="step-num">2</span> Verify sources</div>
+              <div class="step"><span class="step-num">3</span> Approve</div>
+            </div>
+
+            <div class="form-grid" style="grid-template-columns:1fr 1fr;">
+              <div class="field">
+                <label for="ex-style">Citation style</label>
+                <select id="ex-style"><option>APA 7</option><option>MLA 9</option><option>Chicago 17</option><option>Harvard</option><option>IEEE</option><option>Vancouver</option><option>AMA 11</option></select>
+                <span class="field-hint">Styles are configuration — new styles plug in without a redesign</span>
+              </div>
+              <div class="field">
+                <label for="ex-scope">Include</label>
+                <select id="ex-scope"><option>Note + sources + references</option><option>Note only</option><option>Full research package</option></select>
+              </div>
+            </div>
+
+            <div>
+              <div class="stat-label" style="margin-bottom:7px;">Export formats</div>
+              <div class="tool-chips" style="padding:0;">
+                <button class="tool-chip">⤓ PDF</button>
+                <button class="tool-chip">⤓ DOCX</button>
+                <button class="tool-chip">⤓ XLSX — tables &amp; evidence</button>
+                <button class="tool-chip">⤓ CSV</button>
+                <button class="tool-chip">⤓ RIS</button>
+                <button class="tool-chip">⤓ BibTeX</button>
+                <button class="tool-chip">⤓ Citations CSV</button>
+              </div>
+            </div>
+
+            <div class="mini-card">
+              <div class="mc-top"><span class="mc-title">📦 Research package export</span><span class="pill accent"><span class="dot"></span>Complete record</span></div>
+              <div class="mc-body">Research output · evidence matrix · sources · references · screening decisions · audit information — one archive suitable for a systematic review, a thesis appendix or an internal research file.</div>
+              <div class="mc-actions"><button class="btn small primary">⤓ Export package</button><button class="btn small">Preview contents</button></div>
+            </div>
+
+            <div class="check-row" style="border:1px solid var(--hairline); border-radius:var(--radius-sm);">
+              <div class="ck-main"><div class="ck-name">🔒 Approved content lock</div><div class="ck-detail">After approval Gaia may propose changes as a new linked version — it can never modify approved research in place.</div></div>
+              <span class="pill good"><span class="dot"></span>✓ Enforced</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== Traceability · GAIA-31 (BR-063, BR-064) ===== -->
+        <section class="card" id="GAIA-31">
+          <div class="card-head">
+            <h2>Traceability</h2>
+            <span class="hint">bidirectional</span>
+            <span class="sec-tag push">GAIA-31</span>
+          </div>
+          <div class="card-body" style="display:flex; flex-direction:column; gap:14px;">
+
+            <div>
+              <div class="stat-label" style="margin-bottom:7px;">Source → Evidence → Finding → Output</div>
+              <div class="chain">
+                <div class="link"><div class="lk-kind">Source</div><div class="lk-name">Müller 2026 <span class="cite">3</span></div><div>p. 19, Fig. 4</div></div>
+                <span class="arrow">→</span>
+                <div class="link"><div class="lk-kind">Evidence</div><div class="lk-name">Matrix row 1</div><div>−22 to −34 pp</div></div>
+                <span class="arrow">→</span>
+                <div class="link"><div class="lk-kind">Finding</div><div class="lk-name">GAIA-09 · finding 1</div><div>9% vs 42% error</div></div>
+                <span class="arrow">→</span>
+                <div class="link"><div class="lk-kind">Output</div><div class="lk-name">Thesis §2.3</div><div>+ REQ-031</div></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="stat-label" style="margin-bottom:7px;">Output → Finding → Source (reverse lookup)</div>
+              <div class="table-scroll">
+                <table class="data compact">
+                  <thead><tr><th>Used in</th><th>Type</th><th>From</th><th>Status</th></tr></thead>
+                  <tbody>
+                    <tr><td>Thesis §2.3</td><td>Thesis section</td><td>GAIA-09 finding 1</td><td><span class="pill good"><span class="dot"></span>✓ Approved</span></td></tr>
+                    <tr><td>REQ-031</td><td>Requirements document</td><td>GAIA-10 opportunity</td><td><span class="pill accent"><span class="dot"></span>→ In Atlas</span></td></tr>
+                    <tr><td>Q3 market report</td><td>Market report</td><td>GAIA-27 selected estimate</td><td><span class="pill good"><span class="dot"></span>✓ Approved</span></td></tr>
+                    <tr><td>Board deck · slide 7</td><td>Deck</td><td>GAIA-24 consensus</td><td><span class="pill warning"><span class="dot"></span>⚠ Stale — source updated</span></td></tr>
+                    <tr><td>JIE submission</td><td>Journal paper</td><td>Whole note D-14</td><td><span class="pill neutral"><span class="dot"></span>— Draft</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="stat-note" style="margin-top:8px;">
+                Traceable output types: thesis section · journal paper · conference paper · business report ·
+                market report · presentation · deck · requirements document · strategy document · delivery ticket.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ================= Governance & platform ================= -->
+      <div class="band">Governance &amp; platform</div>
+
+      <div class="cols-2 even">
+
+        <!-- ===== Governance & integrity · GAIA-32 (BR-066, BR-067, BR-071 … BR-073) ===== -->
+        <section class="card" id="GAIA-32">
+          <div class="card-head">
+            <h2>Research integrity &amp; audit</h2>
+            <span class="hint">AI proposes · humans approve</span>
+            <span class="sec-tag push">GAIA-32</span>
+          </div>
+
+          <div class="check-row">
+            <div class="ck-main"><div class="ck-name">Unsupported claims</div><div class="ck-detail">1 statement in GAIA-10 has no citation attached</div></div>
+            <span class="pill warning"><span class="dot"></span>⚠ 1</span>
+          </div>
+          <div class="check-row">
+            <div class="ck-main"><div class="ck-name">Citation mismatches</div><div class="ck-detail">1 citation contradicts the claim it supports (GAIA-28)</div></div>
+            <span class="pill critical"><span class="dot"></span>✕ 1</span>
+          </div>
+          <div class="check-row">
+            <div class="ck-main"><div class="ck-name">Inconsistent figures</div><div class="ck-detail">“40%” in GAIA-09 vs “55%” in source 7</div></div>
+            <span class="pill warning"><span class="dot"></span>⚠ 1</span>
+          </div>
+          <div class="check-row">
+            <div class="ck-main"><div class="ck-name">Internal contradictions</div><div class="ck-detail">Findings and Discussion agree</div></div>
+            <span class="pill good"><span class="dot"></span>✓ 0</span>
+          </div>
+          <div class="check-row">
+            <div class="ck-main"><div class="ck-name">Problematic sources</div><div class="ck-detail">Source 16 unresolvable · source 14 is press coverage of an unnamed study</div></div>
+            <span class="pill critical"><span class="dot"></span>✕ 2</span>
+          </div>
+
+          <div class="draft-banner" style="border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline);">
+            <span>⚠ Evidence not verified</span>
+            <span class="hint">Gaia never presents a paper, author, DOI, statistic, quotation or finding as verified evidence unless it resolves to a real, checkable source. Anything it cannot substantiate is shown in this state and is blocked from citation and export.</span>
+          </div>
+
+          <div class="card-head" style="border-bottom:1px solid var(--hairline);">
+            <h2>Audit log</h2>
+            <span class="hint">this document</span>
+          </div>
+          <div class="list">
+            <div class="list-row"><div class="row-main"><div class="row-title">AI proposal applied to GAIA-08</div><div class="row-meta">Gaia run #517 · accepted by Nimali · yesterday 16:58</div></div><span class="pill accent"><span class="dot"></span>AI → human</span></div>
+            <div class="list-row"><div class="row-main"><div class="row-title">Human edit — GAIA-11 open questions</div><div class="row-meta">Nimali · today 09:12</div></div><span class="pill neutral"><span class="dot"></span>Human</span></div>
+            <div class="list-row"><div class="row-main"><div class="row-title">Source 5 reclassified Supporting → Contradicting</div><div class="row-meta">Nimali · today 09:20 · reason recorded</div></div><span class="pill neutral"><span class="dot"></span>Source change</span></div>
+            <div class="list-row"><div class="row-main"><div class="row-title">Extraction rejected — Park 2024 coverage %</div><div class="row-meta">Nimali · today 09:31</div></div><span class="pill neutral"><span class="dot"></span>Rejection</span></div>
+            <div class="list-row"><div class="row-main"><div class="row-title">Export — evidence matrix (XLSX)</div><div class="row-meta">Nimali · today 09:44</div></div><span class="pill neutral"><span class="dot"></span>Export</span></div>
+          </div>
+        </section>
+
+        <!-- ===== Configuration · GAIA-33 (BR-076, BR-075, BR-074) ===== -->
+        <section class="card" id="GAIA-33">
+          <div class="card-head">
+            <h2>Workspace configuration</h2>
+            <span class="hint">extensible, not hard-coded</span>
+            <span class="sec-tag push">GAIA-33</span>
+          </div>
+          <div class="card-body">
+            <p class="stat-note" style="margin-bottom:12px;">
+              Everything the research workflow branches on is registry-driven, so a fifth research domain
+              is a configuration entry — not another platform redesign.
+            </p>
+            <div class="table-scroll">
+              <table class="data compact">
+                <thead><tr><th>Configurable</th><th class="num">Current</th><th>Extend by</th></tr></thead>
+                <tbody>
+                  <tr><td>Research types</td><td class="num">4</td><td>Add type + its intake schema</td></tr>
+                  <tr><td>Note templates</td><td class="num">4 + 3 variants</td><td>Add section list per type</td></tr>
+                  <tr><td>Document types</td><td class="num">12</td><td>Add to the type registry</td></tr>
+                  <tr><td>Assistant tools</td><td class="num">26</td><td>Register tool → bind to research types</td></tr>
+                  <tr><td>Source classifications</td><td class="num">3 + 3 tiers</td><td>Add classification or reliability tier</td></tr>
+                  <tr><td>Evidence-matrix columns</td><td class="num">6 + custom</td><td>User-defined per research</td></tr>
+                  <tr><td>Citation styles</td><td class="num">7</td><td>Add style definition</td></tr>
+                  <tr><td>Output / export formats</td><td class="num">8</td><td>Add renderer</td></tr>
+                  <tr><td>Traceable output types</td><td class="num">10</td><td>Add to the “used in” vocabulary</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="stat-note" style="margin-top:12px;">
+              One workspace, one design system, one assistant — Gaia gains capabilities per research type rather
+              than splitting into separate products.
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <!-- ===== Requirements coverage · GAIA-34 ===== -->
+      <section class="card" id="GAIA-34">
+        <div class="card-head">
+          <h2>Business requirements coverage</h2>
+          <span class="hint">BRD 24 Aug 2026 · BR-001 … BR-076</span>
+          <span class="sec-tag push">GAIA-34</span>
+        </div>
+        <div class="table-scroll">
+          <table class="data coverage">
+            <thead><tr><th>Requirement</th><th>Where it lives in this mockup</th><th>Section</th></tr></thead>
+            <tbody>
+              <tr><td class="br">BR-001, BR-002</td><td>Research type chosen first, then type-specific intake fields</td><td><span class="sec-tag">GAIA-18</span></td></tr>
+              <tr><td class="br">BR-003, BR-004</td><td>Research type filter separate from an expanded document type filter</td><td><span class="sec-tag">GAIA-04</span></td></tr>
+              <tr><td class="br">BR-005, BR-006</td><td>Research type tag on every research; document type badge on every document</td><td><span class="sec-tag">GAIA-05</span></td></tr>
+              <tr><td class="br">BR-007 – BR-010</td><td>Note structure follows research type; Academic / Business / Market / Sustainability templates</td><td><span class="sec-tag">GAIA-19</span> <span class="sec-tag">GAIA-08</span> <span class="sec-tag">GAIA-09</span> <span class="sec-tag">GAIA-10</span> <span class="sec-tag">GAIA-11</span></td></tr>
+              <tr><td class="br">BR-011 – BR-013</td><td>Include / exclude / uncertain screening with reasons, duplicate detection, PRISMA counts</td><td><span class="sec-tag">GAIA-22</span></td></tr>
+              <tr><td class="br">BR-014, BR-058</td><td>Embedded data table block, exportable to CSV / XLSX</td><td><span class="sec-tag">GAIA-20</span></td></tr>
+              <tr><td class="br">BR-015, BR-016</td><td>Embedded chart block that keeps its source references</td><td><span class="sec-tag">GAIA-21</span></td></tr>
+              <tr><td class="br">BR-017 – BR-024</td><td>Supporting / contradicting / mentioning beside verification; reliability tiers; peer review, citation count and bibliographic metadata; auto highlights; Ask this source</td><td><span class="sec-tag">GAIA-12</span></td></tr>
+              <tr><td class="br">BR-025 – BR-028</td><td>Evidence matrix with custom columns, per-cell source links, accept / edit / reject</td><td><span class="sec-tag">GAIA-23</span></td></tr>
+              <tr><td class="br">BR-029 – BR-032</td><td>Research graph with relationship types, evolution timeline, related-research filters</td><td><span class="sec-tag">GAIA-15</span></td></tr>
+              <tr><td class="br">BR-033 – BR-035</td><td>Consensus indicator, contradiction detection, cross-source synthesis</td><td><span class="sec-tag">GAIA-24</span></td></tr>
+              <tr><td class="br">BR-036 – BR-038</td><td>Gap finder across 7 gap types, evidence-linked, convertible to questions / objectives / hypotheses / study ideas</td><td><span class="sec-tag">GAIA-25</span></td></tr>
+              <tr><td class="br">BR-039, BR-040</td><td>Idea lab with six evaluation criteria</td><td><span class="sec-tag">GAIA-26</span></td></tr>
+              <tr><td class="br">BR-041 – BR-045, BR-074</td><td>One assistant; tool chips switch with research type</td><td><span class="sec-tag">GAIA-14</span></td></tr>
+              <tr><td class="br">BR-046 – BR-049</td><td>Market sizing with TAM / SAM / SOM, triangulation, assumptions and quality; competitive research</td><td><span class="sec-tag">GAIA-27</span></td></tr>
+              <tr><td class="br">BR-050 – BR-053</td><td>Style &amp; grammar check, inline AI drafting as a proposal, citations restricted to the source set</td><td><span class="sec-tag">GAIA-17</span> <span class="sec-tag">GAIA-14</span></td></tr>
+              <tr><td class="br">BR-054, BR-055</td><td>Claim-to-citation verification and citation audit</td><td><span class="sec-tag">GAIA-28</span></td></tr>
+              <tr><td class="br">BR-056, BR-057, BR-059</td><td>Citation styles, RIS / BibTeX / CSV, full research package export</td><td><span class="sec-tag">GAIA-30</span></td></tr>
+              <tr><td class="br">BR-060 – BR-062</td><td>Knowledge base tagged by research type, workspace and metadata; approved items retained</td><td><span class="sec-tag">GAIA-16</span></td></tr>
+              <tr><td class="br">BR-063, BR-064</td><td>Extended “used in” output types; forward and reverse traceability</td><td><span class="sec-tag">GAIA-31</span></td></tr>
+              <tr><td class="br">BR-065, BR-066</td><td>Draft → Verify sources → Approve unchanged; approved content lock</td><td><span class="sec-tag">GAIA-06</span> <span class="sec-tag">GAIA-13</span> <span class="sec-tag">GAIA-30</span></td></tr>
+              <tr><td class="br">BR-067, BR-071 – BR-073</td><td>Audit log, integrity check, no fabricated evidence, explicit “requires verification” state</td><td><span class="sec-tag">GAIA-32</span> <span class="sec-tag">GAIA-12</span></td></tr>
+              <tr><td class="br">BR-068 – BR-070</td><td>Journal finder, fit analysis, manuscript readiness review</td><td><span class="sec-tag">GAIA-29</span></td></tr>
+              <tr><td class="br">BR-075, BR-076</td><td>Existing Moderta design system reused; every branch point is configuration</td><td><span class="sec-tag">GAIA-33</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <p class="mock-note">Static HTML/CSS mockup · Moderta AI Research Workspace · no live data · spec: UIX-08 · BRD 24 Aug 2026 · use section codes GAIA-01…GAIA-34 to request changes</p>
 
     </main>
   </div>
