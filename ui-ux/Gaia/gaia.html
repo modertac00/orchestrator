@@ -113,6 +113,8 @@
       <span class="sec-tag">GAIA-02</span>
       <div class="spacer"></div>
       <span class="pill neutral"><span class="dot"></span>Workspace: EcoTrace</span>
+      <!-- Assistant is a popup now — this is the persistent entry point · GAIA-14 -->
+      <button class="btn small" data-gaia-open title="Open the Gaia Assistant popup (⌘K)">✦ Ask Gaia</button>
       <div class="user-chip">
         <div class="avatar">NW</div>
         <span>Nimali · Research Assistant</span>
@@ -418,8 +420,8 @@
             <button class="tbtn" title="Insert a structured data table into this section">▦ Insert table</button>
             <button class="tbtn" title="Insert a chart built from a table or the evidence matrix">▥ Insert chart</button>
             <span class="tbtn sep" aria-hidden="true"></span>
-            <button class="tbtn" title="AI drafting help — proposes text, never replaces it silently">✦ AI draft</button>
-            <button class="tbtn" title="Academic style and grammar check">🅐 Style &amp; grammar</button>
+            <button class="tbtn" data-gaia-open data-gaia-ask="Draft this section — proposal only, cite verified sources" title="Opens the Gaia Assistant popup — proposes text, never replaces it silently">✦ AI draft</button>
+            <button class="tbtn" data-gaia-open data-gaia-ask="Run an academic style &amp; grammar check on this section" title="Opens the Gaia Assistant popup — academic style and grammar check">🅐 Style &amp; grammar</button>
             <span class="tbtn sep" aria-hidden="true"></span>
             <button class="tbtn" title="Export as PDF, DOCX, spreadsheet, citations or full research package">⤓ Export ▾</button>
             <span class="toolbar-hint">Edits are audit-logged</span>
@@ -431,7 +433,7 @@
             <h3>Research question &amp; objectives <span class="sec-tag">GAIA-08</span>
               <span class="sec-actions">
                 <button class="sec-btn" title="Edit this section as text">✎ Edit</button>
-                <button class="sec-btn ai" title="Opens Gaia Assistant chat targeting GAIA-08">✦ Edit with AI</button>
+                <button class="sec-btn ai" data-gaia-open data-gaia-target="GAIA-08 · Research question &amp; objectives" title="Opens the Gaia Assistant popup targeting GAIA-08">✦ Edit with AI</button>
               </span>
             </h3>
             <p>
@@ -449,7 +451,7 @@
             <h3>Findings <span class="sec-tag">GAIA-09</span>
               <span class="sec-actions">
                 <button class="sec-btn" title="Edit this section as text">✎ Edit</button>
-                <button class="sec-btn ai" title="Opens Gaia Assistant chat targeting GAIA-09">✦ Edit with AI</button>
+                <button class="sec-btn ai" data-gaia-open data-gaia-target="GAIA-09 · Findings" title="Opens the Gaia Assistant popup targeting GAIA-09">✦ Edit with AI</button>
               </span>
             </h3>
             <ul>
@@ -540,7 +542,7 @@
             <h3>Discussion · limitations · research gaps <span class="sec-tag">GAIA-10</span>
               <span class="sec-actions">
                 <button class="sec-btn" title="Edit this section as text">✎ Edit</button>
-                <button class="sec-btn ai" title="Opens Gaia Assistant chat targeting GAIA-10">✦ Edit with AI</button>
+                <button class="sec-btn ai" data-gaia-open data-gaia-target="GAIA-10 · Discussion · limitations · research gaps" title="Opens the Gaia Assistant popup targeting GAIA-10">✦ Edit with AI</button>
               </span>
             </h3>
             <ul>
@@ -827,109 +829,23 @@
           </div>
         </section>
 
-        <!-- ===== Assistant rail ===== -->
+        <!-- ===== Research context rail — the assistant itself now lives in the GAIA-14 popup ===== -->
         <div class="rail">
 
-          <!-- Gaia chat · GAIA-14 (BR-041 … BR-045, BR-052, BR-053, BR-074) -->
-          <section class="card" id="GAIA-14">
+          <!-- Assistant state stays visible on the page even when the popup is minimised · GAIA-14 -->
+          <section class="card assist-teaser">
             <div class="card-head">
               <h2>Gaia Assistant</h2>
+              <span class="hint">popup</span>
               <span class="sec-tag push">GAIA-14</span>
             </div>
-            <div class="chat-body">
-              <div class="msg ai">
-                <div class="msg-who">Gaia</div>
-                Academic mode. I can search literature, extract evidence, compare studies and draft sections
-                (GAIA-08…GAIA-11). I only cite sources that are in this research or that I can resolve — I never
-                invent a paper, DOI or figure.
+            <div class="at-body">
+              <div class="at-line">
+                <span class="pill accent"><span class="dot"></span>1 proposal waiting</span>
+                <span class="at-target">→ GAIA-10 · Discussion</span>
               </div>
-              <div class="msg user">
-                <div class="msg-who">Nimali · RA</div>
-                Draft the opening of GAIA-10 using what we have on the 40% coverage threshold.
-              </div>
-              <div class="msg ai">
-                <div class="msg-who">Gaia</div>
-                Proposed text — citations restricted to this research's verified source set:
-                <div class="suggest">
-                  <div class="suggest-target">→ GAIA-10 · Discussion</div>
-                  <div class="suggest-text">
-                    The relationship between primary-data coverage and estimation error is non-linear: gains
-                    concentrate below ~40% of purchased-goods spend and flatten thereafter
-                    <span class="cite">12</span>, which suggests a coverage target rather than full census
-                    collection <span class="cite">3</span>.
-                  </div>
-                  <div class="suggest-actions">
-                    <button class="btn small primary">✓ Apply to draft</button>
-                    <button class="btn small">✎ Edit first</button>
-                    <button class="btn small">✕ Discard</button>
-                  </div>
-                  <div class="suggest-note" style="margin-left:0; margin-top:6px;">
-                    Proposal only — nothing is written to the note until you apply it · audit logged
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="tabbar" aria-label="Tool set follows research type">
-              <button class="tab on">🎓 Academic</button>
-              <button class="tab">🏢 Business</button>
-              <button class="tab">📈 Market</button>
-              <button class="tab">🌱 Sustainability</button>
-            </div>
-
-            <div class="chip-group">
-              <div class="cg-label">Academic tools · active</div>
-              <div class="tool-chips" aria-label="Academic research tools">
-                <button class="tool-chip">🔍 Find papers</button>
-                <button class="tool-chip">🕸 Related research</button>
-                <button class="tool-chip">📚 Literature review</button>
-                <button class="tool-chip">⛏ Evidence extraction</button>
-                <button class="tool-chip">⚖ Compare studies</button>
-                <button class="tool-chip">❝ Citation analysis</button>
-                <button class="tool-chip">◌ Research gaps</button>
-                <button class="tool-chip">✦ Ask source</button>
-              </div>
-            </div>
-
-            <div class="chip-group off">
-              <div class="cg-label">Business tools · switch type to use</div>
-              <div class="tool-chips" aria-label="Business research tools">
-                <button class="tool-chip">🏢 Company research</button>
-                <button class="tool-chip">⚔ Competitor scan</button>
-                <button class="tool-chip">👥 Customer research</button>
-                <button class="tool-chip">🏭 Industry analysis</button>
-                <button class="tool-chip">▦ Business model analysis</button>
-                <button class="tool-chip">⇄ Company comparison</button>
-              </div>
-            </div>
-
-            <div class="chip-group off">
-              <div class="cg-label">Market tools · switch type to use</div>
-              <div class="tool-chips" aria-label="Market research tools">
-                <button class="tool-chip">📐 Market sizing</button>
-                <button class="tool-chip">📈 Market trends</button>
-                <button class="tool-chip">◫ Segmentation</button>
-                <button class="tool-chip">⚔ Competitor scan</button>
-                <button class="tool-chip">⇉ Forecast comparison</button>
-                <button class="tool-chip">🏭 Industry analysis</button>
-              </div>
-            </div>
-
-            <div class="chip-group off">
-              <div class="cg-label">Sustainability tools · switch type to use</div>
-              <div class="tool-chips" aria-label="Sustainability research tools">
-                <button class="tool-chip">⚖ Regulation scan</button>
-                <button class="tool-chip">🌿 ESG research</button>
-                <button class="tool-chip">🌡 Climate research</button>
-                <button class="tool-chip">♻ LCA research</button>
-                <button class="tool-chip">🌱 Sustainability research</button>
-                <button class="tool-chip">⚔ Competitor scan</button>
-              </div>
-            </div>
-
-            <div class="chat-composer">
-              <input type="text" placeholder="Ask Gaia to research, or update a section (e.g. GAIA-09)…" aria-label="Message Gaia">
-              <button class="btn primary small">Send</button>
+              <button class="btn small primary" data-gaia-open aria-controls="GAIA-14" aria-expanded="true">✦ Open assistant</button>
+              <div class="at-note">Chat and the Academic tool set open in a popup, so they follow you down the whole note · ⌘K</div>
             </div>
           </section>
 
@@ -1734,7 +1650,7 @@
               <tr><td class="br">BR-033 – BR-035</td><td>Consensus indicator, contradiction detection, cross-source synthesis</td><td><span class="sec-tag">GAIA-24</span></td></tr>
               <tr><td class="br">BR-036 – BR-038</td><td>Gap finder across 7 gap types, evidence-linked, convertible to questions / objectives / hypotheses / study ideas</td><td><span class="sec-tag">GAIA-25</span></td></tr>
               <tr><td class="br">BR-039, BR-040</td><td>Idea lab with six evaluation criteria</td><td><span class="sec-tag">GAIA-26</span></td></tr>
-              <tr><td class="br">BR-041 – BR-045, BR-074</td><td>One assistant; tool chips switch with research type</td><td><span class="sec-tag">GAIA-14</span></td></tr>
+              <tr><td class="br">BR-041 – BR-045, BR-074</td><td>One assistant, opened as a popup from anywhere; the tool set inside it switches with research type</td><td><span class="sec-tag">GAIA-14</span></td></tr>
               <tr><td class="br">BR-046 – BR-049</td><td>Market sizing with TAM / SAM / SOM, triangulation, assumptions and quality; competitive research</td><td><span class="sec-tag">GAIA-27</span></td></tr>
               <tr><td class="br">BR-050 – BR-053</td><td>Style &amp; grammar check, inline AI drafting as a proposal, citations restricted to the source set</td><td><span class="sec-tag">GAIA-17</span> <span class="sec-tag">GAIA-14</span></td></tr>
               <tr><td class="br">BR-054, BR-055</td><td>Claim-to-citation verification and citation audit</td><td><span class="sec-tag">GAIA-28</span></td></tr>
@@ -1754,6 +1670,231 @@
 
     </main>
   </div>
+
+  <!-- ================= Gaia Assistant popup · GAIA-14 (BR-041 … BR-045, BR-052, BR-053, BR-074) =================
+       The assistant is a popup, not a rail card: it stays available on every part of the workspace and the
+       research tools live inside it. Opened from the topbar, the floating launcher, "✦ Edit with AI" on any
+       section (GAIA-08 … GAIA-11) and the editor toolbar (GAIA-17). -->
+
+  <!-- Floating launcher — shown whenever the popup is minimised -->
+  <button class="gaia-fab" id="gaia-fab" data-gaia-open aria-controls="GAIA-14" aria-expanded="true" hidden>
+    <span class="fab-mark" aria-hidden="true">✦</span>
+    <span class="fab-text">Ask Gaia<small>🎓 Academic tools · 8</small></span>
+    <span class="fab-badge" title="1 proposal waiting">1</span>
+  </button>
+
+  <section class="gaia-pop" id="GAIA-14" role="dialog" aria-modal="false" aria-labelledby="gaia-pop-title">
+
+    <header class="pop-head">
+      <span class="agent-dot" style="background: var(--status-good)"></span>
+      <h2 id="gaia-pop-title">Gaia Assistant</h2>
+      <span class="rtype on" id="gaia-pop-type">🎓 Academic</span>
+      <span class="sec-tag">GAIA-14</span>
+      <span class="pop-head-actions">
+        <button class="pop-btn" id="gaia-wide" aria-pressed="false" title="Wide view">⤢</button>
+        <button class="pop-btn" data-gaia-close title="Minimise to launcher · Esc">✕</button>
+      </span>
+    </header>
+
+    <!-- What this conversation is pointed at — replaces "type GAIA-09 in the message" guesswork -->
+    <div class="pop-context">
+      <span class="pc-label">Target</span>
+      <button class="pop-target" id="gaia-target">GAIA-10 · Discussion <span class="caret">▾</span></button>
+      <span class="pc-note">D-14 · APA 7 · citations limited to the 8 sources in RS-07</span>
+    </div>
+
+    <div class="chat-body" id="gaia-chat">
+      <div class="msg ai">
+        <div class="msg-who">Gaia</div>
+        Academic mode. I can search literature, extract evidence, compare studies and draft sections
+        (GAIA-08…GAIA-11). I only cite sources that are in this research or that I can resolve — I never
+        invent a paper, DOI or figure.
+      </div>
+      <div class="msg user">
+        <div class="msg-who">Nimali · RA</div>
+        Draft the opening of GAIA-10 using what we have on the 40% coverage threshold.
+      </div>
+      <div class="msg ai">
+        <div class="msg-who">Gaia</div>
+        Proposed text — citations restricted to this research's verified source set:
+        <div class="suggest">
+          <div class="suggest-target">→ GAIA-10 · Discussion</div>
+          <div class="suggest-text">
+            The relationship between primary-data coverage and estimation error is non-linear: gains
+            concentrate below ~40% of purchased-goods spend and flatten thereafter
+            <span class="cite">12</span>, which suggests a coverage target rather than full census
+            collection <span class="cite">3</span>.
+          </div>
+          <div class="suggest-actions">
+            <button class="btn small primary">✓ Apply to draft</button>
+            <button class="btn small">✎ Edit first</button>
+            <button class="btn small">✕ Discard</button>
+          </div>
+          <div class="suggest-note" style="margin-left:0; margin-top:6px;">
+            Proposal only — nothing is written to the note until you apply it · audit logged
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI tools live inside the popup; the set follows the research type · BR-041 … BR-045, BR-074 -->
+    <div class="pop-tools" id="gaia-tools">
+      <div class="pt-head">
+        <span class="pt-title">AI tools</span>
+        <span class="pt-note">one assistant · tool set follows research type</span>
+      </div>
+
+      <div class="tabbar" role="tablist" aria-label="Tool set follows research type">
+        <button class="tab on" role="tab" aria-selected="true" data-type="academic" data-label="🎓 Academic">🎓 Academic</button>
+        <button class="tab" role="tab" aria-selected="false" data-type="business" data-label="🏢 Business">🏢 Business</button>
+        <button class="tab" role="tab" aria-selected="false" data-type="market" data-label="📈 Market">📈 Market</button>
+        <button class="tab" role="tab" aria-selected="false" data-type="sustainability" data-label="🌱 Sustainability">🌱 Sustainability</button>
+      </div>
+
+      <div class="chip-group" data-type="academic">
+        <div class="cg-label">Academic tools · active for this research</div>
+        <div class="tool-chips" aria-label="Academic research tools">
+          <button class="tool-chip">🔍 Find papers</button>
+          <button class="tool-chip">🕸 Related research</button>
+          <button class="tool-chip">📚 Literature review</button>
+          <button class="tool-chip">⛏ Evidence extraction</button>
+          <button class="tool-chip">⚖ Compare studies</button>
+          <button class="tool-chip">❝ Citation analysis</button>
+          <button class="tool-chip">◌ Research gaps</button>
+          <button class="tool-chip">✦ Ask source</button>
+        </div>
+      </div>
+
+      <div class="chip-group off" data-type="business" hidden>
+        <div class="cg-label">Business tools · switch this research's type to use</div>
+        <div class="tool-chips" aria-label="Business research tools">
+          <button class="tool-chip">🏢 Company research</button>
+          <button class="tool-chip">⚔ Competitor scan</button>
+          <button class="tool-chip">👥 Customer research</button>
+          <button class="tool-chip">🏭 Industry analysis</button>
+          <button class="tool-chip">▦ Business model analysis</button>
+          <button class="tool-chip">⇄ Company comparison</button>
+        </div>
+      </div>
+
+      <div class="chip-group off" data-type="market" hidden>
+        <div class="cg-label">Market tools · switch this research's type to use</div>
+        <div class="tool-chips" aria-label="Market research tools">
+          <button class="tool-chip">📐 Market sizing</button>
+          <button class="tool-chip">📈 Market trends</button>
+          <button class="tool-chip">◫ Segmentation</button>
+          <button class="tool-chip">⚔ Competitor scan</button>
+          <button class="tool-chip">⇉ Forecast comparison</button>
+          <button class="tool-chip">🏭 Industry analysis</button>
+        </div>
+      </div>
+
+      <div class="chip-group off" data-type="sustainability" hidden>
+        <div class="cg-label">Sustainability tools · switch this research's type to use</div>
+        <div class="tool-chips" aria-label="Sustainability research tools">
+          <button class="tool-chip">⚖ Regulation scan</button>
+          <button class="tool-chip">🌿 ESG research</button>
+          <button class="tool-chip">🌡 Climate research</button>
+          <button class="tool-chip">♻ LCA research</button>
+          <button class="tool-chip">🌱 Sustainability research</button>
+          <button class="tool-chip">⚔ Competitor scan</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-composer">
+      <button class="tool-toggle on" id="gaia-tools-toggle" aria-expanded="true" aria-controls="gaia-tools" title="Show or hide the AI tools">⚒ Tools</button>
+      <input type="text" placeholder="Ask Gaia to research, or update the target section…" aria-label="Message Gaia">
+      <button class="btn primary small">Send</button>
+    </div>
+
+    <div class="pop-foot">
+      Gaia proposes · you apply · every action is audit-logged
+      <span class="pop-kbd">Esc</span>
+    </div>
+  </section>
 </div>
+
+<script>
+// GAIA-14 — Gaia Assistant popup. Static mockup: open/minimise, wide view, tools drawer,
+// research-type tool switching (BR-074) and target hand-off from "✦ Edit with AI" (BR-052).
+(function () {
+  var pop = document.getElementById('GAIA-14');
+  if (!pop) return;
+
+  var fab      = document.getElementById('gaia-fab');
+  var tools    = document.getElementById('gaia-tools');
+  var toggle   = document.getElementById('gaia-tools-toggle');
+  var wideBtn  = document.getElementById('gaia-wide');
+  var typeChip = document.getElementById('gaia-pop-type');
+  var target   = document.getElementById('gaia-target');
+  var input    = pop.querySelector('.chat-composer input');
+  var openers  = document.querySelectorAll('[data-gaia-open]');
+
+  function setOpen(open) {
+    pop.hidden = !open;
+    fab.hidden = open;
+    openers.forEach(function (b) { b.setAttribute('aria-expanded', String(open)); });
+    if (open) input.focus();
+  }
+
+  openers.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      setOpen(true);
+      if (btn.dataset.gaiaTarget) {
+        target.innerHTML = btn.dataset.gaiaTarget + ' <span class="caret">▾</span>';
+      }
+      if (btn.dataset.gaiaAsk) {
+        input.value = btn.dataset.gaiaAsk;
+      }
+    });
+  });
+
+  pop.querySelectorAll('[data-gaia-close]').forEach(function (btn) {
+    btn.addEventListener('click', function () { setOpen(false); });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !pop.hidden) { setOpen(false); }
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); setOpen(pop.hidden); }
+  });
+
+  toggle.addEventListener('click', function () {
+    var open = tools.hidden;
+    tools.hidden = !open;
+    toggle.classList.toggle('on', open);
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+
+  wideBtn.addEventListener('click', function () {
+    var on = !pop.classList.contains('wide');
+    pop.classList.toggle('wide', on);
+    wideBtn.setAttribute('aria-pressed', String(on));
+  });
+
+  var tabs   = tools.querySelectorAll('.tab[data-type]');
+  var groups = tools.querySelectorAll('.chip-group[data-type]');
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.classList.toggle('on', on);
+        t.setAttribute('aria-selected', String(on));
+      });
+      groups.forEach(function (g) { g.hidden = g.dataset.type !== tab.dataset.type; });
+      typeChip.textContent = tab.dataset.label;
+    });
+  });
+
+  // Clicking a tool drops it into the composer — the tool is the start of a prompt, not a hidden action.
+  tools.querySelectorAll('.tool-chip').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      input.value = chip.textContent.trim() + ': ';
+      input.focus();
+    });
+  });
+})();
+</script>
 </body>
 </html>

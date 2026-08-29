@@ -1791,3 +1791,221 @@ table.data.coverage td .sec-tag { margin-right: 3px; }
 .source-row.rich .src-verify { flex: 1 1 100%; justify-content: flex-end; margin-top: 6px; }
 .seg-ctl { flex-wrap: wrap; }
 .seg-ctl .seg-opt { flex: 1 1 auto; }
+
+/* ============================================================
+   Gaia Assistant popup · GAIA-14
+   The assistant moved out of the rail into a floating popup so it is
+   reachable from every part of the workspace, with its AI tools inside.
+   ============================================================ */
+
+/* Floating launcher — shown whenever the popup is minimised */
+.gaia-fab {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 45;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px 9px 12px;
+  border-radius: 99px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(11, 11, 11, 0.20);
+}
+
+.gaia-fab[hidden] { display: none; }
+.gaia-fab:hover { background: var(--accent-strong); }
+.gaia-fab .fab-mark { font-size: 15px; }
+.gaia-fab .fab-text { display: flex; flex-direction: column; line-height: 1.2; text-align: left; }
+.gaia-fab .fab-text small { font-size: 10.5px; font-weight: 500; opacity: 0.85; }
+
+.gaia-fab .fab-badge {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 99px;
+  background: var(--accent-ink);
+  color: var(--accent);
+  font-size: 10.5px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+
+/* Popup shell — non-modal on purpose: the note stays readable and editable behind it */
+.gaia-pop {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 46;
+  width: 400px;
+  max-width: calc(100vw - 32px);
+  max-height: min(740px, calc(100vh - 44px));
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 48px rgba(11, 11, 11, 0.22);
+  overflow: hidden;
+}
+
+.gaia-pop[hidden] { display: none; }
+.gaia-pop.wide { width: 660px; max-height: min(880px, calc(100vh - 44px)); }
+
+.pop-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--hairline);
+  background: var(--surface-raised);
+}
+
+.pop-head h2 { font-size: 13.5px; }
+.pop-head-actions { margin-left: auto; display: flex; gap: 4px; }
+
+.pop-btn {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--ink-secondary);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.pop-btn:hover { background: var(--tint-neutral); }
+.pop-btn[aria-pressed="true"] { background: var(--accent-tint); border-color: var(--accent); color: var(--accent); }
+
+/* What the conversation is pointed at — set by "✦ Edit with AI" on any section */
+.pop-context {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--hairline);
+  background: var(--tint-neutral);
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+
+.pop-context .pc-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+.pop-context .pc-note { margin-left: auto; }
+
+.pop-target {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 99px;
+  border: 1px solid var(--accent);
+  background: var(--accent-tint);
+  color: var(--accent);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.pop-target .caret { font-size: 9px; }
+
+.gaia-pop .chat-body { flex: 1 1 auto; min-height: 160px; overflow-y: auto; }
+.gaia-pop .msg { max-width: 100%; }
+
+/* AI tools drawer, inside the popup */
+.pop-tools {
+  flex: none;
+  max-height: 38%;
+  overflow-y: auto;
+  border-top: 1px solid var(--hairline);
+  background: var(--surface-raised);
+}
+
+.pop-tools[hidden] { display: none; }
+.pop-tools .pt-head { display: flex; align-items: center; gap: 8px; padding: 9px 12px 0; }
+.pop-tools .pt-title { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-secondary); }
+.pop-tools .pt-note { margin-left: auto; font-size: 10.5px; color: var(--ink-muted); }
+.pop-tools .tabbar { padding: 8px 12px 0; }
+.pop-tools .chip-group { padding: 8px 12px 0; }
+.pop-tools .chip-group[hidden] { display: none; }
+.pop-tools .tool-chips { padding: 5px 0 10px; }
+
+.gaia-pop .chat-composer { align-items: center; background: var(--surface); }
+
+.tool-toggle {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 10px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  cursor: pointer;
+}
+
+.tool-toggle:hover { background: var(--tint-neutral); }
+.tool-toggle.on { background: var(--accent-tint); border-color: var(--accent); color: var(--accent); }
+
+.pop-foot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px 8px;
+  border-top: 1px solid var(--hairline);
+  background: var(--tint-neutral);
+  font-size: 10.5px;
+  color: var(--ink-muted);
+}
+
+.pop-kbd {
+  margin-left: auto;
+  padding: 0 4px;
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  background: var(--surface);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .gaia-pop { box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6); }
+  .gaia-fab { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5); }
+}
+
+/* Small screens: the popup takes the full width and sits above the content */
+@media (max-width: 760px) {
+  .gaia-pop, .gaia-pop.wide {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    width: auto;
+    max-height: calc(100vh - 16px);
+  }
+  .gaia-fab { right: 12px; bottom: 12px; }
+}
+
+/* Rail card that mirrors the popup's state (GAIA-14) */
+.assist-teaser .at-body { padding: 12px 14px; display: flex; flex-direction: column; align-items: flex-start; gap: 9px; }
+.assist-teaser .at-line { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+.assist-teaser .at-target { font-size: 11.5px; font-weight: 600; color: var(--accent); }
+.assist-teaser .at-note { font-size: 11px; color: var(--ink-muted); }
+
+/* Room at the end of the page for the docked assistant popup */
+.content { padding-bottom: 104px; }

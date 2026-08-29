@@ -7,7 +7,7 @@
 
 Gaia's dedicated workspace: where research is requested, drafted, source-checked, and approved. The output — an approved, source-backed research note — is the input that feeds Atlas in Phase 3.
 
-The workspace covers four research types, chosen as the first step of a request (BR-001). Research type drives the workflow, note template, assistant tools, evidence rules and output format; everything else — layout, filters, cards, status pills, assistant rail, approval gate — is shared:
+The workspace covers four research types, chosen as the first step of a request (BR-001). Research type drives the workflow, note template, assistant tools, evidence rules and output format; everything else — layout, filters, cards, status pills, assistant popup, approval gate — is shared:
 
 - **🎓 Academic** — journal papers, thesis chapters, conference papers, literature and systematic reviews
 - **🏢 Business** — company, strategy, product, customer and competitor research
@@ -98,7 +98,7 @@ Use these codes to request changes to a specific part of `gaia.html` — each is
 | GAIA-11 | Open questions for the BA |
 | GAIA-12 | Sources panel (verification checklist) |
 | GAIA-13 | Action bar (approve / edit / reject) |
-| GAIA-14 | Gaia Assistant chat (section updates + research tools) |
+| GAIA-14 | Gaia Assistant — popup chat with the research tools inside (opened from the topbar, the floating launcher, “✦ Edit with AI” on any section and the editor toolbar) |
 | GAIA-15 | Related papers (find + keep) |
 | GAIA-16 | Knowledge base (kept items, RAG context) — tagged by research type, workspace and metadata |
 | GAIA-17 | Document editor toolbar (formatting, link, attach, insert table, insert chart, AI draft, style & grammar, export) |
@@ -125,4 +125,5 @@ Use these codes to request changes to a specific part of `gaia.html` — each is
 - The **Draft → Verify sources → Approve** gate, the approved-content lock and audit logging are unchanged and apply identically to all four research types (BR-065 – BR-067).
 - Verification ("is this source real and checked?") and evidence classification ("how does it relate to the claim?") are **separate** controls that sit side by side on each source row (BR-017, BR-018).
 - Anything Gaia cannot substantiate — a paper, author, DOI, statistic, quotation or finding — is shown in an explicit **"Evidence not verified — requires verification"** state and is blocked from citation and export (BR-072, BR-073).
+- The assistant is a **popup**, not a rail card: it is reachable from anywhere in the workspace, carries its own target section, and the research tools for the active type live inside it. It is non-modal, so the note stays readable and editable behind it (BR-041 – BR-045, BR-074).
 - Research types, note templates, document types, assistant tools, source classifications, evidence-matrix columns, citation styles, export formats and traceable output types are all registry-driven configuration, not branches in the core workflow (BR-076).
